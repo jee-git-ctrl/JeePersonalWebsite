@@ -1,4 +1,4 @@
-# infoBank Yo
+# infoBank
 
 ## Introduction
 
