@@ -1,7 +1,5 @@
 # infoBank
 
-### test modification
-
 ## Introduction
 
 Most people actually possess a considerable amount of useful information that can be used to help others, like the number of people in the waiting line of some restaurant, or the valuable advices for people in workplace or schools. However, most platforms on the Internet don’t facilitate the sharing of these kinds of information, they either lack incentive, encourage too much subjective ideas, or simply don't provide a suitable structure to host and distribute the informations. As a result, these information that could potentially help plenty of people, usually ended up helping only few of their friends or just themselves.
