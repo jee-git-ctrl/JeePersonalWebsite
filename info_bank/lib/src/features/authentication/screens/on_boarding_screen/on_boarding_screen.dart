@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:info_bank/src/constants/colors.dart';
-import 'package:info_bank/src/constants/sizes.dart';
-import 'package:info_bank/src/constants/text_strings.dart';
+import 'package:info_bank/src/constants/allConstants.dart';
 import 'package:info_bank/src/features/authentication/controllers/on_boarding_screen_controller.dart';
 import 'package:info_bank/src/features/authentication/models/model_on_boarding.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
-import 'package:info_bank/src/constants/text_strings.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'on_boarding_page_widget.dart';
 
