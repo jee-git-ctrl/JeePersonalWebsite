@@ -33,6 +33,7 @@ class Services {
             "Email": result.user!.email
           });
           // then navigate to register page
+
           Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (context) => ResigterPage()));
         }
