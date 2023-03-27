@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
 
-class Profile extends StatefulWidget {
+class CreatePost extends StatefulWidget {
   @override
-  _ProfileState createState() => _ProfileState();
+  _CreatePostState createState() => _CreatePostState();
 }
 
-class _ProfileState extends State<Profile> {
+class _CreatePostState extends State<CreatePost> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: SideMenu(),
       appBar: AppBar(
+        title: const Text('data'),
         leading: Builder(
           builder: (BuildContext context) {
             return SizedBox(
               child: IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.list,
                   color: Colors.black,
                 ),
@@ -37,7 +38,7 @@ class _ProfileState extends State<Profile> {
         ],
       ),
       body: Center(
-        child: Text('Profile Page'),
+        child: Text('Create Post Page'),
       ),
     );
   }

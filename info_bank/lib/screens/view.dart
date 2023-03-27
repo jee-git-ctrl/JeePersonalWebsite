@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/sidemenu/side_menu.dart';
+import 'package:info_bank/sidemenu/side_menu.dart';
 
 class View extends StatefulWidget {
   @override
@@ -14,11 +14,10 @@ class _ViewState extends State<View> {
       appBar: AppBar(
         leading: Builder(
           builder: (BuildContext context) {
-            return RotatedBox(
-              quarterTurns: 1,
+            return SizedBox(
               child: IconButton(
-                icon: Icon(
-                  Icons.bar_chart_rounded,
+                icon: const Icon(
+                  Icons.list,
                   color: Colors.black,
                 ),
                 onPressed: () => Scaffold.of(context).openDrawer(),
@@ -26,7 +25,7 @@ class _ViewState extends State<View> {
             );
           },
         ),
-        backgroundColor: Colors.white,
+        //backgroundColor: Color(0xffd9d9d9),
         elevation: 0.0,
         actions: [
           IconButton(

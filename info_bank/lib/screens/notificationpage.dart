@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
 
-class Profile extends StatefulWidget {
+class NotificationPage extends StatefulWidget {
   @override
-  _ProfileState createState() => _ProfileState();
+  _NotificationPageState createState() => _NotificationPageState();
 }
 
-class _ProfileState extends State<Profile> {
+class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +16,7 @@ class _ProfileState extends State<Profile> {
           builder: (BuildContext context) {
             return SizedBox(
               child: IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.list,
                   color: Colors.black,
                 ),
@@ -37,7 +37,7 @@ class _ProfileState extends State<Profile> {
         ],
       ),
       body: Center(
-        child: Text('Profile Page'),
+        child: Text('Notification Page'),
       ),
     );
   }

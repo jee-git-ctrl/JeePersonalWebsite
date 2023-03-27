@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/tabs/tabspage.dart';
+import 'package:info_bank/tabs/tabspage.dart';
 
 class SideMenu extends StatefulWidget {
   @override

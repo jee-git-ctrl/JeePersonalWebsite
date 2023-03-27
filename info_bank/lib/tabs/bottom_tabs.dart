@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:myapp/screens/home.dart';
-import 'package:myapp/screens/profile.dart';
-import 'package:myapp/screens/search.dart';
+import 'package:info_bank/screens/home.dart';
+import 'package:info_bank/screens/notificationpage.dart';
+import 'package:info_bank/screens/profile.dart';
+import 'package:info_bank/screens/discover.dart';
+import 'package:info_bank/screens/createpost.dart';
 
 class TabNavigationItem {
   final Widget page;
@@ -15,18 +17,28 @@ class TabNavigationItem {
   static List<TabNavigationItem> get items => [
         TabNavigationItem(
           page: Home(),
-          icon: Icon(Icons.home),
-          title: Text("Home"),
+          icon: const Icon(Icons.home),
+          title: const Text("主頁"),
         ),
         TabNavigationItem(
-          page: Search(),
-          icon: Icon(Icons.search),
-          title: Text("Search"),
+          page: Discover(),
+          icon: const Icon(Icons.language),
+          title: const Text("探索"),
+        ),
+        TabNavigationItem(
+          page: CreatePost(),
+          icon: const Icon(Icons.add_circle),
+          title: const Text("創建貼文"),
+        ),
+        TabNavigationItem(
+          page: NotificationPage(),
+          icon: const Icon(Icons.notifications),
+          title: const Text("通知"),
         ),
         TabNavigationItem(
           page: Profile(),
-          icon: Icon(Icons.home),
-          title: Text("Home"),
+          icon: const Icon(Icons.person),
+          title: const Text("個人"),
         ),
       ];
 }

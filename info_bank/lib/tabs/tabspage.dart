@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:myapp/tabs/bottom_tabs.dart';
+import 'package:info_bank/tabs/bottom_tabs.dart';
 
 class TabsPage extends StatefulWidget {
   int selectedIndex = 0;
@@ -43,17 +42,26 @@ class _TabsPageState extends State<TabsPage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: '主頁',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.language),
+            label: '探索',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.verified_user),
-            label: 'Profile',
+            icon: Icon(Icons.add_circle),
+            label: '創建貼文',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications),
+            label: '通知',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: '個人',
           ),
         ],
+        //backgroundColor: ,
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
