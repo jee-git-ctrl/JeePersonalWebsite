@@ -12,12 +12,12 @@ class Services {
     final GoogleSignIn googleSignIn = GoogleSignIn(scopes: ['email']);
     final GoogleSignInAccount? googleSignInAccount =
         await googleSignIn.signIn();
-    if (googleSignInAccount != null) {
-      final GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount.authentication;
+    //if (googleSignInAccount != null) {
+    final GoogleSignInAuthentication googleSignInAuthentication =
+        await googleSignInAccount!.authentication;
 
-      //if (googleSignInAuthentication.accessToken != null &&
-      //googleSignInAuthentication.idToken != null) {
+    if (googleSignInAuthentication.accessToken != null &&
+        googleSignInAuthentication.idToken != null) {
       try {
         final result = await FirebaseAuth.instance.signInWithCredential(
             GoogleAuthProvider.credential(
@@ -30,13 +30,11 @@ class Services {
               .doc(result.user!.uid)
               .set({
             "Name": result.user!.displayName,
-            "Email": result.user!.email
+            "Email": result.user!.email,
+            "Create_Date": Timestamp.now(),
+            "Profile_complete": false //bool register finish or not
           });
-          // then navigate to register page
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => ResigterPage()));
         }
-        //otherwise if acc exist
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const HomePage()));
       } on FirebaseAuthException catch (e) {

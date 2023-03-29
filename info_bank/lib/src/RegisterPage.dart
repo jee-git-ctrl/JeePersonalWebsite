@@ -16,6 +16,11 @@ class _RegisterPageState extends State<ResigterPage> {
         appBar: AppBar(
           title: const Text('tmp register page'),
         ),
-        body: const Text('register form '));
+        body: const Text("register here!!")
+        /*
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+        ) */
+        );
   }
 }
