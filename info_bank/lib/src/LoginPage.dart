@@ -10,6 +10,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  //
+  static final Services _googleServices = Services();
+
   //set state
 
   @override
@@ -49,7 +52,8 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
               onPressed: () {
-                Services.googleSignIn(context); //from google services .dart
+                _googleServices
+                    .googleSignIn(context); //from google services .dart
               },
             )
           ],
