@@ -1,0 +1,28 @@
+import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:info_bank/tmp_homepage.dart';
+
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('tmp register page'),
+        ),
+        body: const Text("register here!!")
+        /*
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+        ) */
+        );
+  }
+}
