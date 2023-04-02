@@ -15,8 +15,6 @@
       "oauth_client": [
         {
           "client_id": "926744933692-o4cnmheu1rgapblosokks5l5imo6ef4v.apps.googleusercontent.com",
-<<<<<<< HEAD:info_bank/android/app/src/google-services.json
-=======
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.info_bank",
@@ -25,7 +23,6 @@
         },
         {
           "client_id": "926744933692-ptc0v90ruf5iohi8kd7luhrtpo92mnvm.apps.googleusercontent.com",
->>>>>>> 5705bdd52aa86f8561520fdc70aa4f160df10d8a:info_bank/android/app/google-services.json
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.info_bank",
@@ -33,11 +30,7 @@
           }
         },
         {
-<<<<<<< HEAD:info_bank/android/app/src/google-services.json
-          "client_id": "926744933692-o4cnmheu1rgapblosokks5l5imo6ef4v.apps.googleusercontent.com",
-=======
           "client_id": "926744933692-10miqqrcf6cj8qa6jkospprerhm2scc2.apps.googleusercontent.com",
->>>>>>> 5705bdd52aa86f8561520fdc70aa4f160df10d8a:info_bank/android/app/google-services.json
           "client_type": 3
         }
       ],
