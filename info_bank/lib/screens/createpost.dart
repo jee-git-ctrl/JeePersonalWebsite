@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
+import 'package:info_bank/screens/search.dart';
 
 class CreatePost extends StatefulWidget {
   @override
@@ -28,13 +29,19 @@ class _CreatePostState extends State<CreatePost> {
         ),
         //backgroundColor: Color(0xffd9d9d9),
         elevation: 0.0,
-        actions: [
-          IconButton(
-              color: Colors.black,
-              icon: Icon(Icons.search),
-              onPressed: () {
-                Navigator.pushNamed(context, '/search');
-              }),
+        actions: <Widget>[
+          Row(
+            children: <Widget>[
+              IconButton(
+                  color: Colors.black,
+                  icon: const Icon(Icons.search),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Search()));
+                    //Navigator.pushNamed(context, '/search');
+                  }),
+            ],
+          ),
         ],
       ),
       body: Center(

@@ -18,8 +18,8 @@ const allPost = [
   Post(title: 'Post 1', tag: 'follow', Best: 89.1, unlocked: 3000),
   Post(title: 'Post 2', tag: 'follow', Best: 71.1, unlocked: 1234),
   Post(title: 'Post 3', tag: 'follow', Best: 67.4, unlocked: 5678),
-  Post(title: 'Post 4', tag: 'recommendd', Best: 82.2, unlocked: 9876),
-  Post(title: 'Post 5', tag: 'recommendd', Best: 23.3, unlocked: 2351),
+  Post(title: 'Post 4', tag: 'recommend', Best: 82.2, unlocked: 9876),
+  Post(title: 'Post 5', tag: 'recommend', Best: 23.3, unlocked: 2351),
 ];
 
 class MyPost extends StatelessWidget {

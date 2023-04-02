@@ -89,7 +89,7 @@ class _SideMenuState extends State<SideMenu> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => TabsPage(selectedIndex: 2)),
+                      builder: (context) => TabsPage(selectedIndex: 4)),
                 ),
               },
             ),
