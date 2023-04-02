@@ -7,6 +7,8 @@ import 'package:info_bank/src/utils/theme/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'src/LoginPage.dart';
 import 'tmp_homepage.dart';
+import 'package:info_bank/screens/home.dart';
+import 'package:info_bank/tabs/tabspage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: ((context, snapshot) {
               if (snapshot.hasData) {
-                return const HomePage();
+                return TabsPage(selectedIndex: 0);
               } else {
                 return const LoginPage();
               }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:info_bank/tabs/tabspage.dart';
+import 'package:info_bank/src/services/google_services.dart';
 
 class SideMenu extends StatefulWidget {
   @override
@@ -7,6 +8,7 @@ class SideMenu extends StatefulWidget {
 }
 
 class _SideMenuState extends State<SideMenu> {
+  static final Services _googleServices = Services();
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -93,6 +95,11 @@ class _SideMenuState extends State<SideMenu> {
                 ),
               },
             ),
+            ElevatedButton(
+                onPressed: () {
+                  _googleServices.signOut(context);
+                },
+                child: const Text('Sign out'))
           ],
         ),
       ),
