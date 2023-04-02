@@ -4,18 +4,25 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:info_bank/tmp_homepage.dart';
 
-class ResigterPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
+
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends State<ResigterPage> {
+class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: const Text('tmp register page'),
         ),
-        body: const Text('register form '));
+        body: const Text("register here!!")
+        /*
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+        ) */
+        );
   }
 }
