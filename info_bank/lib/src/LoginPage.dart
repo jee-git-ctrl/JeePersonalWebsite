@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:info_bank/src/services/google_services.dart';
+import 'package:info_bank/tabs/tabspage.dart';
 
 // Login page with only google sign-in
 
@@ -54,6 +55,22 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: () {
                 _googleServices
                     .googleSignIn(context); //from google services .dart
+              },
+            ),
+            ElevatedButton(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text("Debug Mode")
+                ],
+              ),
+              onPressed: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => TabsPage(selectedIndex: 0),
+                ));
               },
             )
           ],
