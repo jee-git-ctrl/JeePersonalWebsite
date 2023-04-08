@@ -1,7 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:info_bank/screens/search.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:autocomplete_textfield/autocomplete_textfield.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class CreatePost extends StatefulWidget {
   @override
@@ -9,6 +13,10 @@ class CreatePost extends StatefulWidget {
 }
 
 class _CreatePostState extends State<CreatePost> {
+  List<String> suggestions = ["recommend", "follow", "ice"];
+  final TextEditingController _typeAheadController = TextEditingController();
+  String? _selectedCity;
+  SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -143,14 +151,34 @@ class _CreatePostState extends State<CreatePost> {
                       //height: 120,
                       child: Stack(
                         children: [
-                          SizedBox(
-                              height: 120,
-                              child: TextField(
+                          Positioned(
+                            child: TypeAheadFormField(
+                              textFieldConfiguration: TextFieldConfiguration(
                                 decoration: InputDecoration(
-                                  hintText: '標籤：',
-                                  border: InputBorder.none,
-                                ),
-                              )),
+                                    hintText: '標籤：', border: InputBorder.none),
+                                controller: this._typeAheadController,
+                              ),
+                              suggestionsCallback: (pattern) {
+                                return TagsQuery.getSuggestions(pattern);
+                              },
+                              itemBuilder: (context, String suggestion) {
+                                return ListTile(
+                                  title: Text(suggestion),
+                                );
+                              },
+                              transitionBuilder:
+                                  (context, suggestionsBox, controller) {
+                                return suggestionsBox;
+                              },
+                              onSuggestionSelected: (String suggestion) {
+                                this._typeAheadController.text = suggestion;
+                              },
+                              suggestionsBoxController: suggestionBoxController,
+                              validator: (value) =>
+                                  value!.isEmpty ? '請至少選取一個標籤' : null,
+                              onSaved: (value) => this._selectedCity = value,
+                            ),
+                          ),
                         ],
                       ),
                     )),
@@ -209,5 +237,35 @@ class _CreatePostState extends State<CreatePost> {
             ),
           ],
         ));
+  }
+}
+
+/*
+/// This is a fake service that mimics a backend service.
+/// It returns a list of suggestions after a 1 second delay.
+/// In a real app, this would be a service that makes a network request.
+class BackendService {
+  static Future<List<Map<String, String>>> getSuggestions(String query) async {
+    await Future<void>.delayed(Duration(seconds: 1));
+
+    return List.generate(3, (index) {
+      return {
+        'name': query + index.toString(),
+        'price': Random().nextInt(100).toString()
+      };
+    });
+  }
+}
+*/
+/// A fake service to filter cities based on a query.
+class TagsQuery {
+  static final List<String> allTags = ['follow', 'recommend'];
+
+  static List<String> getSuggestions(String query) {
+    List<String> matches = <String>[];
+    matches.addAll(allTags);
+
+    matches.retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
+    return matches;
   }
 }
