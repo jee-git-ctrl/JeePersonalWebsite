@@ -43,7 +43,7 @@ class _SideMenuState extends State<SideMenu> {
                               const Text('data'),
                               Container(
                                 color: Colors.red,
-                                child: const Row(children: [
+                                child: Row(children: [
                                   Icon(Icons.apartment, color: Colors.black),
                                   Expanded(
                                       child: Text(
