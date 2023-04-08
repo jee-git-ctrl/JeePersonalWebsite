@@ -32,9 +32,13 @@ class MyPost extends StatelessWidget {
     double baseWidth = 390;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
         child: Container(
-          height: 100,
+          decoration: BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          height: 120,
           child: Stack(
             children: [
               Positioned(
