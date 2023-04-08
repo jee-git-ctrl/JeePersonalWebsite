@@ -61,9 +61,14 @@ class _TabsPageState extends State<TabsPage> {
             label: '個人',
           ),
         ],
-        //backgroundColor: ,
+        showUnselectedLabels: true,
+        unselectedLabelStyle:
+            const TextStyle(color: Colors.white, fontSize: 14),
         currentIndex: _selectedIndex,
+        backgroundColor: Colors.black,
         selectedItemColor: Colors.amber[800],
+        unselectedItemColor: Colors.grey,
+        unselectedFontSize: 14,
         onTap: _onItemTapped,
       ),
     );
