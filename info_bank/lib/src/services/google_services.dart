@@ -2,13 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:info_bank/src/services/firebase_services.dart';
 
-import 'package:info_bank/tmp_homepage.dart';
-import 'package:info_bank/src/RegisterPage.dart';
 import '../LoginPage.dart';
+import 'package:info_bank/tabs/tabspage.dart';
 
 final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
 final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+final FServices _firebaseServices = FServices();
 
 class Services {
   //
@@ -39,11 +40,11 @@ class Services {
             "Create_Date": Timestamp.now(),
             "Profile_complete": false //bool register finish or not
           });
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const RegisterPage()));
         }
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const HomePage()));
+        //_firebaseServices.checkUserProfileCompleted(context);
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => TabsPage(selectedIndex: 0),
+        ));
       } on FirebaseAuthException catch (e) {
         print(e);
       }

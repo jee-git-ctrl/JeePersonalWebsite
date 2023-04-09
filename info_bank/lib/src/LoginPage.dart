@@ -27,34 +27,44 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Placeholder(
-              //infobank icon
-              fallbackWidth: 100,
-              fallbackHeight: 100,
+            Image.asset('assets/images/infoBank_template.png', height: 100),
+            SizedBox(
+              width: 50,
+              height: 50,
             ),
-            Text('welcome to info bank!'),
-            ElevatedButton(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 30.0,
-                    width: 30.0,
-                    decoration: BoxDecoration(
-                      color: Colors.amber,
-                      shape: BoxShape.circle,
+            SizedBox(
+              width: 300,
+              height: 50,
+              child: ElevatedButton(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 40.0,
+                      width: 40.0,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image:
+                                AssetImage('assets/images/google_g_icon.png'),
+                            fit: BoxFit.cover),
+                        shape: BoxShape.circle,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text("Sign In with Google")
-                ],
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text("Sign In with Google")
+                  ],
+                ),
+                onPressed: () {
+                  _googleServices
+                      .googleSignIn(context); //from google services .dart
+                },
               ),
-              onPressed: () {
-                _googleServices
-                    .googleSignIn(context); //from google services .dart
-              },
+            ),
+            SizedBox(
+              width: 50,
+              height: 100,
             )
           ],
         ),

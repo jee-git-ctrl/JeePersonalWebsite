@@ -21,11 +21,6 @@ class _HomePageState extends State<HomePage> {
         body: Column(
           children: [
             const Text('reloaded\nthis is a tmp home page'),
-            ElevatedButton(
-                onPressed: () {
-                  _googleServices.signOut(context);
-                },
-                child: const Text('Sign out'))
           ],
         ));
   }
