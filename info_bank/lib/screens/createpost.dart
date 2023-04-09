@@ -1,7 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:info_bank/screens/search.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:autocomplete_textfield/autocomplete_textfield.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class CreatePost extends StatefulWidget {
   @override
@@ -9,6 +13,17 @@ class CreatePost extends StatefulWidget {
 }
 
 class _CreatePostState extends State<CreatePost> {
+  List<String> current_tags = [];
+  List<String> suggestions = ["recommend", "follow", "ice"];
+  final TextEditingController _typeAheadController = TextEditingController();
+  String? _selectedCity;
+  SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +74,7 @@ class _CreatePostState extends State<CreatePost> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: TextFormField(
-                        autofocus: true,
+                        //autofocus: true,
                         //controller: nameController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -90,7 +105,7 @@ class _CreatePostState extends State<CreatePost> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       //height: 120,
-                      child: Stack(
+                      child: const Stack(
                         children: [
                           SizedBox(
                               height: 120,
@@ -140,17 +155,114 @@ class _CreatePostState extends State<CreatePost> {
                         color: Colors.grey,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      //height: 120,
-                      child: Stack(
+                      height: 150,
+                      child: Column(
                         children: [
-                          SizedBox(
-                              height: 120,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: '標籤：',
-                                  border: InputBorder.none,
+                          IntrinsicHeight(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        child: TypeAheadFormField(
+                                          textFieldConfiguration:
+                                              TextFieldConfiguration(
+                                            decoration: InputDecoration(
+                                                hintText: '標籤：',
+                                                border: InputBorder.none),
+                                            controller:
+                                                this._typeAheadController,
+                                          ),
+                                          suggestionsCallback: (pattern) {
+                                            return TagsQuery.getSuggestions(
+                                                pattern);
+                                          },
+                                          itemBuilder:
+                                              (context, String suggestion) {
+                                            return ListTile(
+                                              title: Text(suggestion),
+                                            );
+                                          },
+                                          transitionBuilder: (context,
+                                              suggestionsBox, controller) {
+                                            return suggestionsBox;
+                                          },
+                                          onSuggestionSelected:
+                                              (String suggestion) {
+                                            this._typeAheadController.text =
+                                                suggestion;
+                                            current_tags.add(suggestion);
+                                            print(suggestion);
+                                            print(current_tags);
+                                          },
+                                          suggestionsBoxController:
+                                              suggestionBoxController,
+                                          validator: (value) => value!.isEmpty
+                                              ? '請至少選取一個標籤'
+                                              : null,
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 50,
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              )),
+                                const VerticalDivider(
+                                  width: 5,
+                                  thickness: 3,
+                                ),
+                                Container(
+                                  width: 250,
+                                  color: Colors.amber,
+                                  child: SingleChildScrollView(
+                                    child: Wrap(
+                                      spacing: 10,
+                                      children: <Widget>[
+                                        for (var item in current_tags)
+                                          Container(
+                                            color: Colors.deepOrangeAccent,
+                                            child: Row(
+                                              children: [
+                                                Expanded(
+                                                  child: Text(
+                                                    item,
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ),
+                                                ),
+                                                Positioned.fill(
+                                                    child: Align(
+                                                  alignment:
+                                                      Alignment.centerRight,
+                                                  child: GestureDetector(
+                                                      child: const Icon(
+                                                          Icons.remove),
+                                                      onTap: () {
+                                                        current_tags
+                                                            .remove(item);
+                                                      }),
+                                                ))
+                                              ],
+                                            ),
+                                          ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          const Divider(
+                            height: 10,
+                            thickness: 3,
+                            color: Colors.black,
+                          ),
+                          Container(
+                            height: 10,
+                          )
                         ],
                       ),
                     )),
@@ -170,7 +282,7 @@ class _CreatePostState extends State<CreatePost> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       //height: 120,
-                      child: Stack(
+                      child: const Stack(
                         children: [
                           SizedBox(
                               height: 120,
@@ -209,5 +321,35 @@ class _CreatePostState extends State<CreatePost> {
             ),
           ],
         ));
+  }
+}
+
+/*
+/// This is a fake service that mimics a backend service.
+/// It returns a list of suggestions after a 1 second delay.
+/// In a real app, this would be a service that makes a network request.
+class BackendService {
+  static Future<List<Map<String, String>>> getSuggestions(String query) async {
+    await Future<void>.delayed(Duration(seconds: 1));
+
+    return List.generate(3, (index) {
+      return {
+        'name': query + index.toString(),
+        'price': Random().nextInt(100).toString()
+      };
+    });
+  }
+}
+*/
+/// A fake service to filter cities based on a query.
+class TagsQuery {
+  static final List<String> allTags = ['follow', 'recommend', 'ice'];
+
+  static List<String> getSuggestions(String query) {
+    List<String> matches = <String>[];
+    matches.addAll(allTags);
+
+    matches.retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
+    return matches;
   }
 }
