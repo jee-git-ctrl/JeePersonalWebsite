@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:info_bank/screens/QApage.dart';
 
 class Post {
   final String title;
@@ -31,60 +33,66 @@ class MyPost extends StatelessWidget {
   Widget build(BuildContext context) {
     double baseWidth = 390;
     double fem = MediaQuery.of(context).size.width / baseWidth;
-    return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.grey,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          height: 120,
-          child: Stack(
-            children: [
-              Positioned(
-                  top: 10,
-                  left: 10,
-                  child: Text(
-                    //title
-                    allPost[index].title,
-                    style: GoogleFonts.openSans(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 32,
-                    ),
-                  )),
-              Positioned(
-                  //tags
-                  bottom: 10,
-                  left: 10,
-                  child: Text(
-                    allPost[index].tag,
-                    style: GoogleFonts.openSans(),
-                  )),
-              Positioned(
-                  //bestanswer
-                  bottom: 30,
-                  right: 10,
-                  child: Text(
-                    "最佳回答：" + allPost[index].Best.toString() + "%",
-                    style: GoogleFonts.openSans(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )),
-              Positioned(
-                  //answerpotion
-                  bottom: 10,
-                  right: 10,
-                  child: Text(
-                    "解鎖次數：" +
-                        (allPost[index].unlocked / 1000).toStringAsFixed(1) +
-                        "k",
-                    style: GoogleFonts.openSans(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ))
-            ],
-          ),
-        ));
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+           MaterialPageRoute(builder: (context) => QApage()));
+      },
+      child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            height: 120,
+            child: Stack(
+              children: [
+                Positioned(
+                    top: 10,
+                    left: 10,
+                    child: Text(
+                      //title
+                      allPost[index].title,
+                      style: GoogleFonts.openSans(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 32,
+                      ),
+                    )),
+                Positioned(
+                    //tags
+                    bottom: 10,
+                    left: 10,
+                    child: Text(
+                      allPost[index].tag,
+                      style: GoogleFonts.openSans(),
+                    )),
+                Positioned(
+                    //bestanswer
+                    bottom: 30,
+                    right: 10,
+                    child: Text(
+                      "最佳回答：" + allPost[index].Best.toString() + "%",
+                      style: GoogleFonts.openSans(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )),
+                Positioned(
+                    //answerpotion
+                    bottom: 10,
+                    right: 10,
+                    child: Text(
+                      "解鎖次數：" +
+                          (allPost[index].unlocked / 1000).toStringAsFixed(1) +
+                          "k",
+                      style: GoogleFonts.openSans(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ))
+              ],
+            ),
+          )),
+    );
   }
 }
 

@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
       FilterWidth = varFilterWidth;
     });
   }
-
+  
   int cnt = 0;
   @override
   Widget build(BuildContext context) {
@@ -198,7 +198,7 @@ class _HomeFilter extends State<HomeFilter> {
     print("filterResults");
     return allPost.where((_currentpost) {
       final Posttag = _currentpost.tag;
-      return Posttag.contains(filtertag);
+      return Posttag.contains(filtertag); //? change to match?
     }).toList();
   }
 }
