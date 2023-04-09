@@ -20,6 +20,7 @@ const String tNotificationAnswer = "回答";
 const String tNotificationSystem = "系統";
 
 // -- User Screen Text
+const String tUserProfile = "User Profile";
 const String tUserProfileName = "User Name";
 const String tUserHeading1 = "標志解答次數：";
 const String tUserHeading2 = "用戶歷史最佳回答得分：";

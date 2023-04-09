@@ -5,15 +5,19 @@ import 'package:info_bank/src/constants/image_strings.dart';
 import 'package:info_bank/src/constants/sizes.dart';
 import 'package:info_bank/src/constants/text_strings.dart';
 import 'package:info_bank/src/utils/theme/widget_themes/text_theme.dart';
+import 'package:info_bank/src/widgets/my_post.dart';
 
-class UserScreen extends StatelessWidget {
-  const UserScreen({super.key});
+class UserScreen1 extends StatelessWidget {
+  const UserScreen1({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('User Profile'),
+        title: Text(
+          tUserProfile,
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
