@@ -13,10 +13,17 @@ class CreatePost extends StatefulWidget {
 }
 
 class _CreatePostState extends State<CreatePost> {
+  List<String> current_tags = [];
   List<String> suggestions = ["recommend", "follow", "ice"];
   final TextEditingController _typeAheadController = TextEditingController();
   String? _selectedCity;
   SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +74,7 @@ class _CreatePostState extends State<CreatePost> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: TextFormField(
-                        autofocus: true,
+                        //autofocus: true,
                         //controller: nameController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -98,7 +105,7 @@ class _CreatePostState extends State<CreatePost> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       //height: 120,
-                      child: Stack(
+                      child: const Stack(
                         children: [
                           SizedBox(
                               height: 120,
@@ -148,37 +155,114 @@ class _CreatePostState extends State<CreatePost> {
                         color: Colors.grey,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      //height: 120,
-                      child: Stack(
+                      height: 150,
+                      child: Column(
                         children: [
-                          Positioned(
-                            child: TypeAheadFormField(
-                              textFieldConfiguration: TextFieldConfiguration(
-                                decoration: InputDecoration(
-                                    hintText: '標籤：', border: InputBorder.none),
-                                controller: this._typeAheadController,
-                              ),
-                              suggestionsCallback: (pattern) {
-                                return TagsQuery.getSuggestions(pattern);
-                              },
-                              itemBuilder: (context, String suggestion) {
-                                return ListTile(
-                                  title: Text(suggestion),
-                                );
-                              },
-                              transitionBuilder:
-                                  (context, suggestionsBox, controller) {
-                                return suggestionsBox;
-                              },
-                              onSuggestionSelected: (String suggestion) {
-                                this._typeAheadController.text = suggestion;
-                              },
-                              suggestionsBoxController: suggestionBoxController,
-                              validator: (value) =>
-                                  value!.isEmpty ? '請至少選取一個標籤' : null,
-                              onSaved: (value) => this._selectedCity = value,
+                          IntrinsicHeight(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        child: TypeAheadFormField(
+                                          textFieldConfiguration:
+                                              TextFieldConfiguration(
+                                            decoration: InputDecoration(
+                                                hintText: '標籤：',
+                                                border: InputBorder.none),
+                                            controller:
+                                                this._typeAheadController,
+                                          ),
+                                          suggestionsCallback: (pattern) {
+                                            return TagsQuery.getSuggestions(
+                                                pattern);
+                                          },
+                                          itemBuilder:
+                                              (context, String suggestion) {
+                                            return ListTile(
+                                              title: Text(suggestion),
+                                            );
+                                          },
+                                          transitionBuilder: (context,
+                                              suggestionsBox, controller) {
+                                            return suggestionsBox;
+                                          },
+                                          onSuggestionSelected:
+                                              (String suggestion) {
+                                            this._typeAheadController.text =
+                                                suggestion;
+                                            current_tags.add(suggestion);
+                                            print(suggestion);
+                                            print(current_tags);
+                                          },
+                                          suggestionsBoxController:
+                                              suggestionBoxController,
+                                          validator: (value) => value!.isEmpty
+                                              ? '請至少選取一個標籤'
+                                              : null,
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 50,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const VerticalDivider(
+                                  width: 5,
+                                  thickness: 3,
+                                ),
+                                Container(
+                                  width: 250,
+                                  color: Colors.amber,
+                                  child: SingleChildScrollView(
+                                    child: Wrap(
+                                      spacing: 10,
+                                      children: <Widget>[
+                                        for (var item in current_tags)
+                                          Container(
+                                            color: Colors.deepOrangeAccent,
+                                            child: Row(
+                                              children: [
+                                                Expanded(
+                                                  child: Text(
+                                                    item,
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ),
+                                                ),
+                                                Positioned.fill(
+                                                    child: Align(
+                                                  alignment:
+                                                      Alignment.centerRight,
+                                                  child: GestureDetector(
+                                                      child: const Icon(
+                                                          Icons.remove),
+                                                      onTap: () {
+                                                        current_tags
+                                                            .remove(item);
+                                                      }),
+                                                ))
+                                              ],
+                                            ),
+                                          ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
                             ),
                           ),
+                          const Divider(
+                            height: 10,
+                            thickness: 3,
+                            color: Colors.black,
+                          ),
+                          Container(
+                            height: 10,
+                          )
                         ],
                       ),
                     )),
@@ -198,7 +282,7 @@ class _CreatePostState extends State<CreatePost> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       //height: 120,
-                      child: Stack(
+                      child: const Stack(
                         children: [
                           SizedBox(
                               height: 120,
@@ -259,7 +343,7 @@ class BackendService {
 */
 /// A fake service to filter cities based on a query.
 class TagsQuery {
-  static final List<String> allTags = ['follow', 'recommend'];
+  static final List<String> allTags = ['follow', 'recommend', 'ice'];
 
   static List<String> getSuggestions(String query) {
     List<String> matches = <String>[];
