@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:info_bank/screens/settingpage.dart';
 import 'package:info_bank/tabs/tabspage.dart';
 import 'package:info_bank/src/services/google_services.dart';
 
@@ -87,9 +86,13 @@ class _SideMenuState extends State<SideMenu> {
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title: Text('Settings'),
+              title: Text('Profile'),
               onTap: () => {
-                Navigator.pushNamed(context, 'SettingPage'),
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => TabsPage(selectedIndex: 4)),
+                ),
               },
             ),
             ElevatedButton(
