@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:info_bank/src/RegisterPage.dart';
 import 'package:info_bank/src/services/firebase_services.dart';
 
 import '../LoginPage.dart';
@@ -30,7 +31,9 @@ class Services {
                 accessToken: googleSignInAuthentication.accessToken,
                 idToken: googleSignInAuthentication.idToken));
         //if new user
-        if (result.additionalUserInfo!.isNewUser) {
+        if (result.additionalUserInfo!.isNewUser ||
+            !await _firebaseServices
+                .checkProfileComplete((result.user!.email).toString())) {
           await FirebaseFirestore.instance
               .collection('Users')
               .doc(result.user!.uid)
@@ -40,11 +43,23 @@ class Services {
             "Create_Date": Timestamp.now(),
             "Profile_complete": false //bool register finish or not
           });
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => const RegisterPage(),
+          ));
+        } else if (await _firebaseServices
+                .checkboolProfileCompleted((result.user!.email).toString()) ==
+            false) {
+          //email and name added but not complete
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => const RegisterPage(),
+          ));
         }
         //_firebaseServices.checkUserProfileCompleted(context);
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => TabsPage(selectedIndex: 0),
-        ));
+        else {
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => TabsPage(selectedIndex: 0),
+          ));
+        }
       } on FirebaseAuthException catch (e) {
         print(e);
       }

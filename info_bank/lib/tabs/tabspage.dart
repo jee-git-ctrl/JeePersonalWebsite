@@ -26,7 +26,7 @@ class _TabsPageState extends State<TabsPage> {
   @override
   void initState() {
     //check if profile is completed
-    _firebaseServices.checkUserProfileCompleted(context);
+    //_firebaseServices.checkUserProfileCompleted(context);
     _onItemTapped(widget.selectedIndex);
     super.initState();
   }
