@@ -19,61 +19,55 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('login page testing'),
-        centerTitle: true,
-      ),
-      body: Center(
-        // decoration: background
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Placeholder(
-              //infobank icon
-              fallbackWidth: 100,
-              fallbackHeight: 100,
-            ),
-            Text('welcome to info bank!'),
-            ElevatedButton(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 30.0,
-                    width: 30.0,
-                    decoration: BoxDecoration(
-                      color: Colors.amber,
-                      shape: BoxShape.circle,
+      body: Container(
+        decoration: BoxDecoration(color: Color(0xFF5FA9C0)),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/infoBank_logo.png'),
+              //Text('Welcome to info bank!'),
+              ElevatedButton(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 30.0,
+                      width: 30.0,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                        image: AssetImage('assets/images/Google_logo.png'),
+                      )),
                     ),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text("Sign In with Google")
-                ],
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text("Sign In with Google")
+                  ],
+                ),
+                onPressed: () {
+                  _googleServices
+                      .googleSignIn(context); //from google services .dart
+                },
               ),
-              onPressed: () {
-                _googleServices
-                    .googleSignIn(context); //from google services .dart
-              },
-            ),
-            ElevatedButton(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text("Debug Mode")
-                ],
-              ),
-              onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => TabsPage(selectedIndex: 0),
-                ));
-              },
-            )
-          ],
+              ElevatedButton(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text("Debug Mode")
+                  ],
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => TabsPage(selectedIndex: 0),
+                  ));
+                },
+              )
+            ],
+          ),
         ),
       ),
     );

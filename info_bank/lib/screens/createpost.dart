@@ -14,18 +14,36 @@ class CreatePost extends StatefulWidget {
 
 class _CreatePostState extends State<CreatePost> {
   List<String> current_tags = [];
-  List<String> suggestions = ["recommend", "follow", "ice"];
+  List<String> suggestions = [
+    "recommend",
+    "follow",
+    "food",
+    "travel",
+    "fasion",
+    "game",
+    "study",
+    "exam",
+    "merch",
+    "hotpot",
+    "CCU",
+    "high quality",
+    "difficult"
+  ];
+  List<String> FoodTagGroup = ["food", "hotpot", "high quality"];
+  List<String> StudyTagGroup = ["study", "exam", "difficult"];
   final TextEditingController _typeAheadController = TextEditingController();
   String? _selectedCity;
   SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
 
-  @override
-  void initState() {
-    super.initState();
+  callback(changedtag) {
+    setState(() {
+      current_tags = changedtag;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    List selectedtag = [];
     return Scaffold(
         drawer: SideMenu(),
         appBar: AppBar(
@@ -191,9 +209,9 @@ class _CreatePostState extends State<CreatePost> {
                                           },
                                           onSuggestionSelected:
                                               (String suggestion) {
-                                            this._typeAheadController.text =
-                                                suggestion;
+                                            this._typeAheadController.text = "";
                                             current_tags.add(suggestion);
+                                            callback(current_tags);
                                             print(suggestion);
                                             print(current_tags);
                                           },
@@ -216,39 +234,24 @@ class _CreatePostState extends State<CreatePost> {
                                 ),
                                 Container(
                                   width: 250,
-                                  color: Colors.amber,
                                   child: SingleChildScrollView(
                                     child: Wrap(
                                       spacing: 10,
-                                      children: <Widget>[
-                                        for (var item in current_tags)
-                                          Container(
-                                            color: Colors.deepOrangeAccent,
-                                            child: Row(
-                                              children: [
-                                                Expanded(
-                                                  child: Text(
-                                                    item,
-                                                    style: TextStyle(
-                                                        color: Colors.white),
-                                                  ),
-                                                ),
-                                                Positioned.fill(
-                                                    child: Align(
-                                                  alignment:
-                                                      Alignment.centerRight,
-                                                  child: GestureDetector(
-                                                      child: const Icon(
-                                                          Icons.remove),
-                                                      onTap: () {
-                                                        current_tags
-                                                            .remove(item);
-                                                      }),
-                                                ))
-                                              ],
-                                            ),
+                                      children: List<Widget>.generate(
+                                          current_tags.length, (int index) {
+                                        return Chip(
+                                          label: Text(
+                                            current_tags[index],
+                                            style: GoogleFonts.openSans(),
                                           ),
-                                      ],
+                                          onDeleted: () {
+                                            setState(() {
+                                              current_tags.removeAt(index);
+                                            });
+                                          },
+                                          deleteIcon: Icon(Icons.close),
+                                        );
+                                      }),
                                     ),
                                   ),
                                 )
@@ -261,7 +264,62 @@ class _CreatePostState extends State<CreatePost> {
                             color: Colors.black,
                           ),
                           Container(
-                            height: 10,
+                            height: 40,
+                            child: Row(children: [
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  foregroundColor: Colors.black,
+                                  backgroundColor: Colors
+                                      .white, // Text Color (Foreground color)
+                                ),
+                                child: const Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text('食物標籤群組'),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Icon(
+                                      Icons.add_circle,
+                                      size: 24.0,
+                                    ),
+                                  ],
+                                ),
+                                onPressed: () {
+                                  current_tags =
+                                      new List<String>.from(FoodTagGroup);
+                                  callback(current_tags);
+                                },
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  foregroundColor: Colors.black,
+                                  backgroundColor: Colors
+                                      .white, // Text Color (Foreground color)
+                                ),
+                                child: const Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text('讀書標籤群組'),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Icon(
+                                      Icons.add_circle,
+                                      size: 24.0,
+                                    ),
+                                  ],
+                                ),
+                                onPressed: () {
+                                  current_tags =
+                                      new List<String>.from(StudyTagGroup);
+                                  callback(current_tags);
+                                },
+                              )
+                            ]),
                           )
                         ],
                       ),
@@ -314,6 +372,29 @@ class _CreatePostState extends State<CreatePost> {
                             left: 110,
                             child: Icon(Icons.format_italic),
                           ),
+                          Positioned(
+                            bottom: 10,
+                            right: 10,
+                            child: Container(
+                              width: 150,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Container(child: Text("解鎖點數")),
+                                  Container(
+                                    width: 50,
+                                    child: Stack(children: [
+                                      Container(child: Text("免費")),
+                                      Positioned(
+                                          right: 0,
+                                          child: Icon(Icons.expand_more))
+                                    ]),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     )),
@@ -343,7 +424,21 @@ class BackendService {
 */
 /// A fake service to filter cities based on a query.
 class TagsQuery {
-  static final List<String> allTags = ['follow', 'recommend', 'ice'];
+  static final List<String> allTags = [
+    "recommend",
+    "follow",
+    "food",
+    "travel",
+    "fasion",
+    "game",
+    "study",
+    "exam",
+    "merch",
+    "hotpot",
+    "CCU",
+    "high quality",
+    "difficult"
+  ];
 
   static List<String> getSuggestions(String query) {
     List<String> matches = <String>[];

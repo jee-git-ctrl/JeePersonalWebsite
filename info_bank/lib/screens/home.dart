@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
       FilterWidth = varFilterWidth;
     });
   }
-  
+
   int cnt = 0;
   @override
   Widget build(BuildContext context) {
@@ -85,7 +85,7 @@ class _HomeState extends State<Home> {
                   shrinkWrap: true,
                   itemCount: _currentposts.length,
                   itemBuilder: (context, index) {
-                    return MyPost(index: index);
+                    return MyPost(currentpost: _currentposts[index]);
                   }),
             ),
           ],
@@ -193,7 +193,7 @@ class _HomeFilter extends State<HomeFilter> {
     int i = 0;
     String filtertag = '';
     if (val == 1) {
-      filtertag = 'follow';
+      filtertag = 'Follow';
     }
     print("filterResults");
     return allPost.where((_currentpost) {
