@@ -34,7 +34,7 @@ class Services {
           });
           // then navigate to register page
           Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => ResigterPage()));
+              MaterialPageRoute(builder: (context) => RegisterPage()));
         }
         //otherwise if acc exist
         Navigator.of(context).pushReplacement(
