@@ -19,37 +19,25 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('login page testing'),
-        centerTitle: true,
-      ),
-      body: Center(
-        // decoration: background
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset('assets/images/infoBank_template.png', height: 100),
-            SizedBox(
-              width: 50,
-              height: 50,
-            ),
-            SizedBox(
-              width: 300,
-              height: 50,
-              child: ElevatedButton(
+      body: Container(
+        decoration: BoxDecoration(color: Color(0xFF5FA9C0)),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/infoBank_logo.png'),
+              //Text('Welcome to info bank!'),
+              ElevatedButton(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      height: 40.0,
-                      width: 40.0,
+                      height: 30.0,
+                      width: 30.0,
                       decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image:
-                                AssetImage('assets/images/google_g_icon.png'),
-                            fit: BoxFit.cover),
-                        shape: BoxShape.circle,
-                      ),
+                          image: DecorationImage(
+                        image: AssetImage('assets/images/Google_logo.png'),
+                      )),
                     ),
                     SizedBox(
                       width: 20,
@@ -62,12 +50,24 @@ class _LoginPageState extends State<LoginPage> {
                       .googleSignIn(context); //from google services .dart
                 },
               ),
-            ),
-            SizedBox(
-              width: 50,
-              height: 100,
-            )
-          ],
+              ElevatedButton(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text("Debug Mode")
+                  ],
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => TabsPage(selectedIndex: 0),
+                  ));
+                },
+              )
+            ],
+          ),
         ),
       ),
     );

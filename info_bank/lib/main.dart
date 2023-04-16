@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: "tAppName",
-        theme: ThemeData(primarySwatch: Colors.green),
+        theme: ThemeData(primarySwatch: Colors.cyan),
         //theme
         home: Scaffold(
           body: StreamBuilder<User?>(

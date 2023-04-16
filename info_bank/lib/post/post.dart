@@ -17,17 +17,22 @@ class Post {
 }
 
 const allPost = [
-  Post(title: 'Post 1', tag: 'follow', Best: 89.1, unlocked: 3000),
-  Post(title: 'Post 2', tag: 'follow', Best: 71.1, unlocked: 1234),
-  Post(title: 'Post 3', tag: 'follow', Best: 67.4, unlocked: 5678),
-  Post(title: 'Post 4', tag: 'recommend', Best: 82.2, unlocked: 9876),
-  Post(title: 'Post 5', tag: 'recommend', Best: 23.3, unlocked: 2351),
+  Post(title: '古城麻辣燙排隊人數', tag: 'Follow', Best: 89.1, unlocked: 3000),
+  Post(title: 'Post 2', tag: 'Follow', Best: 71.1, unlocked: 1234),
+  Post(title: 'Post 3', tag: 'Follow', Best: 67.4, unlocked: 5678),
+  Post(title: 'Post 4', tag: 'Recommend', Best: 82.2, unlocked: 9876),
+  Post(title: 'Post 5', tag: 'Follow', Best: 23.3, unlocked: 2351),
+  Post(title: 'Post 6', tag: 'Recommend', Best: 23.3, unlocked: 2351),
+  Post(title: 'Post 7', tag: 'Follow', Best: 23.3, unlocked: 2351),
+  Post(title: 'Post 8', tag: 'Recommend', Best: 23.3, unlocked: 2351),
+  Post(title: 'Post 9', tag: 'Recommend', Best: 23.3, unlocked: 2351),
+  Post(title: 'Post 10', tag: 'Recommend', Best: 23.3, unlocked: 2351),
 ];
 
 class MyPost extends StatelessWidget {
-  final int index;
+  final Post currentpost;
 
-  MyPost({required this.index});
+  MyPost({required this.currentpost});
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +40,8 @@ class MyPost extends StatelessWidget {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-           MaterialPageRoute(builder: (context) => QApage()));
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => QApage()));
       },
       child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
@@ -53,7 +58,7 @@ class MyPost extends StatelessWidget {
                     left: 10,
                     child: Text(
                       //title
-                      allPost[index].title,
+                      currentpost.title,
                       style: GoogleFonts.openSans(
                         fontWeight: FontWeight.bold,
                         fontSize: 32,
@@ -61,18 +66,19 @@ class MyPost extends StatelessWidget {
                     )),
                 Positioned(
                     //tags
-                    bottom: 10,
+                    bottom: 0,
                     left: 10,
-                    child: Text(
-                      allPost[index].tag,
+                    child: Chip(
+                        label: Text(
+                      currentpost.tag,
                       style: GoogleFonts.openSans(),
-                    )),
+                    ))),
                 Positioned(
                     //bestanswer
                     bottom: 30,
                     right: 10,
                     child: Text(
-                      "最佳回答：" + allPost[index].Best.toString() + "%",
+                      "最佳回答：" + currentpost.Best.toString() + "%",
                       style: GoogleFonts.openSans(
                         fontWeight: FontWeight.bold,
                       ),
@@ -83,7 +89,7 @@ class MyPost extends StatelessWidget {
                     right: 10,
                     child: Text(
                       "解鎖次數：" +
-                          (allPost[index].unlocked / 1000).toStringAsFixed(1) +
+                          (currentpost.unlocked / 1000).toStringAsFixed(1) +
                           "k",
                       style: GoogleFonts.openSans(
                         fontWeight: FontWeight.bold,
