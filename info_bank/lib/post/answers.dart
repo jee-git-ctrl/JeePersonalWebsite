@@ -57,8 +57,8 @@ List<Map<String, dynamic>> lAns = [
 
 class AnsLocked extends StatelessWidget {
   final int index;
-
-  AnsLocked({required this.index});
+  final int secNum;
+  AnsLocked({required this.index, required this.secNum});
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,7 @@ class AnsLocked extends StatelessWidget {
                     size: 30,
                   ),
                   Padding(padding: EdgeInsets.all(3)),
-                  Text(lAns[index]["userName"],
+                  Text(lAns[index]["userName"] + secNum.toString(),
                       style: TextStyle(
                           fontSize: 20.0, fontWeight: FontWeight.bold)),
                   Padding(padding: EdgeInsets.all(5)),
@@ -132,8 +132,8 @@ class AnsLocked extends StatelessWidget {
 
 class AnsUnlocked extends StatelessWidget {
   final int index;
-
-  AnsUnlocked({required this.index});
+  final int secNum;
+  AnsUnlocked({required this.index, required this.secNum});
 
   @override
   Widget build(BuildContext context) {
@@ -154,7 +154,7 @@ class AnsUnlocked extends StatelessWidget {
           width: 120,
           child: Column(
             children: [
-              Padding(padding: EdgeInsets.all(5.0)),
+              Padding(padding: EdgeInsets.all(4.0)),
               Row(
                 children: [
                   Icon(
@@ -162,7 +162,7 @@ class AnsUnlocked extends StatelessWidget {
                     size: 30,
                   ),
                   Padding(padding: EdgeInsets.all(3)),
-                  Text(lAns[index]["userName"],
+                  Text(lAns[index]["userName"] + secNum.toString(),
                       style: TextStyle(
                           fontSize: 20.0, fontWeight: FontWeight.bold)),
                   Padding(padding: EdgeInsets.all(5)),
@@ -170,28 +170,74 @@ class AnsUnlocked extends StatelessWidget {
                       style: TextStyle(fontSize: 20.0))
                 ],
               ),
-              Padding(padding: EdgeInsets.all(5.0)),
+              // Padding(padding: EdgeInsets.all(1.0)),
               Stack(
                 children: [
+                  Container(
+                    height: 100,
+                    width: 85,
+                    // decoration: BoxDecoration(
+                    //   borderRadius: BorderRadius.circular(10),
+                    //   color: Colors.grey[300],
+                    // ),
+                    child: Stack(
+                      children: [
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: IconButton(
+                            icon: Icon(Icons.star),
+                            iconSize: 50,
+                            onPressed: () {
+                              // Add your star icon button code here
+                            },
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomLeft,
+                          child: IconButton(
+                            icon: Icon(Icons.thumb_up),
+                            iconSize: 32,
+                            onPressed: () {
+                              // Add your like icon button code here
+                            },
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: IconButton(
+                            icon: Icon(Icons.thumb_down),
+                            iconSize: 32,
+                            onPressed: () {
+                              // Add your dislike icon button code here
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   Align(
                       alignment: Alignment.center,
                       child: Text(
-                        lAns[index]["content"],
+                        lAns[index]["content"], // modified
                         style: TextStyle(
                           fontSize: 20,
                         ),
                       )),
-                  Align(
-                      alignment: Alignment.centerRight,
-                      child: Row(
-                        children: [
-                          Icon(Icons.upcoming),
-                          Text(lAns[index]['score'],
-                              style: TextStyle(
-                                fontSize: 30,
-                              ))
-                        ],
-                      )),
+                  SizedBox(
+                    width: 400, // modify
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Icon(Icons.upcoming),
+                        Text(
+                          lAns[index]['score'],
+                          style: TextStyle(
+                            fontSize: 30,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ],
               ),
               Padding(padding: EdgeInsets.all(5.0))

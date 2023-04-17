@@ -272,7 +272,7 @@ class _CreatePostState extends State<CreatePost> {
                                   backgroundColor: Colors
                                       .white, // Text Color (Foreground color)
                                 ),
-                                child: const Row(
+                                child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Text('食物標籤群組'),
@@ -300,7 +300,7 @@ class _CreatePostState extends State<CreatePost> {
                                   backgroundColor: Colors
                                       .white, // Text Color (Foreground color)
                                 ),
-                                child: const Row(
+                                child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Text('讀書標籤群組'),
