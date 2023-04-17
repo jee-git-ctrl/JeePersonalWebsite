@@ -41,8 +41,8 @@ dependencies:
   firebase_auth: ^4.3.0
   google_sign_in: ^6.0.2
   dropdown_button2: ^2.0.0
+  autocomplete_textfield: ^2.0.1
   flutter_typeahead: ^4.3.7
-  html_editor_enhanced: ^2.5.1
 
 
 dev_dependencies:
