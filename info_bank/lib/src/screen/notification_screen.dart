@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:info_bank/src/widgets/custom_answer_notification.dart';
-import 'package:info_bank/src/widgets/custom_liked_notification.dart';
 import 'package:info_bank/src/widgets/my_post.dart';
 import 'package:info_bank/src/constants/colors.dart';
 import 'package:info_bank/src/constants/text_strings.dart';
