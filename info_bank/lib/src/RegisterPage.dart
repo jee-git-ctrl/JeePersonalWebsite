@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 
+<<<<<<< HEAD
 import 'package:info_bank/src/services/firebase_services.dart';
 import 'package:info_bank/tabs/tabspage.dart';
+=======
+import 'package:info_bank/tmp_homepage.dart';
+>>>>>>> jee
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
-
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+<<<<<<< HEAD
   static final FServices _firebaseServices = FServices();
   //final TextEditingController _nameController = TextEditingController();
   late String _nameController;
@@ -90,5 +93,14 @@ class _RegisterPageState extends State<RegisterPage> {
     } else {
       return null;
     }
+=======
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('tmp register page'),
+        ),
+        body: const Text('register form '));
+>>>>>>> jee
   }
 }

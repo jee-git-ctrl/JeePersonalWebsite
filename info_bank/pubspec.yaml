@@ -30,20 +30,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
-  firebase_core: ^2.7.1
-  cloud_firestore: ^4.4.4
-  google_fonts: ^4.0.3
-  flutter_native_splash: ^2.2.19
-  get: ^4.6.5
-  liquid_swipe: ^3.0.0
-  smooth_page_indicator: ^1.0.1
-  firebase_auth: ^4.3.0
-  google_sign_in: ^6.0.2
-  dropdown_button2: ^2.0.0
-  autocomplete_textfield: ^2.0.1
-  flutter_typeahead: ^4.3.7
 
+  cupertino_icons: ^1.0.2
+  google_fonts: ^4.0.3
+  firebase_auth: ^4.4.0
+  cloud_firestore: ^4.5.0
+  google_sign_in: ^6.0.2
 
 dev_dependencies:
   flutter_test:
@@ -63,17 +55,11 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
-  # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/images/
-  #   - images/a_dot_ham.jpeg
+  - assets/images/infoBank_logo.png
+  - assets/images/avatar1.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

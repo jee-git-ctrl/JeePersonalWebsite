@@ -12,6 +12,7 @@ class FServices {
   final _auth = FirebaseAuth.instance;
 
   //check if user profile is completed
+<<<<<<< HEAD
   Future<bool> checkboolProfileCompleted(String email) async {
     try {
       return await _db
@@ -23,6 +24,15 @@ class FServices {
     } catch (e) {
       debugPrint(e.toString());
       return false;
+=======
+  Future<void> checkUserProfileCompleted(context) async {
+    final userData =
+        await FirebaseFirestore.instance.collection('Users').doc(userID).get();
+
+    if (userData.data()!['Profile_complete'] == false) {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => RegisterPage()));
+>>>>>>> jee
     }
   }
 
