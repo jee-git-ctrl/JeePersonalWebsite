@@ -35,8 +35,8 @@ class MyPost extends StatelessWidget {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-           MaterialPageRoute(builder: (context) => QApage()));
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => QApage()));
       },
       child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),

@@ -16,7 +16,7 @@ class FServices {
 
     if (userData.data()!['Profile_complete'] == false) {
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const RegisterPage()));
+          MaterialPageRoute(builder: (context) => RegisterPage()));
     }
   }
 
