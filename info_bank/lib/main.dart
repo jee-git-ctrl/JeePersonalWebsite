@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:info_bank/firebase_options.dart';
-import 'package:info_bank/src/LoginPage.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:info_bank/src/constants/allConstants.dart';
+import 'package:info_bank/src/utils/theme/widget_themes/text_theme.dart';
 import 'package:info_bank/src/utils/theme/theme.dart';
-import 'package:info_bank/src/screen/user_screen1.dart';
-import 'package:info_bank/src/screen/user_screen2.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'src/LoginPage.dart';
+import 'tmp_homepage.dart';
+import 'package:info_bank/screens/home.dart';
+import 'package:info_bank/tabs/tabspage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -8,4 +8,7 @@ const tSecondColor = Color(0xFF272727);
 const tWhiteColor = Color(0xFFFFFFFF);
 const tDarkColor = Color(0xFF000000);
 
-const tAccentColor = Color.fromARGB(255, 15, 83, 199);
+/* -- On Boarding Colors -- */
+const tOnBoardingPage1Color = Colors.white;
+const tOnBoardingPage2Color = Color(0xfffddcdf);
+const tOnBoardingPage3Color = Color(0xffffdcbd);

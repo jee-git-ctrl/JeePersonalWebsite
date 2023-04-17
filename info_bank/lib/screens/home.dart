@@ -167,14 +167,14 @@ class _HomeFilter extends State<HomeFilter> {
           ),
           dropdownStyleData: DropdownStyleData(
               maxHeight: 200,
-              width: 100,
+              width: 200,
               padding: null,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
                 color: Color(0xff272727),
               ),
               elevation: 8,
-              offset: const Offset(0, 50),
+              offset: const Offset(-20, 0),
               scrollbarTheme: ScrollbarThemeData(
                 radius: const Radius.circular(40),
                 thickness: MaterialStateProperty.all(6),

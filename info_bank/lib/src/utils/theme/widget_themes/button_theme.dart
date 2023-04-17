@@ -10,11 +10,11 @@ class TElevatedButtonTheme {
   static final lightElevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      shape: const RoundedRectangleBorder(),
+      shape: RoundedRectangleBorder(),
       foregroundColor: tWhiteColor,
       backgroundColor: tSecondColor,
-      side: const BorderSide(color: tSecondColor),
-      padding: const EdgeInsets.symmetric(vertical: tButtonHeight),
+      side: BorderSide(color: tSecondColor),
+      padding: EdgeInsets.symmetric(vertical: tButtonHeight),
     ),
   );
 
@@ -22,11 +22,11 @@ class TElevatedButtonTheme {
   static final darkElevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      shape: const RoundedRectangleBorder(),
+      shape: RoundedRectangleBorder(),
       foregroundColor: tSecondColor,
       backgroundColor: tWhiteColor,
-      side: const BorderSide(color: tSecondColor),
-      padding: const EdgeInsets.symmetric(vertical: tButtonHeight),
+      side: BorderSide(color: tSecondColor),
+      padding: EdgeInsets.symmetric(vertical: tButtonHeight),
     ),
   );
 }
@@ -38,20 +38,20 @@ class TOutlinedButtonTheme {
   /* -- Light Theme --*/
   static final lightOutlinedButtonTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      shape: const RoundedRectangleBorder(),
-      foregroundColor: tPrimaryColor,
-      side: const BorderSide(color: tPrimaryColor),
-      padding: const EdgeInsets.symmetric(vertical: tButtonHeight),
+      shape: RoundedRectangleBorder(),
+      foregroundColor: tSecondColor,
+      side: BorderSide(color: tSecondColor),
+      padding: EdgeInsets.symmetric(vertical: tButtonHeight),
     ),
   );
 
   /* -- Dark Theme --*/
   static final darkOutlinedButtonTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      shape: const RoundedRectangleBorder(),
+      shape: RoundedRectangleBorder(),
       foregroundColor: tWhiteColor,
-      side: const BorderSide(color: tWhiteColor),
-      padding: const EdgeInsets.symmetric(vertical: tButtonHeight),
+      side: BorderSide(color: tWhiteColor),
+      padding: EdgeInsets.symmetric(vertical: tButtonHeight),
     ),
   );
 }
