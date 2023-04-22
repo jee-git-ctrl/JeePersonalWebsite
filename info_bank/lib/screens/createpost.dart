@@ -2,10 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
-import 'package:info_bank/screens/search.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:html_editor_enhanced/html_editor.dart';
+import 'package:flutter_quill/flutter_quill.dart' hide Text;
 
 class CreatePost extends StatefulWidget {
   @override
@@ -34,6 +34,10 @@ class _CreatePostState extends State<CreatePost> {
   final TextEditingController _typeAheadController = TextEditingController();
   String? _selectedCity;
   SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
+  HtmlEditorController HtmlEditorcontroller = HtmlEditorController();
+  HtmlEditorController HtmlEditorcontroller2 = HtmlEditorController();
+  QuillController _Quillcontroller = QuillController.basic();
+  final _formKey = GlobalKey<FormState>();
 
   callback(changedtag) {
     setState(() {
@@ -69,11 +73,9 @@ class _CreatePostState extends State<CreatePost> {
               children: <Widget>[
                 IconButton(
                     color: Colors.black,
-                    icon: const Icon(Icons.search),
+                    icon: const Icon(Icons.send),
                     onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Search()));
-                      //Navigator.pushNamed(context, '/search');
+                      //create add here
                     }),
               ],
             ),
@@ -118,47 +120,53 @@ class _CreatePostState extends State<CreatePost> {
                     padding: const EdgeInsets.symmetric(
                         vertical: 10.0, horizontal: 10.0),
                     child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(10),
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        //height: 120,
+
+                        child: Column(
+                          children: [
+                            QuillToolbar.basic(controller: _Quillcontroller),
+                            Expanded(
+                              child: Container(
+                                child: QuillEditor.basic(
+                                    controller: _Quillcontroller,
+                                    readOnly: false),
+                              ),
+                            ),
+                          ],
+                        )
+                        /*
+                      HtmlEditor(
+                        controller: HtmlEditorcontroller, //required
+                        htmlToolbarOptions:
+                            HtmlToolbarOptions(defaultToolbarButtons: const [
+                          FontButtons(
+                            underline: false,
+                            clearAll: false,
+                            strikethrough: false,
+                            superscript: false,
+                            subscript: false,
+                          ),
+                          InsertButtons(
+                            audio: false,
+                            otherFile: false,
+                            table: false,
+                            hr: false,
+                          )
+                        ]),
+                        htmlEditorOptions: HtmlEditorOptions(
+                          hint: "Your text here...",
+                        ),
+                        otherOptions: OtherOptions(
+                          height: 400,
+                        ),
                       ),
-                      //height: 120,
-                      child: Stack(
-                        children: [
-                          SizedBox(
-                              height: 120,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: '備註：',
-                                  border: InputBorder.none,
-                                ),
-                              )),
-                          Positioned(
-                            bottom: 10,
-                            left: 10,
-                            child: Icon(Icons.image),
-                          ),
-                          Positioned(
-                              bottom: 10, left: 35, child: Icon(Icons.movie)),
-                          Positioned(
-                            bottom: 10,
-                            left: 60,
-                            child: Icon(Icons.link),
-                          ),
-                          Positioned(
-                            bottom: 10,
-                            left: 85,
-                            child: Icon(Icons.format_bold),
-                          ),
-                          Positioned(
-                            bottom: 10,
-                            left: 110,
-                            child: Icon(Icons.format_italic),
-                          ),
-                        ],
-                      ),
-                    )),
-                const Divider(
+                      */
+                        )),
+                Divider(
                   height: 20,
                   thickness: 3,
                   indent: 10,
@@ -342,35 +350,34 @@ class _CreatePostState extends State<CreatePost> {
                       //height: 120,
                       child: Stack(
                         children: [
-                          SizedBox(
-                              height: 120,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: '新增回答：',
-                                  border: InputBorder.none,
-                                ),
-                              )),
-                          Positioned(
-                            bottom: 10,
-                            left: 10,
-                            child: Icon(Icons.image),
-                          ),
-                          Positioned(
-                              bottom: 10, left: 35, child: Icon(Icons.movie)),
-                          Positioned(
-                            bottom: 10,
-                            left: 60,
-                            child: Icon(Icons.link),
-                          ),
-                          Positioned(
-                            bottom: 10,
-                            left: 85,
-                            child: Icon(Icons.format_bold),
-                          ),
-                          Positioned(
-                            bottom: 10,
-                            left: 110,
-                            child: Icon(Icons.format_italic),
+                          HtmlEditor(
+                            /*callbacks: Callbacks(onInit: () {
+                              HtmlEditorcontroller2.setFullScreen();
+                            }),*/
+                            controller: HtmlEditorcontroller, //required
+
+                            htmlToolbarOptions: HtmlToolbarOptions(
+                                defaultToolbarButtons: const [
+                                  FontButtons(
+                                    underline: false,
+                                    clearAll: false,
+                                    strikethrough: false,
+                                    superscript: false,
+                                    subscript: false,
+                                  ),
+                                  InsertButtons(
+                                    audio: false,
+                                    otherFile: false,
+                                    table: false,
+                                    hr: false,
+                                  )
+                                ]),
+                            htmlEditorOptions: HtmlEditorOptions(
+                              hint: "Your text here...",
+                            ),
+                            otherOptions: OtherOptions(
+                              height: 400,
+                            ),
                           ),
                           Positioned(
                             bottom: 10,

@@ -94,7 +94,7 @@ class _SideMenuState extends State<SideMenu> {
                 onPressed: () {
                   _googleServices.signOut(context);
                 },
-                child: const Text('Sign out'))
+                child: const Text('Sign out')),
           ],
         ),
       ),

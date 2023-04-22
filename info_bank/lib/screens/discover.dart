@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:info_bank/screens/search.dart';
 
+import 'package:info_bank/screens/reportpage.dart';
+
 class Discover extends StatefulWidget {
   @override
   _DiscoverState createState() => _DiscoverState();
@@ -44,7 +46,13 @@ class _DiscoverState extends State<Discover> {
         ],
       ),
       body: Center(
-        child: Text('Discover Page'),
+        child: ElevatedButton(
+            onPressed: () {
+              if (context.mounted) {
+                showReportDialog(context);
+              }
+            },
+            child: const Text('Debug Report')),
       ),
     );
   }
