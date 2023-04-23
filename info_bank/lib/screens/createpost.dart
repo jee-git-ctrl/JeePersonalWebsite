@@ -129,7 +129,7 @@ class _CreatePostState extends State<CreatePost> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         //height: 120,
-                        child: const Stack(
+                        child: Stack(
                           children: [
                             SizedBox(
                                 height: 120,

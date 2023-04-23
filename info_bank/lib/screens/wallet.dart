@@ -32,7 +32,7 @@ class _Wallet extends State<Wallet> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    const Column(
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       //cross
                       children: [
