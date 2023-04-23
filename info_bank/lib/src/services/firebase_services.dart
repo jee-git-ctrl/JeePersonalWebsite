@@ -2,10 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import 'package:info_bank/src/RegisterPage.dart';
-import 'package:info_bank/tabs/tabspage.dart';
 
 class FServices {
   final _db = FirebaseFirestore.instance;
@@ -72,6 +68,32 @@ class FServices {
             {'nickname': nickname, 'accID': acc, 'Profile_complete': true});
         return 'Success';
       }
+    } catch (e) {
+      return 'Error adding user: $e';
+    }
+  }
+
+  //update user profile
+  Future<String?> updateUser({
+    required String nickname,
+    required String intro,
+  }) async {
+    try {
+      CollectionReference users =
+          FirebaseFirestore.instance.collection('Users');
+      // call the user's CollectionReference to add a new user
+      // if the collection/doc doesnt exist, Firebase will create one
+      /*
+      if (await checkAccIsRegistered(acc)) {
+        //if true, already used
+        return "帳號名稱已被使用";
+      } else {
+      */
+      await users
+          .doc(_auth.currentUser!.uid)
+          .update({'nickname': nickname, 'Introduction': intro});
+      return 'Success';
+      //}
     } catch (e) {
       return 'Error adding user: $e';
     }
