@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:html_editor_enhanced/utils/utils.dart';
 import 'package:info_bank/screens/QApage.dart';
 
 class AnsLocked extends StatelessWidget {
