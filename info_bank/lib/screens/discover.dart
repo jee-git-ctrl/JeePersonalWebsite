@@ -48,22 +48,25 @@ class _DiscoverState extends State<Discover> {
                   scrollDirection: Axis.horizontal,
                   itemCount: 20,
                   itemBuilder: (context, index) {
-                    return OutlinedButton(
-                        onPressed: () => print('direct'), //! direct to
-                        child: Text(
-                          'tag $index', //! access QA name
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                        style: OutlinedButton.styleFrom(
-                            backgroundColor: Color.fromARGB(255, 36, 122, 39),
-                            side: BorderSide(width: 0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15)),
-                            )));
+                    return Padding(
+                      padding: EdgeInsets.only(left: 8),
+                      child: OutlinedButton(
+                          onPressed: () => print('direct'), //! direct to
+                          child: Text(
+                            'tag $index', //! access QA name
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                          style: OutlinedButton.styleFrom(
+                              backgroundColor: Color.fromARGB(255, 36, 122, 39),
+                              side: BorderSide(width: 0),
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15)),
+                              ))),
+                    );
                   }),
             ),
             Expanded(
