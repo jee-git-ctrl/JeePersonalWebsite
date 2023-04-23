@@ -434,6 +434,7 @@ class _QApageState extends State<QApage> {
             right: 20.0,
             child: FloatingActionButton(
               onPressed: () => print('Button pressed'),
+              heroTag: 'btn1',
               child: Icon(Icons.question_answer_outlined),
             ),
           ),
@@ -442,6 +443,7 @@ class _QApageState extends State<QApage> {
             left: 20.0,
             child: FloatingActionButton(
               onPressed: () => unlock(),
+              heroTag: 'btn2',
               child: Icon(Icons.lock_open),
             ),
           ),
