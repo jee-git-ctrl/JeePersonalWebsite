@@ -1,11 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:html_editor_enhanced/html_editor.dart';
-import 'package:flutter_quill/flutter_quill.dart' hide Text;
 
 class CreatePost extends StatefulWidget {
   @override
@@ -34,9 +30,6 @@ class _CreatePostState extends State<CreatePost> {
   final TextEditingController _typeAheadController = TextEditingController();
   String? _selectedCity;
   SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
-  HtmlEditorController HtmlEditorcontroller = HtmlEditorController();
-  HtmlEditorController HtmlEditorcontroller2 = HtmlEditorController();
-  QuillController _Quillcontroller = QuillController.basic();
   final _formKey = GlobalKey<FormState>();
 
   callback(changedtag) {
@@ -120,25 +113,47 @@ class _CreatePostState extends State<CreatePost> {
                     padding: const EdgeInsets.symmetric(
                         vertical: 10.0, horizontal: 10.0),
                     child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        //height: 120,
-
-                        child: Column(
-                          children: [
-                            QuillToolbar.basic(controller: _Quillcontroller),
-                            Expanded(
-                              child: Container(
-                                child: QuillEditor.basic(
-                                    controller: _Quillcontroller,
-                                    readOnly: false),
-                              ),
-                            ),
-                          ],
-                        )
-                        /*
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      //height: 120,
+                      child: const Stack(
+                        children: [
+                          SizedBox(
+                              height: 120,
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  hintText: '備註：',
+                                  border: InputBorder.none,
+                                ),
+                              )),
+                          Positioned(
+                            bottom: 10,
+                            left: 10,
+                            child: Icon(Icons.image),
+                          ),
+                          Positioned(
+                              bottom: 10, left: 35, child: Icon(Icons.movie)),
+                          Positioned(
+                            bottom: 10,
+                            left: 60,
+                            child: Icon(Icons.link),
+                          ),
+                          Positioned(
+                            bottom: 10,
+                            left: 85,
+                            child: Icon(Icons.format_bold),
+                          ),
+                          Positioned(
+                            bottom: 10,
+                            left: 110,
+                            child: Icon(Icons.format_italic),
+                          ),
+                        ],
+                      ),
+                    )),
+                /*
                       HtmlEditor(
                         controller: HtmlEditorcontroller, //required
                         htmlToolbarOptions:
@@ -165,7 +180,7 @@ class _CreatePostState extends State<CreatePost> {
                         ),
                       ),
                       */
-                        )),
+
                 Divider(
                   height: 20,
                   thickness: 3,
@@ -340,16 +355,69 @@ class _CreatePostState extends State<CreatePost> {
                   color: Colors.black,
                 ),
                 Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10.0, horizontal: 10.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      //height: 120,
-                      child: Stack(
-                        children: [
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 10.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    //height: 120,
+                    child: Stack(
+                      children: [
+                        const SizedBox(
+                            height: 120,
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: '新增回答：',
+                                border: InputBorder.none,
+                              ),
+                            )),
+                        const Positioned(
+                          bottom: 10,
+                          left: 10,
+                          child: Icon(Icons.image),
+                        ),
+                        const Positioned(
+                            bottom: 10, left: 35, child: Icon(Icons.movie)),
+                        const Positioned(
+                          bottom: 10,
+                          left: 60,
+                          child: Icon(Icons.link),
+                        ),
+                        const Positioned(
+                          bottom: 10,
+                          left: 85,
+                          child: Icon(Icons.format_bold),
+                        ),
+                        const Positioned(
+                          bottom: 10,
+                          left: 110,
+                          child: Icon(Icons.format_italic),
+                        ),
+                        Positioned(
+                          bottom: 10,
+                          right: 10,
+                          child: Container(
+                            width: 150,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Container(child: Text("解鎖點數")),
+                                Container(
+                                  width: 50,
+                                  child: Stack(children: [
+                                    Container(child: Text("免費")),
+                                    Positioned(
+                                        right: 0,
+                                        child: Icon(Icons.expand_more))
+                                  ]),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        /*
                           HtmlEditor(
                             /*callbacks: Callbacks(onInit: () {
                               HtmlEditorcontroller2.setFullScreen();
@@ -401,10 +469,11 @@ class _CreatePostState extends State<CreatePost> {
                                 ],
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    )),
+                          ),*/
+                      ],
+                    ),
+                  ),
+                ),
               ]),
             ),
           ],
