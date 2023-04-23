@@ -34,10 +34,7 @@ dependencies:
   firebase_core: ^2.7.1
   cloud_firestore: ^4.4.4
   google_fonts: ^4.0.3
-  flutter_native_splash: ^2.2.19
   get: ^4.6.5
-  liquid_swipe: ^3.0.0
-  smooth_page_indicator: ^1.0.1
   firebase_auth: ^4.3.0
   google_sign_in: ^6.0.2
   dropdown_button2: ^2.0.0
