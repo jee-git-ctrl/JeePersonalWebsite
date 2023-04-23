@@ -68,48 +68,302 @@ class _CreatePostState extends State<CreatePost> {
                     color: Colors.black,
                     icon: const Icon(Icons.send),
                     onPressed: () {
-                      //create add here
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
+                        //create add here
+                      }
                     }),
               ],
             ),
           ],
         ),
-        body: Column(
-          children: [
-            Expanded(
-              child: ListView(children: [
-                Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10.0, horizontal: 10.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: TextFormField(
-                        //autofocus: true,
-                        //controller: nameController,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: '標題：',
+        body: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView(children: [
+                  Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10.0),
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Colors.grey,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          TextFormField(
+                            obscureText: false,
+
+                            decoration: InputDecoration(
+                              focusedErrorBorder: InputBorder.none,
+                              border: InputBorder.none,
+                              hintText: '標題：',
+                            ),
+                            //onChanged: () {},
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return '請填入標題';
+                              }
+                              return null;
+                            },
+                          ),
+                        ],
+                      )),
+                  const Divider(
+                    height: 20,
+                    thickness: 3,
+                    indent: 10,
+                    endIndent: 10,
+                    color: Colors.black,
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        //onChanged: () {},
-                        validator: (String? value) {
-                          if (value == null || value.isEmpty) {
-                            return '請填入標題';
-                          }
-                          return null;
-                        },
-                      ),
-                    )),
-                const Divider(
-                  height: 20,
-                  thickness: 3,
-                  indent: 10,
-                  endIndent: 10,
-                  color: Colors.black,
-                ),
-                Padding(
+                        //height: 120,
+                        child: const Stack(
+                          children: [
+                            SizedBox(
+                                height: 120,
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: '備註：',
+                                    border: InputBorder.none,
+                                  ),
+                                )),
+                            Positioned(
+                              bottom: 10,
+                              left: 10,
+                              child: Icon(Icons.image),
+                            ),
+                            Positioned(
+                                bottom: 10, left: 35, child: Icon(Icons.movie)),
+                            Positioned(
+                              bottom: 10,
+                              left: 60,
+                              child: Icon(Icons.link),
+                            ),
+                            Positioned(
+                              bottom: 10,
+                              left: 85,
+                              child: Icon(Icons.format_bold),
+                            ),
+                            Positioned(
+                              bottom: 10,
+                              left: 110,
+                              child: Icon(Icons.format_italic),
+                            ),
+                          ],
+                        ),
+                      )),
+                  /*
+                        HtmlEditor(
+                          controller: HtmlEditorcontroller, //required
+                          htmlToolbarOptions:
+                              HtmlToolbarOptions(defaultToolbarButtons: const [
+                            FontButtons(
+                              underline: false,
+                              clearAll: false,
+                              strikethrough: false,
+                              superscript: false,
+                              subscript: false,
+                            ),
+                            InsertButtons(
+                              audio: false,
+                              otherFile: false,
+                              table: false,
+                              hr: false,
+                            )
+                          ]),
+                          htmlEditorOptions: HtmlEditorOptions(
+                            hint: "Your text here...",
+                          ),
+                          otherOptions: OtherOptions(
+                            height: 400,
+                          ),
+                        ),
+                        */
+
+                  Divider(
+                    height: 20,
+                    thickness: 3,
+                    indent: 10,
+                    endIndent: 10,
+                    color: Colors.black,
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        height: 150,
+                        child: Column(
+                          children: [
+                            IntrinsicHeight(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Expanded(
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          child: TypeAheadFormField(
+                                            textFieldConfiguration:
+                                                TextFieldConfiguration(
+                                              decoration: InputDecoration(
+                                                  hintText: '標籤：',
+                                                  border: InputBorder.none),
+                                              controller:
+                                                  this._typeAheadController,
+                                            ),
+                                            suggestionsCallback: (pattern) {
+                                              return TagsQuery.getSuggestions(
+                                                  pattern);
+                                            },
+                                            itemBuilder:
+                                                (context, String suggestion) {
+                                              return ListTile(
+                                                title: Text(suggestion),
+                                              );
+                                            },
+                                            transitionBuilder: (context,
+                                                suggestionsBox, controller) {
+                                              return suggestionsBox;
+                                            },
+                                            onSuggestionSelected:
+                                                (String suggestion) {
+                                              this._typeAheadController.text =
+                                                  "";
+                                              current_tags.add(suggestion);
+                                              callback(current_tags);
+                                              print(suggestion);
+                                              print(current_tags);
+                                            },
+                                            suggestionsBoxController:
+                                                suggestionBoxController,
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 50,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const VerticalDivider(
+                                    width: 5,
+                                    thickness: 3,
+                                  ),
+                                  Container(
+                                    width: 250,
+                                    child: SingleChildScrollView(
+                                      child: Wrap(
+                                        spacing: 10,
+                                        children: List<Widget>.generate(
+                                            current_tags.length, (int index) {
+                                          return Chip(
+                                            label: Text(
+                                              current_tags[index],
+                                              style: GoogleFonts.openSans(),
+                                            ),
+                                            onDeleted: () {
+                                              setState(() {
+                                                current_tags.removeAt(index);
+                                              });
+                                            },
+                                            deleteIcon: Icon(Icons.close),
+                                          );
+                                        }),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            const Divider(
+                              height: 10,
+                              thickness: 3,
+                              color: Colors.black,
+                            ),
+                            Container(
+                              height: 40,
+                              child: Row(children: [
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    foregroundColor: Colors.black,
+                                    backgroundColor: Colors
+                                        .white, // Text Color (Foreground color)
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text('食物標籤群組'),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Icon(
+                                        Icons.add_circle,
+                                        size: 24.0,
+                                      ),
+                                    ],
+                                  ),
+                                  onPressed: () {
+                                    current_tags =
+                                        new List<String>.from(FoodTagGroup);
+                                    callback(current_tags);
+                                  },
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    foregroundColor: Colors.black,
+                                    backgroundColor: Colors
+                                        .white, // Text Color (Foreground color)
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text('讀書標籤群組'),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Icon(
+                                        Icons.add_circle,
+                                        size: 24.0,
+                                      ),
+                                    ],
+                                  ),
+                                  onPressed: () {
+                                    current_tags =
+                                        new List<String>.from(StudyTagGroup);
+                                    callback(current_tags);
+                                  },
+                                )
+                              ]),
+                            )
+                          ],
+                        ),
+                      )),
+                  const Divider(
+                    height: 20,
+                    thickness: 3,
+                    indent: 10,
+                    endIndent: 10,
+                    color: Colors.black,
+                  ),
+                  Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 10.0, horizontal: 10.0),
                     child: Container(
@@ -118,334 +372,37 @@ class _CreatePostState extends State<CreatePost> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       //height: 120,
-                      child: const Stack(
+                      child: Stack(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                               height: 120,
                               child: TextField(
                                 decoration: InputDecoration(
-                                  hintText: '備註：',
+                                  hintText: '新增回答：',
                                   border: InputBorder.none,
                                 ),
                               )),
-                          Positioned(
+                          const Positioned(
                             bottom: 10,
                             left: 10,
                             child: Icon(Icons.image),
                           ),
-                          Positioned(
+                          const Positioned(
                               bottom: 10, left: 35, child: Icon(Icons.movie)),
-                          Positioned(
+                          const Positioned(
                             bottom: 10,
                             left: 60,
                             child: Icon(Icons.link),
                           ),
-                          Positioned(
+                          const Positioned(
                             bottom: 10,
                             left: 85,
                             child: Icon(Icons.format_bold),
                           ),
-                          Positioned(
+                          const Positioned(
                             bottom: 10,
                             left: 110,
                             child: Icon(Icons.format_italic),
-                          ),
-                        ],
-                      ),
-                    )),
-                /*
-                      HtmlEditor(
-                        controller: HtmlEditorcontroller, //required
-                        htmlToolbarOptions:
-                            HtmlToolbarOptions(defaultToolbarButtons: const [
-                          FontButtons(
-                            underline: false,
-                            clearAll: false,
-                            strikethrough: false,
-                            superscript: false,
-                            subscript: false,
-                          ),
-                          InsertButtons(
-                            audio: false,
-                            otherFile: false,
-                            table: false,
-                            hr: false,
-                          )
-                        ]),
-                        htmlEditorOptions: HtmlEditorOptions(
-                          hint: "Your text here...",
-                        ),
-                        otherOptions: OtherOptions(
-                          height: 400,
-                        ),
-                      ),
-                      */
-
-                Divider(
-                  height: 20,
-                  thickness: 3,
-                  indent: 10,
-                  endIndent: 10,
-                  color: Colors.black,
-                ),
-                Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10.0, horizontal: 10.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      height: 150,
-                      child: Column(
-                        children: [
-                          IntrinsicHeight(
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        child: TypeAheadFormField(
-                                          textFieldConfiguration:
-                                              TextFieldConfiguration(
-                                            decoration: InputDecoration(
-                                                hintText: '標籤：',
-                                                border: InputBorder.none),
-                                            controller:
-                                                this._typeAheadController,
-                                          ),
-                                          suggestionsCallback: (pattern) {
-                                            return TagsQuery.getSuggestions(
-                                                pattern);
-                                          },
-                                          itemBuilder:
-                                              (context, String suggestion) {
-                                            return ListTile(
-                                              title: Text(suggestion),
-                                            );
-                                          },
-                                          transitionBuilder: (context,
-                                              suggestionsBox, controller) {
-                                            return suggestionsBox;
-                                          },
-                                          onSuggestionSelected:
-                                              (String suggestion) {
-                                            this._typeAheadController.text = "";
-                                            current_tags.add(suggestion);
-                                            callback(current_tags);
-                                            print(suggestion);
-                                            print(current_tags);
-                                          },
-                                          suggestionsBoxController:
-                                              suggestionBoxController,
-                                          validator: (value) => value!.isEmpty
-                                              ? '請至少選取一個標籤'
-                                              : null,
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const VerticalDivider(
-                                  width: 5,
-                                  thickness: 3,
-                                ),
-                                Container(
-                                  width: 250,
-                                  child: SingleChildScrollView(
-                                    child: Wrap(
-                                      spacing: 10,
-                                      children: List<Widget>.generate(
-                                          current_tags.length, (int index) {
-                                        return Chip(
-                                          label: Text(
-                                            current_tags[index],
-                                            style: GoogleFonts.openSans(),
-                                          ),
-                                          onDeleted: () {
-                                            setState(() {
-                                              current_tags.removeAt(index);
-                                            });
-                                          },
-                                          deleteIcon: Icon(Icons.close),
-                                        );
-                                      }),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                          const Divider(
-                            height: 10,
-                            thickness: 3,
-                            color: Colors.black,
-                          ),
-                          Container(
-                            height: 40,
-                            child: Row(children: [
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor: Colors.black,
-                                  backgroundColor: Colors
-                                      .white, // Text Color (Foreground color)
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text('食物標籤群組'),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Icon(
-                                      Icons.add_circle,
-                                      size: 24.0,
-                                    ),
-                                  ],
-                                ),
-                                onPressed: () {
-                                  current_tags =
-                                      new List<String>.from(FoodTagGroup);
-                                  callback(current_tags);
-                                },
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor: Colors.black,
-                                  backgroundColor: Colors
-                                      .white, // Text Color (Foreground color)
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text('讀書標籤群組'),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Icon(
-                                      Icons.add_circle,
-                                      size: 24.0,
-                                    ),
-                                  ],
-                                ),
-                                onPressed: () {
-                                  current_tags =
-                                      new List<String>.from(StudyTagGroup);
-                                  callback(current_tags);
-                                },
-                              )
-                            ]),
-                          )
-                        ],
-                      ),
-                    )),
-                const Divider(
-                  height: 20,
-                  thickness: 3,
-                  indent: 10,
-                  endIndent: 10,
-                  color: Colors.black,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 10.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    //height: 120,
-                    child: Stack(
-                      children: [
-                        const SizedBox(
-                            height: 120,
-                            child: TextField(
-                              decoration: InputDecoration(
-                                hintText: '新增回答：',
-                                border: InputBorder.none,
-                              ),
-                            )),
-                        const Positioned(
-                          bottom: 10,
-                          left: 10,
-                          child: Icon(Icons.image),
-                        ),
-                        const Positioned(
-                            bottom: 10, left: 35, child: Icon(Icons.movie)),
-                        const Positioned(
-                          bottom: 10,
-                          left: 60,
-                          child: Icon(Icons.link),
-                        ),
-                        const Positioned(
-                          bottom: 10,
-                          left: 85,
-                          child: Icon(Icons.format_bold),
-                        ),
-                        const Positioned(
-                          bottom: 10,
-                          left: 110,
-                          child: Icon(Icons.format_italic),
-                        ),
-                        Positioned(
-                          bottom: 10,
-                          right: 10,
-                          child: Container(
-                            width: 150,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Container(child: Text("解鎖點數")),
-                                Container(
-                                  width: 50,
-                                  child: Stack(children: [
-                                    Container(child: Text("免費")),
-                                    Positioned(
-                                        right: 0,
-                                        child: Icon(Icons.expand_more))
-                                  ]),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        /*
-                          HtmlEditor(
-                            /*callbacks: Callbacks(onInit: () {
-                              HtmlEditorcontroller2.setFullScreen();
-                            }),*/
-                            controller: HtmlEditorcontroller, //required
-
-                            htmlToolbarOptions: HtmlToolbarOptions(
-                                defaultToolbarButtons: const [
-                                  FontButtons(
-                                    underline: false,
-                                    clearAll: false,
-                                    strikethrough: false,
-                                    superscript: false,
-                                    subscript: false,
-                                  ),
-                                  InsertButtons(
-                                    audio: false,
-                                    otherFile: false,
-                                    table: false,
-                                    hr: false,
-                                  )
-                                ]),
-                            htmlEditorOptions: HtmlEditorOptions(
-                              hint: "Your text here...",
-                            ),
-                            otherOptions: OtherOptions(
-                              height: 400,
-                            ),
                           ),
                           Positioned(
                             bottom: 10,
@@ -469,14 +426,68 @@ class _CreatePostState extends State<CreatePost> {
                                 ],
                               ),
                             ),
-                          ),*/
-                      ],
+                          ),
+                          /*
+                            HtmlEditor(
+                              /*callbacks: Callbacks(onInit: () {
+                                HtmlEditorcontroller2.setFullScreen();
+                              }),*/
+                              controller: HtmlEditorcontroller, //required
+        
+                              htmlToolbarOptions: HtmlToolbarOptions(
+                                  defaultToolbarButtons: const [
+                                    FontButtons(
+                                      underline: false,
+                                      clearAll: false,
+                                      strikethrough: false,
+                                      superscript: false,
+                                      subscript: false,
+                                    ),
+                                    InsertButtons(
+                                      audio: false,
+                                      otherFile: false,
+                                      table: false,
+                                      hr: false,
+                                    )
+                                  ]),
+                              htmlEditorOptions: HtmlEditorOptions(
+                                hint: "Your text here...",
+                              ),
+                              otherOptions: OtherOptions(
+                                height: 400,
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 10,
+                              right: 10,
+                              child: Container(
+                                width: 150,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Container(child: Text("解鎖點數")),
+                                    Container(
+                                      width: 50,
+                                      child: Stack(children: [
+                                        Container(child: Text("免費")),
+                                        Positioned(
+                                            right: 0,
+                                            child: Icon(Icons.expand_more))
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),*/
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ]),
-            ),
-          ],
+                ]),
+              ),
+            ],
+          ),
         ));
   }
 }

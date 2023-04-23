@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:info_bank/screens/reportpage.dart';
 import 'package:info_bank/tabs/tabspage.dart';
 import 'package:info_bank/src/services/google_services.dart';
 
@@ -95,6 +96,11 @@ class _SideMenuState extends State<SideMenu> {
                   _googleServices.signOut(context);
                 },
                 child: const Text('Sign out')),
+            ElevatedButton(
+                onPressed: () {
+                  showReportDialog(context);
+                },
+                child: const Text('Debug Report')),
           ],
         ),
       ),
