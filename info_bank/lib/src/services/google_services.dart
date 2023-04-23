@@ -7,7 +7,6 @@ import 'package:info_bank/src/services/firebase_services.dart';
 
 import '../LoginPage.dart';
 import 'package:info_bank/tabs/tabspage.dart';
-import 'package:info_bank/tabs/tabspage.dart';
 
 final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
 final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;

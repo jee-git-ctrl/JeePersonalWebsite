@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:info_bank/tabs/tabspage.dart';
 import 'package:info_bank/src/services/google_services.dart';
+import '../screens/wallet.dart';
 
 class SideMenu extends StatefulWidget {
   @override
@@ -87,6 +88,16 @@ class _SideMenuState extends State<SideMenu> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => TabsPage(selectedIndex: 4)),
+                ),
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Wallet'),
+              onTap: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Wallet()),
                 ),
               },
             ),
