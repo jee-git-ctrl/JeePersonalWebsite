@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:info_bank/src/services/wallet_charts.dart';
 import 'package:info_bank/src/widgets/transaction_data.dart';
 import 'package:info_bank/src/widgets/transaction_item.dart';
 import 'package:info_bank/src/widgets/transaction_detail.dart';
@@ -15,6 +16,8 @@ class _Wallet extends State<Wallet> {
   Widget build(BuildContext contect) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        title: const Text('錢包'),
         leading: IconButton(
             onPressed: () => Navigator.of(context).pop(),
             icon: const Icon(Icons.chevron_left)),
@@ -25,15 +28,19 @@ class _Wallet extends State<Wallet> {
           Padding(
               padding: const EdgeInsets.all(20),
               child: Container(
-                height: 150,
+                height: 200,
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.pink),
                     borderRadius: BorderRadius.circular(5)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+                    SizedBox(
+                      width: 10,
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       //cross
                       children: [
                         Text(
@@ -44,16 +51,16 @@ class _Wallet extends State<Wallet> {
                         Text(
                           "35,000tmp",
                           style: TextStyle(
-                              fontSize: 50, fontWeight: FontWeight.bold),
+                              fontSize: 40, fontWeight: FontWeight.bold),
+                        ),
+                        const Text(
+                          "更多分析",
+                          style: TextStyle(fontSize: 12),
                         )
                       ],
                     ),
-                    Container(
-                      //some chart or pic
-                      height: 100,
-                      width: 100,
-                      color: Colors.amberAccent,
-                    )
+                    Expanded(child: MyPieChart()),
+                    //可以直接使用widget
                   ],
                 ),
               )
@@ -67,13 +74,14 @@ class _Wallet extends State<Wallet> {
               child: Container(
             margin: const EdgeInsets.only(top: 10),
             decoration: const BoxDecoration(
+                color: Colors.amber,
                 borderRadius: BorderRadius.vertical(
-              top: Radius.circular(30),
-            )),
+                  top: Radius.circular(30),
+                )),
             child: Column(children: [
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 30, horizontal: 25),
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
                 child: Row(children: [
                   const Expanded(
                       child: Text(
@@ -93,6 +101,7 @@ class _Wallet extends State<Wallet> {
                 ]),
               ),
               Expanded(
+                  //要改成stream builder
                   child: ListView.builder(
                 itemBuilder: (context, index) {
                   return TransactionItem(transaction: transactions[index]);

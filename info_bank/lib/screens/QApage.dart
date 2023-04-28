@@ -266,12 +266,23 @@ class _QApageState extends State<QApage> {
           leading: Builder(
             builder: (BuildContext context) {
               return SizedBox(
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.list,
-                    color: Colors.black,
-                  ),
-                  onPressed: () => Scaffold.of(context).openDrawer(),
+                child: Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(
+                        Icons.chevron_left,
+                        color: Colors.black,
+                      ),
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.list,
+                        color: Colors.black,
+                      ),
+                      onPressed: () => Scaffold.of(context).openDrawer(),
+                    ),
+                  ],
                 ),
               );
             },
@@ -285,8 +296,8 @@ class _QApageState extends State<QApage> {
                     color: Colors.black,
                     icon: const Icon(Icons.search),
                     onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Search()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Search()));
                       //Navigator.pushNamed(context, '/search');
                     }),
               ],
@@ -349,6 +360,7 @@ class _QApageState extends State<QApage> {
                                       ],
                                     )),
                                 Padding(
+                                  //tag
                                   padding: EdgeInsets.all(10),
                                   child: Container(
                                     height: 40,

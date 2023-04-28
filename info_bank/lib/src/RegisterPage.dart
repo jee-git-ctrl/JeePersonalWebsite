@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:info_bank/src/constants/buttons.dart';
+import 'constants/allConstants.dart';
 import 'package:info_bank/src/services/firebase_services.dart';
 import 'package:info_bank/tabs/tabspage.dart';
 
@@ -53,6 +54,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     height: 30,
                   ),
                   ElevatedButton(
+                      style: testButtonStyle,
                       onPressed: () async {
                         if ((_formKey.currentState as FormState).validate()) {
                           final result = await _firebaseServices.addUser(

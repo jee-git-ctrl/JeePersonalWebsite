@@ -11,7 +11,7 @@ class TransactionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.all(10),
+        margin: const EdgeInsets.all(5),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         //decoration
         decoration: BoxDecoration(
@@ -20,47 +20,40 @@ class TransactionItem extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(10),
               margin: const EdgeInsets.only(right: 10),
               child: SizedBox(
-                width: 35,
-                height: 35,
-                child: SizedBox(child: Text("T")),
-              ),
+                  width: 20,
+                  height: 20,
+                  child: Icon(Icons.attach_money) //depend on transaction type
+                  ),
             ),
             Expanded(
-                child: Column(
+                child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
+                  padding: const EdgeInsets.only(right: 10),
                   child: Text(
-                    transaction.toUser,
+                    transaction.date,
+                    style: const TextStyle(fontSize: 14),
+
                     //style
                   ),
                 ),
                 Text(
-                  transaction.date,
-                  style: const TextStyle(fontSize: 14),
+                  transaction.toUser,
                 ),
               ],
             )),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Text(
-                    // transaction amount
-                    "+ - \$ ${transaction.description}",
-                    style: const TextStyle(
-                        fontSize: 15, fontWeight: FontWeight.bold),
-                  ),
-                ),
                 Text(
-                  transaction.description,
-                  style: const TextStyle(fontSize: 12),
-                )
+                  // transaction amount
+                  "+ - \$ ${transaction.description}",
+                  style: const TextStyle(
+                      fontSize: 15, fontWeight: FontWeight.bold),
+                ),
               ],
             )
           ],

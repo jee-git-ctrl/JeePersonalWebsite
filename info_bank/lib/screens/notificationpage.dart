@@ -3,6 +3,8 @@ import 'package:info_bank/src/constants/colors.dart';
 import 'package:info_bank/src/constants/text_strings.dart';
 import 'package:info_bank/src/utils/theme/widget_themes/text_theme.dart';
 import 'package:info_bank/post/post.dart';
+import 'package:info_bank/post/answers.dart';
+import 'package:info_bank/post/notification.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:info_bank/screens/search.dart';
 
@@ -10,16 +12,63 @@ class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
 
   @override
-  State<NotificationPage> createState() => _NotificationPage();
+  _NotificationState createState() => _NotificationState();
 }
 
-class _NotificationPage extends State<NotificationPage> {
+class _NotificationState extends State<NotificationPage> {
+  Map<String, dynamic> mObj = {
+    'notification': [
+      [
+        {'title': '古城麻辣燙排隊人數', 'subtitle': '有新的問題等著你幫助回答！'},
+        {'title': 'Post 2', 'subtitle': 'content'},
+        {'title': 'Post 3', 'subtitle': 'content'},
+        {'title': 'Post 4', 'subtitle': 'content'},
+        {'title': 'Post 5', 'subtitle': 'content'},
+        {'title': 'Post 6', 'subtitle': 'content'},
+        {'title': 'Post 7', 'subtitle': 'content'},
+        {'title': 'Post 8', 'subtitle': 'content'},
+        {'title': 'Post 9', 'subtitle': 'content'},
+        {'title': 'Post 10', 'subtitle': 'content'},
+      ],
+      [
+        {'title': '古城麻辣燙排隊人數', 'subtitle': '你問的問題有了新的回答，快來看看吧！'},
+        {'title': 'Post 2', 'subtitle': 'content'},
+        {'title': 'Post 3', 'subtitle': 'content'},
+        {'title': 'Post 4', 'subtitle': 'content'},
+        {'title': 'Post 5', 'subtitle': 'content'},
+        {'title': 'Post 6', 'subtitle': 'content'},
+        {'title': 'Post 7', 'subtitle': 'content'},
+        {'title': 'Post 8', 'subtitle': 'content'},
+        {'title': 'Post 9', 'subtitle': 'content'},
+        {'title': 'Post 10', 'subtitle': 'content'},
+      ],
+      [
+        {'title': '系統通知', 'subtitle': '你收到了來自系統的通知'},
+        {'title': 'Post 2', 'subtitle': 'content'},
+        {'title': 'Post 3', 'subtitle': 'content'},
+        {'title': 'Post 4', 'subtitle': 'content'},
+        {'title': 'Post 5', 'subtitle': 'content'},
+        {'title': 'Post 6', 'subtitle': 'content'},
+        {'title': 'Post 7', 'subtitle': 'content'},
+        {'title': 'Post 8', 'subtitle': 'content'},
+        {'title': 'Post 9', 'subtitle': 'content'},
+        {'title': 'Post 10', 'subtitle': 'content'},
+      ],
+    ],
+  };
+  List<bool> buttonChange = [true, false, false];
   int NotificationNum = 7;
-  int Sec = 0;
+  int selectedSec = 0;
 
-  void callback(sec) {
+  void switchSec(index) {
     setState(() {
-      Sec = sec;
+      selectedSec = index;
+    });
+  }
+
+  void change2QA() {
+    setState(() {
+      buttonChange[selectedSec] = true;
     });
   }
 
@@ -62,23 +111,38 @@ class _NotificationPage extends State<NotificationPage> {
           ),
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Stack(
         children: [
-          Container(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20.0),
-            height: 18,
-            decoration: BoxDecoration(
-              color: Colors.white70,
-              borderRadius: BorderRadius.circular(8 * baseWidth),
+          SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height - kToolbarHeight,
+                  child: ListView(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 5.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white70,
+                            borderRadius: BorderRadius.circular(8 * baseWidth),
+                          ),
+                        ),
+                      ),
+                      ButtonRow(call: switchSec),
+                      notificationSec(
+                          NotificationNum: NotificationNum,
+                          secNum: selectedSec,
+                          buttonChange: buttonChange[selectedSec],
+                          notObj: mObj['notification']),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
-          ButtonRow(),
-          const SizedBox(
-            height: 10,
-          ),
-          notificationSec(NotificationNum: NotificationNum, secNum: Sec)
         ],
       ),
     );
@@ -86,31 +150,41 @@ class _NotificationPage extends State<NotificationPage> {
 }
 
 class notificationSec extends StatelessWidget {
-  const notificationSec({
-    super.key,
-    required this.NotificationNum,
-    required this.secNum,
-  });
+  const notificationSec(
+      {super.key,
+      required this.NotificationNum,
+      required this.secNum,
+      required this.buttonChange,
+      required this.notObj});
 
   final int NotificationNum;
   final int secNum;
+  final bool buttonChange;
+  final dynamic notObj;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 300,
-      height: 600,
+      width: 380,
       child: Column(
         children: [
-          Expanded(
-            child: ListView.builder(
+          ListView.builder(
               shrinkWrap: true,
               itemCount: NotificationNum,
               itemBuilder: (context, index) {
-                return null;
+                // print(notObj);
+                if (buttonChange) {
+                  return NotificationQA(
+                      index: index, secNum: secNum, lans: notObj[secNum]);
+                } else if (!buttonChange) {
+                  return NotificationAnswer(
+                      index: index, secNum: secNum, lans: notObj[secNum]);
+                } else {
+                  return NotificationSystem(
+                      index: index, secNum: secNum, lans: notObj[secNum]);
+                }
               },
-            ),
-          ),
+              physics: const NeverScrollableScrollPhysics()),
         ],
       ),
     );
@@ -119,13 +193,15 @@ class notificationSec extends StatelessWidget {
 
 class ButtonRow extends StatefulWidget {
   @override
+  const ButtonRow({super.key, required this.call});
+  final Function call;
   _ButtonRowState createState() => _ButtonRowState();
 }
 
 class _ButtonRowState extends State<ButtonRow> {
   int _selectedIndex = 0;
-
   void _selectButton(int index) {
+    widget.call(index);
     setState(() {
       _selectedIndex = index;
     });
@@ -133,57 +209,61 @@ class _ButtonRowState extends State<ButtonRow> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: List.generate(3, (index) {
-          String txt = 'QA';
-          switch (index) {
-            case 1:
-              txt = 'Answer';
-              break;
-            case 2:
-              txt = 'System';
-              break;
-          }
-          _NotificationPage notificationPageState = _NotificationPage();
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 2),
-            child: GestureDetector(
-              onTap: () => notificationPageState.callback(index),
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width / 4.2,
-                height: 50,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: _selectedIndex == index
-                        ? Color.fromARGB(255, 104, 104, 104)
-                        : Colors.grey[300],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Column(
-                      children: [
-                        Text(
-                          txt,
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: _selectedIndex == index
-                                ? Colors.white
-                                : Colors.black,
-                            fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: List.generate(3, (index) {
+            String txt = 'QA Post';
+            switch (index) {
+              case 1:
+                txt = 'Answer';
+                break;
+              case 2:
+                txt = 'System';
+                break;
+            }
+            _NotificationState notificationState = _NotificationState();
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 5.0),
+              child: GestureDetector(
+                onTap: () => _selectButton(index),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width / 3.3,
+                  height: 50,
+                  child: Container(
+                    // padding: EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+                    decoration: BoxDecoration(
+                      color: _selectedIndex == index
+                          ? tAccentColor
+                          : tPrimaryColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Column(
+                        children: [
+                          Text(
+                            txt,
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: _selectedIndex == index
+                                  ? Colors.white
+                                  : Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          );
-        }),
+            );
+          }),
+        ),
       ),
     );
   }

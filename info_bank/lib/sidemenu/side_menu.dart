@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:info_bank/screens/reportpage.dart';
+import 'package:info_bank/src/constants/buttons.dart';
 import 'package:info_bank/tabs/tabspage.dart';
 import 'package:info_bank/src/services/google_services.dart';
 import '../screens/wallet.dart';
+import 'package:info_bank/src/constants/allConstants.dart';
 
 class SideMenu extends StatefulWidget {
   @override
@@ -14,53 +16,39 @@ class _SideMenuState extends State<SideMenu> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      width: 200,
       child: Container(
         child: ListView(
-          padding: EdgeInsets.zero,
+          padding: const EdgeInsets.only(left: 5),
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 50,
+                const SizedBox(
+                  height: 20,
                 ),
                 Container(
+                  padding: const EdgeInsets.only(left: 10),
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height * 0.17,
                   child: Stack(
                     children: [
                       SizedBox(
-                        width: 100,
-                        height: 100,
+                        width: 80,
+                        height: 80,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(100),
                           child: const Image(
                               image: AssetImage('assets/images/drwoose.png')),
                         ),
                       ),
-                      Positioned(
-                        bottom: 30,
-                        left: 70,
-                        child: Container(
-                          width: 35,
-                          height: 35,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              color: Color(0xFF5FA9C0)),
-                          child: const Icon(
-                            Icons.edit,
-                            color: Colors.white,
-                            size: 21,
-                          ),
-                        ),
-                      )
                     ],
                   ),
                 ),
               ],
             ),
             ListTile(
-              leading: Icon(Icons.home),
+              leading: const Icon(Icons.home),
               title: Text('Home'),
               onTap: () => {
                 Navigator.pushReplacement(
@@ -71,7 +59,7 @@ class _SideMenuState extends State<SideMenu> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.search),
+              leading: const Icon(Icons.search),
               title: Text('Search'),
               onTap: () => {
                 Navigator.pushReplacement(
@@ -82,8 +70,8 @@ class _SideMenuState extends State<SideMenu> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Profile'),
+              leading: const Icon(Icons.person),
+              title: const Text('Profile'),
               onTap: () => {
                 Navigator.pushReplacement(
                   context,
@@ -102,16 +90,25 @@ class _SideMenuState extends State<SideMenu> {
                 ),
               },
             ),
-            ElevatedButton(
-                onPressed: () {
-                  _googleServices.signOut(context);
-                },
-                child: const Text('Sign out')),
-            ElevatedButton(
-                onPressed: () {
-                  showReportDialog(context);
-                },
-                child: const Text('Debug Report')),
+            const SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              width: 120,
+              child: Column(children: [
+                ElevatedButton(
+                    style: testButtonStyle,
+                    onPressed: () {
+                      _googleServices.signOut(context);
+                    },
+                    child: const Text('Sign out')),
+                ElevatedButton(
+                    onPressed: () {
+                      showReportDialog(context);
+                    },
+                    child: const Text('Debug Report')),
+              ]),
+            )
           ],
         ),
       ),
@@ -119,6 +116,7 @@ class _SideMenuState extends State<SideMenu> {
   }
 }
 
+/*
 class DrawerHeaderPaint extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
@@ -140,7 +138,7 @@ class DrawerHeaderPaint extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
-
+*/
 /*
 CustomPaint(
                     painter: DrawerHeaderPaint(),
