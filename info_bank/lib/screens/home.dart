@@ -20,6 +20,7 @@ class _HomeState extends State<Home> {
     setState(() {
       _currentposts = changedPost;
       FilterWidth = varFilterWidth;
+      print(_currentposts);
     });
   }
 
@@ -190,15 +191,15 @@ class _HomeFilter extends State<HomeFilter> {
   }
 
   List<Post> filterResults(int val) {
-    int i = 0;
-    String filtertag = '';
     if (val == 1) {
+      String filtertag = '';
       filtertag = 'Follow';
+      return allPost.where((_currentpost) {
+        final Posttag = _currentpost.tag;
+        return Posttag.contains(filtertag);
+      }).toList();
+    } else {
+      return allPost;
     }
-    print("filterResults");
-    return allPost.where((_currentpost) {
-      final Posttag = _currentpost.tag;
-      return Posttag.contains(filtertag); //? change to match?
-    }).toList();
   }
 }

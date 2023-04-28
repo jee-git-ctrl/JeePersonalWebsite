@@ -11,20 +11,20 @@ class Discover extends StatefulWidget {
 class _DiscoverState extends State<Discover> {
   List<Post> _currentposts = allPost;
   List<Post> BountyPost = [
-    Post(title: '古城麻辣燙排隊人數', tag: 'Follow', Best: 89.1, unlocked: 3000),
-    Post(title: 'Post 3', tag: 'Follow', Best: 67.4, unlocked: 5678),
-    Post(title: 'Post 4', tag: 'Recommend', Best: 82.2, unlocked: 9876),
-    Post(title: 'Post 6', tag: 'Recommend', Best: 23.3, unlocked: 2351),
-    Post(title: 'Post 7', tag: 'Follow', Best: 23.3, unlocked: 2351),
-    Post(title: 'Post 9', tag: 'Recommend', Best: 23.3, unlocked: 2351),
-    Post(title: 'Post 10', tag: 'Recommend', Best: 23.3, unlocked: 2351),
+    Post(title: '古城麻辣燙排隊人數', tag: ['Follow'], Best: 89.1, unlocked: 3000),
+    Post(title: 'Post 3', tag: ['Follow'], Best: 67.4, unlocked: 5678),
+    Post(title: 'Post 4', tag: ['Recommend'], Best: 82.2, unlocked: 9876),
+    Post(title: 'Post 6', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
+    Post(title: 'Post 7', tag: ['Follow'], Best: 23.3, unlocked: 2351),
+    Post(title: 'Post 9', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
+    Post(title: 'Post 10', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
   ];
   List<Post> NeedPost = [
-    Post(title: '古城麻辣燙排隊人數', tag: 'Follow', Best: 89.1, unlocked: 3000),
-    Post(title: 'Post 2', tag: 'Follow', Best: 71.1, unlocked: 1234),
-    Post(title: 'Post 3', tag: 'Follow', Best: 67.4, unlocked: 5678),
-    Post(title: 'Post 9', tag: 'Recommend', Best: 23.3, unlocked: 2351),
-    Post(title: 'Post 10', tag: 'Recommend', Best: 23.3, unlocked: 2351),
+    Post(title: '古城麻辣燙排隊人數', tag: ['Follow'], Best: 89.1, unlocked: 3000),
+    Post(title: 'Post 2', tag: ['Follow'], Best: 71.1, unlocked: 1234),
+    Post(title: 'Post 3', tag: ['Follow'], Best: 67.4, unlocked: 5678),
+    Post(title: 'Post 9', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
+    Post(title: 'Post 10', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
   ];
   callback(changedPost) {
     setState(() {
