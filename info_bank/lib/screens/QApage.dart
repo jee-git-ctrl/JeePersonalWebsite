@@ -5,6 +5,8 @@ import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:info_bank/screens/search.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class QApage extends StatefulWidget {
   const QApage({super.key});
@@ -18,6 +20,7 @@ class _QApageState extends State<QApage> {
     'title': '古城麻辣燙排隊人數',
     'note': '古城麻辣燙排隊人數古城麻辣燙',
     'equQAs': ['古城排隊人數', '古城麻辣燙候位人數', '古城還要等多久', '456'],
+    'tags': ['美食', '中正大學', '麻辣燙'],
     'equQAsTitle': ['123', '456', '456', '456'],
     'ans': [
       [
@@ -26,21 +29,21 @@ class _QApageState extends State<QApage> {
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
-          'content': '0000000'
+          'content': '目前需等10號'
         },
         {
           'userName': 'Alan Runner',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'content': '目前需等12號'
         },
         {
           'userName': 'Alan Runner',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'content': '目前需等13號'
         },
         {
           'userName': 'Alan Runner',
@@ -244,6 +247,21 @@ class _QApageState extends State<QApage> {
   int AnsNum = 7;
   int selectedSec = 0;
 
+  bool isTextInputVisible = false;
+  final textController = TextEditingController();
+  final focusNode = FocusNode();
+  double keyboardHeight = 0.0;
+
+  void initState() {
+    super.initState();
+    KeyboardVisibilityController().onChange.listen((bool visible) {
+      setState(() {
+        keyboardHeight =
+            visible ? MediaQuery.of(context).viewInsets.bottom : 0.0;
+      });
+    });
+  }
+
   void switchSec(index) {
     setState(() {
       selectedSec = index;
@@ -256,6 +274,17 @@ class _QApageState extends State<QApage> {
     });
   }
 
+  void showAns() {
+    setState(() {
+      isTextInputVisible = !isTextInputVisible;
+      if (isTextInputVisible) {
+        FocusScope.of(context).requestFocus(focusNode);
+      } else {
+        FocusScope.of(context).unfocus();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -265,16 +294,28 @@ class _QApageState extends State<QApage> {
           title: const Text('問答'),
           leading: Builder(
             builder: (BuildContext context) {
-              return SizedBox(
-                width: 40,
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.chevron_left,
-                    color: Colors.black,
-                  ),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-              );
+              return Row(children: [
+                SizedBox(
+                    width: 20,
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.chevron_left,
+                        color: Colors.black,
+                        size: 35,
+                      ),
+                      onPressed: () => Navigator.of(context).pop(),
+                    )),
+                // SizedBox(
+                //   width: 20,
+                //   child: IconButton(
+                //     icon: const Icon(
+                //       Icons.chevron_left,
+                //       color: Colors.black,
+                //     ),
+                //     onPressed: () => Navigator.of(context).pop(),
+                //   ),
+                // )
+              ]);
             },
           ),
           //backgroundColor: Color(0xffd9d9d9),
@@ -318,11 +359,11 @@ class _QApageState extends State<QApage> {
                                   children: [
                                     Padding(
                                         padding: const EdgeInsets.only(
-                                            left: 8, right: 8),
+                                            left: 10, right: 8, top: 10),
                                         child: Text(mObj['title'],
                                             style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: 38,
+                                                fontSize: 32,
                                                 color: Colors.black))),
                                     const Expanded(
                                       child: Padding(
@@ -334,89 +375,114 @@ class _QApageState extends State<QApage> {
                                     )
                                   ],
                                 ),
-                                SizedBox(
-                                    height: 150,
-                                    child: Row(
-                                      children: [
-                                        Padding(padding: EdgeInsets.all(7)),
-                                        Flexible(
-                                          child: Text(
-                                            mObj["note"],
-                                            style: TextStyle(
-                                              fontSize: 25,
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    )),
                                 Padding(
-                                  //tag
-                                  padding: EdgeInsets.all(10),
-                                  child: Container(
-                                    height: 40,
-                                    child: ListView.builder(
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.horizontal,
-                                        itemCount: 10,
-                                        itemBuilder: (context, index) {
-                                          return Padding(
-                                            padding: EdgeInsets.only(left: 8),
-                                            child: OutlinedButton(
-                                                onPressed: () => print(
-                                                    'direct'), //! direct to
+                                  padding: EdgeInsets.only(top: 12),
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: SizedBox(
+                                        height: 60,
+                                        child: Row(
+                                          children: [
+                                            Padding(padding: EdgeInsets.all(7)),
+                                            Flexible(
+                                              child: Align(
+                                                alignment: Alignment.topLeft,
                                                 child: Text(
-                                                  'tag $index', //! access QA name
+                                                  mObj["note"],
                                                   style: TextStyle(
-                                                      fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: Colors.white),
+                                                    fontSize: 24,
+                                                  ),
                                                 ),
-                                                style: OutlinedButton.styleFrom(
-                                                    backgroundColor:
-                                                        Color.fromARGB(
-                                                            255, 36, 122, 39),
-                                                    side: BorderSide(width: 0),
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  15)),
-                                                    ))),
-                                          );
-                                        }),
+                                              ),
+                                            )
+                                          ],
+                                        )),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Container(
+                                      height: 40,
+                                      child: ListView.builder(
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.horizontal,
+                                          // itemCount: (mObj['tags']).length,
+                                          itemCount: 3,
+                                          itemBuilder: (context, index) {
+                                            return Padding(
+                                              padding:
+                                                  EdgeInsets.only(right: 8),
+                                              child: OutlinedButton(
+                                                  onPressed: () => print(
+                                                      'direct'), //! direct to
+                                                  child: Text(
+                                                    mObj['tags'][
+                                                        index], //! access QA name
+                                                    style: TextStyle(
+                                                        fontSize: 15,
+                                                        // fontWeight:
+                                                        //     FontWeight.bold,
+                                                        color: Colors.white),
+                                                  ),
+                                                  style:
+                                                      OutlinedButton.styleFrom(
+                                                          backgroundColor:
+                                                              Color.fromARGB(
+                                                                  255,
+                                                                  36,
+                                                                  122,
+                                                                  39),
+                                                          side: BorderSide(
+                                                              width: 0),
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .all(Radius
+                                                                        .circular(
+                                                                            15)),
+                                                          ))),
+                                            );
+                                          }),
+                                    ),
                                   ),
                                 )
                               ],
                             ))),
-                    SizedBox(
-                      // equivalence
-                      width: 200,
-                      height: 40,
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 3,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(left: 8),
-                              child: OutlinedButton(
-                                  onPressed: () =>
-                                      print('direct'), //! direct to
-                                  child: Text(
-                                    mObj['equQAs'][index], //! access QA name
-                                    style: TextStyle(
-                                        fontSize: 18, color: Colors.black),
-                                  ),
-                                  style: OutlinedButton.styleFrom(
-                                      side: BorderSide(width: 1),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(8)),
-                                      ))),
-                            );
-                          }),
+                    Padding(
+                      padding: EdgeInsets.only(top: 8, bottom: 8),
+                      child: SizedBox(
+                        // equivalence
+                        width: 200,
+                        height: 40,
+                        child: ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 3,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: EdgeInsets.only(left: 8, right: 10),
+                                child: OutlinedButton(
+                                    onPressed: () =>
+                                        print('direct'), //! direct to
+                                    child: Text(
+                                      mObj['equQAs'][index], //! access QA name
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    style: OutlinedButton.styleFrom(
+                                        side: BorderSide(width: 1),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(8)),
+                                        ))),
+                              );
+                            }),
+                      ),
                     ),
                     divider0(),
                     ButtonRow(call: switchSec),
@@ -491,6 +557,7 @@ class answerSec extends StatelessWidget {
       child: Column(
         children: [
           ListView.builder(
+              padding: EdgeInsets.only(bottom: 50.0),
               shrinkWrap: true,
               itemCount: AnsNum,
               itemBuilder: (context, index) {
@@ -529,7 +596,7 @@ class _ButtonRowState extends State<ButtonRow> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 10),
+      padding: EdgeInsets.only(top: 10, bottom: 6),
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Row(
@@ -583,7 +650,12 @@ class _ButtonRowState extends State<ButtonRow> {
                               Icon(Icons.speed, color: Colors.blue),
                               Text(
                                 '94',
-                                style: TextStyle(fontSize: 19),
+                                style: TextStyle(
+                                  fontSize: 19,
+                                  color: _selectedIndex == index
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
                               )
                             ],
                           )
