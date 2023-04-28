@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:info_bank/src/constants/buttons.dart';
 import 'package:info_bank/src/services/google_services.dart';
 import 'package:info_bank/tabs/tabspage.dart';
+import 'constants/allConstants.dart';
 
 // Login page with only google sign-in
 
@@ -27,31 +29,36 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               Image.asset('assets/images/infoBank_logo.png'),
               //Text('Welcome to info bank!'),
-              ElevatedButton(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 30.0,
-                      width: 30.0,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage('assets/images/Google_logo.png'),
-                      )),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text("Sign In with Google")
-                  ],
+              SizedBox(
+                width: 300,
+                child: ElevatedButton(
+                  style: testButtonStyle,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 30.0,
+                        width: 30.0,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                          image: AssetImage('assets/images/Google_logo.png'),
+                        )),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Text("Sign In with Google")
+                    ],
+                  ),
+                  onPressed: () {
+                    _googleServices
+                        .googleSignIn(context); //from google services .dart
+                  },
                 ),
-                onPressed: () {
-                  _googleServices
-                      .googleSignIn(context); //from google services .dart
-                },
               ),
               ElevatedButton(
-                child: Row(
+                style: testButtonStyle,
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:info_bank/src/constants/buttons.dart';
 import 'package:info_bank/src/constants/image_strings.dart';
 import 'package:info_bank/src/constants/sizes.dart';
-import '../constants/colors.dart';
+import 'package:info_bank/src/constants/allConstants.dart';
 import 'package:info_bank/src/services/firebase_services.dart';
 
 class UpdateUserProfileScreen extends StatefulWidget {
@@ -57,7 +58,7 @@ class _UpdateUserProfileScreen extends State<UpdateUserProfileScreen> {
                       height: 35,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100),
-                          color: tPrimaryColor),
+                          color: Colors.amber),
                       child: const Icon(
                         Icons.camera_enhance,
                         color: Colors.white,
@@ -111,41 +112,41 @@ class _UpdateUserProfileScreen extends State<UpdateUserProfileScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: tPrimaryColor,
-                              side: BorderSide.none,
-                              shape: const StadiumBorder(),
-                              minimumSize: const Size(100, 60)),
-                          onPressed: () async {
-                            if ((_formKey.currentState as FormState)
-                                .validate()) {
-                              final result = await _firebaseServices.updateUser(
-                                  nickname: _nameController.toString(),
-                                  intro: _introController.toString());
+                      SizedBox(
+                        width: 140,
+                        child: ElevatedButton(
+                            style: testButtonStyle,
+                            onPressed: () async {
+                              if ((_formKey.currentState as FormState)
+                                  .validate()) {
+                                final result =
+                                    await _firebaseServices.updateUser(
+                                        nickname: _nameController.toString(),
+                                        intro: _introController.toString());
 
-                              if (result!.contains('Success') &&
-                                  context.mounted) {
-                                showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return AlertDialog(
-                                        title: const Text("個人資料更新完成"),
-                                        actions: <Widget>[
-                                          TextButton(
-                                              onPressed: () =>
-                                                  Navigator.of(context).pop(),
-                                              child: const Text("了解"))
-                                        ],
-                                      );
-                                    });
+                                if (result!.contains('Success') &&
+                                    context.mounted) {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          title: const Text("個人資料更新完成"),
+                                          actions: <Widget>[
+                                            TextButton(
+                                                onPressed: () =>
+                                                    Navigator.of(context).pop(),
+                                                child: const Text("了解"))
+                                          ],
+                                        );
+                                      });
+                                }
                               }
-                            }
-                          },
-                          child: const Text(
-                            "提交",
-                            style: TextStyle(fontSize: 20),
-                          ))
+                            },
+                            child: const Text(
+                              "提交",
+                              style: TextStyle(fontSize: 16),
+                            )),
+                      )
                     ],
                   ))
             ],
