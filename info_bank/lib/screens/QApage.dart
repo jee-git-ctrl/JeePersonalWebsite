@@ -266,23 +266,13 @@ class _QApageState extends State<QApage> {
           leading: Builder(
             builder: (BuildContext context) {
               return SizedBox(
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: const Icon(
-                        Icons.chevron_left,
-                        color: Colors.black,
-                      ),
-                      onPressed: () => Navigator.of(context).pop(),
-                    ),
-                    IconButton(
-                      icon: const Icon(
-                        Icons.list,
-                        color: Colors.black,
-                      ),
-                      onPressed: () => Scaffold.of(context).openDrawer(),
-                    ),
-                  ],
+                width: 40,
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.chevron_left,
+                    color: Colors.black,
+                  ),
+                  onPressed: () => Navigator.of(context).pop(),
                 ),
               );
             },

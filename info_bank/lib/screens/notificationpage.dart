@@ -96,20 +96,6 @@ class _NotificationState extends State<NotificationPage> {
         elevation: 0.0,
         title: const Text('通知'),
         centerTitle: true,
-        actions: <Widget>[
-          Row(
-            children: <Widget>[
-              IconButton(
-                  color: Colors.black,
-                  icon: const Icon(Icons.search),
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Search()));
-                    //Navigator.pushNamed(context, '/search');
-                  }),
-            ],
-          ),
-        ],
       ),
       body: Stack(
         children: [

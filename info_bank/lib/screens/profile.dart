@@ -5,7 +5,7 @@ import 'package:info_bank/src/constants/colors.dart';
 import 'package:info_bank/src/constants/image_strings.dart';
 import 'package:info_bank/src/constants/sizes.dart';
 import 'package:info_bank/src/constants/text_strings.dart';
-import 'package:info_bank/src/screen/update_user_screen.dart';
+import 'package:info_bank/screens/update_user_screen.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -38,19 +38,18 @@ class _ProfileState extends State<Profile> {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         centerTitle: true,
-        actions: <Widget>[
-          Row(
-            children: <Widget>[
-              IconButton(
-                  color: Colors.black,
-                  icon: const Icon(Icons.search),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => Search()));
-                    //Navigator.pushNamed(context, '/search');
-                  }),
-            ],
-          ),
+        actions: [
+          Container(
+            padding: const EdgeInsets.only(right: 13),
+            child: IconButton(
+                color: Colors.black,
+                icon: const Icon(Icons.search),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => Search()));
+                  //Navigator.pushNamed(context, '/search');
+                }),
+          )
         ],
       ),
       body: SingleChildScrollView(

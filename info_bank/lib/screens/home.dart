@@ -34,17 +34,17 @@ class _HomeState extends State<Home> {
         key: _scaffoldKey,
         appBar: AppBar(
           titleSpacing: 0.0,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.list,
+              color: Colors.black,
+            ),
+            onPressed: () => _scaffoldKey.currentState?.openDrawer(),
+          ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              IconButton(
-                icon: const Icon(
-                  Icons.list,
-                  color: Colors.black,
-                ),
-                onPressed: () => _scaffoldKey.currentState?.openDrawer(),
-              ),
               HomeFilter(callback: callback),
               Expanded(
                 child: Center(
@@ -62,19 +62,19 @@ class _HomeState extends State<Home> {
           ),
           automaticallyImplyLeading: false,
           centerTitle: true,
-          actions: <Widget>[
-            Row(
-              children: <Widget>[
-                IconButton(
-                    color: Colors.black,
-                    icon: const Icon(Icons.search),
-                    onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Search()));
-                      //Navigator.pushNamed(context, '/search');
-                    }),
-              ],
-            ),
+          elevation: 0,
+          actions: [
+            Container(
+              padding: const EdgeInsets.only(right: 13),
+              child: IconButton(
+                  color: Colors.black,
+                  icon: const Icon(Icons.search),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Search()));
+                    //Navigator.pushNamed(context, '/search');
+                  }),
+            )
           ],
         ),
         drawer: SideMenu(),
@@ -153,9 +153,9 @@ class _HomeFilter extends State<HomeFilter> {
               border: Border.all(
                 color: Colors.black26,
               ),
-              color: Color(0xff272727),
+              color: Color.fromARGB(255, 104, 131, 136),
             ),
-            elevation: 2,
+            elevation: 0,
           ),
           iconStyleData: const IconStyleData(
             icon: Icon(

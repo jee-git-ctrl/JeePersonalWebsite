@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:info_bank/screens/reportpage.dart';
+import 'package:info_bank/screens/settingpage.dart';
 import 'package:info_bank/src/constants/buttons.dart';
 import 'package:info_bank/tabs/tabspage.dart';
 import 'package:info_bank/src/services/google_services.dart';
@@ -81,12 +82,22 @@ class _SideMenuState extends State<SideMenu> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Wallet'),
+              leading: const Icon(Icons.account_balance_wallet),
+              title: const Text('錢包'),
               onTap: () => {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Wallet()),
+                ),
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('設定'),
+              onTap: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingPage()),
                 ),
               },
             ),
