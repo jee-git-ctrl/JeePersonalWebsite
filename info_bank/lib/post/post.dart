@@ -5,7 +5,7 @@ import 'package:info_bank/screens/QApage.dart';
 
 class Post {
   final String title;
-  final String tag;
+  final List<String> tag;
   final double Best;
   final double unlocked;
   const Post({
@@ -17,16 +17,24 @@ class Post {
 }
 
 const allPost = [
-  Post(title: '古城麻辣燙排隊人數', tag: 'Follow', Best: 89.1, unlocked: 3000),
-  Post(title: 'Post 2', tag: 'Follow', Best: 71.1, unlocked: 1234),
-  Post(title: 'Post 3', tag: 'Follow', Best: 67.4, unlocked: 5678),
-  Post(title: 'Post 4', tag: 'Recommend', Best: 82.2, unlocked: 9876),
-  Post(title: 'Post 5', tag: 'Follow', Best: 23.3, unlocked: 2351),
-  Post(title: 'Post 6', tag: 'Recommend', Best: 23.3, unlocked: 2351),
-  Post(title: 'Post 7', tag: 'Follow', Best: 23.3, unlocked: 2351),
-  Post(title: 'Post 8', tag: 'Recommend', Best: 23.3, unlocked: 2351),
-  Post(title: 'Post 9', tag: 'Recommend', Best: 23.3, unlocked: 2351),
-  Post(title: 'Post 10', tag: 'Recommend', Best: 23.3, unlocked: 2351),
+  Post(title: '古城麻辣燙排隊人數', tag: ['Follow'], Best: 89.1, unlocked: 3000),
+  Post(title: 'Post 2', tag: ['Follow'], Best: 71.1, unlocked: 1234),
+  Post(
+      title: 'Post 3',
+      tag: ['Follow', 'Fooooooooooooooooooooooooooooooooood'],
+      Best: 67.4,
+      unlocked: 5678),
+  Post(
+      title: 'Post 4',
+      tag: ['Recommend', 'afkjno'],
+      Best: 82.2,
+      unlocked: 9876),
+  Post(title: 'Post 5', tag: ['Follow'], Best: 23.3, unlocked: 2351),
+  Post(title: 'Post 6', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
+  Post(title: 'Post 7', tag: ['Follow'], Best: 23.3, unlocked: 2351),
+  Post(title: 'Post 8', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
+  Post(title: 'Post 9', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
+  Post(title: 'Post 10', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
 ];
 
 class MyPost extends StatelessWidget {
@@ -51,200 +59,128 @@ class MyPost extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             height: 120,
-            child: Stack(
+            child: Column(
               children: [
-                Positioned(
-                    top: 10,
-                    left: 10,
-                    child: Text(
-                      //title
-                      currentpost.title,
-                      style: GoogleFonts.openSans(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 32,
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 8, top: 8),
+                    child: Container(
+                      height: 50,
+                      child: Text(
+                        //title
+                        currentpost.title,
+                        style: GoogleFonts.openSans(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 32,
+                        ),
                       ),
-                    )),
-                Positioned(
-                    //tags
-                    bottom: 0,
-                    left: 10,
-                    child: Chip(
-                        label: Text(
-                      currentpost.tag,
-                      style: GoogleFonts.openSans(),
-                    ))),
-                Positioned(
-                    //bestanswer
-                    bottom: 30,
-                    right: 10,
-                    child: Text(
-                      "最佳回答：" + currentpost.Best.toString() + "%",
-                      style: GoogleFonts.openSans(
-                        fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: LayoutBuilder(
+                          builder: (context, constraints) {
+                            final maxWidth = 250;
+                            int currentwidth = 0;
+                            List<String> visibleTags = [];
+
+                            for (var i = 0; i < currentpost.tag.length; i++) {
+                              final tagText = currentpost.tag[i];
+                              final tagSize = _textSize(tagText);
+
+                              if (visibleTags.isEmpty ||
+                                  currentwidth + tagSize.width <= maxWidth) {
+                                currentwidth + tagSize.width;
+                                visibleTags.add(tagText);
+                              } else {
+                                break;
+                              }
+                            }
+
+                            return Wrap(
+                              children: List<Widget>.generate(
+                                  visibleTags.length, (int index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(
+                                      bottom: 8, left: 8, right: 8),
+                                  child: Chip(
+                                    materialTapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    label: Text(
+                                      visibleTags[index],
+                                      style: GoogleFonts.openSans(fontSize: 12),
+                                    ),
+                                  ),
+                                );
+                              }),
+                            );
+                          },
+                        ),
                       ),
-                    )),
-                Positioned(
-                    //answerpotion
-                    bottom: 10,
-                    right: 10,
-                    child: Text(
-                      "解鎖次數：" +
-                          (currentpost.unlocked / 1000).toStringAsFixed(1) +
-                          "k",
-                      style: GoogleFonts.openSans(
-                        fontWeight: FontWeight.bold,
+                      Container(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10),
+                              child: Container(
+                                width: 120,
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    "最佳回答：" + currentpost.Best.toString() + "%",
+                                    style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(right: 10, bottom: 8),
+                              child: Container(
+                                width: 120,
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    "解鎖次數：" +
+                                        (currentpost.unlocked / 1000)
+                                            .toStringAsFixed(1) +
+                                        "k",
+                                    style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ))
+                    ],
+                  ),
+                ),
               ],
             ),
           )),
     );
   }
+
+  Size _textSize(String text) {
+    final TextPainter textPainter = TextPainter(
+        text: TextSpan(text: text),
+        maxLines: 1,
+        textDirection: TextDirection.ltr)
+      ..layout(minWidth: 0, maxWidth: double.infinity);
+    print(textPainter.size);
+    return textPainter.size;
+  }
 }
-
-
-
-// Origin
-/* 
-
-Container(
-        height: 400,
-        color: Colors.deepPurple[200],
-        child: Center(
-            child: Text(
-          child,
-          style: TextStyle(fontSize: 40),
-        )),
-),
-*/
-
-//modified
-/*
-Container(
-        padding: EdgeInsets.fromLTRB(4 * fem, 3 * fem, 6 * fem, 4 * fem),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: Color(0xffd9d9d9),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              child: Text(
-                '古城麻辣燙排隊狀況',
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.fromLTRB(225 * fem, 0 * fem, 0 * fem, 0 * fem),
-              width: 82 * fem,
-              height: 16 * fem,
-              child: Stack(
-                children: [
-                  Positioned(
-                    left: 0 * fem,
-                    top: 0 * fem,
-                    child: Align(
-                      child: SizedBox(
-                        width: 82 * fem,
-                        height: 16 * fem,
-                        child: Text(
-                          '最佳回答：72%',
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 0 * fem,
-                    top: 0 * fem,
-                    child: Align(
-                      child: SizedBox(
-                        width: 82 * fem,
-                        height: 16 * fem,
-                        child: Text(
-                          '最佳回答：72%',
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.fromLTRB(11 * fem, 0 * fem, 0 * fem, 0 * fem),
-              height: 20 * fem,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(
-                        0 * fem, 0 * fem, 10 * fem, 0 * fem),
-                    width: 41 * fem,
-                    height: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Color(0xffffffff),
-                      borderRadius: BorderRadius.circular(12 * fem),
-                    ),
-                    child: Center(
-                      child: Text(
-                        '古城',
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(
-                        0 * fem, 0 * fem, 159 * fem, 0 * fem),
-                    width: 41 * fem,
-                    height: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Color(0xffffffff),
-                      borderRadius: BorderRadius.circular(12 * fem),
-                    ),
-                    child: Center(
-                      child: Text(
-                        '排隊',
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 83 * fem,
-                    height: 16 * fem,
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          left: 0 * fem,
-                          top: 0 * fem,
-                          child: Align(
-                            child: SizedBox(
-                              width: 83 * fem,
-                              height: 16 * fem,
-                              child: Text(
-                                '解鎖次數：2.7k',
-                                textAlign: TextAlign.right,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 0 * fem,
-                          top: 0 * fem,
-                          child: Align(
-                            child: SizedBox(
-                              width: 83 * fem,
-                              height: 16 * fem,
-                              child: Text(
-                                '解鎖次數：2.7k',
-                                textAlign: TextAlign.right,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-*/

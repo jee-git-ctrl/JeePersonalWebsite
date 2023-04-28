@@ -20,6 +20,7 @@ class _HomeState extends State<Home> {
     setState(() {
       _currentposts = changedPost;
       FilterWidth = varFilterWidth;
+      print(_currentposts);
     });
   }
 
@@ -146,7 +147,7 @@ class _HomeFilter extends State<HomeFilter> {
           },
           buttonStyleData: ButtonStyleData(
             height: 50,
-            width: 180,
+            width: 120,
             padding: const EdgeInsets.only(left: 14, right: 14),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(14),
@@ -167,14 +168,14 @@ class _HomeFilter extends State<HomeFilter> {
           ),
           dropdownStyleData: DropdownStyleData(
               maxHeight: 200,
-              width: 200,
+              width: 120,
               padding: null,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
                 color: Color(0xff272727),
               ),
               elevation: 8,
-              offset: const Offset(-20, 0),
+              offset: const Offset(0, 0),
               scrollbarTheme: ScrollbarThemeData(
                 radius: const Radius.circular(40),
                 thickness: MaterialStateProperty.all(6),
@@ -190,15 +191,15 @@ class _HomeFilter extends State<HomeFilter> {
   }
 
   List<Post> filterResults(int val) {
-    int i = 0;
-    String filtertag = '';
     if (val == 1) {
+      String filtertag = '';
       filtertag = 'Follow';
+      return allPost.where((_currentpost) {
+        final Posttag = _currentpost.tag;
+        return Posttag.contains(filtertag);
+      }).toList();
+    } else {
+      return allPost;
     }
-    print("filterResults");
-    return allPost.where((_currentpost) {
-      final Posttag = _currentpost.tag;
-      return Posttag.contains(filtertag); //? change to match?
-    }).toList();
   }
 }
