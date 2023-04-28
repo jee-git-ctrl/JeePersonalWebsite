@@ -5,6 +5,7 @@ import 'package:info_bank/screens/notificationpage.dart';
 import 'package:info_bank/screens/profile.dart';
 import 'package:info_bank/screens/discover.dart';
 import 'package:info_bank/screens/createpost.dart';
+import 'package:info_bank/screens/notificationpage.dart';
 
 class TabNavigationItem {
   final Widget page;

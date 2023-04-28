@@ -39,8 +39,8 @@ class _SearchState extends State<Search> {
         ),
         //backgroundColor: Color(0xffd9d9d9),
         title: TextField(
-          onChanged:
-              updateQuery, // Call the callback function when the query changes
+          onChanged: updateQuery,
+          // Call the callback function when the query changes
           decoration: const InputDecoration(
             hintText: 'Search...',
           ),
