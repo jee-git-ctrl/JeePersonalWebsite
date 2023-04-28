@@ -64,7 +64,7 @@ class MyPost extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
-                    padding: EdgeInsets.only(left: 8),
+                    padding: EdgeInsets.only(left: 8, top: 8),
                     child: Container(
                       height: 50,
                       child: Text(
