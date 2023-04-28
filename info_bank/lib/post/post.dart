@@ -58,7 +58,7 @@ class MyPost extends StatelessWidget {
               color: Colors.grey,
               borderRadius: BorderRadius.circular(10),
             ),
-            height: 120,
+            height: 110,
             child: Column(
               children: [
                 Align(
@@ -72,14 +72,11 @@ class MyPost extends StatelessWidget {
                         currentpost.title,
                         style: GoogleFonts.openSans(
                           fontWeight: FontWeight.bold,
-                          fontSize: 32,
+                          fontSize: 20,
                         ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 10,
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,

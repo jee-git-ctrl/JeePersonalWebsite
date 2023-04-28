@@ -198,15 +198,14 @@ List<Widget> getCards() {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30.0),
       ),
-      elevation: 5,
+      elevation: 0,
       color: Colors.grey,
       margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: Text(
           item,
-          style: TextStyle(
-              color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.black, fontSize: 18),
         ),
       ),
     );
@@ -217,7 +216,7 @@ List<Widget> getCards() {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30.0),
       ),
-      elevation: 5,
+      elevation: 0,
       color: Colors.grey,
       margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
       child: Container(
@@ -225,7 +224,9 @@ List<Widget> getCards() {
         child: Text(
           item,
           style: TextStyle(
-              color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+            color: Colors.black,
+            fontSize: 18,
+          ),
         ),
       ),
     );
