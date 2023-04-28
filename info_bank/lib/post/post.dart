@@ -79,89 +79,94 @@ class MyPost extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
-                Row(
-                  children: [
-                    Container(
-                      width: 250,
-                      child: LayoutBuilder(
-                        builder: (context, constraints) {
-                          final maxWidth = 250;
-                          int currentwidth = 0;
-                          List<String> visibleTags = [];
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: LayoutBuilder(
+                          builder: (context, constraints) {
+                            final maxWidth = 250;
+                            int currentwidth = 0;
+                            List<String> visibleTags = [];
 
-                          for (var i = 0; i < currentpost.tag.length; i++) {
-                            final tagText = currentpost.tag[i];
-                            final tagSize = _textSize(tagText);
+                            for (var i = 0; i < currentpost.tag.length; i++) {
+                              final tagText = currentpost.tag[i];
+                              final tagSize = _textSize(tagText);
 
-                            if (visibleTags.isEmpty ||
-                                currentwidth + tagSize.width <= maxWidth) {
-                              currentwidth + tagSize.width;
-                              visibleTags.add(tagText);
-                            } else {
-                              break;
+                              if (visibleTags.isEmpty ||
+                                  currentwidth + tagSize.width <= maxWidth) {
+                                currentwidth + tagSize.width;
+                                visibleTags.add(tagText);
+                              } else {
+                                break;
+                              }
                             }
-                          }
 
-                          return Wrap(
-                            children: List<Widget>.generate(visibleTags.length,
-                                (int index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Chip(
-                                  materialTapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap,
-                                  label: Text(
-                                    visibleTags[index],
-                                    style: GoogleFonts.openSans(fontSize: 12),
+                            return Wrap(
+                              children: List<Widget>.generate(
+                                  visibleTags.length, (int index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(
+                                      bottom: 8, left: 8, right: 8),
+                                  child: Chip(
+                                    materialTapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    label: Text(
+                                      visibleTags[index],
+                                      style: GoogleFonts.openSans(fontSize: 12),
+                                    ),
+                                  ),
+                                );
+                              }),
+                            );
+                          },
+                        ),
+                      ),
+                      Container(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10),
+                              child: Container(
+                                width: 120,
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    "最佳回答：" + currentpost.Best.toString() + "%",
+                                    style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
-                              );
-                            }),
-                          );
-                        },
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(right: 10, bottom: 8),
+                              child: Container(
+                                width: 120,
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    "解鎖次數：" +
+                                        (currentpost.unlocked / 1000)
+                                            .toStringAsFixed(1) +
+                                        "k",
+                                    style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Container(
-                          width: 120,
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 4),
-                              child: Text(
-                                "最佳回答：" + currentpost.Best.toString() + "%",
-                                style: GoogleFonts.openSans(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 120,
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 4),
-                              child: Text(
-                                "解鎖次數：" +
-                                    (currentpost.unlocked / 1000)
-                                        .toStringAsFixed(1) +
-                                    "k",
-                                style: GoogleFonts.openSans(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
