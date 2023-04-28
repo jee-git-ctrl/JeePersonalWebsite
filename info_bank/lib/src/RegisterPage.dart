@@ -85,7 +85,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   static String? validateName(String? value) {
     //check [A-Za-z0-9]
-    if (!RegExp(r'^[a-zA-Z0-9\p{Han}]+$').hasMatch(value.toString())) {
+    if (!RegExp(r'^[a-zA-Z0-9\u4e00-\u9fa5]+$').hasMatch(value.toString())) {
       return "格式錯誤";
     } else {
       return null;
