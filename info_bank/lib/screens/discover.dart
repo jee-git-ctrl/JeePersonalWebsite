@@ -4,11 +4,13 @@ import 'package:info_bank/post/post.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Discover extends StatefulWidget {
+  const Discover({Key? key}) : super(key: key);
   @override
   _DiscoverState createState() => _DiscoverState();
 }
 
-class _DiscoverState extends State<Discover> {
+class _DiscoverState extends State<Discover>
+    with SingleTickerProviderStateMixin {
   List<Post> _currentposts = allPost;
   List<Post> BountyPost = [
     Post(title: '古城麻辣燙排隊人數', tag: ['Follow'], Best: 89.1, unlocked: 3000),
@@ -26,6 +28,19 @@ class _DiscoverState extends State<Discover> {
     Post(title: 'Post 9', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
     Post(title: 'Post 10', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
   ];
+  late TabController _tabController;
+  @override
+  void initState() {
+    _tabController = TabController(length: 3, vsync: this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   callback(changedPost) {
     setState(() {
       _currentposts = changedPost;
@@ -99,79 +114,132 @@ class _DiscoverState extends State<Discover> {
                 endIndent: 10,
                 color: Colors.black,
               ),
-              Row(
+              /*Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
                     width: 10,
                   ),
-                  OutlinedButton(
-                      onPressed: () {
-                        callback(allPost);
-                      },
-                      child: Text(
-                        "熱門問答",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border(bottom: BorderSide(width: 1))),
+                    child: TextButton(
+                        onPressed: () {
+                          callback(allPost);
+                        },
+                        child: Text(
+                          "熱門問答",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      style: OutlinedButton.styleFrom(
-                          side: BorderSide(width: 1),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                          ))),
-                  OutlinedButton(
+                        style: TextButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                        ))),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border(bottom: BorderSide(width: 1))),
+                    child: TextButton(
+                        onPressed: () {
+                          callback(BountyPost);
+                        },
+                        child: Text(
+                          "懸賞問答",
+                          style: GoogleFonts.openSans(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        style: TextButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                        ))),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border(bottom: BorderSide(width: 1))),
+                    child: TextButton(
                       onPressed: () {
-                        callback(BountyPost);
+                        callback(NeedPost);
                       },
                       child: Text(
-                        "懸賞問答",
+                        "需要答案",
                         style: GoogleFonts.openSans(
                           fontSize: 18,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      style: OutlinedButton.styleFrom(
-                          side: BorderSide(width: 1),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                          ))),
-                  OutlinedButton(
-                    onPressed: () {
-                      callback(NeedPost);
-                    },
-                    child: Text(
-                      "需要答案",
-                      style: GoogleFonts.openSans(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
                     ),
-                    style: OutlinedButton.styleFrom(
-                        side: BorderSide(width: 1),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                        )),
                   ),
                   SizedBox(
                     width: 10,
                   ),
                 ],
-              ),
-              SizedBox(
-                height: 10,
+              ),*/
+
+              TabBar(
+                indicatorColor:
+                    Colors.black, // Set the color of the tab indicator
+                labelStyle: GoogleFonts.openSans(
+                  fontSize: 18,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ), //For Selected tab
+                unselectedLabelStyle: GoogleFonts.openSans(
+                  fontSize: 18,
+                  color: Colors.grey,
+                ), //For Un-selected Tabs
+
+                tabs: [
+                  Tab(
+                    child: Text(
+                      "熱門問答",
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
+                      "需要答案",
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
+                      "懸賞問答",
+                    ),
+                  ),
+                ],
+                controller: _tabController,
+                indicatorSize: TabBarIndicatorSize.tab,
               ),
               Expanded(
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: _currentposts.length,
-                    itemBuilder: (context, index) {
-                      return MyPost(currentpost: _currentposts[index]);
-                    }),
+                child: TabBarView(
+                  controller: _tabController,
+                  children: [
+                    ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: _currentposts.length,
+                        itemBuilder: (context, index) {
+                          return MyPost(currentpost: _currentposts[index]);
+                        }),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: NeedPost.length,
+                        itemBuilder: (context, index) {
+                          return MyPost(currentpost: NeedPost[index]);
+                        }),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: BountyPost.length,
+                        itemBuilder: (context, index) {
+                          return MyPost(currentpost: BountyPost[index]);
+                        }),
+                  ],
+                ),
               ),
             ],
           ),
