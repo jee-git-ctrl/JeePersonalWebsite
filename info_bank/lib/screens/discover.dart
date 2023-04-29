@@ -162,6 +162,9 @@ class _DiscoverState extends State<Discover> {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 10,
+              ),
               Expanded(
                 child: ListView.builder(
                     shrinkWrap: true,
