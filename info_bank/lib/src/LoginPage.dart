@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:info_bank/src/RegisterPage.dart';
 import 'package:info_bank/src/constants/buttons.dart';
 import 'package:info_bank/src/services/google_services.dart';
 import 'package:info_bank/tabs/tabspage.dart';
@@ -70,6 +71,24 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (context) => TabsPage(selectedIndex: 0),
+                  ));
+                },
+              ),
+              //debugging
+              ElevatedButton(
+                style: testButtonStyle,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text("register page")
+                  ],
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => RegisterPage(),
                   ));
                 },
               )

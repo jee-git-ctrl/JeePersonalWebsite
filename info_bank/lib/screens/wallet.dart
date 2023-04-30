@@ -35,15 +35,15 @@ class _Wallet extends State<Wallet> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    SizedBox(
-                      width: 10,
+                    const SizedBox(
+                      width: 30,
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       //cross
                       children: [
-                        Text(
+                        const Text(
                           "目前點數",
                           style: TextStyle(
                               fontSize: 25, fontWeight: FontWeight.bold),
@@ -85,8 +85,8 @@ class _Wallet extends State<Wallet> {
                 child: Row(children: [
                   const Expanded(
                       child: Text(
-                    "????紀錄",
-                    style: TextStyle(color: Colors.black, fontSize: 18),
+                    "歷史紀錄",
+                    style: TextStyle(color: Colors.black, fontSize: 20),
                   )),
                   GestureDetector(
                       onTap: () {

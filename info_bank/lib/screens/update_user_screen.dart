@@ -90,6 +90,19 @@ class _UpdateUserProfileScreen extends State<UpdateUserProfileScreen> {
                       ),
                       TextFormField(
                         // fetch email data
+                        initialValue: "fetch acc here, unchangeable",
+                        //readOnly: true,
+                        enabled: false,
+                        decoration: const InputDecoration(
+                          label: Text('ID'),
+                          prefixIcon: Icon(Icons.directions_run),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextFormField(
+                        // fetch email data
                         initialValue: "fetch email here, unchangeable",
                         //readOnly: true,
                         enabled: false,

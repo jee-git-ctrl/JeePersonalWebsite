@@ -7,21 +7,17 @@ class DetailTransaction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 50, bottom: 10),
-          child: Row(children: [
-            IconButton(
-              onPressed: () => Navigator.of(context).pop(),
-              icon: const Icon(Icons.arrow_back),
-            ),
-            const Text(
-              "交易紀錄",
-              style: TextStyle(fontSize: 18),
-            )
-          ]),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: const Text('交易紀錄'),
+        leading: IconButton(
+            onPressed: () => Navigator.of(context).pop(),
+            icon: const Icon(Icons.chevron_left)),
+      ),
+      body: Column(children: [
         Expanded(
             child: ListView.builder(
           itemBuilder: (context, index) {
@@ -29,7 +25,7 @@ class DetailTransaction extends StatelessWidget {
           },
           itemCount: transactions.length,
         ))
-      ],
+      ]),
     );
   }
 }

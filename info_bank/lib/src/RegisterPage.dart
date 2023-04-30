@@ -21,57 +21,78 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(), //aren't sure if appbar needed
-      body: Center(
-          child: Form(
-              key: _formKey,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              child: Column(
-                children: [
-                  TextFormField(
-                      autofocus: true,
-                      controller: _accController,
-                      decoration: const InputDecoration(
-                        labelText: "ID",
-                        hintText: "輸入想要的使用者帳號(限英文和數字)",
+      //aren't sure if appbar needed
+      body: Container(
+          padding: const EdgeInsets.only(top: 50, left: 30, right: 30),
+          child: Column(
+            children: [
+              const Text(
+                "註冊",
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+              ),
+              const Text(
+                "請填寫以下使用者資料",
+                style: TextStyle(fontSize: 15),
+              ),
+              Form(
+                  key: _formKey,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                          autofocus: true,
+                          controller: _accController,
+                          decoration: const InputDecoration(
+                            labelText: "ID",
+                            prefixIcon: Icon(Icons.directions_run),
+                            hintText: "輸入想要的使用者帳號(限英文和數字)",
+                          ),
+                          validator: validateAcc),
+                      const SizedBox(
+                        height: 10,
                       ),
-                      validator: validateAcc),
-                  TextFormField(
-                    autofocus: true,
-                    //controller: _nameController,
-                    decoration: const InputDecoration(
-                      labelText: "暱稱",
-                      hintText: "輸入想要的暱稱(限中文、英文和數字)",
-                    ),
-                    validator: validateName,
-                    onSaved: (value) {
-                      _nameController = value.toString();
-                    },
-                    onChanged: (value) =>
-                        setState(() => _nameController = value.toString()),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  ElevatedButton(
-                      style: testButtonStyle,
-                      onPressed: () async {
-                        if ((_formKey.currentState as FormState).validate()) {
-                          final result = await _firebaseServices.addUser(
-                              acc: _accController.text,
-                              nickname: _nameController);
+                      TextFormField(
+                        autofocus: true,
+                        //controller: _nameController,
+                        decoration: const InputDecoration(
+                          labelText: "暱稱",
+                          prefixIcon: Icon(Icons.person_2_outlined),
+                          hintText: "輸入想要的暱稱(限中文、英文和數字)",
+                        ),
+                        validator: validateName,
+                        onSaved: (value) {
+                          _nameController = value.toString();
+                        },
+                        onChanged: (value) =>
+                            setState(() => _nameController = value.toString()),
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      ElevatedButton(
+                          style: testButtonStyle,
+                          onPressed: () async {
+                            if ((_formKey.currentState as FormState)
+                                .validate()) {
+                              final result = await _firebaseServices.addUser(
+                                  acc: _accController.text,
+                                  nickname: _nameController);
 
-                          if (result!.contains('Success') && context.mounted) {
-                            Navigator.of(context)
-                                .pushReplacement(MaterialPageRoute(
-                              builder: (context) => TabsPage(selectedIndex: 0),
-                            ));
-                          }
-                        }
-                      },
-                      child: const Text("提交"))
-                ],
-              ))),
+                              if (result!.contains('Success') &&
+                                  context.mounted) {
+                                Navigator.of(context)
+                                    .pushReplacement(MaterialPageRoute(
+                                  builder: (context) =>
+                                      TabsPage(selectedIndex: 0),
+                                ));
+                              }
+                            }
+                          },
+                          child: const Text("提交"))
+                    ],
+                  )),
+            ],
+          )),
     );
   }
 

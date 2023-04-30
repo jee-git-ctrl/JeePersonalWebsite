@@ -20,10 +20,13 @@ class TransactionItem extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              margin: const EdgeInsets.only(right: 10),
+              //margin: const EdgeInsets.only(right: 20),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Colors.blueGrey),
               child: SizedBox(
-                  width: 20,
-                  height: 20,
+                  width: 30,
+                  height: 30,
                   child: Icon(Icons.attach_money) //depend on transaction type
                   ),
             ),
@@ -32,12 +35,10 @@ class TransactionItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(right: 10),
+                  padding: const EdgeInsets.only(left: 20, right: 10),
                   child: Text(
                     transaction.date,
                     style: const TextStyle(fontSize: 14),
-
-                    //style
                   ),
                 ),
                 Text(
@@ -50,7 +51,7 @@ class TransactionItem extends StatelessWidget {
               children: [
                 Text(
                   // transaction amount
-                  "+ - \$ ${transaction.description}",
+                  "+ - \$ ${transaction.amount}",
                   style: const TextStyle(
                       fontSize: 15, fontWeight: FontWeight.bold),
                 ),

@@ -9,7 +9,7 @@ class MyPieChart extends StatefulWidget {
 }
 
 class _MyPieChart extends State<MyPieChart> {
-  late List<GDPData> _chartData;
+  late List<IncomeData> _chartData;
   late TooltipBehavior _tooltipBehavior;
 
   @override
@@ -30,10 +30,10 @@ class _MyPieChart extends State<MyPieChart> {
           Legend(isVisible: false, overflowMode: LegendItemOverflowMode.wrap),
       tooltipBehavior: _tooltipBehavior,
       series: <CircularSeries>[
-        PieSeries<GDPData, String>(
+        PieSeries<IncomeData, String>(
           dataSource: _chartData,
-          xValueMapper: (GDPData data, _) => data.continent,
-          yValueMapper: (GDPData data, _) => data.gdp,
+          xValueMapper: (IncomeData data, _) => data.type,
+          yValueMapper: (IncomeData data, _) => data.portion,
           dataLabelSettings: const DataLabelSettings(
               isVisible: true, labelPosition: ChartDataLabelPosition.inside),
           // enableTooltip: false,
@@ -42,21 +42,19 @@ class _MyPieChart extends State<MyPieChart> {
     )));
   }
 
-  List<GDPData> getChartData() {
-    final List<GDPData> chartData = [
-      GDPData('Oceania', 1600),
-      GDPData('Africa', 2490),
-      GDPData('S America', 2900),
-      GDPData('Europe', 23050),
-      GDPData('N America', 24880),
-      GDPData('Asia', 34390),
+  List<IncomeData> getChartData() {
+    final List<IncomeData> chartData = [
+      IncomeData('Oceania', 1600),
+      IncomeData('Africa', 2490),
+      IncomeData('S America', 2900),
+      IncomeData('Europe', 23050),
     ];
     return chartData;
   }
 }
 
-class GDPData {
-  GDPData(this.continent, this.gdp);
-  final String continent;
-  final int gdp;
+class IncomeData {
+  IncomeData(this.type, this.portion);
+  final String type;
+  final int portion;
 }

@@ -290,49 +290,28 @@ class _QApageState extends State<QApage> {
     return Scaffold(
         drawer: SideMenu(),
         appBar: AppBar(
-          centerTitle: true,
-          title: const Text('問答'),
-          leading: Builder(
-            builder: (BuildContext context) {
-              return Row(children: [
-                SizedBox(
-                    width: 20,
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.chevron_left,
-                        color: Colors.black,
-                        size: 35,
-                      ),
-                      onPressed: () => Navigator.of(context).pop(),
-                    )),
-                // SizedBox(
-                //   width: 20,
-                //   child: IconButton(
-                //     icon: const Icon(
-                //       Icons.chevron_left,
-                //       color: Colors.black,
-                //     ),
-                //     onPressed: () => Navigator.of(context).pop(),
-                //   ),
-                // )
-              ]);
-            },
-          ),
+          leading: IconButton(
+              onPressed: () => Navigator.of(context).pop(),
+              icon: const Icon(Icons.chevron_left)),
           //backgroundColor: Color(0xffd9d9d9),
           elevation: 0.0,
-          actions: <Widget>[
-            Row(
-              children: <Widget>[
-                IconButton(
-                    color: Colors.black,
-                    icon: const Icon(Icons.search),
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Search()));
-                      //Navigator.pushNamed(context, '/search');
-                    }),
-              ],
-            ),
+          title: Text(
+            mObj['title'],
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          centerTitle: true,
+          actions: [
+            Container(
+              padding: const EdgeInsets.only(right: 13),
+              child: IconButton(
+                  color: Colors.black,
+                  icon: const Icon(Icons.search),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Search()));
+                    //Navigator.pushNamed(context, '/search');
+                  }),
+            )
           ],
         ),
         body: Stack(children: [
