@@ -363,14 +363,14 @@ class _QApageState extends State<QApage> {
                                         child: Text(mObj['title'],
                                             style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: 32,
+                                                fontSize: 26,
                                                 color: Colors.black))),
                                     const Expanded(
                                       child: Padding(
                                         padding: EdgeInsets.only(right: 8.0),
                                         child: Align(
                                             alignment: Alignment.topRight,
-                                            child: Icon(Icons.info, size: 32)),
+                                            child: Icon(Icons.info, size: 26)),
                                       ),
                                     )
                                   ],
@@ -390,7 +390,7 @@ class _QApageState extends State<QApage> {
                                                 child: Text(
                                                   mObj["note"],
                                                   style: TextStyle(
-                                                    fontSize: 24,
+                                                    fontSize: 20,
                                                   ),
                                                 ),
                                               ),
@@ -413,7 +413,7 @@ class _QApageState extends State<QApage> {
                                           itemBuilder: (context, index) {
                                             return Padding(
                                               padding:
-                                                  EdgeInsets.only(right: 8),
+                                                  EdgeInsets.only(right: 6),
                                               child: OutlinedButton(
                                                   onPressed: () => print(
                                                       'direct'), //! direct to
@@ -428,6 +428,10 @@ class _QApageState extends State<QApage> {
                                                   ),
                                                   style:
                                                       OutlinedButton.styleFrom(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                                  horizontal: 8,
+                                                                  vertical: 5),
                                                           backgroundColor:
                                                               Color.fromARGB(
                                                                   255,
@@ -452,7 +456,7 @@ class _QApageState extends State<QApage> {
                               ],
                             ))),
                     Padding(
-                      padding: EdgeInsets.only(top: 8, bottom: 8),
+                      padding: EdgeInsets.only(top: 4, bottom: 2),
                       child: SizedBox(
                         // equivalence
                         width: 200,
@@ -596,7 +600,7 @@ class _ButtonRowState extends State<ButtonRow> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 10, bottom: 6),
+      padding: EdgeInsets.only(top: 10, bottom: 2),
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Row(
