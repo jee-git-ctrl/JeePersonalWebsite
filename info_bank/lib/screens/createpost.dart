@@ -84,35 +84,34 @@ class _CreatePostState extends State<CreatePost> {
               Expanded(
                 child: ListView(children: [
                   Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 10.0),
-                      child: Stack(
-                        children: [
-                          Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 10.0),
+                    child: Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 16),
+                        child: TextFormField(
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            focusedErrorBorder: InputBorder.none,
+                            border: InputBorder.none,
+                            hintText: '標題：',
                           ),
-                          TextFormField(
-                            obscureText: false,
-
-                            decoration: InputDecoration(
-                              focusedErrorBorder: InputBorder.none,
-                              border: InputBorder.none,
-                              hintText: '標題：',
-                            ),
-                            //onChanged: () {},
-                            validator: (String? value) {
-                              if (value == null || value.isEmpty) {
-                                return '請填入標題';
-                              }
-                              return null;
-                            },
-                          ),
-                        ],
-                      )),
+                          //onChanged: () {},
+                          validator: (String? value) {
+                            if (value == null || value.isEmpty) {
+                              return '請填入標題';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
                   const Divider(
                     height: 20,
                     thickness: 3,
@@ -139,28 +138,24 @@ class _CreatePostState extends State<CreatePost> {
                                     border: InputBorder.none,
                                   ),
                                 )),
+                            /*
                             Positioned(
                               bottom: 10,
                               left: 10,
                               child: Icon(Icons.image),
                             ),
                             Positioned(
-                                bottom: 10, left: 35, child: Icon(Icons.movie)),
+                                bottom: 10, left: 35, child: Icon(Icons.link),),
                             Positioned(
                               bottom: 10,
                               left: 60,
-                              child: Icon(Icons.link),
-                            ),
-                            Positioned(
-                              bottom: 10,
-                              left: 85,
                               child: Icon(Icons.format_bold),
                             ),
                             Positioned(
                               bottom: 10,
-                              left: 110,
+                              left: 85,
                               child: Icon(Icons.format_italic),
-                            ),
+                            ),*/
                           ],
                         ),
                       )),
@@ -382,28 +377,24 @@ class _CreatePostState extends State<CreatePost> {
                                   border: InputBorder.none,
                                 ),
                               )),
-                          const Positioned(
-                            bottom: 10,
-                            left: 10,
-                            child: Icon(Icons.image),
-                          ),
-                          const Positioned(
-                              bottom: 10, left: 35, child: Icon(Icons.movie)),
-                          const Positioned(
-                            bottom: 10,
-                            left: 60,
-                            child: Icon(Icons.link),
-                          ),
-                          const Positioned(
-                            bottom: 10,
-                            left: 85,
-                            child: Icon(Icons.format_bold),
-                          ),
-                          const Positioned(
-                            bottom: 10,
-                            left: 110,
-                            child: Icon(Icons.format_italic),
-                          ),
+                          /*
+                            Positioned(
+                              bottom: 10,
+                              left: 10,
+                              child: Icon(Icons.image),
+                            ),
+                            Positioned(
+                                bottom: 10, left: 35, child: Icon(Icons.link),),
+                            Positioned(
+                              bottom: 10,
+                              left: 60,
+                              child: Icon(Icons.format_bold),
+                            ),
+                            Positioned(
+                              bottom: 10,
+                              left: 85,
+                              child: Icon(Icons.format_italic),
+                            ),*/
                           Positioned(
                             bottom: 10,
                             right: 10,
@@ -492,24 +483,6 @@ class _CreatePostState extends State<CreatePost> {
   }
 }
 
-/*
-/// This is a fake service that mimics a backend service.
-/// It returns a list of suggestions after a 1 second delay.
-/// In a real app, this would be a service that makes a network request.
-class BackendService {
-  static Future<List<Map<String, String>>> getSuggestions(String query) async {
-    await Future<void>.delayed(Duration(seconds: 1));
-
-    return List.generate(3, (index) {
-      return {
-        'name': query + index.toString(),
-        'price': Random().nextInt(100).toString()
-      };
-    });
-  }
-}
-*/
-/// A fake service to filter cities based on a query.
 class TagsQuery {
   static final List<String> allTags = [
     "recommend",
