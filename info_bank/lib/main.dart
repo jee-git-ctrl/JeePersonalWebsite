@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'src/LoginPage.dart';
 import 'package:info_bank/screens/home.dart';
 import 'package:info_bank/tabs/tabspage.dart';
+import 'package:info_bank/src/constants/colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +23,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: "tAppName",
-        theme: ThemeData(primarySwatch: Colors.cyan),
+        theme: ThemeData(
+          primaryColor: tPrimaryColor,
+          scaffoldBackgroundColor: tPrimaryColor,
+        ),
         //theme
         home: Scaffold(
           body: StreamBuilder<User?>(
