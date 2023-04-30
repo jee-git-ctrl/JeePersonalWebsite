@@ -4,9 +4,8 @@ import 'package:info_bank/post/post.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:info_bank/screens/search.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 
 class QApage extends StatefulWidget {
   const QApage({super.key});
@@ -246,21 +245,88 @@ class _QApageState extends State<QApage> {
   List<bool> isUnlocked = [true, false, false, false];
   int AnsNum = 7;
   int selectedSec = 0;
-
-  bool isTextInputVisible = false;
-  final textController = TextEditingController();
-  final focusNode = FocusNode();
-  double keyboardHeight = 0.0;
-
+  final FocusNode _focusNode = FocusNode();
+  OverlayEntry? _overlayEntry;
+  final _formKey = GlobalKey<FormState>();
+  @override
   void initState() {
     super.initState();
-    KeyboardVisibilityController().onChange.listen((bool visible) {
-      setState(() {
-        keyboardHeight =
-            visible ? MediaQuery.of(context).viewInsets.bottom : 0.0;
-      });
+    _focusNode.addListener(() {
+      if (_focusNode.hasFocus) {
+        _showOverlay();
+      } else {
+        _hideOverlay();
+      }
     });
   }
+
+  String curSec() {
+    String txt = 'Free';
+    switch (selectedSec) {
+      case 1:
+        txt = '\$1';
+        break;
+      case 2:
+        txt = '\$2';
+        break;
+      case 3:
+        txt = '\$5';
+        break;
+    }
+    return txt;
+  }
+
+  void _showOverlay() {
+    _overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+        left: 0,
+        right: 0,
+        child: Text('hiefwef'),
+        // child: Container(
+        //   color: Colors.white,
+        //   child: Padding(
+        //     padding: EdgeInsets.all(8.0),
+        //     child: TextField(
+        //       autofocus: true,
+        //       decoration: InputDecoration(
+        //         border: OutlineInputBorder(),
+        //         labelText: 'Enter text',
+        //       ),
+        //     ),
+        //   ),
+        // ),
+      ),
+    );
+    Overlay.of(context).insert(_overlayEntry!);
+  }
+
+  void _hideOverlay() {
+    _overlayEntry?.remove();
+    _overlayEntry = null;
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    _hideOverlay();
+    super.dispose();
+  }
+
+  // bool isTextInputVisible = false;
+  // final textController = TextEditingController();
+  // final focusNode = FocusNode();
+  // double keyboardHeight = 0.0;
+
+  // void initState() {
+  //   super.initState();
+  //   KeyboardVisibilityController().onChange.listen((bool visible) {
+  //     setState(() {
+  //       keyboardHeight =
+  //           visible ? MediaQuery.of(context).viewInsets.bottom : 0.0;
+  //     });
+  //   });
+  // }
 
   void switchSec(index) {
     setState(() {
@@ -274,16 +340,101 @@ class _QApageState extends State<QApage> {
     });
   }
 
-  void showAns() {
-    setState(() {
-      isTextInputVisible = !isTextInputVisible;
-      if (isTextInputVisible) {
-        FocusScope.of(context).requestFocus(focusNode);
-      } else {
-        FocusScope.of(context).unfocus();
-      }
-    });
+  showAns() {
+    if (!isUnlocked[selectedSec]) {
+      return;
+    }
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Container(
+              width: 400,
+              child: Form(
+                key: _formKey,
+                child: Container(
+                  // decoration: BoxDecoration(
+                  //   color: Color.fromARGB(255, 194, 194, 194),
+                  //   borderRadius: BorderRadius.circular(10),
+                  // ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Row(
+                        children: [
+                          Padding(padding: EdgeInsets.all(3)),
+                          Icon(
+                            Icons.person,
+                            size: 24,
+                            color: Colors.red,
+                          ),
+                          Padding(padding: EdgeInsets.all(1)),
+                          Text('Alan',
+                              style: TextStyle(
+                                  fontSize: 16.0, fontWeight: FontWeight.bold)),
+                          Padding(padding: EdgeInsets.all(3)),
+                          Text('60%', style: TextStyle(fontSize: 16.0))
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: TextFormField(
+                          decoration: const InputDecoration(hintText: '請輸入回答'),
+                        ),
+                      ),
+                      Stack(
+                        children: [
+                          Positioned(
+                            bottom: 10,
+                            left: 10,
+                            child: Container(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color.fromARGB(255, 192, 190, 190),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(curSec(),
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ElevatedButton(
+                                child: Text("回答"),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+        });
   }
+  // void showAns() {
+  //   setState(() {
+  //     isTextInputVisible = !isTextInputVisible;
+  //     if (isTextInputVisible) {
+  //       FocusScope.of(context).requestFocus(focusNode);
+  //     } else {
+  //       FocusScope.of(context).unfocus();
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -484,7 +635,7 @@ class _QApageState extends State<QApage> {
             bottom: 20.0,
             right: 20.0,
             child: FloatingActionButton(
-              onPressed: () => print('Button pressed'),
+              onPressed: () => showAns(),
               heroTag: 'btn1',
               child: Icon(Icons.question_answer_outlined),
             ),
