@@ -22,38 +22,38 @@ class AnsLocked extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
       child: Container(
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 194, 194, 194),
+            color: const Color.fromARGB(255, 194, 194, 194),
             borderRadius: BorderRadius.circular(10),
           ),
           width: 120,
           child: Column(
             children: [
-              Padding(padding: EdgeInsets.all(5.0)),
+              const Padding(padding: EdgeInsets.all(5.0)),
               Row(
                 children: [
-                  Padding(padding: EdgeInsets.all(3)),
-                  Icon(
+                  const Padding(padding: EdgeInsets.all(3)),
+                  const Icon(
                     Icons.person,
                     size: 24,
                     color: Colors.red,
                   ),
-                  Padding(padding: EdgeInsets.all(1)),
+                  const Padding(padding: EdgeInsets.all(1)),
                   Text(lans[index]["userName"],
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 16.0, fontWeight: FontWeight.bold)),
-                  Padding(padding: EdgeInsets.all(3)),
+                  const Padding(padding: EdgeInsets.all(3)),
                   Text(lans[index]["reputation"],
-                      style: TextStyle(fontSize: 16.0))
+                      style: const TextStyle(fontSize: 16.0))
                 ],
               ),
-              Padding(padding: EdgeInsets.all(5.0)),
+              const Padding(padding: EdgeInsets.all(5.0)),
               Stack(
                 children: [
                   Align(
                       alignment: Alignment.center,
                       child: Text(
                         lans[index]["score"],
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'OpenSans'),
@@ -62,23 +62,23 @@ class AnsLocked extends StatelessWidget {
                       alignment: Alignment.centerRight,
                       child: Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.numbers,
                             color: Colors.blueGrey,
                           ),
                           Text(lans[index]['nFeedback'],
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 22,
                               ))
                         ],
                       )),
-                  Align(
+                  const Align(
                     alignment: Alignment.topRight,
                     child: Icon(Icons.lock, size: 40, color: Colors.grey),
                   )
                 ],
               ),
-              Padding(padding: EdgeInsets.all(5.0))
+              const Padding(padding: EdgeInsets.all(5.0))
             ],
           )),
     ));
@@ -126,129 +126,131 @@ class _AnsUnlockedState extends State<AnsUnlocked> {
     double baseWidth = 390;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     return GestureDetector(
-        // onTap: () {
-        //   Navigator.of(context).push(
-        //      MaterialPageRoute(builder: (context) => QApage()));
-        // },
-        child: Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-            child: Container(
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 194, 194, 194),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                // width: 50,
-                child: Row(children: [
-                  Flexible(
-                    child: Column(
+      // onTap: () {
+      //   Navigator.of(context).push(
+      //      MaterialPageRoute(builder: (context) => QApage()));
+      // },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 194, 194, 194),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          // width: 50,
+          child: Row(
+            children: [
+              Flexible(
+                child: Column(
+                  children: [
+                    // Padding(padding: EdgeInsets.only(right: 10.0)),
+                    Row(
                       children: [
-                        // Padding(padding: EdgeInsets.only(right: 10.0)),
-                        Row(
-                          children: [
-                            Padding(padding: EdgeInsets.all(3)),
-                            Icon(
-                              Icons.person,
-                              size: 24,
-                              color: Colors.red,
-                            ),
-                            Padding(padding: EdgeInsets.all(1)),
-                            Text(widget.lans[widget.index]["userName"],
-                                style: TextStyle(
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.bold)),
-                            Padding(padding: EdgeInsets.all(3)),
-                            Text(widget.lans[widget.index]["reputation"],
-                                style: TextStyle(fontSize: 16.0))
-                          ],
+                        const Padding(padding: EdgeInsets.all(3)),
+                        const Icon(
+                          Icons.person,
+                          size: 24,
+                          color: Colors.red,
                         ),
-                        // Padding(padding: EdgeInsets.all(1.0)),
-                        Stack(
-                          children: [
-                            Align(
-                                alignment: Alignment.topLeft,
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10.0, top: 3),
-                                  child: Text(
-                                    widget.lans[widget.index]
-                                        ["content"], // modified
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                )),
-                            // SizedBox(
-                            //   width: 400, // modify
-                            //   child: Row(
-                            //     mainAxisAlignment: MainAxisAlignment.end,
-                            //     children: [
-                            //       Icon(Icons.upcoming),
-                            //       Text(
-                            //         widget.lans[widget.index]['score'],
-                            //         style: TextStyle(
-                            //           fontSize: 30,
-                            //         ),
-                            //       )
-                            //     ],
-                            //   ),
-                            // ),
-                          ],
-                        ),
-                        Padding(padding: EdgeInsets.all(5.0))
+                        const Padding(padding: EdgeInsets.all(1)),
+                        Text(widget.lans[widget.index]["userName"],
+                            style: const TextStyle(
+                                fontSize: 16.0, fontWeight: FontWeight.bold)),
+                        const Padding(padding: EdgeInsets.all(3)),
+                        Text(widget.lans[widget.index]["reputation"],
+                            style: const TextStyle(fontSize: 16.0))
                       ],
                     ),
-                  ),
-                  SizedBox(
-                      width: 100,
+                    // Padding(padding: EdgeInsets.all(1.0)),
+                    Stack(
+                      children: [
+                        Align(
+                            alignment: Alignment.topLeft,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 10.0, top: 3),
+                              child: Text(
+                                widget.lans[widget.index]
+                                    ["content"], // modified
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                ),
+                              ),
+                            )),
+                        // SizedBox(
+                        //   width: 400, // modify
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.end,
+                        //     children: [
+                        //       Icon(Icons.upcoming),
+                        //       Text(
+                        //         widget.lans[widget.index]['score'],
+                        //         style: TextStyle(
+                        //           fontSize: 30,
+                        //         ),
+                        //       )
+                        //     ],
+                        //   ),
+                        // ),
+                      ],
+                    ),
+                    const Padding(padding: EdgeInsets.all(5.0))
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: 100,
+                child: Stack(
+                  children: [
+                    SizedBox(
+                      height: 100,
+                      width: 85,
+                      // decoration: BoxDecoration(
+                      //   borderRadius: BorderRadius.circular(10),
+                      //   color: Colors.grey[300],
+                      // ),
                       child: Stack(
                         children: [
-                          Container(
-                            height: 100,
-                            width: 85,
-                            // decoration: BoxDecoration(
-                            //   borderRadius: BorderRadius.circular(10),
-                            //   color: Colors.grey[300],
-                            // ),
-                            child: Stack(
-                              children: [
-                                Align(
-                                  alignment: Alignment.topCenter,
-                                  child: IconButton(
-                                    icon: Icon(Icons.star, color: fColors[0]),
-                                    iconSize: 50,
-                                    onPressed: () {
-                                      setFeedback(1);
-                                    },
-                                  ),
-                                ),
-                                Align(
-                                  alignment: Alignment.bottomLeft,
-                                  child: IconButton(
-                                    icon:
-                                        Icon(Icons.thumb_up, color: fColors[1]),
-                                    iconSize: 32,
-                                    onPressed: () {
-                                      setFeedback(2);
-                                    },
-                                  ),
-                                ),
-                                Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: IconButton(
-                                    icon: Icon(Icons.thumb_down,
-                                        color: fColors[2]),
-                                    iconSize: 32,
-                                    onPressed: () {
-                                      setFeedback(3);
-                                    },
-                                  ),
-                                ),
-                              ],
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: IconButton(
+                              icon: Icon(Icons.star, color: fColors[0]),
+                              iconSize: 50,
+                              onPressed: () {
+                                setFeedback(1);
+                              },
                             ),
-                          )
+                          ),
+                          Align(
+                            alignment: Alignment.bottomLeft,
+                            child: IconButton(
+                              icon: Icon(Icons.thumb_up, color: fColors[1]),
+                              iconSize: 32,
+                              onPressed: () {
+                                setFeedback(2);
+                              },
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomRight,
+                            child: IconButton(
+                              icon: Icon(Icons.thumb_down, color: fColors[2]),
+                              iconSize: 32,
+                              onPressed: () {
+                                setFeedback(3);
+                              },
+                            ),
+                          ),
                         ],
-                      )),
-                ]))));
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

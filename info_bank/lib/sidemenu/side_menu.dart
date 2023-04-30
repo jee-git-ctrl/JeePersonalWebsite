@@ -50,7 +50,7 @@ class _SideMenuState extends State<SideMenu> {
             ),
             ListTile(
               leading: const Icon(Icons.home),
-              title: Text('Home'),
+              title: const Text('主頁'),
               onTap: () => {
                 Navigator.pushReplacement(
                   context,
@@ -61,7 +61,7 @@ class _SideMenuState extends State<SideMenu> {
             ),
             ListTile(
               leading: const Icon(Icons.search),
-              title: Text('Search'),
+              title: const Text('搜尋'),
               onTap: () => {
                 Navigator.pushReplacement(
                   context,
@@ -72,7 +72,7 @@ class _SideMenuState extends State<SideMenu> {
             ),
             ListTile(
               leading: const Icon(Icons.person),
-              title: const Text('Profile'),
+              title: const Text('個人主頁'),
               onTap: () => {
                 Navigator.pushReplacement(
                   context,

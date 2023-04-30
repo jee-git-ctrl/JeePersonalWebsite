@@ -1,6 +1,10 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:info_bank/post/tag.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:info_bank/post/post.dart';
+import 'package:info_bank/post/list.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
@@ -9,7 +13,28 @@ class Search extends StatefulWidget {
   _SearchState createState() => _SearchState();
 }
 
-class _SearchState extends State<Search> {
+class _SearchState extends State<Search> with SingleTickerProviderStateMixin {
+  List<Post> _currentposts = allPost;
+
+  late TabController _tabController;
+  @override
+  void initState() {
+    _tabController = TabController(length: 3, vsync: this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  callback(changedPost) {
+    setState(() {
+      _currentposts = changedPost;
+    });
+  }
+
   String query = '';
 
   void updateQuery(String newQuery) {
@@ -24,6 +49,14 @@ class _SearchState extends State<Search> {
       return post.title.toLowerCase().contains(query.toLowerCase());
     }).toList();
 
+    final filteredTags = allTag.where((tag) {
+      return tag.name.toLowerCase().contains(query.toLowerCase());
+    }).toList();
+
+    final filteredLists = allList.where((list) {
+      return list.title.toLowerCase().contains(query.toLowerCase());
+    }).toList();
+
     return Scaffold(
       drawer: SideMenu(),
       appBar: AppBar(
@@ -31,7 +64,11 @@ class _SearchState extends State<Search> {
           builder: (BuildContext context) {
             return SizedBox(
               child: IconButton(
-                icon: const Icon(Icons.arrow_back),
+                icon: const Icon(
+                  Icons.chevron_left,
+                  color: Colors.black,
+                  size: 35,
+                ),
                 onPressed: () => Navigator.of(context).pop(),
               ),
             );
@@ -46,11 +83,70 @@ class _SearchState extends State<Search> {
           ),
         ),
       ),
-      body: ListView.builder(
-        itemCount: filteredPosts.length,
-        itemBuilder: (BuildContext context, int index) {
-          return MyPost(currentpost: filteredPosts[index]);
-        },
+      body: SafeArea(
+        minimum: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            TabBar(
+              indicatorColor:
+                  Colors.black, // Set the color of the tab indicator
+              labelStyle: GoogleFonts.openSans(
+                fontSize: 18,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ), //For Selected tab
+              unselectedLabelStyle: GoogleFonts.openSans(
+                fontSize: 18,
+                color: Colors.grey,
+              ), //For Un-selected Tabs
+
+              tabs: const [
+                Tab(
+                  child: Text(
+                    "問答",
+                  ),
+                ),
+                Tab(
+                  child: Text(
+                    "標籤 ",
+                  ),
+                ),
+                Tab(
+                  child: Text(
+                    "列表",
+                  ),
+                ),
+              ],
+              controller: _tabController,
+              indicatorSize: TabBarIndicatorSize.tab,
+            ),
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: filteredPosts.length,
+                      itemBuilder: (context, index) {
+                        return MyPost(currentpost: filteredPosts[index]);
+                      }),
+                  ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: filteredTags.length,
+                      itemBuilder: (context, index) {
+                        return MyTag(currenttag: filteredTags[index]);
+                      }),
+                  ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: filteredLists.length,
+                      itemBuilder: (context, index) {
+                        return MyList(currentlist: filteredLists[index]);
+                      }),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

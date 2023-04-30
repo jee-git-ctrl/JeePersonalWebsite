@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:info_bank/src/constants/colors.dart';
 import 'package:info_bank/src/constants/text_strings.dart';
 import 'package:info_bank/src/utils/theme/widget_themes/text_theme.dart';
@@ -155,6 +156,7 @@ class notificationSec extends StatelessWidget {
       child: Column(
         children: [
           ListView.builder(
+              padding: EdgeInsets.only(bottom: 50.0),
               shrinkWrap: true,
               itemCount: NotificationNum,
               itemBuilder: (context, index) {
@@ -233,7 +235,7 @@ class _ButtonRowState extends State<ButtonRow> {
                         children: [
                           Text(
                             txt,
-                            style: TextStyle(
+                            style: GoogleFonts.openSans(
                               fontSize: 20,
                               color: _selectedIndex == index
                                   ? Colors.white
