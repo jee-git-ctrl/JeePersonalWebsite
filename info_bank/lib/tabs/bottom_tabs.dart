@@ -5,6 +5,8 @@ import 'package:info_bank/screens/profile.dart';
 import 'package:info_bank/screens/discover.dart';
 import 'package:info_bank/screens/createpost.dart';
 
+import '../screens/profile_2.dart';
+
 class TabNavigationItem {
   final Widget page;
   final Widget title;
@@ -35,7 +37,7 @@ class TabNavigationItem {
           title: const Text("通知"),
         ),
         TabNavigationItem(
-          page: Profile(),
+          page: Profile2(),
           icon: const Icon(Icons.person),
           title: const Text("個人"),
         ),

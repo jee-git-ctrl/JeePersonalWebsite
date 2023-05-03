@@ -62,7 +62,7 @@ class _Wallet extends State<Wallet> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         GestureDetector(
-                          child: const Row(
+                          child: Row(
                             children: [
                               Text(
                                 "更多分析",

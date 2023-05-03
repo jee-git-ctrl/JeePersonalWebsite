@@ -102,24 +102,28 @@ class _SideMenuState extends State<SideMenu> {
               },
             ),
             const SizedBox(
-              height: 10,
+              height: 125,
             ),
             SizedBox(
               width: 120,
-              child: Column(children: [
-                ElevatedButton(
-                    style: testButtonStyle,
-                    onPressed: () {
-                      _googleServices.signOut(context);
-                    },
-                    child: const Text('Sign out')),
-                ElevatedButton(
-                    onPressed: () {
-                      showReportDialog(context);
-                    },
-                    child: const Text('Debug Report')),
-              ]),
-            )
+              child: Column(
+                children: [
+                  ElevatedButton(
+                      onPressed: () {
+                        showReportDialog(context);
+                      },
+                      child: const Text('Debug Report')),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.logout_outlined),
+              title: const Text('登出'),
+              onTap: () {
+                _googleServices.signOut(context);
+              },
+              textColor: Colors.red,
+            ),
           ],
         ),
       ),

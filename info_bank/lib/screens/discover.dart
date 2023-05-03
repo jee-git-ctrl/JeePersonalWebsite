@@ -107,7 +107,7 @@ class _DiscoverState extends State<Discover>
                   )
                 ]),
               ),
-              Divider(
+              const Divider(
                 height: 20,
                 thickness: 3,
                 indent: 10,

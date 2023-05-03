@@ -111,7 +111,7 @@ class _MyListState extends State<MyList> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 10),
-                      child: SizedBox(
+                      child: Container(
                         child: Text(
                           "${widget.currentlist.updatetime}更新",
                           style: GoogleFonts.openSans(),

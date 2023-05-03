@@ -204,13 +204,13 @@ class _ButtonRowState extends State<ButtonRow> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: List.generate(3, (index) {
-            String txt = 'QA Post';
+            String txt = '貼文';
             switch (index) {
               case 1:
-                txt = 'Answer';
+                txt = '答案';
                 break;
               case 2:
-                txt = 'System';
+                txt = '系統';
                 break;
             }
             _NotificationState notificationState = _NotificationState();
@@ -231,19 +231,18 @@ class _ButtonRowState extends State<ButtonRow> {
                     ),
                     child: Align(
                       alignment: Alignment.center,
-                      child: Column(
-                        children: [
-                          Text(
-                            txt,
-                            style: GoogleFonts.openSans(
-                              fontSize: 20,
-                              color: _selectedIndex == index
-                                  ? Colors.white
-                                  : Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 5, bottom: 5),
+                        child: Text(
+                          txt,
+                          style: GoogleFonts.openSans(
+                            fontSize: 20,
+                            color: _selectedIndex == index
+                                ? Colors.white
+                                : Colors.black,
+                            fontWeight: FontWeight.bold,
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ),
