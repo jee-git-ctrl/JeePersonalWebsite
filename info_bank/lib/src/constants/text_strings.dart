@@ -20,9 +20,9 @@ const String tNotificationAnswer = "回答";
 const String tNotificationSystem = "系統";
 
 // -- User Screen Text
-const String tUserProfile = "User Profile";
-const String tUserProfileName = "User Name";
-const String tUserProfileHeading = "Introducing yourself\nMy name is BlaBlaBla";
+const String tUserProfile = "個人頁面";
+const String tUserProfileName = "Nick Name";
+const String tUserProfileHeading = "Biography";
 const String tUserHeading1 = "標志解答次數：";
 const String tUserHeading2 = "用戶歷史最佳回答得分：";
 const String tUserHeading3 = "總共最佳次數：";

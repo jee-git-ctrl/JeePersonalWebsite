@@ -50,7 +50,7 @@ class _SideMenuState extends State<SideMenu> {
             ),
             ListTile(
               leading: const Icon(Icons.home),
-              title: Text('Home'),
+              title: const Text('主頁'),
               onTap: () => {
                 Navigator.pushReplacement(
                   context,
@@ -61,7 +61,7 @@ class _SideMenuState extends State<SideMenu> {
             ),
             ListTile(
               leading: const Icon(Icons.search),
-              title: Text('Search'),
+              title: const Text('搜尋'),
               onTap: () => {
                 Navigator.pushReplacement(
                   context,
@@ -72,7 +72,7 @@ class _SideMenuState extends State<SideMenu> {
             ),
             ListTile(
               leading: const Icon(Icons.person),
-              title: const Text('Profile'),
+              title: const Text('個人主頁'),
               onTap: () => {
                 Navigator.pushReplacement(
                   context,
@@ -102,24 +102,28 @@ class _SideMenuState extends State<SideMenu> {
               },
             ),
             const SizedBox(
-              height: 10,
+              height: 125,
             ),
             SizedBox(
               width: 120,
-              child: Column(children: [
-                ElevatedButton(
-                    style: testButtonStyle,
-                    onPressed: () {
-                      _googleServices.signOut(context);
-                    },
-                    child: const Text('Sign out')),
-                ElevatedButton(
-                    onPressed: () {
-                      showReportDialog(context);
-                    },
-                    child: const Text('Debug Report')),
-              ]),
-            )
+              child: Column(
+                children: [
+                  ElevatedButton(
+                      onPressed: () {
+                        showReportDialog(context);
+                      },
+                      child: const Text('Debug Report')),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.logout_outlined),
+              title: const Text('登出'),
+              onTap: () {
+                _googleServices.signOut(context);
+              },
+              textColor: Colors.red,
+            ),
           ],
         ),
       ),

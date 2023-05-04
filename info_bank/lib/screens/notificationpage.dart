@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:info_bank/src/constants/colors.dart';
 import 'package:info_bank/src/constants/text_strings.dart';
 import 'package:info_bank/src/utils/theme/widget_themes/text_theme.dart';
@@ -155,6 +156,7 @@ class notificationSec extends StatelessWidget {
       child: Column(
         children: [
           ListView.builder(
+              padding: EdgeInsets.only(bottom: 50.0),
               shrinkWrap: true,
               itemCount: NotificationNum,
               itemBuilder: (context, index) {
@@ -202,13 +204,13 @@ class _ButtonRowState extends State<ButtonRow> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: List.generate(3, (index) {
-            String txt = 'QA Post';
+            String txt = '貼文';
             switch (index) {
               case 1:
-                txt = 'Answer';
+                txt = '答案';
                 break;
               case 2:
-                txt = 'System';
+                txt = '系統';
                 break;
             }
             _NotificationState notificationState = _NotificationState();
@@ -229,19 +231,18 @@ class _ButtonRowState extends State<ButtonRow> {
                     ),
                     child: Align(
                       alignment: Alignment.center,
-                      child: Column(
-                        children: [
-                          Text(
-                            txt,
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: _selectedIndex == index
-                                  ? Colors.white
-                                  : Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 5, bottom: 5),
+                        child: Text(
+                          txt,
+                          style: GoogleFonts.openSans(
+                            fontSize: 20,
+                            color: _selectedIndex == index
+                                ? Colors.white
+                                : Colors.black,
+                            fontWeight: FontWeight.bold,
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ),

@@ -107,7 +107,7 @@ class _DiscoverState extends State<Discover>
                   )
                 ]),
               ),
-              Divider(
+              const Divider(
                 height: 20,
                 thickness: 3,
                 indent: 10,
@@ -182,7 +182,6 @@ class _DiscoverState extends State<Discover>
                   ),
                 ],
               ),*/
-
               TabBar(
                 indicatorColor:
                     Colors.black, // Set the color of the tab indicator
@@ -196,7 +195,7 @@ class _DiscoverState extends State<Discover>
                   color: Colors.grey,
                 ), //For Un-selected Tabs
 
-                tabs: [
+                tabs: const [
                   Tab(
                     child: Text(
                       "熱門問答",
