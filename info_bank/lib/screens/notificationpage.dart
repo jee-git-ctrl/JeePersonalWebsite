@@ -225,7 +225,7 @@ class _ButtonRowState extends State<ButtonRow> {
                     // padding: EdgeInsets.symmetric(vertical: 20, horizontal: 24),
                     decoration: BoxDecoration(
                       color: _selectedIndex == index
-                          ? tAccentColor
+                          ? tSecondColor
                           : tPrimaryColor,
                       borderRadius: BorderRadius.circular(10),
                     ),

@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         title: "tAppName",
         theme: ThemeData(
           primaryColor: tPrimaryColor,
-          scaffoldBackgroundColor: tPrimaryColor,
+          scaffoldBackgroundColor: tThirdColor,
         ),
         //theme
         home: Scaffold(

@@ -110,7 +110,7 @@ class MyPost extends StatelessWidget {
                                   padding: const EdgeInsets.only(
                                       bottom: 8, left: 8, right: 8),
                                   child: Chip(
-                                    backgroundColor: tPrimaryColor,
+                                    backgroundColor: tSevenColor,
                                     materialTapTargetSize:
                                         MaterialTapTargetSize.shrinkWrap,
                                     label: Text(

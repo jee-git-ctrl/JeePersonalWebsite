@@ -152,10 +152,7 @@ class _HomeFilter extends State<HomeFilter> {
             padding: const EdgeInsets.only(left: 14, right: 14),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(14),
-              border: Border.all(
-                color: tAccentColor,
-              ),
-              color: tAccentColor,
+              color: tSevenColor,
             ),
             elevation: 0,
           ),
@@ -173,7 +170,7 @@ class _HomeFilter extends State<HomeFilter> {
               padding: null,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
-                color: tAccentColor,
+                color: tSecondColor,
               ),
               elevation: 8,
               offset: const Offset(0, 0),

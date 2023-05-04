@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+
+import 'package:info_bank/src/constants/colors.dart';
 // import 'colors.dart';
 
 final ButtonStyle testButtonStyle = ElevatedButton.styleFrom(
-  backgroundColor: Colors.deepPurple[100],
-  side: const BorderSide(color: Color.fromARGB(255, 70, 48, 108)),
+  backgroundColor: tSevenColor,
+  //side: const BorderSide(color: tSixthdColor),
   shape: const StadiumBorder(),
   minimumSize: const Size(50, 50),
   elevation: 0.0,
