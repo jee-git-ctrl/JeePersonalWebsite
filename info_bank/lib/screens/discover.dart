@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:info_bank/post/post.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:info_bank/src/constants/colors.dart';
 
 class Discover extends StatefulWidget {
   const Discover({Key? key}) : super(key: key);
@@ -67,7 +68,10 @@ class _DiscoverState extends State<Discover>
           ),
           //backgroundColor: Color(0xffd9d9d9),
           elevation: 0.0,
-          title: Text("探索"),
+          title: Text("探索",
+              style: TextStyle(
+                color: Colors.black,
+              )),
           centerTitle: true,
         ),
         body: SafeArea(
@@ -187,29 +191,30 @@ class _DiscoverState extends State<Discover>
                     Colors.black, // Set the color of the tab indicator
                 labelStyle: GoogleFonts.openSans(
                   fontSize: 18,
-                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ), //For Selected tab
                 unselectedLabelStyle: GoogleFonts.openSans(
                   fontSize: 18,
-                  color: Colors.grey,
                 ), //For Un-selected Tabs
 
-                tabs: const [
+                tabs: [
                   Tab(
-                    child: Text(
-                      "熱門問答",
-                    ),
+                    child: Text("熱門問答",
+                        style: TextStyle(
+                          color: Colors.black,
+                        )),
                   ),
                   Tab(
-                    child: Text(
-                      "需要答案",
-                    ),
+                    child: Text("需要答案",
+                        style: TextStyle(
+                          color: Colors.black,
+                        )),
                   ),
                   Tab(
-                    child: Text(
-                      "懸賞問答",
-                    ),
+                    child: Text("懸賞問答",
+                        style: TextStyle(
+                          color: Colors.black,
+                        )),
                   ),
                 ],
                 controller: _tabController,
@@ -269,7 +274,7 @@ List<Widget> getCards() {
         borderRadius: BorderRadius.circular(30.0),
       ),
       elevation: 0,
-      color: Colors.grey,
+      color: tFifthColor,
       margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -287,7 +292,7 @@ List<Widget> getCards() {
         borderRadius: BorderRadius.circular(30.0),
       ),
       elevation: 0,
-      color: Colors.grey,
+      color: tFifthColor,
       margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),

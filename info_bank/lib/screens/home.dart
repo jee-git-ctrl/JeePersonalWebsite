@@ -35,7 +35,6 @@ class _HomeState extends State<Home> {
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          backgroundColor: tAppBarColor,
           titleSpacing: 0.0,
           leading: IconButton(
             icon: const Icon(
@@ -54,7 +53,7 @@ class _HomeState extends State<Home> {
                   child: Text(
                     'InfoBank',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.courgette(),
+                    style: GoogleFonts.courgette(color: Colors.black),
                   ),
                 ),
               ),
@@ -71,7 +70,10 @@ class _HomeState extends State<Home> {
               padding: const EdgeInsets.only(right: 13),
               child: IconButton(
                   color: tThirdColor,
-                  icon: const Icon(Icons.search),
+                  icon: const Icon(
+                    Icons.search,
+                    color: Colors.black,
+                  ),
                   onPressed: () {
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => Search()));
@@ -152,7 +154,7 @@ class _HomeFilter extends State<HomeFilter> {
             padding: const EdgeInsets.only(left: 14, right: 14),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(14),
-              color: tSevenColor,
+              color: tFifthColor,
             ),
             elevation: 0,
           ),
@@ -170,7 +172,7 @@ class _HomeFilter extends State<HomeFilter> {
               padding: null,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
-                color: tSecondColor,
+                color: tFifthColor,
               ),
               elevation: 8,
               offset: const Offset(0, 0),

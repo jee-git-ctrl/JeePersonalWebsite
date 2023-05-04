@@ -4,7 +4,7 @@ import 'package:info_bank/src/constants/colors.dart';
 // import 'colors.dart';
 
 final ButtonStyle testButtonStyle = ElevatedButton.styleFrom(
-  backgroundColor: tSevenColor,
+  backgroundColor: tFifthColor,
   //side: const BorderSide(color: tSixthdColor),
   shape: const StadiumBorder(),
   minimumSize: const Size(50, 50),

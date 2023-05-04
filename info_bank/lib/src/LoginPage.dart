@@ -52,7 +52,10 @@ class _LoginPageState extends State<LoginPage> {
                         const SizedBox(
                           width: 20,
                         ),
-                        const Text("使用 Google 登入")
+                        const Text("使用 Google 登入",
+                            style: TextStyle(
+                              color: Colors.black,
+                            ))
                       ],
                     ),
                     onPressed: () {

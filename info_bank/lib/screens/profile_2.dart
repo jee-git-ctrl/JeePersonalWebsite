@@ -59,7 +59,7 @@ class _ProfileState2 extends State<Profile2>
         elevation: 0.0,
         title: Text(
           tUserProfile,
-          style: GoogleFonts.openSans(),
+          style: GoogleFonts.openSans(color: Colors.black),
         ),
         centerTitle: true,
         actions: [
@@ -177,11 +177,13 @@ class _ProfileState2 extends State<Profile2>
                   Tab(
                     child: Text(
                       "個人評價",
+                      style: TextStyle(color: Colors.black),
                     ),
                   ),
                   Tab(
                     child: Text(
                       "個人列表",
+                      style: TextStyle(color: Colors.black),
                     ),
                   ),
                 ],

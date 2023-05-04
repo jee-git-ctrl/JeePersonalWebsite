@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'src/LoginPage.dart';
-import 'package:info_bank/screens/home.dart';
 import 'package:info_bank/tabs/tabspage.dart';
 import 'package:info_bank/src/constants/colors.dart';
 
@@ -24,9 +23,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: "tAppName",
         theme: ThemeData(
-          primaryColor: tPrimaryColor,
-          scaffoldBackgroundColor: tThirdColor,
-        ),
+            //primaryColor: tPrimaryColor,
+            scaffoldBackgroundColor: tForthColor,
+            appBarTheme: AppBarTheme(backgroundColor: tSecondColor)),
         //theme
         home: Scaffold(
           body: StreamBuilder<User?>(

@@ -52,7 +52,10 @@ class _CreatePostState extends State<CreatePost> {
         drawer: SideMenu(),
         appBar: AppBar(
           centerTitle: true,
-          title: const Text('新貼文'),
+          title: const Text(
+            '新貼文',
+            style: TextStyle(color: Colors.black),
+          ),
           leading: Builder(
             builder: (BuildContext context) {
               return SizedBox(
@@ -96,7 +99,7 @@ class _CreatePostState extends State<CreatePost> {
                     child: Container(
                       height: 50,
                       decoration: BoxDecoration(
-                        color: Colors.grey,
+                        color: tThirdColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Padding(
@@ -108,7 +111,7 @@ class _CreatePostState extends State<CreatePost> {
                             focusedErrorBorder: InputBorder.none,
                             border: InputBorder.none,
                             hintText: '標題：',
-                            contentPadding: EdgeInsets.all(15),
+                            //contentPadding: EdgeInsets.all(15),
                             suffixText:
                                 '${textLength.toString()}/${maxLength.toString()}',
                             counterText: "",
@@ -133,7 +136,7 @@ class _CreatePostState extends State<CreatePost> {
                           vertical: 10.0, horizontal: 10.0),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.grey,
+                          color: tThirdColor,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Padding(
@@ -153,7 +156,7 @@ class _CreatePostState extends State<CreatePost> {
                         vertical: 10.0, horizontal: 10.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey,
+                        color: tThirdColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Column(
@@ -231,17 +234,16 @@ class _CreatePostState extends State<CreatePost> {
                                     style: ButtonStyle(
                                         foregroundColor:
                                             MaterialStateProperty.all<Color>(
-                                                tDarkColor),
+                                                tFifthColor),
                                         backgroundColor:
                                             MaterialStateProperty.all<Color>(
-                                                tAppBarColor),
+                                                tFifthColor),
                                         shape: MaterialStateProperty.all<
                                                 RoundedRectangleBorder>(
                                             RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(18.0),
-                                                side: BorderSide(
-                                                    color: tAppBarColor)))),
+                                          borderRadius:
+                                              BorderRadius.circular(18.0),
+                                        ))),
                                   )
                                 ],
                               ),
@@ -364,7 +366,7 @@ class _CreatePostState extends State<CreatePost> {
                         vertical: 10.0, horizontal: 10.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey,
+                        color: tThirdColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Column(
@@ -498,17 +500,21 @@ class _Price extends State<Price> {
             selectedValue = value as String;
           },
           buttonStyleData: ButtonStyleData(
-            height: 50,
+            height: 30,
             width: 50,
             padding: const EdgeInsets.only(left: 8, right: 8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(14),
+              color: tFifthColor,
+            ),
           ),
           iconStyleData: const IconStyleData(
             icon: Icon(
               Icons.arrow_forward_ios_outlined,
             ),
             iconSize: 14,
-            iconEnabledColor: Colors.yellow,
-            iconDisabledColor: Colors.grey,
+            iconEnabledColor: Colors.black,
+            iconDisabledColor: Colors.black,
           ),
           dropdownStyleData: DropdownStyleData(
               maxHeight: 200,
@@ -516,7 +522,7 @@ class _Price extends State<Price> {
               padding: null,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
-                color: Color(0xff272727),
+                color: tFifthColor,
               ),
               elevation: 8,
               offset: const Offset(0, 0),

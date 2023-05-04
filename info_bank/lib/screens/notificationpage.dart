@@ -95,7 +95,10 @@ class _NotificationState extends State<NotificationPage> {
         ),
         //backgroundColor: Color(0xffd9d9d9),
         elevation: 0.0,
-        title: const Text('通知'),
+        title: const Text(
+          '通知',
+          style: TextStyle(color: Colors.black),
+        ),
         centerTitle: true,
       ),
       body: Stack(
