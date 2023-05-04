@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:info_bank/screens/QApage.dart';
+import 'package:info_bank/src/constants/colors.dart';
 
 class Post {
   final String title;
@@ -55,7 +55,7 @@ class MyPost extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.grey,
+              color: tSecondColor,
               borderRadius: BorderRadius.circular(10),
             ),
             height: 110,
@@ -73,6 +73,7 @@ class MyPost extends StatelessWidget {
                         style: GoogleFonts.openSans(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
+                          color: tDarkColor,
                         ),
                       ),
                     ),
@@ -109,11 +110,15 @@ class MyPost extends StatelessWidget {
                                   padding: const EdgeInsets.only(
                                       bottom: 8, left: 8, right: 8),
                                   child: Chip(
+                                    backgroundColor: tPrimaryColor,
                                     materialTapTargetSize:
                                         MaterialTapTargetSize.shrinkWrap,
                                     label: Text(
                                       visibleTags[index],
-                                      style: GoogleFonts.openSans(fontSize: 12),
+                                      style: GoogleFonts.openSans(
+                                        fontSize: 12,
+                                        color: tDarkColor,
+                                      ),
                                     ),
                                   ),
                                 );

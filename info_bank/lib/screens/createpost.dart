@@ -160,38 +160,73 @@ class _CreatePostState extends State<CreatePost> {
                           Container(
                             child: Padding(
                               padding: const EdgeInsets.only(left: 8.0),
-                              child: TypeAheadFormField(
-                                textFieldConfiguration: TextFieldConfiguration(
-                                  decoration: InputDecoration(
-                                      hintText: '標籤（選填）',
-                                      border: InputBorder.none),
-                                  controller: this._typeAheadController,
-                                ),
-                                suggestionsCallback: (pattern) {
-                                  return TagsQuery.getSuggestions(pattern);
-                                },
-                                itemBuilder: (context, String suggestion) {
-                                  return ListTile(
-                                    title: Text(suggestion),
-                                  );
-                                },
-                                transitionBuilder:
-                                    (context, suggestionsBox, controller) {
-                                  return suggestionsBox;
-                                },
-                                onSuggestionSelected: (String suggestion) {
-                                  this._typeAheadController.text = "";
-                                  if (!current_tags.contains(suggestion)) {
-                                    current_tags.add(suggestion);
-                                  }
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 250,
+                                    child: TypeAheadFormField(
+                                      textFieldConfiguration:
+                                          TextFieldConfiguration(
+                                        decoration: InputDecoration(
+                                            hintText: '標籤（選填）',
+                                            border: InputBorder.none),
+                                        controller: this._typeAheadController,
+                                      ),
+                                      suggestionsCallback: (pattern) {
+                                        return TagsQuery.getSuggestions(
+                                            pattern);
+                                      },
+                                      itemBuilder:
+                                          (context, String suggestion) {
+                                        return ListTile(
+                                          title: Text(suggestion),
+                                        );
+                                      },
+                                      transitionBuilder: (context,
+                                          suggestionsBox, controller) {
+                                        return suggestionsBox;
+                                      },
+                                      onSuggestionSelected:
+                                          (String suggestion) {
+                                        this._typeAheadController.text = "";
+                                        if (!current_tags
+                                            .contains(suggestion)) {
+                                          current_tags.add(suggestion);
+                                        }
 
-                                  callback(current_tags, _currentprice,
-                                      dropdownbuttonWidth);
-                                  print(suggestion);
-                                  print(current_tags);
-                                },
-                                suggestionsBoxController:
-                                    suggestionBoxController,
+                                        callback(current_tags, _currentprice,
+                                            dropdownbuttonWidth);
+                                        print(suggestion);
+                                        print(current_tags);
+                                      },
+                                      validator: (value) {
+                                        if (value!.isEmpty) {
+                                          return 'Please select a city';
+                                        }
+                                      },
+                                      onSaved: (suggestion) {
+                                        if (!current_tags.contains(
+                                            _typeAheadController.text)) {
+                                          current_tags
+                                              .add(_typeAheadController.text);
+                                        }
+                                        callback(current_tags, _currentprice,
+                                            dropdownbuttonWidth);
+                                        this._typeAheadController.text = "";
+                                      },
+                                      suggestionsBoxController:
+                                          suggestionBoxController,
+                                    ),
+                                  ),
+                                  TextButton(
+                                    child: Text('Submit'),
+                                    onPressed: () {
+                                      if (_formKey.currentState!.validate()) {
+                                        _formKey.currentState!.save();
+                                      }
+                                    },
+                                  )
+                                ],
                               ),
                             ),
                           ),

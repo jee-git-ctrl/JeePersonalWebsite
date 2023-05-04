@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:info_bank/post/post.dart';
 import 'package:info_bank/screens/search.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
+import 'package:info_bank/src/constants/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatefulWidget {
@@ -34,11 +35,12 @@ class _HomeState extends State<Home> {
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
+          backgroundColor: tAppBarColor,
           titleSpacing: 0.0,
           leading: IconButton(
             icon: const Icon(
               Icons.list,
-              color: Colors.black,
+              color: tDarkColor,
             ),
             onPressed: () => _scaffoldKey.currentState?.openDrawer(),
           ),
@@ -68,7 +70,7 @@ class _HomeState extends State<Home> {
             Container(
               padding: const EdgeInsets.only(right: 13),
               child: IconButton(
-                  color: Colors.black,
+                  color: tThirdColor,
                   icon: const Icon(Icons.search),
                   onPressed: () {
                     Navigator.of(context).push(
@@ -123,7 +125,6 @@ class _HomeFilter extends State<HomeFilter> {
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
                       ),
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -152,9 +153,9 @@ class _HomeFilter extends State<HomeFilter> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(14),
               border: Border.all(
-                color: Colors.black26,
+                color: tAccentColor,
               ),
-              color: Color.fromARGB(255, 104, 131, 136),
+              color: tAccentColor,
             ),
             elevation: 0,
           ),
@@ -163,8 +164,8 @@ class _HomeFilter extends State<HomeFilter> {
               Icons.arrow_forward_ios_outlined,
             ),
             iconSize: 14,
-            iconEnabledColor: Colors.yellow,
-            iconDisabledColor: Colors.grey,
+            iconEnabledColor: tDarkColor,
+            iconDisabledColor: tDarkColor,
           ),
           dropdownStyleData: DropdownStyleData(
               maxHeight: 200,
@@ -172,7 +173,7 @@ class _HomeFilter extends State<HomeFilter> {
               padding: null,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
-                color: Color(0xff272727),
+                color: tAccentColor,
               ),
               elevation: 8,
               offset: const Offset(0, 0),
