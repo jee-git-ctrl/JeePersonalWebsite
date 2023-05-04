@@ -251,6 +251,7 @@ class _CreatePostState extends State<CreatePost> {
                             child: IntrinsicHeight(
                               child: ConstrainedBox(
                                 constraints: BoxConstraints(
+                                  minWidth: 150,
                                   maxHeight: 150,
                                 ),
                                 child: SingleChildScrollView(
