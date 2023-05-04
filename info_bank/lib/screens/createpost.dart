@@ -3,6 +3,7 @@ import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:info_bank/src/constants/colors.dart';
 
 class CreatePost extends StatefulWidget {
   @override
@@ -162,8 +163,7 @@ class _CreatePostState extends State<CreatePost> {
                               padding: const EdgeInsets.only(left: 8.0),
                               child: Row(
                                 children: [
-                                  Container(
-                                    width: 250,
+                                  Expanded(
                                     child: TypeAheadFormField(
                                       textFieldConfiguration:
                                           TextFieldConfiguration(
@@ -199,16 +199,15 @@ class _CreatePostState extends State<CreatePost> {
                                         print(suggestion);
                                         print(current_tags);
                                       },
-                                      validator: (value) {
-                                        if (value!.isEmpty) {
-                                          return 'Please select a city';
-                                        }
-                                      },
                                       onSaved: (suggestion) {
                                         if (!current_tags.contains(
-                                            _typeAheadController.text)) {
+                                                _typeAheadController.text) &&
+                                            suggestion!.isNotEmpty &&
+                                            suggestion.length < 20) {
                                           current_tags
                                               .add(_typeAheadController.text);
+                                          print("suggestion = " + suggestion);
+                                          print(_typeAheadController.text);
                                         }
                                         callback(current_tags, _currentprice,
                                             dropdownbuttonWidth);
@@ -219,12 +218,30 @@ class _CreatePostState extends State<CreatePost> {
                                     ),
                                   ),
                                   TextButton(
-                                    child: Text('Submit'),
+                                    child: Text(
+                                      '加入',
+                                      style: GoogleFonts.openSans(
+                                        fontSize: 12,
+                                        color: tDarkColor,
+                                      ),
+                                    ),
                                     onPressed: () {
-                                      if (_formKey.currentState!.validate()) {
-                                        _formKey.currentState!.save();
-                                      }
+                                      _formKey.currentState!.save();
                                     },
+                                    style: ButtonStyle(
+                                        foregroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                tDarkColor),
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                tAppBarColor),
+                                        shape: MaterialStateProperty.all<
+                                                RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(18.0),
+                                                side: BorderSide(
+                                                    color: tAppBarColor)))),
                                   )
                                 ],
                               ),
