@@ -8,7 +8,11 @@ class AnsLocked extends StatelessWidget {
   final int index;
   final int secNum;
   final dynamic lans;
-  AnsLocked({required this.index, required this.secNum, required this.lans});
+  AnsLocked({
+    required this.index,
+    required this.secNum,
+    required this.lans,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +37,10 @@ class AnsLocked extends StatelessWidget {
               Row(
                 children: [
                   const Padding(padding: EdgeInsets.all(3)),
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 12,
-                    backgroundImage: AssetImage(tAvatarImage1),
+                    backgroundImage: AssetImage(
+                        tAvatarlist[int.parse(lans[index]["userID"])]),
                   ),
                   const Padding(padding: EdgeInsets.all(1)),
                   Text(lans[index]["userName"],
@@ -89,7 +94,11 @@ class AnsUnlocked extends StatefulWidget {
   final int index;
   final int secNum;
   final dynamic lans;
-  AnsUnlocked({required this.index, required this.secNum, required this.lans});
+  AnsUnlocked({
+    required this.index,
+    required this.secNum,
+    required this.lans,
+  });
 
   @override
   State<AnsUnlocked> createState() => _AnsUnlockedState();
@@ -147,17 +156,61 @@ class _AnsUnlockedState extends State<AnsUnlocked> {
                     Row(
                       children: [
                         const Padding(padding: EdgeInsets.all(3)),
-                        const CircleAvatar(
+                        CircleAvatar(
                           radius: 12,
-                          backgroundImage: AssetImage(tAvatarImage1),
+                          backgroundImage: AssetImage(tAvatarlist[
+                              int.parse(widget.lans[widget.index]["userID"])]),
                         ),
-                        const Padding(padding: EdgeInsets.all(1)),
-                        Text(widget.lans[widget.index]["userName"],
-                            style: const TextStyle(
-                                fontSize: 16.0, fontWeight: FontWeight.bold)),
-                        const Padding(padding: EdgeInsets.all(3)),
-                        Text(widget.lans[widget.index]["reputation"],
-                            style: const TextStyle(fontSize: 16.0))
+                        Padding(
+                          padding: const EdgeInsets.only(left: 6),
+                          child: Text(
+                            "·",
+                            style: GoogleFonts.openSans(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 6),
+                          child: Text(widget.lans[widget.index]["userName"],
+                              style: const TextStyle(
+                                  fontSize: 16.0, fontWeight: FontWeight.bold)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 6),
+                          child: Text(
+                            "·",
+                            style: GoogleFonts.openSans(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 6),
+                          child: Text(widget.lans[widget.index]["reputation"],
+                              style: const TextStyle(fontSize: 16.0)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 6),
+                          child: Text(
+                            "·",
+                            style: GoogleFonts.openSans(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 6),
+                          child: Container(
+                            child: Text(
+                              "1 天前更新",
+                              style: GoogleFonts.openSans(),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
 
@@ -182,7 +235,7 @@ class _AnsUnlockedState extends State<AnsUnlocked> {
                 ),
               ),
               SizedBox(
-                width: 100,
+                width: 90,
                 child: Stack(
                   children: [
                     SizedBox(
