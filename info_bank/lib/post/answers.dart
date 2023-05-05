@@ -3,6 +3,7 @@ import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:info_bank/screens/QApage.dart';
 import 'package:info_bank/src/constants/image_strings.dart';
+import 'package:info_bank/src/constants/colors.dart';
 
 class AnsLocked extends StatelessWidget {
   final int index;
@@ -27,7 +28,7 @@ class AnsLocked extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
       child: Container(
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 194, 194, 194),
+            color: tThirdColor,
             borderRadius: BorderRadius.circular(10),
           ),
           width: 120,
@@ -42,13 +43,56 @@ class AnsLocked extends StatelessWidget {
                     backgroundImage: AssetImage(
                         tAvatarlist[int.parse(lans[index]["userID"])]),
                   ),
-                  const Padding(padding: EdgeInsets.all(1)),
-                  Text(lans[index]["userName"],
-                      style: const TextStyle(
-                          fontSize: 16.0, fontWeight: FontWeight.bold)),
-                  const Padding(padding: EdgeInsets.all(3)),
-                  Text(lans[index]["reputation"],
-                      style: const TextStyle(fontSize: 16.0))
+                  Padding(
+                    padding: const EdgeInsets.only(left: 6),
+                    child: Text(
+                      "·",
+                      style: GoogleFonts.openSans(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 6),
+                    child: Text(lans[index]["userName"],
+                        style: const TextStyle(
+                            fontSize: 16.0, fontWeight: FontWeight.bold)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 6),
+                    child: Text(
+                      "·",
+                      style: GoogleFonts.openSans(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 6),
+                    child: Text(lans[index]["reputation"],
+                        style: const TextStyle(fontSize: 16.0)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 6),
+                    child: Text(
+                      "·",
+                      style: GoogleFonts.openSans(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 6),
+                    child: Container(
+                      child: Text(
+                        "1 天前更新",
+                        style: GoogleFonts.openSans(),
+                      ),
+                    ),
+                  ),
                 ],
               ),
               const Padding(padding: EdgeInsets.all(5.0)),
@@ -69,7 +113,7 @@ class AnsLocked extends StatelessWidget {
                         children: [
                           const Icon(
                             Icons.numbers,
-                            color: Colors.blueGrey,
+                            color: tDarkColor,
                           ),
                           Text(lans[index]['nFeedback'],
                               style: const TextStyle(
@@ -77,9 +121,10 @@ class AnsLocked extends StatelessWidget {
                               ))
                         ],
                       )),
-                  const Align(
+                  Align(
                     alignment: Alignment.topRight,
-                    child: Icon(Icons.lock, size: 40, color: Colors.grey),
+                    child: Icon(Icons.lock,
+                        size: 40, color: tSecondColor.withOpacity(0.5)),
                   )
                 ],
               ),
@@ -143,7 +188,7 @@ class _AnsUnlockedState extends State<AnsUnlocked> {
         padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
         child: Container(
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 194, 194, 194),
+            color: tThirdColor,
             borderRadius: BorderRadius.circular(8),
           ),
           // width: 50,
