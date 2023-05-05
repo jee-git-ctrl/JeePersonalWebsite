@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:info_bank/src/constants/colors.dart';
 import 'package:info_bank/src/utils/theme/widget_themes/text_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:info_bank/screens/QApage.dart';
@@ -26,7 +27,7 @@ class NotificationQA extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.grey,
+            color: tThirdColor,
             borderRadius: BorderRadius.circular(10),
           ),
           height: 100,
@@ -83,7 +84,7 @@ class NotificationAnswer extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.grey,
+            color: tThirdColor,
             borderRadius: BorderRadius.circular(10),
           ),
           height: 100,
@@ -137,7 +138,7 @@ class NotificationSystem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.grey,
+            color: tThirdColor,
             borderRadius: BorderRadius.circular(10),
           ),
           height: 100,

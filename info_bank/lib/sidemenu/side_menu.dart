@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-// import 'package:info_bank/screens/earnning_page.dart';
+import 'package:info_bank/screens/earnning_page.dart';
 import 'package:info_bank/screens/reportpage.dart';
 import 'package:info_bank/screens/settingpage.dart';
 import 'package:info_bank/src/constants/buttons.dart';
@@ -88,9 +88,9 @@ class _SideMenuState extends State<SideMenu> {
               leading: const Icon(Icons.wallet_outlined),
               title: const Text('Earning Page'),
               onTap: () => {
-                // Navigator.of(context).pushReplacement(
-                //   MaterialPageRoute(builder: (context) => const EarningPage()),
-                // ),
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const EarningPage()),
+                ),
               },
             ),
             ListTile(

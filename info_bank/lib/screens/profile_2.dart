@@ -47,7 +47,7 @@ class _ProfileState2 extends State<Profile2>
               child: IconButton(
                 icon: const Icon(
                   Icons.list,
-                  color: Colors.black,
+                  color: tDarkColor,
                 ),
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
@@ -58,14 +58,14 @@ class _ProfileState2 extends State<Profile2>
         elevation: 0.0,
         title: Text(
           tUserProfile,
-          style: GoogleFonts.openSans(color: Colors.black),
+          style: GoogleFonts.openSans(color: tDarkColor),
         ),
         centerTitle: true,
         actions: [
           Container(
             padding: const EdgeInsets.only(right: 13),
             child: IconButton(
-                color: Colors.black,
+                color: tDarkColor,
                 icon: const Icon(Icons.search),
                 onPressed: () {
                   Navigator.of(context)
@@ -98,10 +98,10 @@ class _ProfileState2 extends State<Profile2>
                       height: 35,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100),
-                          color: tPrimaryColor),
+                          color: tSecondColor),
                       child: const Icon(
                         Icons.edit,
-                        color: Colors.white,
+                        color: tWhiteColor,
                         size: 21,
                       ),
                     ),
@@ -142,13 +142,14 @@ class _ProfileState2 extends State<Profile2>
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: tPrimaryColor,
+                      backgroundColor: tFifthColor,
                       side: BorderSide.none,
                       shape: const StadiumBorder()),
                   child: Text(
                     '自訂個人名片',
                     style: GoogleFonts.openSans(
                       fontSize: 14,
+                      color: tDarkColor,
                     ),
                   ),
                 ),
@@ -235,7 +236,7 @@ class CardsWidgets extends StatelessWidget {
                 // Average rating of significant answers
                 Container(
                   decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.2),
+                      color: tThirdColor,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                         width: 1,
@@ -314,7 +315,7 @@ class CardsWidgets extends StatelessWidget {
                 // Number of significant answer
                 Container(
                   decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.2),
+                      color: tThirdColor,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                         width: 1,
@@ -402,7 +403,7 @@ class CardsWidgets extends StatelessWidget {
                 // Feedback of the best one
                 Container(
                   decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.2),
+                      color: tThirdColor,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                         width: 1,
@@ -514,7 +515,7 @@ class CardsWidgets extends StatelessWidget {
                 // Total number of good and best
                 Container(
                   decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.2),
+                      color: tThirdColor,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                         width: 1,
@@ -634,7 +635,7 @@ class CardsWidgets extends StatelessWidget {
                 // Number of request
                 Container(
                   decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.2),
+                      color: tThirdColor,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                         width: 1,
@@ -714,7 +715,7 @@ class CardsWidgets extends StatelessWidget {
                 // Lists總追蹤數
                 Container(
                   decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.2),
+                      color: tThirdColor,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                         width: 1,

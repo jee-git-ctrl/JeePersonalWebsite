@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../src/constants/colors.dart';
+
 class Tag {
   final String name;
   final int QAnumber;
@@ -43,7 +45,7 @@ class _MyTagState extends State<MyTag> {
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.grey,
+            color: tThirdColor,
             borderRadius: BorderRadius.circular(8),
           ),
           height: 50,

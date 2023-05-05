@@ -6,6 +6,7 @@ import 'package:info_bank/screens/search.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:info_bank/src/constants/colors.dart';
 
 class QApage extends StatefulWidget {
   const QApage({super.key});
@@ -442,8 +443,10 @@ class _QApageState extends State<QApage> {
         drawer: SideMenu(),
         appBar: AppBar(
           leading: IconButton(
-              onPressed: () => Navigator.of(context).pop(),
-              icon: const Icon(Icons.chevron_left)),
+            onPressed: () => Navigator.of(context).pop(),
+            icon: const Icon(Icons.chevron_left),
+            color: tDarkColor,
+          ),
           //backgroundColor: Color(0xffd9d9d9),
           elevation: 0.0,
           title: Text(

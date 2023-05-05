@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../src/constants/colors.dart';
+
 class LList {
   final String title;
   final String creator;
@@ -46,7 +48,7 @@ class _MyListState extends State<MyList> {
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.grey,
+            color: tThirdColor,
             borderRadius: BorderRadius.circular(10),
           ),
           height: 75,
