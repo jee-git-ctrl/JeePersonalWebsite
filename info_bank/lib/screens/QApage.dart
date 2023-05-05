@@ -728,73 +728,78 @@ class _ButtonRowState extends State<ButtonRow> {
         width: MediaQuery.of(context).size.width,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: List.generate(4, (index) {
-            String txt = 'Free';
-            switch (index) {
-              case 1:
-                txt = '\$1';
-                break;
-              case 2:
-                txt = '\$2';
-                break;
-              case 3:
-                txt = '\$5';
-                break;
-            }
-            _QApageState qaPageState = _QApageState();
-            return Padding(
-              padding: EdgeInsets.symmetric(horizontal: 2),
-              child: GestureDetector(
-                onTap: () => _selectButton(index),
-                child: SizedBox(
-                  width: 50,
-                  height: 50,
-                  child: Container(
-                    // padding: EdgeInsets.symmetric(vertical: 20, horizontal: 24),
-                    decoration: BoxDecoration(
-                      color: _selectedIndex == index
-                          ? Color.fromARGB(255, 104, 104, 104)
-                          : Colors.grey[300],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Column(
-                        children: [
-                          Text(
-                            txt,
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: _selectedIndex == index
-                                  ? Colors.white
-                                  : Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: List.generate(4, (index) {
+                String txt = 'Free';
+                switch (index) {
+                  case 1:
+                    txt = '\$1';
+                    break;
+                  case 2:
+                    txt = '\$2';
+                    break;
+                  case 3:
+                    txt = '\$5';
+                    break;
+                }
+                _QApageState qaPageState = _QApageState();
+                return Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 2),
+                  child: GestureDetector(
+                    onTap: () => _selectButton(index),
+                    child: SizedBox(
+                      width: 100,
+                      height: 50,
+                      child: Container(
+                        // padding: EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+                        decoration: BoxDecoration(
+                          color: _selectedIndex == index
+                              ? Color.fromARGB(255, 104, 104, 104)
+                              : Colors.grey[300],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Column(
                             children: [
-                              Padding(padding: EdgeInsets.all(3)),
-                              Icon(Icons.speed, color: Colors.blue),
                               Text(
-                                '94',
+                                txt,
                                 style: TextStyle(
-                                  fontSize: 19,
+                                  fontSize: 20,
                                   color: _selectedIndex == index
                                       ? Colors.white
                                       : Colors.black,
+                                  fontWeight: FontWeight.bold,
                                 ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Padding(padding: EdgeInsets.all(3)),
+                                  Text(
+                                    '(94)',
+                                    style: TextStyle(
+                                      fontSize: 19,
+                                      color: _selectedIndex == index
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
+                                  )
+                                ],
                               )
                             ],
-                          )
-                        ],
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
-            );
-          }),
+                );
+              }),
+            ),
+            Icon(Icons.filter_list_rounded)
+          ],
         ),
       ),
     );
