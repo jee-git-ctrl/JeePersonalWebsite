@@ -521,9 +521,14 @@ class _QApageState extends State<QApage> {
                                             });
                                           },
                                           icon: toggle
-                                              ? Icon(Icons.favorite_border,
+                                              ? const Icon(
+                                                  Icons.favorite_border,
                                                   size: 26)
-                                              : Icon(Icons.favorite, size: 26),
+                                              : const Icon(
+                                                  Icons.favorite,
+                                                  size: 26,
+                                                  color: tPrimaryColor,
+                                                ),
                                         ),
                                       ],
                                     ),
@@ -789,37 +794,34 @@ class _ButtonRowState extends State<ButtonRow> {
                               : Colors.grey[300],
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Column(
-                            children: [
-                              Text(
-                                txt,
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: _selectedIndex == index
-                                      ? Colors.white
-                                      : Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              txt,
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: _selectedIndex == index
+                                    ? Colors.white
+                                    : Colors.black,
+                                fontWeight: FontWeight.bold,
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(padding: EdgeInsets.all(3)),
-                                  Text(
-                                    '(94)',
-                                    style: TextStyle(
-                                      fontSize: 19,
-                                      color: _selectedIndex == index
-                                          ? Colors.white
-                                          : Colors.black,
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  '(94)',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: _selectedIndex == index
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
                         ),
                       ),
                     ),
