@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:info_bank/screens/QApage.dart';
+import 'package:info_bank/screens/tmpQApage.dart';
 import 'package:info_bank/src/constants/colors.dart';
 
 class Post {
