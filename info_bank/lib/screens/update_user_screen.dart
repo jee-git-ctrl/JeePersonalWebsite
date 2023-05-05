@@ -28,9 +28,12 @@ class _UpdateUserProfileScreen extends State<UpdateUserProfileScreen> {
       appBar: AppBar(
         leading: IconButton(
             onPressed: () => Navigator.of(context).pop(),
-            icon: const Icon(Icons.chevron_left)),
+            icon: const Icon(
+              Icons.chevron_left,
+              color: Colors.black,
+            )),
         title: Text(
-          'Edit Profile',
+          '修改個人資料',
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         centerTitle: true,

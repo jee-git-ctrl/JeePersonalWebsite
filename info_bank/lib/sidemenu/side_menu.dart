@@ -85,8 +85,8 @@ class _SideMenuState extends State<SideMenu> {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.wallet_outlined),
-              title: const Text('Earning Page'),
+              leading: const Icon(Icons.attach_money_rounded),
+              title: const Text('打工'),
               onTap: () => {
                 // Navigator.of(context).pushReplacement(
                 //   MaterialPageRoute(builder: (context) => const EarningPage()),

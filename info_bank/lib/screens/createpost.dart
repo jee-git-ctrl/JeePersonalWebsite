@@ -29,6 +29,9 @@ class _CreatePostState extends State<CreatePost> {
   ];
   List<String> FoodTagGroup = ["food", "hotpot", "high quality"];
   List<String> StudyTagGroup = ["study", "exam", "difficult"];
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _answerController = TextEditingController();
   final TextEditingController _typeAheadController =
       TextEditingController(); //tags
   SuggestionsBoxController suggestionBoxController =
@@ -109,6 +112,7 @@ class _CreatePostState extends State<CreatePost> {
                         child: TextFormField(
                           maxLength: maxLength,
                           obscureText: false,
+                          controller: _titleController,
                           decoration: InputDecoration(
                             focusedErrorBorder: InputBorder.none,
                             border: InputBorder.none,
@@ -146,6 +150,7 @@ class _CreatePostState extends State<CreatePost> {
                           child: TextFormField(
                             minLines: 1,
                             maxLines: 5,
+                            controller: _descriptionController,
                             decoration: InputDecoration(
                               hintText: '補充說明（選填）',
                               border: InputBorder.none,
@@ -378,6 +383,7 @@ class _CreatePostState extends State<CreatePost> {
                             child: TextFormField(
                               minLines: 1,
                               maxLines: 5,
+                              controller: _answerController,
                               decoration: InputDecoration(
                                 hintText: '回答（選填）',
                                 border: InputBorder.none,
