@@ -8,6 +8,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:info_bank/src/constants/colors.dart';
 import 'package:info_bank/screens/reportpage.dart';
+import 'package:info_bank/src/constants/image_strings.dart';
 
 class QApage extends StatefulWidget {
   const QApage({super.key});
@@ -373,7 +374,9 @@ class _QApageState extends State<QApage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
+            backgroundColor: tThirdColor,
             content: Container(
+              color: tThirdColor,
               width: 400,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -392,6 +395,9 @@ class _QApageState extends State<QApage> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStatePropertyAll(tSecondColor)),
                           child: Text("確定"),
                           onPressed: () {
                             setState(() {
@@ -404,6 +410,9 @@ class _QApageState extends State<QApage> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStatePropertyAll(tSecondColor)),
                           child: Text("取消"),
                           onPressed: () {
                             Navigator.of(context).pop();
@@ -427,11 +436,13 @@ class _QApageState extends State<QApage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
+            backgroundColor: tThirdColor,
             content: Container(
               width: 400,
               child: Form(
                 key: _formKey,
                 child: Container(
+                  color: tThirdColor,
                   // decoration: BoxDecoration(
                   //   color: Color.fromARGB(255, 194, 194, 194),
                   //   borderRadius: BorderRadius.circular(10),
@@ -442,12 +453,20 @@ class _QApageState extends State<QApage> {
                       Row(
                         children: [
                           Padding(padding: EdgeInsets.all(3)),
-                          Icon(
-                            Icons.person,
-                            size: 24,
-                            color: Colors.red,
+                          CircleAvatar(
+                            radius: 12,
+                            backgroundImage: AssetImage(tAvatarImage1),
                           ),
-                          Padding(padding: EdgeInsets.all(1)),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 6),
+                            child: Text(
+                              "·",
+                              style: GoogleFonts.openSans(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
                           Text('Alan',
                               style: TextStyle(
                                   fontSize: 16.0, fontWeight: FontWeight.bold)),
@@ -469,8 +488,10 @@ class _QApageState extends State<QApage> {
                             child: Container(
                               child: Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Color.fromARGB(255, 192, 190, 190),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(15),
+                                  ),
+                                  color: tFifthColor,
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -487,6 +508,9 @@ class _QApageState extends State<QApage> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStatePropertyAll(tSecondColor)),
                                 child: Text("回答"),
                                 onPressed: () {
                                   Navigator.of(context).pop();
@@ -560,7 +584,7 @@ class _QApageState extends State<QApage> {
                       child: Container(
                         //top box
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 210, 209, 209),
+                          color: tThirdColor,
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: Column(
@@ -659,14 +683,14 @@ class _QApageState extends State<QApage> {
                                                 fontSize: 14,
                                                 // fontWeight:
                                                 //     FontWeight.bold,
-                                                color: Colors.white),
+                                                color: tDarkColor),
                                           ),
                                           style: OutlinedButton.styleFrom(
                                             padding: EdgeInsets.symmetric(
                                                 horizontal: 8, vertical: 5),
-                                            backgroundColor: Color.fromARGB(
-                                                255, 87, 139, 89),
-                                            shape: RoundedRectangleBorder(
+                                            backgroundColor: tFifthColor,
+                                            side: BorderSide.none,
+                                            shape: const RoundedRectangleBorder(
                                               borderRadius: BorderRadius.all(
                                                 Radius.circular(15),
                                               ),
@@ -702,10 +726,11 @@ class _QApageState extends State<QApage> {
                                     child: Text(
                                       mObj['equQAs'][index], //! access QA name
                                       style: TextStyle(
-                                          fontSize: 18, color: Colors.black),
+                                          fontSize: 18, color: tDarkColor),
                                     ),
                                     style: OutlinedButton.styleFrom(
-                                        side: BorderSide(width: 1),
+                                        backgroundColor: tThirdColor,
+                                        side: BorderSide.none,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(8)),
@@ -874,8 +899,8 @@ class _ButtonRowState extends State<ButtonRow> {
                         // padding: EdgeInsets.symmetric(vertical: 20, horizontal: 24),
                         decoration: BoxDecoration(
                           color: _selectedIndex == index
-                              ? Color.fromARGB(255, 104, 104, 104)
-                              : Colors.grey[300],
+                              ? tSecondColor
+                              : tThirdColor,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Column(
