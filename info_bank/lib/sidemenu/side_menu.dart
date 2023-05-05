@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+// import 'package:info_bank/screens/earnning_page.dart';
 import 'package:info_bank/screens/reportpage.dart';
 import 'package:info_bank/screens/settingpage.dart';
 import 'package:info_bank/src/constants/buttons.dart';
@@ -14,6 +16,7 @@ class SideMenu extends StatefulWidget {
 
 class _SideMenuState extends State<SideMenu> {
   static final Services _googleServices = Services();
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -82,12 +85,21 @@ class _SideMenuState extends State<SideMenu> {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.wallet_outlined),
+              title: const Text('Earning Page'),
+              onTap: () => {
+                // Navigator.of(context).pushReplacement(
+                //   MaterialPageRoute(builder: (context) => const EarningPage()),
+                // ),
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.account_balance_wallet),
               title: const Text('錢包'),
               onTap: () => {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Wallet()),
+                  MaterialPageRoute(builder: (context) => const Wallet()),
                 ),
               },
             ),
@@ -102,7 +114,7 @@ class _SideMenuState extends State<SideMenu> {
               },
             ),
             const SizedBox(
-              height: 125,
+              height: 69,
             ),
             SizedBox(
               width: 120,
