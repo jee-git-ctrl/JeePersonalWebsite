@@ -3,6 +3,7 @@ import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:info_bank/src/constants/colors.dart';
 
 class CreatePost extends StatefulWidget {
   @override
@@ -51,7 +52,10 @@ class _CreatePostState extends State<CreatePost> {
         drawer: SideMenu(),
         appBar: AppBar(
           centerTitle: true,
-          title: const Text('新貼文'),
+          title: const Text(
+            '新貼文',
+            style: TextStyle(color: Colors.black),
+          ),
           leading: Builder(
             builder: (BuildContext context) {
               return SizedBox(
@@ -95,7 +99,7 @@ class _CreatePostState extends State<CreatePost> {
                     child: Container(
                       height: 50,
                       decoration: BoxDecoration(
-                        color: Colors.grey,
+                        color: tThirdColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Padding(
@@ -107,7 +111,7 @@ class _CreatePostState extends State<CreatePost> {
                             focusedErrorBorder: InputBorder.none,
                             border: InputBorder.none,
                             hintText: '標題：',
-                            contentPadding: EdgeInsets.all(15),
+                            //contentPadding: EdgeInsets.all(15),
                             suffixText:
                                 '${textLength.toString()}/${maxLength.toString()}',
                             counterText: "",
@@ -128,32 +132,31 @@ class _CreatePostState extends State<CreatePost> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10.0, horizontal: 10.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8),
-                        child: TextFormField(
-                          minLines: 1,
-                          maxLines: 5,
-                          decoration: InputDecoration(
-                            hintText: '補充說明（選填）',
-                            border: InputBorder.none,
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: tThirdColor,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: TextFormField(
+                            minLines: 1,
+                            maxLines: 5,
+                            decoration: InputDecoration(
+                              hintText: '補充說明（選填）',
+                              border: InputBorder.none,
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
+                      )),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 10.0, horizontal: 10.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey,
+                        color: tThirdColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Column(
@@ -161,38 +164,88 @@ class _CreatePostState extends State<CreatePost> {
                           Container(
                             child: Padding(
                               padding: const EdgeInsets.only(left: 8.0),
-                              child: TypeAheadFormField(
-                                textFieldConfiguration: TextFieldConfiguration(
-                                  decoration: InputDecoration(
-                                      hintText: '標籤（選填）',
-                                      border: InputBorder.none),
-                                  controller: this._typeAheadController,
-                                ),
-                                suggestionsCallback: (pattern) {
-                                  return TagsQuery.getSuggestions(pattern);
-                                },
-                                itemBuilder: (context, String suggestion) {
-                                  return ListTile(
-                                    title: Text(suggestion),
-                                  );
-                                },
-                                transitionBuilder:
-                                    (context, suggestionsBox, controller) {
-                                  return suggestionsBox;
-                                },
-                                onSuggestionSelected: (String suggestion) {
-                                  this._typeAheadController.text = "";
-                                  if (!current_tags.contains(suggestion)) {
-                                    current_tags.add(suggestion);
-                                  }
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: TypeAheadFormField(
+                                      textFieldConfiguration:
+                                          TextFieldConfiguration(
+                                        decoration: InputDecoration(
+                                            hintText: '標籤（選填）',
+                                            border: InputBorder.none),
+                                        controller: this._typeAheadController,
+                                      ),
+                                      suggestionsCallback: (pattern) {
+                                        return TagsQuery.getSuggestions(
+                                            pattern);
+                                      },
+                                      itemBuilder:
+                                          (context, String suggestion) {
+                                        return ListTile(
+                                          title: Text(suggestion),
+                                        );
+                                      },
+                                      transitionBuilder: (context,
+                                          suggestionsBox, controller) {
+                                        return suggestionsBox;
+                                      },
+                                      onSuggestionSelected:
+                                          (String suggestion) {
+                                        this._typeAheadController.text = "";
+                                        if (!current_tags
+                                            .contains(suggestion)) {
+                                          current_tags.add(suggestion);
+                                        }
 
-                                  callback(current_tags, _currentprice,
-                                      dropdownbuttonWidth);
-                                  print(suggestion);
-                                  print(current_tags);
-                                },
-                                suggestionsBoxController:
-                                    suggestionBoxController,
+                                        callback(current_tags, _currentprice,
+                                            dropdownbuttonWidth);
+                                        print(suggestion);
+                                        print(current_tags);
+                                      },
+                                      onSaved: (suggestion) {
+                                        if (!current_tags.contains(
+                                                _typeAheadController.text) &&
+                                            suggestion!.isNotEmpty &&
+                                            suggestion.length < 20) {
+                                          current_tags
+                                              .add(_typeAheadController.text);
+                                          print("suggestion = " + suggestion);
+                                          print(_typeAheadController.text);
+                                        }
+                                        callback(current_tags, _currentprice,
+                                            dropdownbuttonWidth);
+                                        this._typeAheadController.text = "";
+                                      },
+                                      suggestionsBoxController:
+                                          suggestionBoxController,
+                                    ),
+                                  ),
+                                  TextButton(
+                                    child: Text(
+                                      '加入',
+                                      style: GoogleFonts.openSans(
+                                        fontSize: 12,
+                                        color: tDarkColor,
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      _formKey.currentState!.save();
+                                    },
+                                    style: ButtonStyle(
+                                        foregroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                tFifthColor),
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                tFifthColor),
+                                        shape: MaterialStateProperty.all<
+                                                RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(18.0),
+                                        ))),
+                                  )
+                                ],
                               ),
                             ),
                           ),
@@ -200,6 +253,7 @@ class _CreatePostState extends State<CreatePost> {
                             child: IntrinsicHeight(
                               child: ConstrainedBox(
                                 constraints: BoxConstraints(
+                                  minWidth: 150,
                                   maxHeight: 150,
                                 ),
                                 child: SingleChildScrollView(
@@ -312,7 +366,7 @@ class _CreatePostState extends State<CreatePost> {
                         vertical: 10.0, horizontal: 10.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey,
+                        color: tThirdColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Column(
@@ -446,17 +500,21 @@ class _Price extends State<Price> {
             selectedValue = value as String;
           },
           buttonStyleData: ButtonStyleData(
-            height: 50,
+            height: 30,
             width: 50,
             padding: const EdgeInsets.only(left: 8, right: 8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(14),
+              color: tFifthColor,
+            ),
           ),
           iconStyleData: const IconStyleData(
             icon: Icon(
               Icons.arrow_forward_ios_outlined,
             ),
             iconSize: 14,
-            iconEnabledColor: Colors.yellow,
-            iconDisabledColor: Colors.grey,
+            iconEnabledColor: Colors.black,
+            iconDisabledColor: Colors.black,
           ),
           dropdownStyleData: DropdownStyleData(
               maxHeight: 200,
@@ -464,7 +522,7 @@ class _Price extends State<Price> {
               padding: null,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
-                color: Color(0xff272727),
+                color: tFifthColor,
               ),
               elevation: 8,
               offset: const Offset(0, 0),

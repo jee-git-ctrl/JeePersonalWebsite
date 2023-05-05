@@ -5,6 +5,7 @@ import 'package:info_bank/post/tag.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:info_bank/post/post.dart';
 import 'package:info_bank/post/list.dart';
+import 'package:info_bank/src/constants/colors.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
@@ -104,16 +105,19 @@ class _SearchState extends State<Search> with SingleTickerProviderStateMixin {
                 Tab(
                   child: Text(
                     "問答",
+                    style: TextStyle(color: tDarkColor),
                   ),
                 ),
                 Tab(
                   child: Text(
                     "標籤 ",
+                    style: TextStyle(color: tDarkColor),
                   ),
                 ),
                 Tab(
                   child: Text(
                     "列表",
+                    style: TextStyle(color: tDarkColor),
                   ),
                 ),
               ],
@@ -128,7 +132,42 @@ class _SearchState extends State<Search> with SingleTickerProviderStateMixin {
                       shrinkWrap: true,
                       itemCount: filteredPosts.length,
                       itemBuilder: (context, index) {
-                        return MyPost(currentpost: filteredPosts[index]);
+                        if (filteredPosts[index].title == "古城麻辣燙排隊人數") {
+                          return Column(
+                            children: [
+                              MyPost(currentpost: filteredPosts[index]),
+                              Container(
+                                height: 130,
+                                child: ListView.builder(
+                                  itemCount: samePost.length + 1,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, sameindex) {
+                                    if (sameindex == 0) {
+                                      return Container(
+                                        height: 130,
+                                        child: Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 10.0),
+                                            child: Icon(
+                                              Icons.subdirectory_arrow_right,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    return SamePost(
+                                      currentpost: samePost[sameindex - 1],
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          );
+                        } else {
+                          return MyPost(currentpost: filteredPosts[index]);
+                        }
                       }),
                   ListView.builder(
                       shrinkWrap: true,

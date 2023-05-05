@@ -4,6 +4,7 @@ import 'package:info_bank/src/constants/buttons.dart';
 import 'package:info_bank/src/services/google_services.dart';
 import 'package:info_bank/tabs/tabspage.dart';
 import 'constants/allConstants.dart';
+import 'package:info_bank/src/constants/colors.dart';
 
 // Login page with only google sign-in
 
@@ -23,75 +24,81 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(color: Color(0xFF5FA9C0)),
+        decoration: BoxDecoration(color: tThirdColor),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Image.asset('assets/images/infoBank_logo.png'),
+              Image.asset('assets/images/infoBank_template.png'),
               //Text('Welcome to info bank!'),
-              SizedBox(
-                width: 300,
-                child: ElevatedButton(
-                  style: testButtonStyle,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 30.0,
-                        width: 30.0,
-                        decoration: const BoxDecoration(
-                            image: DecorationImage(
-                          image: AssetImage('assets/images/Google_logo.png'),
-                        )),
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      const Text("使用 Google 登入")
-                    ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
+                  width: 300,
+                  child: ElevatedButton(
+                    style: testButtonStyle,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 30.0,
+                          width: 30.0,
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                            image: AssetImage('assets/images/Google_logo.png'),
+                          )),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        const Text("使用 Google 登入",
+                            style: TextStyle(
+                              color: Colors.black,
+                            ))
+                      ],
+                    ),
+                    onPressed: () {
+                      _googleServices
+                          .googleSignIn(context); //from google services .dart
+                    },
                   ),
+                ),
+              ),
+              // SizedBox(
+              //   height: 100,
+              // ),
+              Container(
+                width: 100,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(tThirdColor)),
+                  child: Center(child: Text("")),
                   onPressed: () {
-                    _googleServices
-                        .googleSignIn(context); //from google services .dart
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => TabsPage(selectedIndex: 0),
+                    ));
                   },
                 ),
               ),
-              ElevatedButton(
-                style: testButtonStyle,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text("Debug Mode")
-                  ],
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => TabsPage(selectedIndex: 0),
-                  ));
-                },
-              ),
               //debugging
-              ElevatedButton(
-                style: testButtonStyle,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text("register page")
-                  ],
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => RegisterPage(),
-                  ));
-                },
-              )
+              // ElevatedButton(
+              //   style: testButtonStyle,
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+              //       SizedBox(
+              //         width: 20,
+              //       ),
+              //       Text("register page")
+              //     ],
+              //   ),
+              //   onPressed: () {
+              //     Navigator.of(context).pushReplacement(MaterialPageRoute(
+              //       builder: (context) => RegisterPage(),
+              //     ));
+              //   },
+              // )
             ],
           ),
         ),

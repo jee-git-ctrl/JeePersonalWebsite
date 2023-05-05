@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:info_bank/src/constants/colors.dart';
 import 'package:info_bank/tabs/bottom_tabs.dart';
 
 class TabsPage extends StatefulWidget {
@@ -68,7 +69,7 @@ class _TabsPageState extends State<TabsPage> {
             const TextStyle(color: Colors.white, fontSize: 14),
         currentIndex: _selectedIndex,
         backgroundColor: Colors.black,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: tAppBarColor,
         unselectedItemColor: Colors.grey,
         unselectedFontSize: 14,
         onTap: _onItemTapped,

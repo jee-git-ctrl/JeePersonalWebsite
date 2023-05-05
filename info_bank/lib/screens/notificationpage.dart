@@ -95,7 +95,10 @@ class _NotificationState extends State<NotificationPage> {
         ),
         //backgroundColor: Color(0xffd9d9d9),
         elevation: 0.0,
-        title: const Text('通知'),
+        title: const Text(
+          '通知',
+          style: TextStyle(color: Colors.black),
+        ),
         centerTitle: true,
       ),
       body: Stack(
@@ -225,7 +228,7 @@ class _ButtonRowState extends State<ButtonRow> {
                     // padding: EdgeInsets.symmetric(vertical: 20, horizontal: 24),
                     decoration: BoxDecoration(
                       color: _selectedIndex == index
-                          ? tAccentColor
+                          ? tSecondColor
                           : tPrimaryColor,
                       borderRadius: BorderRadius.circular(10),
                     ),
