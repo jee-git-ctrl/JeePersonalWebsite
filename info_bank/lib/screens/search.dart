@@ -137,19 +137,19 @@ class _SearchState extends State<Search> with SingleTickerProviderStateMixin {
                             children: [
                               MyPost(currentpost: filteredPosts[index]),
                               Container(
-                                height: 130,
+                                height: 50,
                                 child: ListView.builder(
                                   itemCount: samePost.length + 1,
                                   scrollDirection: Axis.horizontal,
                                   itemBuilder: (context, sameindex) {
                                     if (sameindex == 0) {
                                       return Container(
-                                        height: 130,
-                                        child: Align(
+                                        height: 100,
+                                        child: const Align(
                                           alignment: Alignment.topCenter,
                                           child: Padding(
                                             padding: const EdgeInsets.only(
-                                                top: 10.0),
+                                                top: 10.0, left: 10),
                                             child: Icon(
                                               Icons.subdirectory_arrow_right,
                                             ),
