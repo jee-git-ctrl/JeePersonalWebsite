@@ -44,14 +44,6 @@ class _EarningPageState extends State<EarningPage> {
   var maxLength = 100;
   var textLength = 0;
 
-  Map<String, dynamic> mObj = {
-    'title': '古城麻辣燙排隊人數',
-    'note': '古城麻辣燙排隊人數古城麻辣燙',
-    'tags': ['美食', '麻辣燙'],
-    'targets': ['中正大學生', '大吃街覓食'],
-    'equQAs': ['古城麻辣燙候位人數', '古城還要等多久'],
-  };
-
   List<Map<String, dynamic>> mObj2 = [
     {
       'title': '古城麻辣燙排隊人數',
@@ -75,7 +67,7 @@ class _EarningPageState extends State<EarningPage> {
       'equQAs': ['古城麻辣燙候位人數', '古城還要等多久'],
     },
   ];
-  int index = 0;
+  int pagesindex = 0;
   callback(changedtag, changedtarget, changedequQA,
       changeddropdownbuttonWidthWidth, changedindex) {
     setState(() {
@@ -83,7 +75,7 @@ class _EarningPageState extends State<EarningPage> {
       current_targets = changedtarget;
       current_equQAs = changedequQA;
       dropdownbuttonWidth = changeddropdownbuttonWidthWidth;
-      index = changedindex;
+      pagesindex = changedindex;
     });
   }
 
@@ -102,7 +94,7 @@ class _EarningPageState extends State<EarningPage> {
         ),
         elevation: 0.0,
         title: Text(
-          mObj['title'],
+          mObj2[pagesindex]['title'],
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         centerTitle: true,
@@ -146,7 +138,7 @@ class _EarningPageState extends State<EarningPage> {
                             Padding(
                                 padding: const EdgeInsets.only(
                                     left: 10, right: 8, top: 10),
-                                child: Text(mObj['title'],
+                                child: Text(mObj2[pagesindex]['title'],
                                     style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 26,
@@ -174,7 +166,7 @@ class _EarningPageState extends State<EarningPage> {
                                     child: Align(
                                       alignment: Alignment.topLeft,
                                       child: Text(
-                                        mObj['note'],
+                                        mObj2[pagesindex]['note'],
                                         style: const TextStyle(
                                           fontSize: 20,
                                         ),
@@ -195,7 +187,7 @@ class _EarningPageState extends State<EarningPage> {
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
-                                itemCount: (mObj['tags']).length,
+                                itemCount: (mObj2[pagesindex]['tags']).length,
                                 itemBuilder: (context, index) {
                                   return Padding(
                                     padding: EdgeInsets.only(right: 6),
@@ -203,7 +195,8 @@ class _EarningPageState extends State<EarningPage> {
                                       onPressed: () =>
                                           print('direct'), //! direct to
                                       child: Text(
-                                        mObj['tags'][index], //! access QA name
+                                        mObj2[pagesindex]['tags']
+                                            [index], //! access QA name
                                         style: TextStyle(
                                             fontSize: 15,
                                             // fontWeight:
@@ -279,16 +272,16 @@ class _EarningPageState extends State<EarningPage> {
                                           current_targets,
                                           current_equQAs,
                                           dropdownbuttonWidth,
-                                          index);
+                                          pagesindex);
                                       print(suggestion);
                                       print(current_tags);
                                     },
                                     onSaved: (suggestion) {
-                                      if (!(mObj['tags']).contains(
+                                      if (!(mObj2[pagesindex]['tags']).contains(
                                               _typeAheadController.text) &&
                                           suggestion!.isNotEmpty &&
                                           suggestion.length < 20) {
-                                        (mObj['tags'])
+                                        mObj2[pagesindex]['tags']
                                             .add(_typeAheadController.text);
                                         print("suggestion = " + suggestion);
                                         print(_typeAheadController.text);
@@ -298,7 +291,7 @@ class _EarningPageState extends State<EarningPage> {
                                           current_targets,
                                           current_equQAs,
                                           dropdownbuttonWidth,
-                                          index);
+                                          pagesindex);
                                       this._typeAheadController.text = "";
                                     },
                                     suggestionsBoxController:
@@ -380,7 +373,7 @@ class _EarningPageState extends State<EarningPage> {
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
-                                itemCount: (mObj['tags']).length,
+                                itemCount: (mObj2[pagesindex]['tags']).length,
                                 itemBuilder: (context, index) {
                                   return Padding(
                                     padding: const EdgeInsets.only(right: 6),
@@ -388,7 +381,8 @@ class _EarningPageState extends State<EarningPage> {
                                       onPressed: () =>
                                           print('direct'), //! direct to
                                       child: Text(
-                                        mObj['tags'][index], //! access QA name
+                                        mObj2[pagesindex]['tags']
+                                            [index], //! access QA name
                                         style: TextStyle(
                                             fontSize: 15,
                                             // fontWeight:
@@ -466,7 +460,7 @@ class _EarningPageState extends State<EarningPage> {
                                           current_targets,
                                           current_equQAs,
                                           dropdownbuttonWidth,
-                                          index);
+                                          pagesindex);
                                       print(suggestion);
                                       print(current_targets);
                                     },
@@ -485,7 +479,7 @@ class _EarningPageState extends State<EarningPage> {
                                           current_targets,
                                           current_equQAs,
                                           dropdownbuttonWidth,
-                                          index);
+                                          pagesindex);
                                       this._typeAheadController.text = "";
                                     },
                                     suggestionsBoxController:
@@ -567,7 +561,8 @@ class _EarningPageState extends State<EarningPage> {
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
-                                itemCount: (mObj['targets']).length,
+                                itemCount:
+                                    (mObj2[pagesindex]['targets']).length,
                                 itemBuilder: (context, index) {
                                   return Padding(
                                     padding: const EdgeInsets.only(right: 6),
@@ -575,7 +570,7 @@ class _EarningPageState extends State<EarningPage> {
                                       onPressed: () =>
                                           print('direct'), //! direct to
                                       child: Text(
-                                        mObj['targets']
+                                        mObj2[pagesindex]['targets']
                                             [index], //! access QA name
                                         style: TextStyle(
                                             fontSize: 15,
@@ -653,7 +648,7 @@ class _EarningPageState extends State<EarningPage> {
                                           current_targets,
                                           current_equQAs,
                                           dropdownbuttonWidth,
-                                          index);
+                                          pagesindex);
                                       print(suggestion);
                                       print(current_equQAs);
                                     },
@@ -672,7 +667,7 @@ class _EarningPageState extends State<EarningPage> {
                                           current_targets,
                                           current_equQAs,
                                           dropdownbuttonWidth,
-                                          index);
+                                          pagesindex);
                                       this._typeAheadController.text = "";
                                     },
                                     suggestionsBoxController:
@@ -723,7 +718,7 @@ class _EarningPageState extends State<EarningPage> {
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
-                                itemCount: (mObj['equQAs']).length,
+                                itemCount: (mObj2[pagesindex]['equQAs']).length,
                                 itemBuilder: (context, index) {
                                   return Padding(
                                     padding: const EdgeInsets.only(
@@ -732,7 +727,7 @@ class _EarningPageState extends State<EarningPage> {
                                       onPressed: () =>
                                           print('direct'), //! direct to
                                       child: Text(
-                                        mObj['equQAs']
+                                        mObj2[pagesindex]['equQAs']
                                             [index], //! access QA name
                                         style: TextStyle(
                                             fontSize: 18,
@@ -759,35 +754,37 @@ class _EarningPageState extends State<EarningPage> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Align(
-                      alignment: Alignment.bottomLeft,
-                      child: FloatingActionButton(
-                        onPressed: () {
-                          if (index > 0) {
-                            setState(() {
-                              index -= 1;
-                            });
-                          }
-                        },
-                        heroTag: 'btn1',
-                        child: const Icon(Icons.navigate_before_outlined),
+                  children: <Widget>[
+                    if (pagesindex > 0)
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: FloatingActionButton(
+                          onPressed: () {
+                            if (pagesindex > 0) {
+                              setState(() {
+                                pagesindex -= 1;
+                              });
+                            }
+                          },
+                          heroTag: 'btn1',
+                          child: const Icon(Icons.navigate_before_outlined),
+                        ),
                       ),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: FloatingActionButton(
-                        onPressed: () {
-                          if (index < mObj2.length - 1) {
-                            setState(() {
-                              index += 1;
-                            });
-                          }
-                        },
-                        heroTag: 'btn2',
-                        child: const Icon(Icons.navigate_next_outlined),
+                    if (pagesindex < mObj2.length - 1)
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: FloatingActionButton(
+                          onPressed: () {
+                            if (pagesindex < mObj2.length - 1) {
+                              setState(() {
+                                pagesindex += 1;
+                              });
+                            }
+                          },
+                          heroTag: 'btn2',
+                          child: const Icon(Icons.navigate_next_outlined),
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ],
