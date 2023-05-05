@@ -69,7 +69,7 @@ class _TabsPageState extends State<TabsPage> {
             const TextStyle(color: Colors.white, fontSize: 14),
         currentIndex: _selectedIndex,
         backgroundColor: Colors.black,
-        selectedItemColor: tAppBarColor,
+        selectedItemColor: tSecondColor,
         unselectedItemColor: Colors.grey,
         unselectedFontSize: 14,
         onTap: _onItemTapped,

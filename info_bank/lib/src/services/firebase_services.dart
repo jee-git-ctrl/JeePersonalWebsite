@@ -56,8 +56,7 @@ class FServices {
     required String nickname,
   }) async {
     try {
-      CollectionReference users =
-          FirebaseFirestore.instance.collection('Users');
+      CollectionReference users = _db.collection('Users');
       // call the user's CollectionReference to add a new user
       // if the collection/doc doesnt exist, Firebase will create one
       if (await checkAccIsRegistered(acc)) {
@@ -79,8 +78,7 @@ class FServices {
     required String intro,
   }) async {
     try {
-      CollectionReference users =
-          FirebaseFirestore.instance.collection('Users');
+      CollectionReference users = _db.collection('Users');
       // call the user's CollectionReference to add a new user
       // if the collection/doc doesnt exist, Firebase will create one
       /*
