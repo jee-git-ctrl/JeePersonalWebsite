@@ -2,6 +2,8 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:info_bank/post/tag.dart';
+import 'package:info_bank/screens/createpost.dart';
+import 'package:info_bank/screens/createpost_for_search.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:info_bank/post/post.dart';
 import 'package:info_bank/post/list.dart';
@@ -182,6 +184,18 @@ class _SearchState extends State<Search> with SingleTickerProviderStateMixin {
                         return MyList(currentlist: filteredLists[index]);
                       }),
                 ],
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: FloatingActionButton(
+                onPressed: () => {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => CreatePostForSearch()))
+                },
+                heroTag: 'btn1',
+                backgroundColor: tSecondColor,
+                child: const Icon(Icons.add_outlined),
               ),
             ),
           ],

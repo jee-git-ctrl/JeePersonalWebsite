@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:info_bank/screens/earnning_page.dart';
+import 'package:info_bank/screens/earnning_page.dart';
 import 'package:info_bank/screens/reportpage.dart';
 import 'package:info_bank/screens/settingpage.dart';
 import 'package:info_bank/tabs/tabspage.dart';
@@ -87,9 +87,9 @@ class _SideMenuState extends State<SideMenu> {
               leading: const Icon(Icons.attach_money_rounded),
               title: const Text('打工'),
               onTap: () => {
-                // Navigator.of(context).pushReplacement(
-                //   MaterialPageRoute(builder: (context) => const EarningPage()),
-                // ),
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const EarningPage()),
+                ),
               },
             ),
             ListTile(

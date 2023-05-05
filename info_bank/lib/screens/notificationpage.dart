@@ -86,7 +86,7 @@ class _NotificationState extends State<NotificationPage> {
               child: IconButton(
                 icon: const Icon(
                   Icons.list,
-                  color: Colors.black,
+                  color: tDarkColor,
                 ),
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
@@ -97,7 +97,7 @@ class _NotificationState extends State<NotificationPage> {
         elevation: 0.0,
         title: const Text(
           '通知',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: tDarkColor),
         ),
         centerTitle: true,
       ),
@@ -227,9 +227,8 @@ class _ButtonRowState extends State<ButtonRow> {
                   child: Container(
                     // padding: EdgeInsets.symmetric(vertical: 20, horizontal: 24),
                     decoration: BoxDecoration(
-                      color: _selectedIndex == index
-                          ? tSecondColor
-                          : tPrimaryColor,
+                      color:
+                          _selectedIndex == index ? tSecondColor : tFifthColor,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Align(
@@ -241,8 +240,8 @@ class _ButtonRowState extends State<ButtonRow> {
                           style: GoogleFonts.openSans(
                             fontSize: 20,
                             color: _selectedIndex == index
-                                ? Colors.white
-                                : Colors.black,
+                                ? tWhiteColor
+                                : tDarkColor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
