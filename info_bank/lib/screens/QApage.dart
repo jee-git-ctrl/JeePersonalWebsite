@@ -338,10 +338,55 @@ class _QApageState extends State<QApage> {
     });
   }
 
-  void unlock() {
-    setState(() {
-      isUnlocked[selectedSec] = true;
-    });
+  unlock() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Container(
+              width: 400,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text("確定要解鎖？"),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text("現有點數：15pt"),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          child: Text("確定"),
+                          onPressed: () {
+                            setState(() {
+                              isUnlocked[selectedSec] = true;
+                              Navigator.of(context).pop();
+                            });
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          child: Text("取消"),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          );
+        });
   }
 
   showAns() {
@@ -646,28 +691,34 @@ class _QApageState extends State<QApage> {
               ],
             ),
           ),
-          Positioned(
-            bottom: 20.0,
-            right: 20.0,
-            child: FloatingActionButton(
-              onPressed: () {
-                showAns();
-              },
-              heroTag: 'btn1',
-              backgroundColor: tSecondColor,
-              child: const Icon(Icons.question_answer_outlined),
+          Visibility(
+            visible: isUnlocked[selectedSec],
+            child: Positioned(
+              bottom: 20.0,
+              right: 20.0,
+              child: FloatingActionButton(
+                onPressed: () {
+                  showAns();
+                },
+                heroTag: 'btn1',
+                backgroundColor: tSecondColor,
+                child: const Icon(Icons.question_answer_outlined),
+              ),
             ),
           ),
-          Positioned(
-            bottom: 20.0,
-            left: 20.0,
-            child: FloatingActionButton(
-              onPressed: () {
-                unlock();
-              },
-              heroTag: 'btn2',
-              backgroundColor: tSecondColor,
-              child: const Icon(Icons.lock_open),
+          Visibility(
+            visible: !isUnlocked[selectedSec],
+            child: Positioned(
+              bottom: 20.0,
+              right: 20.0,
+              child: FloatingActionButton(
+                onPressed: () {
+                  unlock();
+                },
+                heroTag: 'btn2',
+                backgroundColor: tSecondColor,
+                child: const Icon(Icons.lock_open),
+              ),
             ),
           ),
         ]));
