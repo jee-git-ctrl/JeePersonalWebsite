@@ -6,6 +6,7 @@ import 'package:info_bank/screens/search.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:info_bank/screens/reportpage.dart';
 
 class QApage extends StatefulWidget {
   const QApage({super.key});
@@ -245,6 +246,8 @@ class _QApageState extends State<QApage> {
   List<bool> isUnlocked = [true, false, false, false];
   int AnsNum = 7;
   int selectedSec = 0;
+  bool toggle = false;
+
   final FocusNode _focusNode = FocusNode();
   OverlayEntry? _overlayEntry;
   final _formKey = GlobalKey<FormState>();
@@ -495,12 +498,33 @@ class _QApageState extends State<QApage> {
                                             fontWeight: FontWeight.bold,
                                             fontSize: 26,
                                             color: Colors.black))),
-                                const Expanded(
+                                Expanded(
                                   child: Padding(
                                     padding: EdgeInsets.only(right: 8.0),
-                                    child: Align(
-                                        alignment: Alignment.topRight,
-                                        child: Icon(Icons.info, size: 26)),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        IconButton(
+                                          onPressed: () {
+                                            showReportDialog(context);
+                                          },
+                                          icon: Icon(Icons.warning_amber_sharp,
+                                              size: 26),
+                                        ),
+                                        IconButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              // Here we changing the icon.
+                                              toggle = !toggle;
+                                            });
+                                          },
+                                          icon: toggle
+                                              ? Icon(Icons.favorite_border,
+                                                  size: 26)
+                                              : Icon(Icons.favorite, size: 26),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 )
                               ],
@@ -628,7 +652,9 @@ class _QApageState extends State<QApage> {
             bottom: 20.0,
             right: 20.0,
             child: FloatingActionButton(
-              onPressed: () => showAns(),
+              onPressed: () {
+                showAns();
+              },
               heroTag: 'btn1',
               child: Icon(Icons.question_answer_outlined),
             ),
@@ -637,7 +663,9 @@ class _QApageState extends State<QApage> {
             bottom: 20.0,
             left: 20.0,
             child: FloatingActionButton(
-              onPressed: () => unlock(),
+              onPressed: () {
+                unlock();
+              },
               heroTag: 'btn2',
               child: Icon(Icons.lock_open),
             ),
