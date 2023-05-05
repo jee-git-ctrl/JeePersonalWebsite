@@ -125,6 +125,16 @@ class _UpdateUserProfileScreen extends State<UpdateUserProfileScreen> {
                       const SizedBox(
                         height: 20,
                       ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                            label: Text('身分'),
+                            prefixIcon: Icon(Icons.star_outline_rounded)),
+                        //controller:
+                        //validator: validateIntro,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       SizedBox(
                         width: 140,
                         child: ElevatedButton(
