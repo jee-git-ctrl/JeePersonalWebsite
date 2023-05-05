@@ -6,6 +6,7 @@ import 'package:info_bank/screens/search.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:info_bank/src/constants/colors.dart';
 
 class QApage extends StatefulWidget {
   const QApage({super.key});
@@ -534,7 +535,7 @@ class _QApageState extends State<QApage> {
                               child: Padding(
                                 padding: EdgeInsets.all(10),
                                 child: Container(
-                                  height: 40,
+                                  height: 30,
                                   child: ListView.builder(
                                     shrinkWrap: true,
                                     scrollDirection: Axis.horizontal,
@@ -550,7 +551,7 @@ class _QApageState extends State<QApage> {
                                             mObj['tags']
                                                 [index], //! access QA name
                                             style: TextStyle(
-                                                fontSize: 15,
+                                                fontSize: 14,
                                                 // fontWeight:
                                                 //     FontWeight.bold,
                                                 color: Colors.white),
@@ -559,8 +560,7 @@ class _QApageState extends State<QApage> {
                                             padding: EdgeInsets.symmetric(
                                                 horizontal: 8, vertical: 5),
                                             backgroundColor: Color.fromARGB(
-                                                255, 36, 122, 39),
-                                            side: BorderSide(width: 0),
+                                                255, 87, 139, 89),
                                             shape: RoundedRectangleBorder(
                                               borderRadius: BorderRadius.all(
                                                 Radius.circular(15),
@@ -597,9 +597,7 @@ class _QApageState extends State<QApage> {
                                     child: Text(
                                       mObj['equQAs'][index], //! access QA name
                                       style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold),
+                                          fontSize: 18, color: Colors.black),
                                     ),
                                     style: OutlinedButton.styleFrom(
                                         side: BorderSide(width: 1),
@@ -630,7 +628,8 @@ class _QApageState extends State<QApage> {
             child: FloatingActionButton(
               onPressed: () => showAns(),
               heroTag: 'btn1',
-              child: Icon(Icons.question_answer_outlined),
+              backgroundColor: tSecondColor,
+              child: const Icon(Icons.question_answer_outlined),
             ),
           ),
           Positioned(
@@ -639,7 +638,8 @@ class _QApageState extends State<QApage> {
             child: FloatingActionButton(
               onPressed: () => unlock(),
               heroTag: 'btn2',
-              child: Icon(Icons.lock_open),
+              backgroundColor: tSecondColor,
+              child: const Icon(Icons.lock_open),
             ),
           ),
         ]));
@@ -655,10 +655,10 @@ class divider0 extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Divider(
       height: 20,
-      thickness: 3,
+      thickness: 1,
       indent: 10,
       endIndent: 10,
-      color: Colors.black,
+      color: tThirdColor,
     );
   }
 }
@@ -723,7 +723,7 @@ class _ButtonRowState extends State<ButtonRow> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 10, bottom: 2),
+      padding: const EdgeInsets.only(top: 5, bottom: 2),
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Row(
@@ -747,7 +747,7 @@ class _ButtonRowState extends State<ButtonRow> {
               child: GestureDetector(
                 onTap: () => _selectButton(index),
                 child: SizedBox(
-                  width: MediaQuery.of(context).size.width / 4.2,
+                  width: 50,
                   height: 50,
                   child: Container(
                     // padding: EdgeInsets.symmetric(vertical: 20, horizontal: 24),
@@ -772,6 +772,7 @@ class _ButtonRowState extends State<ButtonRow> {
                             ),
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Padding(padding: EdgeInsets.all(3)),
                               Icon(Icons.speed, color: Colors.blue),
