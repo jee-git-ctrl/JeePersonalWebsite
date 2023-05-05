@@ -447,13 +447,14 @@ class _QApageState extends State<QApage> {
         appBar: AppBar(
           leading: IconButton(
               onPressed: () => Navigator.of(context).pop(),
-              icon: const Icon(Icons.chevron_left)),
+              icon: const Icon(
+                Icons.chevron_left,
+                color: tDarkColor,
+              )),
           //backgroundColor: Color(0xffd9d9d9),
           elevation: 0.0,
-          title: Text(
-            mObj['title'],
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
+          title: Text(mObj['title'],
+              style: const TextStyle(color: tDarkColor, fontSize: 20)),
           centerTitle: true,
           actions: [
             Container(
@@ -614,7 +615,7 @@ class _QApageState extends State<QApage> {
                             itemCount: 3,
                             itemBuilder: (context, index) {
                               return Padding(
-                                padding: EdgeInsets.only(left: 8, right: 10),
+                                padding: EdgeInsets.only(left: 8, right: 5),
                                 child: OutlinedButton(
                                     onPressed: () =>
                                         print('direct'), //! direct to
