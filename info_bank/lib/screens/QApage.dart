@@ -778,7 +778,7 @@ class _ButtonRowState extends State<ButtonRow> {
                   child: GestureDetector(
                     onTap: () => _selectButton(index),
                     child: SizedBox(
-                      width: 100,
+                      width: MediaQuery.of(context).size.width / 5,
                       height: 50,
                       child: Container(
                         // padding: EdgeInsets.symmetric(vertical: 20, horizontal: 24),
