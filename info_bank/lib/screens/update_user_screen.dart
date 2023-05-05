@@ -28,9 +28,12 @@ class _UpdateUserProfileScreen extends State<UpdateUserProfileScreen> {
       appBar: AppBar(
         leading: IconButton(
             onPressed: () => Navigator.of(context).pop(),
-            icon: const Icon(Icons.chevron_left)),
+            icon: const Icon(
+              Icons.chevron_left,
+              color: Colors.black,
+            )),
         title: Text(
-          'Edit Profile',
+          '修改個人資料',
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         centerTitle: true,
@@ -121,6 +124,16 @@ class _UpdateUserProfileScreen extends State<UpdateUserProfileScreen> {
                         ),
                         controller: _introController,
                         validator: validateIntro,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                            label: Text('身分'),
+                            prefixIcon: Icon(Icons.star_outline_rounded)),
+                        //controller:
+                        //validator: validateIntro,
                       ),
                       const SizedBox(
                         height: 20,

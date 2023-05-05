@@ -3,6 +3,7 @@ import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:info_bank/post/post.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:info_bank/src/constants/colors.dart';
+import 'package:info_bank/screens/search.dart';
 
 class Discover extends StatefulWidget {
   const Discover({Key? key}) : super(key: key);
@@ -73,6 +74,19 @@ class _DiscoverState extends State<Discover>
                 color: Colors.black,
               )),
           centerTitle: true,
+          actions: [
+            Container(
+              padding: const EdgeInsets.only(right: 13),
+              child: IconButton(
+                  color: Colors.black,
+                  icon: const Icon(Icons.search),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Search()));
+                    //Navigator.pushNamed(context, '/search');
+                  }),
+            )
+          ],
         ),
         body: SafeArea(
           minimum: const EdgeInsets.all(8.0),
@@ -113,10 +127,10 @@ class _DiscoverState extends State<Discover>
               ),
               const Divider(
                 height: 20,
-                thickness: 3,
-                indent: 10,
-                endIndent: 10,
-                color: Colors.black,
+                thickness: 1,
+                indent: 5,
+                endIndent: 5,
+                color: tThirdColor,
               ),
               /*Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

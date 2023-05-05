@@ -1,13 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:info_bank/screens/earnning_page.dart';
 import 'package:info_bank/screens/reportpage.dart';
 import 'package:info_bank/screens/settingpage.dart';
-import 'package:info_bank/src/constants/buttons.dart';
 import 'package:info_bank/tabs/tabspage.dart';
 import 'package:info_bank/src/services/google_services.dart';
 import '../screens/wallet.dart';
-import 'package:info_bank/src/constants/allConstants.dart';
+import 'package:info_bank/screens/QApage.dart';
+import 'package:info_bank/screens/tmpQApage.dart';
 
 class SideMenu extends StatefulWidget {
   @override
@@ -85,8 +84,8 @@ class _SideMenuState extends State<SideMenu> {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.wallet_outlined),
-              title: const Text('Earning Page'),
+              leading: const Icon(Icons.attach_money_rounded),
+              title: const Text('打工'),
               onTap: () => {
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const EarningPage()),
@@ -128,6 +127,19 @@ class _SideMenuState extends State<SideMenu> {
                 ],
               ),
             ),
+            // SizedBox(
+            //   width: 120,
+            //   child: Column(
+            //     children: [
+            //       ElevatedButton(
+            //           onPressed: () {
+            //             Navigator.of(context).push(
+            //                 MaterialPageRoute(builder: (context) => tmpQA()));
+            //           },
+            //           child: const Text('Debug QA')),
+            //     ],
+            //   ),
+            // ),
             ListTile(
               leading: const Icon(Icons.logout_outlined),
               title: const Text('登出'),

@@ -120,7 +120,13 @@ class _ProfileState extends State<Profile> {
               const SizedBox(
                 height: 30,
               ),
-              const Divider(),
+              const Divider(
+                height: 20,
+                thickness: 1,
+                indent: 5,
+                endIndent: 5,
+                color: tThirdColor,
+              ),
               const SizedBox(
                 height: 10,
               ),

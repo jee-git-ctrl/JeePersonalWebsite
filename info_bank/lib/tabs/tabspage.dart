@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:info_bank/src/constants/colors.dart';
 import 'package:info_bank/tabs/bottom_tabs.dart';
 
@@ -42,6 +43,7 @@ class _TabsPageState extends State<TabsPage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -68,8 +70,8 @@ class _TabsPageState extends State<TabsPage> {
         unselectedLabelStyle:
             const TextStyle(color: Colors.white, fontSize: 14),
         currentIndex: _selectedIndex,
-        backgroundColor: Colors.black,
-        selectedItemColor: tAppBarColor,
+        backgroundColor: tForthColor,
+        selectedItemColor: tSecondColor,
         unselectedItemColor: Colors.grey,
         unselectedFontSize: 14,
         onTap: _onItemTapped,

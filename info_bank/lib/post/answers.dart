@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:info_bank/screens/QApage.dart';
+import 'package:info_bank/src/constants/image_strings.dart';
 
 class AnsLocked extends StatelessWidget {
   final int index;
@@ -32,10 +33,9 @@ class AnsLocked extends StatelessWidget {
               Row(
                 children: [
                   const Padding(padding: EdgeInsets.all(3)),
-                  const Icon(
-                    Icons.person,
-                    size: 24,
-                    color: Colors.red,
+                  const CircleAvatar(
+                    radius: 12,
+                    backgroundImage: AssetImage(tAvatarImage1),
                   ),
                   const Padding(padding: EdgeInsets.all(1)),
                   Text(lans[index]["userName"],
@@ -147,10 +147,9 @@ class _AnsUnlockedState extends State<AnsUnlocked> {
                     Row(
                       children: [
                         const Padding(padding: EdgeInsets.all(3)),
-                        const Icon(
-                          Icons.person,
-                          size: 24,
-                          color: Colors.red,
+                        const CircleAvatar(
+                          radius: 12,
+                          backgroundImage: AssetImage(tAvatarImage1),
                         ),
                         const Padding(padding: EdgeInsets.all(1)),
                         Text(widget.lans[widget.index]["userName"],
@@ -161,40 +160,24 @@ class _AnsUnlockedState extends State<AnsUnlocked> {
                             style: const TextStyle(fontSize: 16.0))
                       ],
                     ),
-                    // Padding(padding: EdgeInsets.all(1.0)),
-                    Stack(
-                      children: [
-                        Align(
-                            alignment: Alignment.topLeft,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 10.0, top: 3),
-                              child: Text(
-                                widget.lans[widget.index]
-                                    ["content"], // modified
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 10.0,
+                        bottom: 30.0,
+                      ),
+                      child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 30.0, top: 3),
+                            child: Text(
+                              widget.lans[widget.index]["content"], // modified
+                              style: const TextStyle(
+                                fontSize: 18,
                               ),
-                            )),
-                        // SizedBox(
-                        //   width: 400, // modify
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.end,
-                        //     children: [
-                        //       Icon(Icons.upcoming),
-                        //       Text(
-                        //         widget.lans[widget.index]['score'],
-                        //         style: TextStyle(
-                        //           fontSize: 30,
-                        //         ),
-                        //       )
-                        //     ],
-                        //   ),
-                        // ),
-                      ],
+                            ),
+                          )),
                     ),
-                    const Padding(padding: EdgeInsets.all(5.0))
                   ],
                 ),
               ),

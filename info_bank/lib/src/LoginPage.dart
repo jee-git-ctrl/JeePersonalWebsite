@@ -71,7 +71,8 @@ class _LoginPageState extends State<LoginPage> {
               Container(
                 width: 100,
                 child: ElevatedButton(
-                  style: ButtonStyle(
+                  style: const ButtonStyle(
+                      elevation: MaterialStatePropertyAll(0),
                       backgroundColor: MaterialStatePropertyAll(tThirdColor)),
                   child: Center(child: Text("")),
                   onPressed: () {
