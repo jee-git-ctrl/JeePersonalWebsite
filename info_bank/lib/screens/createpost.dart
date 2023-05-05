@@ -29,8 +29,10 @@ class _CreatePostState extends State<CreatePost> {
   ];
   List<String> FoodTagGroup = ["food", "hotpot", "high quality"];
   List<String> StudyTagGroup = ["study", "exam", "difficult"];
-  final TextEditingController _typeAheadController = TextEditingController();
-  SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
+  final TextEditingController _typeAheadController =
+      TextEditingController(); //tags
+  SuggestionsBoxController suggestionBoxController =
+      SuggestionsBoxController(); //
   final _formKey = GlobalKey<FormState>();
   double dropdownbuttonWidth = 60;
   String _currentprice = "免費";
