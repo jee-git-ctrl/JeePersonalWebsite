@@ -26,6 +26,7 @@ class _QApageState extends State<QApage> {
     'ans': [
       [
         {
+          'userID': '1',
           'userName': 'Alan Runner',
           'reputation': '60%',
           'score': '3.7',
@@ -33,42 +34,48 @@ class _QApageState extends State<QApage> {
           'content': '目前需等10號'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '2',
+          'userName': 'Walter Black',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': '目前需等12號'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '3',
+          'userName': 'Emily Brown',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': '目前需等13號'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
@@ -77,49 +84,56 @@ class _QApageState extends State<QApage> {
       ],
       [
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': '1111111'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
@@ -128,56 +142,64 @@ class _QApageState extends State<QApage> {
       ],
       [
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': '222222'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
@@ -186,56 +208,64 @@ class _QApageState extends State<QApage> {
       ],
       [
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': '333333'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
           'content': 'testingtesting'
         },
         {
-          'userName': 'Alan Runner',
+          'userID': '5',
+          'userName': 'Anonymous',
           'reputation': '60%',
           'score': '3.7',
           'nFeedback': '2.6k',
@@ -776,7 +806,10 @@ class answerSec extends StatelessWidget {
                 // print(ansObj);
                 if (!isUnlocked) {
                   return AnsLocked(
-                      index: index, secNum: secNum, lans: ansObj[secNum]);
+                    index: index,
+                    secNum: secNum,
+                    lans: ansObj[secNum],
+                  );
                 } else {
                   return AnsUnlocked(
                       index: index, secNum: secNum, lans: ansObj[secNum]);

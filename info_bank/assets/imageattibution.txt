@@ -1,0 +1,3 @@
+avatar 2 https://pixabay.com/photos/portrait-human-man-camera-7942151/
+avatar 3 https://pixabay.com/photos/dog-beach-sea-domestic-animal-7956828/
+avatar 4 https://pixabay.com/photos/woman-silhouette-sunset-beach-sea-570883/
