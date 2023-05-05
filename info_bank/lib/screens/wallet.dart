@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:info_bank/src/constants/colors.dart';
 import 'package:info_bank/src/services/wallet_charts.dart';
 import 'package:info_bank/src/widgets/income_analysis.dart';
 import 'package:info_bank/src/widgets/transaction_data.dart';
@@ -31,7 +32,7 @@ class _Wallet extends State<Wallet> {
               child: Container(
                 height: 100,
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.pink),
+                    border: Border.all(color: tPrimaryColor),
                     borderRadius: BorderRadius.circular(5)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -109,7 +110,7 @@ class _Wallet extends State<Wallet> {
               child: Container(
             margin: const EdgeInsets.only(top: 10),
             decoration: const BoxDecoration(
-                color: Colors.amber,
+                color: tFifthColor,
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(30),
                 )),

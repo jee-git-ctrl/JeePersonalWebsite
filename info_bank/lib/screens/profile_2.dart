@@ -125,7 +125,7 @@ class _ProfileState2 extends State<Profile2>
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: tPrimaryColor,
+                              backgroundColor: tFifthColor,
                               side: BorderSide.none,
                               elevation: 0,
                               shape: const StadiumBorder()),
@@ -133,6 +133,7 @@ class _ProfileState2 extends State<Profile2>
                             '自訂個人名片',
                             style: GoogleFonts.openSans(
                               fontSize: 14,
+                              color: tDarkColor,
                             ),
                           ),
                         ),
