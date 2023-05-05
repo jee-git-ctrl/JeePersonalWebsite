@@ -209,33 +209,33 @@ class SamePost extends StatelessWidget {
             .push(MaterialPageRoute(builder: (context) => QApage()));
       },
       child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+          padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
           child: Container(
             decoration: BoxDecoration(
               color: tThirdColor,
               borderRadius: BorderRadius.circular(10),
             ),
-            height: 110,
+            height: 30,
             child: Column(
               children: [
                 Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.topLeft,
                   child: Padding(
-                    padding: EdgeInsets.only(left: 8, top: 8),
+                    padding: const EdgeInsets.only(left: 8, top: 8, right: 8),
                     child: Container(
-                      height: 50,
+                      height: 20,
                       child: Text(
                         //title
                         currentpost.title,
                         style: GoogleFonts.openSans(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                          fontSize: 15,
                           color: tDarkColor,
                         ),
                       ),
                     ),
                   ),
                 ),
+                /*
                 Container(
                   width: MediaQuery.of(context).size.width,
                   child: Row(
@@ -327,6 +327,7 @@ class SamePost extends StatelessWidget {
                     ],
                   ),
                 ),
+                */
               ],
             ),
           )),
