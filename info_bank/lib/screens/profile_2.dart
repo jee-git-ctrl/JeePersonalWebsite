@@ -80,8 +80,10 @@ class _ProfileState2 extends State<Profile2>
           padding: const EdgeInsets.all(8),
           child: Column(
             children: [
-              Stack(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  //profile photo
                   SizedBox(
                     width: 90,
                     height: 90,
@@ -90,74 +92,64 @@ class _ProfileState2 extends State<Profile2>
                       child: const Image(image: AssetImage(tAvatarImage1)),
                     ),
                   ),
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    child: Container(
-                      width: 35,
-                      height: 35,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          color: tPrimaryColor),
-                      child: const Icon(
-                        Icons.edit,
-                        color: Colors.white,
-                        size: 21,
+                  Column(
+                    children: [
+                      Text(
+                        tUserProfileName,
+                        style: GoogleFonts.openSans(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        tUserProfileHeading,
+                        style: GoogleFonts.openSans(
+                          fontSize: 14,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      SizedBox(
+                        width: 160,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const UpdateUserProfileScreen()),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: tPrimaryColor,
+                              side: BorderSide.none,
+                              elevation: 0,
+                              shape: const StadiumBorder()),
+                          child: Text(
+                            '自訂個人名片',
+                            style: GoogleFonts.openSans(
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   )
                 ],
               ),
               const SizedBox(
-                height: 10,
-              ),
-              Text(
-                tUserProfileName,
-                style: GoogleFonts.openSans(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
-                tUserProfileHeading,
-                style: GoogleFonts.openSans(
-                  fontSize: 14,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              SizedBox(
-                width: 160,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const UpdateUserProfileScreen()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: tPrimaryColor,
-                      side: BorderSide.none,
-                      shape: const StadiumBorder()),
-                  child: Text(
-                    '自訂個人名片',
-                    style: GoogleFonts.openSans(
-                      fontSize: 14,
-                    ),
-                  ),
-                ),
+                height: 15,
               ),
               const Divider(
+                height: 20,
                 thickness: 1,
-                indent: 10,
-                endIndent: 10,
-                color: Colors.black,
+                indent: 5,
+                endIndent: 5,
+                color: tThirdColor,
               ),
               TabBar(
                 indicatorColor:

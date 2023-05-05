@@ -127,10 +127,10 @@ class _DiscoverState extends State<Discover>
               ),
               const Divider(
                 height: 20,
-                thickness: 3,
-                indent: 10,
-                endIndent: 10,
-                color: Colors.black,
+                thickness: 1,
+                indent: 5,
+                endIndent: 5,
+                color: tThirdColor,
               ),
               /*Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
