@@ -128,25 +128,26 @@ class _CreatePostState extends State<CreatePost> {
                     ),
                   ),
                   Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 10.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 8),
-                          child: TextFormField(
-                            minLines: 1,
-                            maxLines: 5,
-                            decoration: InputDecoration(
-                              hintText: '補充說明（選填）',
-                              border: InputBorder.none,
-                            ),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 8),
+                        child: TextFormField(
+                          minLines: 1,
+                          maxLines: 5,
+                          decoration: InputDecoration(
+                            hintText: '補充說明（選填）',
+                            border: InputBorder.none,
                           ),
                         ),
-                      )),
+                      ),
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 10.0, horizontal: 10.0),
@@ -262,7 +263,7 @@ class _CreatePostState extends State<CreatePost> {
                                       dropdownbuttonWidth);
                                 },
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               ElevatedButton(

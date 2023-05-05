@@ -475,116 +475,109 @@ class _QApageState extends State<QApage> {
                   child: ListView(children: [
                     // content
                     Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 10.0),
-                        child: Container(
-                            //top box
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 210, 209, 209),
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            child: Column(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10.0),
+                      child: Container(
+                        //top box
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 210, 209, 209),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
                               children: [
-                                Row(
-                                  children: [
-                                    Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 10, right: 8, top: 10),
-                                        child: Text(mObj['title'],
-                                            style: GoogleFonts.openSans(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 26,
-                                                color: Colors.black))),
-                                    const Expanded(
-                                      child: Padding(
-                                        padding: EdgeInsets.only(right: 8.0),
-                                        child: Align(
-                                            alignment: Alignment.topRight,
-                                            child: Icon(Icons.info, size: 26)),
-                                      ),
-                                    )
-                                  ],
-                                ),
                                 Padding(
-                                  padding: EdgeInsets.only(top: 12),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: SizedBox(
-                                        height: 60,
-                                        child: Row(
-                                          children: [
-                                            Padding(padding: EdgeInsets.all(7)),
-                                            Flexible(
-                                              child: Align(
-                                                alignment: Alignment.topLeft,
-                                                child: Text(
-                                                  mObj["note"],
-                                                  style: TextStyle(
-                                                    fontSize: 20,
-                                                  ),
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        )),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
+                                    padding: const EdgeInsets.only(
+                                        left: 10, right: 8, top: 10),
+                                    child: Text(mObj['title'],
+                                        style: GoogleFonts.openSans(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 26,
+                                            color: Colors.black))),
+                                const Expanded(
                                   child: Padding(
-                                    padding: EdgeInsets.all(10),
-                                    child: Container(
-                                      height: 40,
-                                      child: ListView.builder(
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.horizontal,
-                                          // itemCount: (mObj['tags']).length,
-                                          itemCount: 3,
-                                          itemBuilder: (context, index) {
-                                            return Padding(
-                                              padding:
-                                                  EdgeInsets.only(right: 6),
-                                              child: OutlinedButton(
-                                                  onPressed: () => print(
-                                                      'direct'), //! direct to
-                                                  child: Text(
-                                                    mObj['tags'][
-                                                        index], //! access QA name
-                                                    style: TextStyle(
-                                                        fontSize: 15,
-                                                        // fontWeight:
-                                                        //     FontWeight.bold,
-                                                        color: Colors.white),
-                                                  ),
-                                                  style:
-                                                      OutlinedButton.styleFrom(
-                                                          padding: EdgeInsets
-                                                              .symmetric(
-                                                                  horizontal: 8,
-                                                                  vertical: 5),
-                                                          backgroundColor:
-                                                              Color.fromARGB(
-                                                                  255,
-                                                                  36,
-                                                                  122,
-                                                                  39),
-                                                          side: BorderSide(
-                                                              width: 0),
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .all(Radius
-                                                                        .circular(
-                                                                            15)),
-                                                          ))),
-                                            );
-                                          }),
-                                    ),
+                                    padding: EdgeInsets.only(right: 8.0),
+                                    child: Align(
+                                        alignment: Alignment.topRight,
+                                        child: Icon(Icons.info, size: 26)),
                                   ),
                                 )
                               ],
-                            ))),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 12),
+                              child: Align(
+                                alignment: Alignment.topLeft,
+                                child: SizedBox(
+                                    height: 60,
+                                    child: Row(
+                                      children: [
+                                        Padding(padding: EdgeInsets.all(7)),
+                                        Flexible(
+                                          child: Align(
+                                            alignment: Alignment.topLeft,
+                                            child: Text(
+                                              mObj["note"],
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    )),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Padding(
+                                padding: EdgeInsets.all(10),
+                                child: Container(
+                                  height: 40,
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.horizontal,
+                                    // itemCount: (mObj['tags']).length,
+                                    itemCount: 3,
+                                    itemBuilder: (context, index) {
+                                      return Padding(
+                                        padding: EdgeInsets.only(right: 6),
+                                        child: OutlinedButton(
+                                          onPressed: () =>
+                                              print('direct'), //! direct to
+                                          child: Text(
+                                            mObj['tags']
+                                                [index], //! access QA name
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                // fontWeight:
+                                                //     FontWeight.bold,
+                                                color: Colors.white),
+                                          ),
+                                          style: OutlinedButton.styleFrom(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 8, vertical: 5),
+                                            backgroundColor: Color.fromARGB(
+                                                255, 36, 122, 39),
+                                            side: BorderSide(width: 0),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(15),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     Padding(
                       padding: EdgeInsets.only(top: 4, bottom: 2),
                       child: SizedBox(

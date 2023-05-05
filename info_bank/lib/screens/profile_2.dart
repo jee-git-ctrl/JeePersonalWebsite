@@ -4,7 +4,6 @@ import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:info_bank/screens/search.dart';
 import 'package:info_bank/src/constants/colors.dart';
 import 'package:info_bank/src/constants/image_strings.dart';
-import 'package:info_bank/src/constants/sizes.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:info_bank/src/constants/text_strings.dart';
 import 'package:info_bank/screens/update_user_screen.dart';
@@ -251,7 +250,8 @@ class CardsWidgets extends StatelessWidget {
                           height: 55,
                           child: Text(
                             //title
-                            "重要回答之\n平均評價分",
+                            "重要回答\n評價平均分",
+                            textAlign: TextAlign.center,
                             style: GoogleFonts.openSans(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
