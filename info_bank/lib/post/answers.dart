@@ -71,7 +71,7 @@ class AnsLocked extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 6),
-                    child: Text(lans[index]["reputation"],
+                    child: Text(lans[index]["reputation"].toString(),
                         style: const TextStyle(fontSize: 16.0)),
                   ),
                   Padding(
@@ -88,7 +88,7 @@ class AnsLocked extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 6),
                     child: Container(
                       child: Text(
-                        "1 天前更新",
+                        lans[index]["time"],
                         style: GoogleFonts.openSans(),
                       ),
                     ),
@@ -101,7 +101,7 @@ class AnsLocked extends StatelessWidget {
                   Align(
                       alignment: Alignment.center,
                       child: Text(
-                        lans[index]["score"],
+                        lans[index]["score"].toString(),
                         style: const TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
@@ -208,16 +208,6 @@ class _AnsUnlockedState extends State<AnsUnlocked> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 6),
-                          child: Text(
-                            "·",
-                            style: GoogleFonts.openSans(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 6),
                           child: Text(widget.lans[widget.index]["userName"],
                               style: const TextStyle(
                                   fontSize: 16.0, fontWeight: FontWeight.bold)),
@@ -234,7 +224,9 @@ class _AnsUnlockedState extends State<AnsUnlocked> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 6),
-                          child: Text(widget.lans[widget.index]["reputation"],
+                          child: Text(
+                              widget.lans[widget.index]["reputation"]
+                                  .toString(),
                               style: const TextStyle(fontSize: 16.0)),
                         ),
                         Padding(
@@ -251,7 +243,7 @@ class _AnsUnlockedState extends State<AnsUnlocked> {
                           padding: const EdgeInsets.only(left: 6),
                           child: Container(
                             child: Text(
-                              "1 天前更新",
+                              widget.lans[widget.index]["time"],
                               style: GoogleFonts.openSans(),
                             ),
                           ),
@@ -260,10 +252,7 @@ class _AnsUnlockedState extends State<AnsUnlocked> {
                     ),
 
                     Padding(
-                      padding: const EdgeInsets.only(
-                        top: 10.0,
-                        bottom: 30.0,
-                      ),
+                      padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                       child: Align(
                           alignment: Alignment.topLeft,
                           child: Padding(
@@ -276,6 +265,19 @@ class _AnsUnlockedState extends State<AnsUnlocked> {
                             ),
                           )),
                     ),
+                    Align(
+                        alignment: Alignment.topLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 30.0),
+                          child: Text(
+                            widget.lans[widget.index]["score"]
+                                .toString(), // modified
+                            style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: tPrimaryColor),
+                          ),
+                        )),
                   ],
                 ),
               ),
