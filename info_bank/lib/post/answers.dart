@@ -229,55 +229,59 @@ class _AnsUnlockedState extends State<AnsUnlocked> {
                                   .toString(),
                               style: const TextStyle(fontSize: 16.0)),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 6),
-                          child: Text(
-                            "·",
-                            style: GoogleFonts.openSans(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 6),
-                          child: Container(
-                            child: Text(
-                              widget.lans[widget.index]["time"],
-                              style: GoogleFonts.openSans(),
-                            ),
-                          ),
-                        ),
                       ],
                     ),
 
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                       child: Align(
-                          alignment: Alignment.topLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 30.0, top: 3),
-                            child: Text(
-                              widget.lans[widget.index]["content"], // modified
-                              style: const TextStyle(
-                                fontSize: 18,
-                              ),
-                            ),
-                          )),
-                    ),
-                    Align(
                         alignment: Alignment.topLeft,
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 30.0),
+                          padding: const EdgeInsets.only(left: 30.0, top: 3),
                           child: Text(
-                            widget.lans[widget.index]["score"]
-                                .toString(), // modified
+                            widget.lans[widget.index]["content"], // modified
                             style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: tPrimaryColor),
+                              fontSize: 18,
+                            ),
                           ),
-                        )),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 30.0),
+                            child: Text(
+                              widget.lans[widget.index]["score"]
+                                  .toString(), // modified
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: tPrimaryColor),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 6),
+                            child: Text(
+                              "·",
+                              style: GoogleFonts.openSans(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 6, bottom: 1),
+                            child: Text(
+                              widget.lans[widget.index]["time"],
+                              style: GoogleFonts.openSans(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),

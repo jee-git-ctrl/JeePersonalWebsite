@@ -109,8 +109,8 @@ class _QApageState extends State<QApage> {
           'time': '2天前更新'
         },
         {
-          'userID': '10',
-          'userName': 'Todd Alquist',
+          'userID': '11',
+          'userName': 'Anonymous',
           'reputation': 1.3,
           'score': 2.9,
           'nFeedback': '3.8k',
@@ -147,8 +147,8 @@ class _QApageState extends State<QApage> {
           'time': '3天前更新'
         },
         {
-          'userID': '4',
-          'userName': 'K',
+          'userID': '11',
+          'userName': 'Anonymous',
           'reputation': 3.7,
           'score': 4.5,
           'nFeedback': '4.8k',
@@ -266,8 +266,8 @@ class _QApageState extends State<QApage> {
           'time': '1天前更新'
         },
         {
-          'userID': '7',
-          'userName': 'Tenet',
+          'userID': '11',
+          'userName': 'Anonymous',
           'reputation': 0.7,
           'score': 2.2,
           'nFeedback': '1.2k',
@@ -313,8 +313,8 @@ class _QApageState extends State<QApage> {
           'time': '1天前更新'
         },
         {
-          'userID': '2',
-          'userName': 'Claire',
+          'userID': '11',
+          'userName': 'Anonymous',
           'reputation': 3.1,
           'score': 1.9,
           'nFeedback': '2.5k',
@@ -416,8 +416,8 @@ class _QApageState extends State<QApage> {
           'time': '5小時前更新'
         },
         {
-          'userID': '10',
-          'userName': 'Todd Alquist',
+          'userID': '11',
+          'userName': 'Anonymous',
           'reputation': 1.3,
           'score': 2.9,
           'nFeedback': '3.8k',
@@ -490,8 +490,8 @@ class _QApageState extends State<QApage> {
       ],
       [
         {
-          'userID': '7',
-          'userName': 'Cooper',
+          'userID': '11',
+          'userName': 'Anonymous',
           'reputation': 0.7,
           'score': 2.2,
           'nFeedback': '1.2k',
@@ -636,8 +636,8 @@ class _QApageState extends State<QApage> {
           'time': '1天前更新'
         },
         {
-          'userID': '8',
-          'userName': 'Saito',
+          'userID': '11',
+          'userName': 'Anonymous',
           'reputation': 4.5,
           'score': 3.4,
           'nFeedback': '3.2k',
@@ -692,8 +692,8 @@ class _QApageState extends State<QApage> {
           'time': '5小時前更新'
         },
         {
-          'userID': '10',
-          'userName': 'Tom Yates',
+          'userID': '11',
+          'userName': 'Anonymous',
           'reputation': 1.3,
           'score': 2.9,
           'nFeedback': '3.8k',
@@ -788,8 +788,8 @@ class _QApageState extends State<QApage> {
           'time': '5小時前更新'
         },
         {
-          'userID': '3',
-          'userName': 'Hank Schrader',
+          'userID': '11',
+          'userName': 'Anonymous',
           'reputation': 4.8,
           'score': 4.1,
           'nFeedback': '1.7k',
@@ -871,8 +871,8 @@ class _QApageState extends State<QApage> {
           'time': '1天前更新'
         },
         {
-          'userID': '2',
-          'userName': 'Kat',
+          'userID': '11',
+          'userName': 'Anonymous',
           'reputation': 3.1,
           'score': 1.9,
           'nFeedback': '2.5k',
@@ -963,8 +963,8 @@ class _QApageState extends State<QApage> {
           'time': '1天前更新'
         },
         {
-          'userID': '2',
-          'userName': 'Neil',
+          'userID': '11',
+          'userName': 'Anonymous',
           'reputation': 3.1,
           'score': 1.9,
           'nFeedback': '2.5k',
@@ -1046,8 +1046,8 @@ class _QApageState extends State<QApage> {
       ],
       [
         {
-          'userID': '1',
-          'userName': 'Frank',
+          'userID': '11',
+          'userName': 'Anonymous',
           'reputation': 4.2,
           'score': 2.8,
           'nFeedback': '3.6k',
@@ -1180,7 +1180,7 @@ class _QApageState extends State<QApage> {
         bottom: MediaQuery.of(context).viewInsets.bottom,
         left: 0,
         right: 0,
-        child: Text('hiefwef'),
+        child: const Text('hiefwef'),
         // child: Container(
         //   color: Colors.white,
         //   child: Padding(
@@ -1254,11 +1254,11 @@ class _QApageState extends State<QApage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text("確定要解鎖？"),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text("現有點數: 15pt"),
                   ),
@@ -1268,10 +1268,10 @@ class _QApageState extends State<QApage> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: ElevatedButton(
-                          style: ButtonStyle(
+                          style: const ButtonStyle(
                               backgroundColor:
                                   MaterialStatePropertyAll(tSecondColor)),
-                          child: Text("確定"),
+                          child: const Text("確定"),
                           onPressed: () {
                             setState(() {
                               isUnlocked[selectedSec] = true;
@@ -1283,10 +1283,10 @@ class _QApageState extends State<QApage> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: ElevatedButton(
-                          style: ButtonStyle(
+                          style: const ButtonStyle(
                               backgroundColor:
                                   MaterialStatePropertyAll(tSecondColor)),
-                          child: Text("取消"),
+                          child: const Text("取消"),
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
@@ -1310,7 +1310,7 @@ class _QApageState extends State<QApage> {
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: tThirdColor,
-            content: Container(
+            content: SizedBox(
               width: 400,
               child: Form(
                 key: _formKey,
@@ -1340,15 +1340,15 @@ class _QApageState extends State<QApage> {
                               ),
                             ),
                           ),
-                          Text('Alan',
+                          const Text('Alan',
                               style: TextStyle(
                                   fontSize: 16.0, fontWeight: FontWeight.bold)),
-                          Padding(padding: EdgeInsets.all(3)),
-                          Text('60%', style: TextStyle(fontSize: 16.0))
+                          const Padding(padding: EdgeInsets.all(3)),
+                          const Text('60%', style: TextStyle(fontSize: 16.0))
                         ],
                       ),
                       Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: TextFormField(
                           decoration: const InputDecoration(hintText: '請輸入回答'),
                         ),
@@ -1359,20 +1359,18 @@ class _QApageState extends State<QApage> {
                             bottom: 10,
                             left: 10,
                             child: Container(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(15),
-                                  ),
-                                  color: tFifthColor,
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(15),
                                 ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(curSec(),
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold)),
-                                ),
+                                color: tFifthColor,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(curSec(),
+                                    style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold)),
                               ),
                             ),
                           ),
@@ -1381,10 +1379,10 @@ class _QApageState extends State<QApage> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: ElevatedButton(
-                                style: ButtonStyle(
+                                style: const ButtonStyle(
                                     backgroundColor:
                                         MaterialStatePropertyAll(tSecondColor)),
-                                child: Text("回答"),
+                                child: const Text("回答"),
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
@@ -1415,215 +1413,229 @@ class _QApageState extends State<QApage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: SideMenu(),
-        appBar: AppBar(
-          leading: IconButton(
-              onPressed: () => Navigator.of(context).pop(),
-              icon: const Icon(
-                Icons.chevron_left,
-                color: tDarkColor,
-              )),
-          //backgroundColor: Color(0xffd9d9d9),
-          elevation: 0.0,
-          title: Text(mObj['title'],
-              style: const TextStyle(color: tDarkColor, fontSize: 20)),
-          centerTitle: true,
-          actions: [
-            Container(
-              padding: const EdgeInsets.only(right: 13),
-              child: IconButton(
-                  color: Colors.black,
-                  icon: const Icon(Icons.search),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => Search()));
-                    //Navigator.pushNamed(context, '/search');
-                  }),
-            )
-          ],
-        ),
-        body: Stack(children: [
+      drawer: SideMenu(),
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () => Navigator.of(context).pop(),
+            icon: const Icon(
+              Icons.chevron_left,
+              color: tDarkColor,
+            )),
+        //backgroundColor: Color(0xffd9d9d9),
+        elevation: 0.0,
+        title: Text(mObj['title'],
+            style: const TextStyle(color: tDarkColor, fontSize: 20)),
+        centerTitle: true,
+        actions: [
+          Container(
+            padding: const EdgeInsets.only(right: 13),
+            child: IconButton(
+                color: Colors.black,
+                icon: const Icon(Icons.search),
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const Search()));
+                  //Navigator.pushNamed(context, '/search');
+                }),
+          )
+        ],
+      ),
+      body: Stack(
+        children: [
           SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(
                   height: MediaQuery.of(context).size.height - kToolbarHeight,
-                  child: ListView(children: [
-                    // content
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 10.0),
-                      child: Container(
-                        //top box
-                        decoration: BoxDecoration(
-                          color: tThirdColor,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 10, right: 8, top: 10),
-                                    child: Text(mObj['title'],
-                                        style: GoogleFonts.openSans(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 26,
-                                            color: Colors.black))),
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(right: 8.0),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {
-                                            showReportDialog(context);
-                                          },
-                                          icon: const Icon(
-                                              Icons.warning_amber_sharp,
-                                              size: 26),
-                                        ),
-                                        IconButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              // Here we changing the icon.
-                                              toggle = !toggle;
-                                            });
-                                          },
-                                          icon: toggle
-                                              ? const Icon(Icons.favorite,
-                                                  size: 26,
-                                                  color: tPrimaryColor)
-                                              : const Icon(
-                                                  Icons.favorite_border,
-                                                  size: 26,
-                                                  color: tPrimaryColor,
-                                                ),
-                                        ),
-                                      ],
+                  child: ListView(
+                    children: [
+                      // content
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 10.0),
+                        child: Container(
+                          //top box
+                          decoration: BoxDecoration(
+                            color: tThirdColor,
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 8, top: 10),
+                                      child: Text(mObj['title'],
+                                          style: GoogleFonts.openSans(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 26,
+                                              color: tDarkColor))),
+                                  Expanded(
+                                    child: Padding(
+                                      padding:
+                                          const EdgeInsets.only(right: 8.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          IconButton(
+                                            onPressed: () {
+                                              showReportDialog(context);
+                                            },
+                                            icon: const Icon(
+                                                Icons.warning_amber_sharp,
+                                                size: 26),
+                                          ),
+                                          IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                // Here we changing the icon.
+                                                toggle = !toggle;
+                                              });
+                                            },
+                                            icon: toggle
+                                                ? const Icon(Icons.favorite,
+                                                    size: 26,
+                                                    color: tPrimaryColor)
+                                                : const Icon(
+                                                    Icons.favorite_border,
+                                                    size: 26,
+                                                    color: tPrimaryColor,
+                                                  ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 12),
-                              child: Align(
-                                alignment: Alignment.topLeft,
-                                child: SizedBox(
-                                    height: 60,
-                                    child: Row(
-                                      children: [
-                                        const Padding(
-                                            padding: EdgeInsets.all(7)),
-                                        Flexible(
-                                          child: Align(
-                                            alignment: Alignment.topLeft,
-                                            child: Text(
-                                              mObj["note"],
-                                              style: TextStyle(
-                                                fontSize: 20,
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    )),
+                                  )
+                                ],
                               ),
-                            ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Container(
-                                  height: 30,
-                                  child: ListView.builder(
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.horizontal,
-                                    // itemCount: (mObj['tags']).length,
-                                    itemCount: 3,
-                                    itemBuilder: (context, index) {
-                                      return Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 6),
-                                        child: OutlinedButton(
-                                          onPressed: () =>
-                                              print('direct'), //! direct to
-                                          child: Text(
-                                            mObj['tags']
-                                                [index], //! access QA name
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                // fontWeight:
-                                                //     FontWeight.bold,
-                                                color: tDarkColor),
-                                          ),
-                                          style: OutlinedButton.styleFrom(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 8, vertical: 5),
-                                            backgroundColor: tFifthColor,
-                                            side: BorderSide.none,
-                                            shape: const RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(15),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 12),
+                                child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: SizedBox(
+                                      height: 60,
+                                      child: Row(
+                                        children: [
+                                          const Padding(
+                                              padding: EdgeInsets.all(7)),
+                                          Flexible(
+                                            child: Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Text(
+                                                mObj["note"],
+                                                style: const TextStyle(
+                                                  fontSize: 20,
+                                                ),
                                               ),
                                             ),
+                                          )
+                                        ],
+                                      )),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: SizedBox(
+                                    height: 30,
+                                    child: ListView.builder(
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.horizontal,
+                                      // itemCount: (mObj['tags']).length,
+                                      itemCount: 3,
+                                      itemBuilder: (context, index) {
+                                        return Padding(
+                                          padding:
+                                              const EdgeInsets.only(right: 6),
+                                          child: OutlinedButton(
+                                            onPressed: () =>
+                                                print('direct'), //! direct to
+
+                                            style: OutlinedButton.styleFrom(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 8,
+                                                      vertical: 5),
+                                              backgroundColor: tFifthColor,
+                                              side: BorderSide.none,
+                                              shape:
+                                                  const RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(15),
+                                                ),
+                                              ),
+                                            ),
+                                            child: Text(
+                                              mObj['tags']
+                                                  [index], //! access QA name
+                                              style: const TextStyle(
+                                                  fontSize: 14,
+                                                  // fontWeight:
+                                                  //     FontWeight.bold,
+                                                  color: tDarkColor),
+                                            ),
                                           ),
-                                        ),
-                                      );
-                                    },
+                                        );
+                                      },
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 4, bottom: 2),
-                      child: SizedBox(
-                        // equivalence
-                        width: 200,
-                        height: 40,
-                        child: ListView.builder(
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4, bottom: 2),
+                        child: SizedBox(
+                          // equivalence
+                          width: 200,
+                          height: 40,
+                          child: ListView.builder(
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
                             itemCount: 3,
                             itemBuilder: (context, index) {
                               return Padding(
-                                padding: EdgeInsets.only(left: 8, right: 5),
+                                padding:
+                                    const EdgeInsets.only(left: 8, right: 5),
                                 child: OutlinedButton(
-                                    onPressed: () =>
-                                        print('direct'), //! direct to
-                                    child: Text(
-                                      mObj['equQAs'][index], //! access QA name
-                                      style: TextStyle(
-                                          fontSize: 18, color: tDarkColor),
+                                  onPressed: () =>
+                                      print('direct'), //! direct to
+
+                                  style: OutlinedButton.styleFrom(
+                                    backgroundColor: tThirdColor,
+                                    side: BorderSide.none,
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(8)),
                                     ),
-                                    style: OutlinedButton.styleFrom(
-                                        backgroundColor: tThirdColor,
-                                        side: BorderSide.none,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(8)),
-                                        ))),
+                                  ),
+                                  child: Text(
+                                    mObj['equQAs'][index], //! access QA name
+                                    style: const TextStyle(
+                                        fontSize: 18, color: tDarkColor),
+                                  ),
+                                ),
                               );
-                            }),
+                            },
+                          ),
+                        ),
                       ),
-                    ),
-                    divider0(),
-                    ButtonRow(call: switchSec, call2: sortchange),
-                    answerSec(
-                      AnsNum: AnsNum,
-                      isUnlocked: isUnlocked[selectedSec],
-                      secNum: selectedSec,
-                      ansObj: currentmobj['ans'],
-                    )
-                  ]),
+                      const divider0(),
+                      ButtonRow(call: switchSec, call2: sortchange),
+                      answerSec(
+                        AnsNum: AnsNum,
+                        isUnlocked: isUnlocked[selectedSec],
+                        secNum: selectedSec,
+                        ansObj: currentmobj['ans'],
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -1658,7 +1670,9 @@ class _QApageState extends State<QApage> {
               ),
             ),
           ),
-        ]));
+        ],
+      ),
+    );
   }
 }
 
@@ -1700,7 +1714,7 @@ class answerSec extends StatelessWidget {
       child: Column(
         children: [
           ListView.builder(
-              padding: EdgeInsets.only(bottom: 50.0),
+              padding: const EdgeInsets.only(bottom: 50.0),
               shrinkWrap: true,
               itemCount: AnsNum,
               itemBuilder: (context, index) {

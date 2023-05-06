@@ -380,13 +380,6 @@ class _EarningPageState extends State<EarningPage> {
                                 ),
                               ),
                               TextButton(
-                                child: Text(
-                                  '加入',
-                                  style: GoogleFonts.openSans(
-                                    fontSize: 12,
-                                    color: tDarkColor,
-                                  ),
-                                ),
                                 onPressed: () {
                                   String newTag = _typeTagAheadController.text;
                                   if (newTag.isNotEmpty &&
@@ -417,6 +410,13 @@ class _EarningPageState extends State<EarningPage> {
                                     RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(18.0),
                                     ),
+                                  ),
+                                ),
+                                child: Text(
+                                  '加入',
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 12,
+                                    color: tDarkColor,
                                   ),
                                 ),
                               ),
@@ -602,13 +602,6 @@ class _EarningPageState extends State<EarningPage> {
                                 ),
                               ),
                               TextButton(
-                                child: Text(
-                                  '加入',
-                                  style: GoogleFonts.openSans(
-                                    fontSize: 12,
-                                    color: tDarkColor,
-                                  ),
-                                ),
                                 onPressed: () {
                                   String newTarget =
                                       _typeTargetAheadController.text;
@@ -641,6 +634,13 @@ class _EarningPageState extends State<EarningPage> {
                                     RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(18.0),
                                     ),
+                                  ),
+                                ),
+                                child: Text(
+                                  '加入',
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 12,
+                                    color: tDarkColor,
                                   ),
                                 ),
                               ),
@@ -821,13 +821,6 @@ class _EarningPageState extends State<EarningPage> {
                                 ),
                               ),
                               TextButton(
-                                child: Text(
-                                  '加入',
-                                  style: GoogleFonts.openSans(
-                                    fontSize: 12,
-                                    color: tDarkColor,
-                                  ),
-                                ),
                                 onPressed: () {
                                   String newEquQA =
                                       _typeEquQAAheadController.text;
@@ -859,6 +852,13 @@ class _EarningPageState extends State<EarningPage> {
                                     RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(18.0),
                                     ),
+                                  ),
+                                ),
+                                child: Text(
+                                  '加入',
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 12,
+                                    color: tDarkColor,
                                   ),
                                 ),
                               ),
@@ -1007,6 +1007,8 @@ class EquQAsQuery {
   static final List<String> allequQAs = [
     "古城麻辣燙候位人數",
     "古城還要等多久",
+    "abc",
+    "def",
   ];
 
   static List<String> getSuggestions(String query) {
