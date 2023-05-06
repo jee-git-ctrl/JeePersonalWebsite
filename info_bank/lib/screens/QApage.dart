@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:info_bank/post/answers.dart';
 import 'package:info_bank/post/post.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
@@ -28,255 +29,1117 @@ class _QApageState extends State<QApage> {
       [
         {
           'userID': '1',
-          'userName': 'Alan Runner',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': '目前需等10號'
+          'userName': 'Walter Black',
+          'reputation': 4.2,
+          'score': 2.8,
+          'nFeedback': '3.6k',
+          'content': '等候第3號中',
+          'time': '1天前更新'
         },
         {
           'userID': '2',
-          'userName': 'Walter Black',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': '目前需等12號'
+          'userName': 'Skyler White',
+          'reputation': 3.1,
+          'score': 1.9,
+          'nFeedback': '2.5k',
+          'content': '目前等待第6號',
+          'time': '5小時前更新'
         },
         {
           'userID': '3',
-          'userName': 'Emily Brown',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': '目前需等13號'
+          'userName': 'Hank Schrader',
+          'reputation': 4.8,
+          'score': 4.1,
+          'nFeedback': '1.7k',
+          'content': '等待第8號',
+          'time': '3天前更新'
+        },
+        {
+          'userID': '4',
+          'userName': 'Gus Fring',
+          'reputation': 3.7,
+          'score': 4.5,
+          'nFeedback': '4.8k',
+          'content': '等待第1號',
+          'time': '2天前更新'
         },
         {
           'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userName': 'Jesse',
+          'reputation': 2.5,
+          'score': 3.3,
+          'nFeedback': '1.9k',
+          'content': '目前在等待第2號',
+          'time': '6小時前更新'
+        },
+        {
+          'userID': '6',
+          'userName': 'Saul Goodman',
+          'reputation': 1.8,
+          'score': 0.9,
+          'nFeedback': '564',
+          'content': '目前在等待第5號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '7',
+          'userName': 'Tuco',
+          'reputation': 0.7,
+          'score': 2.2,
+          'nFeedback': '1.2k',
+          'content': '等待第4號',
+          'time': '4小時前更新'
+        },
+        {
+          'userID': '8',
+          'userName': 'Mike',
+          'reputation': 4.5,
+          'score': 3.4,
+          'nFeedback': '3.2k',
+          'content': '目前等待第7號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '9',
+          'userName': 'Lydia',
+          'reputation': 2.1,
+          'score': 1.5,
+          'nFeedback': '972',
+          'content': '等待第9號',
+          'time': '2天前更新'
+        },
+        {
+          'userID': '10',
+          'userName': 'Todd Alquist',
+          'reputation': 1.3,
+          'score': 2.9,
+          'nFeedback': '3.8k',
+          'content': '目前在等待第10號',
+          'time': '5小時前更新'
+        }
+      ],
+      [
+        {
+          'userID': '1',
+          'userName': 'Murph Cooper',
+          'reputation': 4.2,
+          'score': 2.8,
+          'nFeedback': '3.6k',
+          'content': '等候第7號中',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '2',
+          'userName': 'Kat',
+          'reputation': 3.1,
+          'score': 1.9,
+          'nFeedback': '2.5k',
+          'content': '目前等待第1號',
+          'time': '5小時前更新'
+        },
+        {
+          'userID': '3',
+          'userName': 'Neil',
+          'reputation': 4.8,
+          'score': 4.1,
+          'nFeedback': '1.7k',
+          'content': '等待第3號',
+          'time': '3天前更新'
+        },
+        {
+          'userID': '4',
+          'userName': 'K',
+          'reputation': 3.7,
+          'score': 4.5,
+          'nFeedback': '4.8k',
+          'content': '等待第10號',
+          'time': '2天前更新'
         },
         {
           'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userName': 'Officer K',
+          'reputation': 2.5,
+          'score': 3.3,
+          'nFeedback': '1.9k',
+          'content': '目前在等待第6號',
+          'time': '6小時前更新'
+        },
+        {
+          'userID': '6',
+          'userName': 'Deckard',
+          'reputation': 1.8,
+          'score': 0.9,
+          'nFeedback': '564',
+          'content': '目前在等待第4號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '7',
+          'userName': 'Cooper',
+          'reputation': 0.7,
+          'score': 2.2,
+          'nFeedback': '1.2k',
+          'content': '等待第2號',
+          'time': '4小時前更新'
+        },
+        {
+          'userID': '8',
+          'userName': 'Alfred',
+          'reputation': 4.5,
+          'score': 3.4,
+          'nFeedback': '3.2k',
+          'content': '目前等待第9號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '9',
+          'userName': 'Walter White',
+          'reputation': 2.1,
+          'score': 1.5,
+          'nFeedback': '972',
+          'content': '等待第5號',
+          'time': '2天前更新'
+        },
+        {
+          'userID': '10',
+          'userName': 'Cooper',
+          'reputation': 1.3,
+          'score': 2.9,
+          'nFeedback': '3.8k',
+          'content': '目前在等待第8號',
+          'time': '5小時前更新'
+        }
+      ],
+      [
+        {
+          'userID': '1',
+          'userName': 'Cooper',
+          'reputation': 4.2,
+          'score': 2.8,
+          'nFeedback': '3.6k',
+          'content': '等候第7號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '2',
+          'userName': 'Neil',
+          'reputation': 3.1,
+          'score': 1.9,
+          'nFeedback': '2.5k',
+          'content': '等候第2號',
+          'time': '5小時前更新'
+        },
+        {
+          'userID': '3',
+          'userName': 'Gotham',
+          'reputation': 4.8,
+          'score': 4.1,
+          'nFeedback': '1.7k',
+          'content': '等待第3號',
+          'time': '3天前更新'
+        },
+        {
+          'userID': '4',
+          'userName': 'K',
+          'reputation': 3.7,
+          'score': 4.5,
+          'nFeedback': '4.8k',
+          'content': '等待第8號',
+          'time': '2天前更新'
         },
         {
           'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userName': 'Deckard',
+          'reputation': 2.5,
+          'score': 3.3,
+          'nFeedback': '1.9k',
+          'content': '目前在等待第5號',
+          'time': '6小時前更新'
+        },
+        {
+          'userID': '6',
+          'userName': 'Kat',
+          'reputation': 1.8,
+          'score': 0.9,
+          'nFeedback': '564',
+          'content': '等候第4號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '7',
+          'userName': 'Tenet',
+          'reputation': 0.7,
+          'score': 2.2,
+          'nFeedback': '1.2k',
+          'content': '目前在等待第1號',
+          'time': '4小時前更新'
+        },
+        {
+          'userID': '8',
+          'userName': 'Saito',
+          'reputation': 4.5,
+          'score': 3.4,
+          'nFeedback': '3.2k',
+          'content': '等候第6號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '9',
+          'userName': 'Walter',
+          'reputation': 2.1,
+          'score': 1.5,
+          'nFeedback': '972',
+          'content': '目前在等待第9號',
+          'time': '2天前更新'
+        },
+        {
+          'userID': '10',
+          'userName': 'Wallace',
+          'reputation': 1.3,
+          'score': 2.9,
+          'nFeedback': '3.8k',
+          'content': '等待第10號',
+          'time': '5小時前更新'
+        }
+      ],
+      [
+        {
+          'userID': '1',
+          'userName': 'Frank',
+          'reputation': 4.2,
+          'score': 2.8,
+          'nFeedback': '3.6k',
+          'content': '等候第3號中',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '2',
+          'userName': 'Claire',
+          'reputation': 3.1,
+          'score': 1.9,
+          'nFeedback': '2.5k',
+          'content': '目前等待第6號',
+          'time': '5小時前更新'
+        },
+        {
+          'userID': '3',
+          'userName': 'Doug Stamper',
+          'reputation': 4.8,
+          'score': 4.1,
+          'nFeedback': '1.7k',
+          'content': '等待第8號',
+          'time': '3天前更新'
+        },
+        {
+          'userID': '4',
+          'userName': 'Remy Danton',
+          'reputation': 3.7,
+          'score': 4.5,
+          'nFeedback': '4.8k',
+          'content': '等待第1號',
+          'time': '2天前更新'
         },
         {
           'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userName': 'Gavin Orsay',
+          'reputation': 2.5,
+          'score': 3.3,
+          'nFeedback': '1.9k',
+          'content': '目前在等待第2號',
+          'time': '6小時前更新'
+        },
+        {
+          'userID': '6',
+          'userName': 'Jackie Sharp',
+          'reputation': 1.8,
+          'score': 0.9,
+          'nFeedback': '564',
+          'content': '目前在等待第5號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '7',
+          'userName': 'Seth Grayson',
+          'reputation': 0.7,
+          'score': 2.2,
+          'nFeedback': '1.2k',
+          'content': '等待第4號',
+          'time': '4小時前更新'
+        },
+        {
+          'userID': '8',
+          'userName': 'Linda Vasquez',
+          'reputation': 4.5,
+          'score': 3.4,
+          'nFeedback': '3.2k',
+          'content': '目前等待第7號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '9',
+          'userName': 'Meechum',
+          'reputation': 2.1,
+          'score': 1.5,
+          'nFeedback': '972',
+          'content': '等待第9號',
+          'time': '2天前更新'
+        },
+        {
+          'userID': '10',
+          'userName': 'Tom Yates',
+          'reputation': 1.3,
+          'score': 2.9,
+          'nFeedback': '3.8k',
+          'content': '目前在等待第10號',
+          'time': '5小時前更新'
+        }
+      ]
+    ],
+    'sorted_ans': [
+      [
+        {
+          'userID': '7',
+          'userName': 'Tuco',
+          'reputation': 0.7,
+          'score': 2.2,
+          'nFeedback': '1.2k',
+          'content': '等待第4號',
+          'time': '4小時前更新'
+        },
+        {
+          'userID': '2',
+          'userName': 'Skyler White',
+          'reputation': 3.1,
+          'score': 1.9,
+          'nFeedback': '2.5k',
+          'content': '目前等待第6號',
+          'time': '5小時前更新'
+        },
+        {
+          'userID': '10',
+          'userName': 'Todd Alquist',
+          'reputation': 1.3,
+          'score': 2.9,
+          'nFeedback': '3.8k',
+          'content': '目前在等待第10號',
+          'time': '5小時前更新'
+        },
+        {
+          'userID': '5',
+          'userName': 'Jesse',
+          'reputation': 2.5,
+          'score': 3.3,
+          'nFeedback': '1.9k',
+          'content': '目前在等待第2號',
+          'time': '6小時前更新'
+        },
+        {
+          'userID': '1',
+          'userName': 'Walter Black',
+          'reputation': 4.2,
+          'score': 2.8,
+          'nFeedback': '3.6k',
+          'content': '等候第3號中',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '6',
+          'userName': 'Saul Goodman',
+          'reputation': 1.8,
+          'score': 0.9,
+          'nFeedback': '564',
+          'content': '目前在等待第5號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '8',
+          'userName': 'Mike',
+          'reputation': 4.5,
+          'score': 3.4,
+          'nFeedback': '3.2k',
+          'content': '目前等待第7號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '4',
+          'userName': 'Gus Fring',
+          'reputation': 3.7,
+          'score': 4.5,
+          'nFeedback': '4.8k',
+          'content': '等待第1號',
+          'time': '2天前更新'
+        },
+        {
+          'userID': '9',
+          'userName': 'Lydia Rodarte-Quayle',
+          'reputation': 2.1,
+          'score': 1.5,
+          'nFeedback': '972',
+          'content': '等待第9號',
+          'time': '2天前更新'
+        },
+        {
+          'userID': '3',
+          'userName': 'Hank Schrader',
+          'reputation': 4.8,
+          'score': 4.1,
+          'nFeedback': '1.7k',
+          'content': '等待第8號',
+          'time': '3天前更新'
         },
       ],
       [
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': '1111111'
+          'userID': '7',
+          'userName': 'Cooper',
+          'reputation': 0.7,
+          'score': 2.2,
+          'nFeedback': '1.2k',
+          'content': '等待第2號',
+          'time': '4小時前更新'
+        },
+        {
+          'userID': '2',
+          'userName': 'Kat',
+          'reputation': 3.1,
+          'score': 1.9,
+          'nFeedback': '2.5k',
+          'content': '目前等待第1號',
+          'time': '5小時前更新'
+        },
+        {
+          'userID': '10',
+          'userName': 'Cooper',
+          'reputation': 1.3,
+          'score': 2.9,
+          'nFeedback': '3.8k',
+          'content': '目前在等待第8號',
+          'time': '5小時前更新'
         },
         {
           'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userName': 'Officer K',
+          'reputation': 2.5,
+          'score': 3.3,
+          'nFeedback': '1.9k',
+          'content': '目前在等待第6號',
+          'time': '6小時前更新'
         },
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userID': '1',
+          'userName': 'Murph Cooper',
+          'reputation': 4.2,
+          'score': 2.8,
+          'nFeedback': '3.6k',
+          'content': '等候第7號中',
+          'time': '1天前更新'
         },
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userID': '6',
+          'userName': 'Deckard',
+          'reputation': 1.8,
+          'score': 0.9,
+          'nFeedback': '564',
+          'content': '目前在等待第4號',
+          'time': '1天前更新'
         },
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userID': '8',
+          'userName': 'Alfred',
+          'reputation': 4.5,
+          'score': 3.4,
+          'nFeedback': '3.2k',
+          'content': '目前等待第9號',
+          'time': '1天前更新'
         },
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userID': '4',
+          'userName': 'K',
+          'reputation': 3.7,
+          'score': 4.5,
+          'nFeedback': '4.8k',
+          'content': '等待第10號',
+          'time': '2天前更新'
         },
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userID': '9',
+          'userName': 'Walter White',
+          'reputation': 2.1,
+          'score': 1.5,
+          'nFeedback': '972',
+          'content': '等待第5號',
+          'time': '2天前更新'
+        },
+        {
+          'userID': '3',
+          'userName': 'Neil',
+          'reputation': 4.8,
+          'score': 4.1,
+          'nFeedback': '1.7k',
+          'content': '等待第3號',
+          'time': '3天前更新'
         },
       ],
       [
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': '222222'
+          'userID': '7',
+          'userName': 'Tenet',
+          'reputation': 0.7,
+          'score': 2.2,
+          'nFeedback': '1.2k',
+          'content': '目前在等待第1號',
+          'time': '4小時前更新'
+        },
+        {
+          'userID': '2',
+          'userName': 'Neil',
+          'reputation': 3.1,
+          'score': 1.9,
+          'nFeedback': '2.5k',
+          'content': '等候第2號',
+          'time': '5小時前更新'
+        },
+        {
+          'userID': '10',
+          'userName': 'Wallace',
+          'reputation': 1.3,
+          'score': 2.9,
+          'nFeedback': '3.8k',
+          'content': '等待第10號',
+          'time': '5小時前更新'
         },
         {
           'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userName': 'Deckard',
+          'reputation': 2.5,
+          'score': 3.3,
+          'nFeedback': '1.9k',
+          'content': '目前在等待第5號',
+          'time': '6小時前更新'
         },
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userID': '1',
+          'userName': 'Cooper',
+          'reputation': 4.2,
+          'score': 2.8,
+          'nFeedback': '3.6k',
+          'content': '等候第7號',
+          'time': '1天前更新'
         },
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userID': '6',
+          'userName': 'Kat',
+          'reputation': 1.8,
+          'score': 0.9,
+          'nFeedback': '564',
+          'content': '等候第4號',
+          'time': '1天前更新'
         },
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userID': '8',
+          'userName': 'Saito',
+          'reputation': 4.5,
+          'score': 3.4,
+          'nFeedback': '3.2k',
+          'content': '等候第6號',
+          'time': '1天前更新'
         },
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userID': '4',
+          'userName': 'K',
+          'reputation': 3.7,
+          'score': 4.5,
+          'nFeedback': '4.8k',
+          'content': '等待第8號',
+          'time': '2天前更新'
         },
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userID': '9',
+          'userName': 'Walter',
+          'reputation': 2.1,
+          'score': 1.5,
+          'nFeedback': '972',
+          'content': '目前在等待第9號',
+          'time': '2天前更新'
         },
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userID': '3',
+          'userName': 'Gotham',
+          'reputation': 4.8,
+          'score': 4.1,
+          'nFeedback': '1.7k',
+          'content': '等待第3號',
+          'time': '3天前更新'
         },
       ],
       [
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': '333333'
+          'userID': '7',
+          'userName': 'Seth Grayson',
+          'reputation': 0.7,
+          'score': 2.2,
+          'nFeedback': '1.2k',
+          'content': '等待第4號',
+          'time': '4小時前更新'
+        },
+        {
+          'userID': '2',
+          'userName': 'Claire',
+          'reputation': 3.1,
+          'score': 1.9,
+          'nFeedback': '2.5k',
+          'content': '目前等待第6號',
+          'time': '5小時前更新'
+        },
+        {
+          'userID': '10',
+          'userName': 'Tom Yates',
+          'reputation': 1.3,
+          'score': 2.9,
+          'nFeedback': '3.8k',
+          'content': '目前在等待第10號',
+          'time': '5小時前更新'
         },
         {
           'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userName': 'Gavin Orsay',
+          'reputation': 2.5,
+          'score': 3.3,
+          'nFeedback': '1.9k',
+          'content': '目前在等待第2號',
+          'time': '6小時前更新'
+        },
+        {
+          'userID': '1',
+          'userName': 'Frank',
+          'reputation': 4.2,
+          'score': 2.8,
+          'nFeedback': '3.6k',
+          'content': '等候第3號中',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '6',
+          'userName': 'Jackie Sharp',
+          'reputation': 1.8,
+          'score': 0.9,
+          'nFeedback': '564',
+          'content': '目前在等待第5號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '8',
+          'userName': 'Linda Vasquez',
+          'reputation': 4.5,
+          'score': 3.4,
+          'nFeedback': '3.2k',
+          'content': '目前等待第7號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '9',
+          'userName': 'Meechum',
+          'reputation': 2.1,
+          'score': 1.5,
+          'nFeedback': '972',
+          'content': '等待第9號',
+          'time': '2天前更新'
+        },
+        {
+          'userID': '4',
+          'userName': 'Remy Danton',
+          'reputation': 3.7,
+          'score': 4.5,
+          'nFeedback': '4.8k',
+          'content': '等待第1號',
+          'time': '2天前更新'
+        },
+        {
+          'userID': '3',
+          'userName': 'Doug Stamper',
+          'reputation': 4.8,
+          'score': 4.1,
+          'nFeedback': '1.7k',
+          'content': '等待第8號',
+          'time': '3天前更新'
+        },
+      ]
+    ],
+  };
+  Map<String, dynamic> currentmobj = {
+    'ans': [
+      [
+        {
+          'userID': '1',
+          'userName': 'Walter Black',
+          'reputation': 4.2,
+          'score': 2.8,
+          'nFeedback': '3.6k',
+          'content': '等候第3號中',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '2',
+          'userName': 'Skyler White',
+          'reputation': 3.1,
+          'score': 1.9,
+          'nFeedback': '2.5k',
+          'content': '目前等待第6號',
+          'time': '5小時前更新'
+        },
+        {
+          'userID': '3',
+          'userName': 'Hank Schrader',
+          'reputation': 4.8,
+          'score': 4.1,
+          'nFeedback': '1.7k',
+          'content': '等待第8號',
+          'time': '3天前更新'
+        },
+        {
+          'userID': '4',
+          'userName': 'Gus Fring',
+          'reputation': 3.7,
+          'score': 4.5,
+          'nFeedback': '4.8k',
+          'content': '等待第1號',
+          'time': '2天前更新'
         },
         {
           'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userName': 'Jesse',
+          'reputation': 2.5,
+          'score': 3.3,
+          'nFeedback': '1.9k',
+          'content': '目前在等待第2號',
+          'time': '6小時前更新'
         },
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userID': '6',
+          'userName': 'Saul Goodman',
+          'reputation': 1.8,
+          'score': 0.9,
+          'nFeedback': '564',
+          'content': '目前在等待第5號',
+          'time': '1天前更新'
         },
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userID': '7',
+          'userName': 'Tuco',
+          'reputation': 0.7,
+          'score': 2.2,
+          'nFeedback': '1.2k',
+          'content': '等待第4號',
+          'time': '4小時前更新'
         },
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userID': '8',
+          'userName': 'Mike',
+          'reputation': 4.5,
+          'score': 3.4,
+          'nFeedback': '3.2k',
+          'content': '目前等待第7號',
+          'time': '1天前更新'
         },
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
+          'userID': '9',
+          'userName': 'Lydia',
+          'reputation': 2.1,
+          'score': 1.5,
+          'nFeedback': '972',
+          'content': '等待第9號',
+          'time': '2天前更新'
         },
         {
-          'userID': '5',
-          'userName': 'Anonymous',
-          'reputation': '60%',
-          'score': '3.7',
-          'nFeedback': '2.6k',
-          'content': 'testingtesting'
-        },
+          'userID': '10',
+          'userName': 'Todd Alquist',
+          'reputation': 1.3,
+          'score': 2.9,
+          'nFeedback': '3.8k',
+          'content': '目前在等待第10號',
+          'time': '5小時前更新'
+        }
       ],
-    ]
+      [
+        {
+          'userID': '1',
+          'userName': 'Murph Cooper',
+          'reputation': 4.2,
+          'score': 2.8,
+          'nFeedback': '3.6k',
+          'content': '等候第7號中',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '2',
+          'userName': 'Kat',
+          'reputation': 3.1,
+          'score': 1.9,
+          'nFeedback': '2.5k',
+          'content': '目前等待第1號',
+          'time': '5小時前更新'
+        },
+        {
+          'userID': '3',
+          'userName': 'Neil',
+          'reputation': 4.8,
+          'score': 4.1,
+          'nFeedback': '1.7k',
+          'content': '等待第3號',
+          'time': '3天前更新'
+        },
+        {
+          'userID': '4',
+          'userName': 'K',
+          'reputation': 3.7,
+          'score': 4.5,
+          'nFeedback': '4.8k',
+          'content': '等待第10號',
+          'time': '2天前更新'
+        },
+        {
+          'userID': '5',
+          'userName': 'Officer K',
+          'reputation': 2.5,
+          'score': 3.3,
+          'nFeedback': '1.9k',
+          'content': '目前在等待第6號',
+          'time': '6小時前更新'
+        },
+        {
+          'userID': '6',
+          'userName': 'Deckard',
+          'reputation': 1.8,
+          'score': 0.9,
+          'nFeedback': '564',
+          'content': '目前在等待第4號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '7',
+          'userName': 'Cooper',
+          'reputation': 0.7,
+          'score': 2.2,
+          'nFeedback': '1.2k',
+          'content': '等待第2號',
+          'time': '4小時前更新'
+        },
+        {
+          'userID': '8',
+          'userName': 'Alfred',
+          'reputation': 4.5,
+          'score': 3.4,
+          'nFeedback': '3.2k',
+          'content': '目前等待第9號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '9',
+          'userName': 'Walter White',
+          'reputation': 2.1,
+          'score': 1.5,
+          'nFeedback': '972',
+          'content': '等待第5號',
+          'time': '2天前更新'
+        },
+        {
+          'userID': '10',
+          'userName': 'Cooper',
+          'reputation': 1.3,
+          'score': 2.9,
+          'nFeedback': '3.8k',
+          'content': '目前在等待第8號',
+          'time': '5小時前更新'
+        }
+      ],
+      [
+        {
+          'userID': '1',
+          'userName': 'Cooper',
+          'reputation': 4.2,
+          'score': 2.8,
+          'nFeedback': '3.6k',
+          'content': '等候第7號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '2',
+          'userName': 'Neil',
+          'reputation': 3.1,
+          'score': 1.9,
+          'nFeedback': '2.5k',
+          'content': '等候第2號',
+          'time': '5小時前更新'
+        },
+        {
+          'userID': '3',
+          'userName': 'Gotham',
+          'reputation': 4.8,
+          'score': 4.1,
+          'nFeedback': '1.7k',
+          'content': '等待第3號',
+          'time': '3天前更新'
+        },
+        {
+          'userID': '4',
+          'userName': 'K',
+          'reputation': 3.7,
+          'score': 4.5,
+          'nFeedback': '4.8k',
+          'content': '等待第8號',
+          'time': '2天前更新'
+        },
+        {
+          'userID': '5',
+          'userName': 'Deckard',
+          'reputation': 2.5,
+          'score': 3.3,
+          'nFeedback': '1.9k',
+          'content': '目前在等待第5號',
+          'time': '6小時前更新'
+        },
+        {
+          'userID': '6',
+          'userName': 'Kat',
+          'reputation': 1.8,
+          'score': 0.9,
+          'nFeedback': '564',
+          'content': '等候第4號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '7',
+          'userName': 'Tenet',
+          'reputation': 0.7,
+          'score': 2.2,
+          'nFeedback': '1.2k',
+          'content': '目前在等待第1號',
+          'time': '4小時前更新'
+        },
+        {
+          'userID': '8',
+          'userName': 'Saito',
+          'reputation': 4.5,
+          'score': 3.4,
+          'nFeedback': '3.2k',
+          'content': '等候第6號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '9',
+          'userName': 'Walter',
+          'reputation': 2.1,
+          'score': 1.5,
+          'nFeedback': '972',
+          'content': '目前在等待第9號',
+          'time': '2天前更新'
+        },
+        {
+          'userID': '10',
+          'userName': 'Wallace',
+          'reputation': 1.3,
+          'score': 2.9,
+          'nFeedback': '3.8k',
+          'content': '等待第10號',
+          'time': '5小時前更新'
+        }
+      ],
+      [
+        {
+          'userID': '1',
+          'userName': 'Frank',
+          'reputation': 4.2,
+          'score': 2.8,
+          'nFeedback': '3.6k',
+          'content': '等候第3號中',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '2',
+          'userName': 'Claire',
+          'reputation': 3.1,
+          'score': 1.9,
+          'nFeedback': '2.5k',
+          'content': '目前等待第6號',
+          'time': '5小時前更新'
+        },
+        {
+          'userID': '3',
+          'userName': 'Doug Stamper',
+          'reputation': 4.8,
+          'score': 4.1,
+          'nFeedback': '1.7k',
+          'content': '等待第8號',
+          'time': '3天前更新'
+        },
+        {
+          'userID': '4',
+          'userName': 'Remy Danton',
+          'reputation': 3.7,
+          'score': 4.5,
+          'nFeedback': '4.8k',
+          'content': '等待第1號',
+          'time': '2天前更新'
+        },
+        {
+          'userID': '5',
+          'userName': 'Gavin Orsay',
+          'reputation': 2.5,
+          'score': 3.3,
+          'nFeedback': '1.9k',
+          'content': '目前在等待第2號',
+          'time': '6小時前更新'
+        },
+        {
+          'userID': '6',
+          'userName': 'Jackie Sharp',
+          'reputation': 1.8,
+          'score': 0.9,
+          'nFeedback': '564',
+          'content': '目前在等待第5號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '7',
+          'userName': 'Seth Grayson',
+          'reputation': 0.7,
+          'score': 2.2,
+          'nFeedback': '1.2k',
+          'content': '等待第4號',
+          'time': '4小時前更新'
+        },
+        {
+          'userID': '8',
+          'userName': 'Linda Vasquez',
+          'reputation': 4.5,
+          'score': 3.4,
+          'nFeedback': '3.2k',
+          'content': '目前等待第7號',
+          'time': '1天前更新'
+        },
+        {
+          'userID': '9',
+          'userName': 'Meechum',
+          'reputation': 2.1,
+          'score': 1.5,
+          'nFeedback': '972',
+          'content': '等待第9號',
+          'time': '2天前更新'
+        },
+        {
+          'userID': '10',
+          'userName': 'Tom Yates',
+          'reputation': 1.3,
+          'score': 2.9,
+          'nFeedback': '3.8k',
+          'content': '目前在等待第10號',
+          'time': '5小時前更新'
+        }
+      ]
+    ],
   };
   List<bool> isUnlocked = [true, false, false, false];
-  int AnsNum = 7;
+  int AnsNum = 10;
   int selectedSec = 0;
   bool toggle = false;
 
@@ -366,6 +1229,16 @@ class _QApageState extends State<QApage> {
   void switchSec(index) {
     setState(() {
       selectedSec = index;
+    });
+  }
+
+  void sortchange(sorttoggle) {
+    setState(() {
+      if (sorttoggle) {
+        currentmobj['ans'] = mObj['ans'];
+      } else {
+        currentmobj['ans'] = mObj['sorted_ans'];
+      }
     });
   }
 
@@ -528,6 +1401,7 @@ class _QApageState extends State<QApage> {
           );
         });
   }
+
   // void showAns() {
   //   setState(() {
   //     isTextInputVisible = !isTextInputVisible;
@@ -538,7 +1412,6 @@ class _QApageState extends State<QApage> {
   //     }
   //   });
   // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -620,11 +1493,11 @@ class _QApageState extends State<QApage> {
                                             });
                                           },
                                           icon: toggle
-                                              ? const Icon(
-                                                  Icons.favorite_border,
-                                                  size: 26)
+                                              ? const Icon(Icons.favorite,
+                                                  size: 26,
+                                                  color: tPrimaryColor)
                                               : const Icon(
-                                                  Icons.favorite,
+                                                  Icons.favorite_border,
                                                   size: 26,
                                                   color: tPrimaryColor,
                                                 ),
@@ -740,12 +1613,12 @@ class _QApageState extends State<QApage> {
                       ),
                     ),
                     divider0(),
-                    ButtonRow(call: switchSec),
+                    ButtonRow(call: switchSec, call2: sortchange),
                     answerSec(
                       AnsNum: AnsNum,
                       isUnlocked: isUnlocked[selectedSec],
                       secNum: selectedSec,
-                      ansObj: mObj['ans'],
+                      ansObj: currentmobj['ans'],
                     )
                   ]),
                 ),
@@ -849,18 +1722,31 @@ class answerSec extends StatelessWidget {
 
 class ButtonRow extends StatefulWidget {
   @override
-  const ButtonRow({super.key, required this.call});
+  const ButtonRow({super.key, required this.call, required this.call2});
   final Function call;
+  final Function call2;
   _ButtonRowState createState() => _ButtonRowState();
 }
 
 class _ButtonRowState extends State<ButtonRow> {
+  bool sorttoggle = false;
   int _selectedIndex = 0;
   void _selectButton(int index) {
     widget.call(index);
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  void _sort(bool sort_toggle) {
+    widget.call2(sort_toggle);
+  }
+
+  @override
+  void initState() {
+    sorttoggle = false;
+    print(sorttoggle);
+    super.initState();
   }
 
   @override
@@ -938,7 +1824,26 @@ class _ButtonRowState extends State<ButtonRow> {
                 );
               }),
             ),
-            Icon(Icons.filter_list_rounded)
+            IconButton(
+              onPressed: () {
+                _sort(sorttoggle);
+                setState(() {
+                  // Here we changing the icon.
+                  sorttoggle = !sorttoggle;
+                });
+              },
+              icon: sorttoggle
+                  ? const Icon(
+                      Icons.filter_list_outlined,
+                      size: 26,
+                      color: tSecondColor,
+                    )
+                  : const Icon(
+                      Icons.filter_list_outlined,
+                      size: 26,
+                      color: tDarkColor,
+                    ),
+            ),
           ],
         ),
       ),
