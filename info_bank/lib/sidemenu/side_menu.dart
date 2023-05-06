@@ -42,7 +42,7 @@ class _SideMenuState extends State<SideMenu> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(100),
                           child: const Image(
-                              image: AssetImage('assets/images/drwoose.png')),
+                              image: AssetImage('assets/images/avatar5.png')),
                         ),
                       ),
                     ],
