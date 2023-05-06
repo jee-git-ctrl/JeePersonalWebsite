@@ -144,7 +144,7 @@ class MyPost extends StatelessWidget {
                                 child: Align(
                                   alignment: Alignment.centerRight,
                                   child: Text(
-                                    "最佳回答：" + currentpost.Best.toString() + "%",
+                                    "最佳回答：${currentpost.Best}%",
                                     style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -160,10 +160,7 @@ class MyPost extends StatelessWidget {
                                 child: Align(
                                   alignment: Alignment.centerRight,
                                   child: Text(
-                                    "解鎖次數：" +
-                                        (currentpost.unlocked / 1000)
-                                            .toStringAsFixed(1) +
-                                        "k",
+                                    "解鎖次數：${(currentpost.unlocked / 1000).toStringAsFixed(1)}k",
                                     style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -206,7 +203,7 @@ class SamePost extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => QApage()));
+            .push(MaterialPageRoute(builder: (context) => const QApage()));
       },
       child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),

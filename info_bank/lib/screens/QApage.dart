@@ -1814,8 +1814,8 @@ class _ButtonRowState extends State<ButtonRow> {
                               style: TextStyle(
                                 fontSize: 20,
                                 color: _selectedIndex == index
-                                    ? Colors.white
-                                    : Colors.black,
+                                    ? tWhiteColor
+                                    : tDarkColor,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -1827,8 +1827,8 @@ class _ButtonRowState extends State<ButtonRow> {
                                   style: TextStyle(
                                     fontSize: 16,
                                     color: _selectedIndex == index
-                                        ? Colors.white
-                                        : Colors.black,
+                                        ? tWhiteColor
+                                        : tDarkColor,
                                   ),
                                 )
                               ],

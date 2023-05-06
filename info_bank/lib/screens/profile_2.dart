@@ -254,14 +254,14 @@ class CardsWidgets extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: Row(
                           children: [
                             Padding(
                               padding:
                                   const EdgeInsets.only(left: 55, bottom: 5),
-                              child: Container(
+                              child: SizedBox(
                                 width: 40,
                                 child: Align(
                                   alignment: Alignment.centerLeft,
@@ -285,12 +285,12 @@ class CardsWidgets extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 5),
-                              child: Container(
+                              child: SizedBox(
                                 width: 35,
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    "4.8",
+                                    "3.2",
                                     style: GoogleFonts.openSans(
                                       fontSize: 16,
                                     ),
@@ -321,7 +321,7 @@ class CardsWidgets extends StatelessWidget {
                         child: Padding(
                           padding:
                               const EdgeInsets.only(top: 5, left: 5, right: 5),
-                          child: Container(
+                          child: SizedBox(
                             height: 55,
                             child: Text(
                               //title
@@ -334,14 +334,14 @@ class CardsWidgets extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: Row(
                           children: [
                             Padding(
                               padding:
                                   const EdgeInsets.only(left: 55, bottom: 5),
-                              child: Container(
+                              child: SizedBox(
                                 width: 40,
                                 child: Align(
                                   alignment: Alignment.centerLeft,
@@ -365,7 +365,7 @@ class CardsWidgets extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 5),
-                              child: Container(
+                              child: SizedBox(
                                 width: 35,
                                 child: Align(
                                   alignment: Alignment.centerLeft,
@@ -409,7 +409,7 @@ class CardsWidgets extends StatelessWidget {
                         child: Padding(
                           padding:
                               const EdgeInsets.only(top: 5, left: 5, right: 5),
-                          child: Container(
+                          child: SizedBox(
                             height: 55,
                             child: Text(
                               //title
@@ -422,14 +422,14 @@ class CardsWidgets extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: Row(
                           children: [
                             Padding(
                               padding:
                                   const EdgeInsets.only(left: 10, bottom: 5),
-                              child: Container(
+                              child: SizedBox(
                                 width: 40,
                                 child: Align(
                                   alignment: Alignment.centerLeft,
@@ -453,7 +453,7 @@ class CardsWidgets extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 5),
-                              child: Container(
+                              child: SizedBox(
                                 width: 35,
                                 child: Align(
                                   alignment: Alignment.centerLeft,
@@ -468,7 +468,7 @@ class CardsWidgets extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 7),
-                              child: Container(
+                              child: SizedBox(
                                 width: 40,
                                 child: Container(
                                   width: 40,
@@ -488,7 +488,7 @@ class CardsWidgets extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 5),
-                              child: Container(
+                              child: SizedBox(
                                 width: 35,
                                 child: Text(
                                   "293",
@@ -521,7 +521,7 @@ class CardsWidgets extends StatelessWidget {
                         child: Padding(
                           padding:
                               const EdgeInsets.only(top: 5, left: 5, right: 5),
-                          child: Container(
+                          child: SizedBox(
                             height: 55,
                             child: Text(
                               //title
@@ -534,14 +534,14 @@ class CardsWidgets extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: Row(
                           children: [
                             Padding(
                               padding:
                                   const EdgeInsets.only(left: 10, bottom: 5),
-                              child: Container(
+                              child: SizedBox(
                                 width: 40,
                                 child: Align(
                                   alignment: Alignment.centerLeft,
@@ -565,7 +565,7 @@ class CardsWidgets extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 5),
-                              child: Container(
+                              child: SizedBox(
                                 width: 35,
                                 child: Align(
                                   alignment: Alignment.centerLeft,
@@ -580,7 +580,7 @@ class CardsWidgets extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 7),
-                              child: Container(
+                              child: SizedBox(
                                 width: 40,
                                 child: Container(
                                   width: 40,
@@ -600,7 +600,7 @@ class CardsWidgets extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 5),
-                              child: Container(
+                              child: SizedBox(
                                 width: 35,
                                 child: Text(
                                   "${(5000 / 1000).toStringAsFixed(1)}k",
@@ -641,7 +641,7 @@ class CardsWidgets extends StatelessWidget {
                         child: Padding(
                           padding:
                               const EdgeInsets.only(top: 5, left: 5, right: 5),
-                          child: Container(
+                          child: SizedBox(
                             height: 55,
                             child: Text(
                               //title
@@ -654,14 +654,14 @@ class CardsWidgets extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: Row(
                           children: [
                             Padding(
                               padding:
                                   const EdgeInsets.only(left: 55, bottom: 5),
-                              child: Container(
+                              child: SizedBox(
                                 width: 40,
                                 child: Align(
                                   alignment: Alignment.centerLeft,
@@ -685,7 +685,7 @@ class CardsWidgets extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 5),
-                              child: Container(
+                              child: SizedBox(
                                 width: 35,
                                 child: Align(
                                   alignment: Alignment.centerLeft,
@@ -721,7 +721,7 @@ class CardsWidgets extends StatelessWidget {
                         child: Padding(
                           padding:
                               const EdgeInsets.only(top: 5, left: 5, right: 5),
-                          child: Container(
+                          child: SizedBox(
                             height: 55,
                             child: Text(
                               //title
@@ -734,14 +734,14 @@ class CardsWidgets extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: Row(
                           children: [
                             Padding(
                               padding:
                                   const EdgeInsets.only(left: 55, bottom: 5),
-                              child: Container(
+                              child: SizedBox(
                                 width: 40,
                                 child: Align(
                                   alignment: Alignment.center,
@@ -765,7 +765,7 @@ class CardsWidgets extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 5),
-                              child: Container(
+                              child: SizedBox(
                                 width: 35,
                                 child: Align(
                                   alignment: Alignment.center,

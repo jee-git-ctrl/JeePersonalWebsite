@@ -134,7 +134,7 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
                           child: TextFormField(
                             minLines: 1,
                             maxLines: 5,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               hintText: '補充說明（選填）',
                               border: InputBorder.none,
                             ),
@@ -160,10 +160,10 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
                                     child: TypeAheadFormField(
                                       textFieldConfiguration:
                                           TextFieldConfiguration(
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                             hintText: '標籤（選填）',
                                             border: InputBorder.none),
-                                        controller: this._typeAheadController,
+                                        controller: _typeAheadController,
                                       ),
                                       suggestionsCallback: (pattern) {
                                         return TagsQuery.getSuggestions(
@@ -181,7 +181,7 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
                                       },
                                       onSuggestionSelected:
                                           (String suggestion) {
-                                        this._typeAheadController.text = "";
+                                        _typeAheadController.text = "";
                                         if (!current_tags
                                             .contains(suggestion)) {
                                           current_tags.add(suggestion);
@@ -204,13 +204,31 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
                                         }
                                         callback(current_tags, _currentprice,
                                             dropdownbuttonWidth);
-                                        this._typeAheadController.text = "";
+                                        _typeAheadController.text = "";
                                       },
                                       suggestionsBoxController:
                                           suggestionBoxController,
                                     ),
                                   ),
                                   TextButton(
+                                    onPressed: () {
+                                      _formKey.currentState!.save();
+                                    },
+                                    style: ButtonStyle(
+                                      foregroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              tFifthColor),
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              tFifthColor),
+                                      shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(18.0),
+                                        ),
+                                      ),
+                                    ),
                                     child: Text(
                                       '加入',
                                       style: GoogleFonts.openSans(
@@ -218,55 +236,36 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
                                         color: tDarkColor,
                                       ),
                                     ),
-                                    onPressed: () {
-                                      _formKey.currentState!.save();
-                                    },
-                                    style: ButtonStyle(
-                                        foregroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                tFifthColor),
-                                        backgroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                tFifthColor),
-                                        shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(18.0),
-                                        ))),
                                   )
                                 ],
                               ),
                             ),
                           ),
-                          Container(
-                            child: IntrinsicHeight(
-                              child: ConstrainedBox(
-                                constraints: BoxConstraints(
-                                  minWidth: 150,
-                                  maxHeight: 150,
-                                ),
-                                child: SingleChildScrollView(
-                                  child: Wrap(
-                                    spacing: 5,
-                                    crossAxisAlignment:
-                                        WrapCrossAlignment.start,
-                                    children: List<Widget>.generate(
-                                        current_tags.length, (int index) {
-                                      return Chip(
-                                        label: Text(
-                                          current_tags[index],
-                                          style: GoogleFonts.openSans(),
-                                        ),
-                                        onDeleted: () {
-                                          setState(() {
-                                            current_tags.removeAt(index);
-                                          });
-                                        },
-                                        deleteIcon: Icon(Icons.close),
-                                      );
-                                    }),
-                                  ),
+                          IntrinsicHeight(
+                            child: ConstrainedBox(
+                              constraints: const BoxConstraints(
+                                minWidth: 150,
+                                maxHeight: 150,
+                              ),
+                              child: SingleChildScrollView(
+                                child: Wrap(
+                                  spacing: 5,
+                                  crossAxisAlignment: WrapCrossAlignment.start,
+                                  children: List<Widget>.generate(
+                                      current_tags.length, (int index) {
+                                    return Chip(
+                                      label: Text(
+                                        current_tags[index],
+                                        style: GoogleFonts.openSans(),
+                                      ),
+                                      onDeleted: () {
+                                        setState(() {
+                                          current_tags.removeAt(index);
+                                        });
+                                      },
+                                      deleteIcon: const Icon(Icons.close),
+                                    );
+                                  }),
                                 ),
                               ),
                             ),
@@ -276,7 +275,7 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
                             thickness: 3,
                             color: Colors.black,
                           ),
-                          Container(
+                          SizedBox(
                             height: 40,
                             child: Row(children: [
                               ElevatedButton(
@@ -288,11 +287,11 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Text('食物標籤群組'),
-                                    SizedBox(
+                                    const Text('食物標籤群組'),
+                                    const SizedBox(
                                       width: 5,
                                     ),
-                                    Icon(
+                                    const Icon(
                                       Icons.add_circle,
                                       size: 24.0,
                                     ),
@@ -319,11 +318,11 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Text('讀書標籤群組'),
-                                    SizedBox(
+                                    const Text('讀書標籤群組'),
+                                    const SizedBox(
                                       width: 5,
                                     ),
-                                    Icon(
+                                    const Icon(
                                       Icons.add_circle,
                                       size: 24.0,
                                     ),
@@ -366,7 +365,7 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
                             child: TextFormField(
                               minLines: 1,
                               maxLines: 5,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 hintText: '回答（選填）',
                                 border: InputBorder.none,
                               ),
@@ -375,7 +374,7 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Container(child: Text("解鎖點數")),
+                              const Text("解鎖點數"),
                               Price(
                                 callback: callback,
                                 current_tags: current_tags,

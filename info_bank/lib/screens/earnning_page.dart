@@ -184,13 +184,16 @@ class _EarningPageState extends State<EarningPage> {
                           Row(
                             children: [
                               Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10, right: 8, top: 10),
-                                  child: Text(mObj2[pagesindex]['title'],
-                                      style: GoogleFonts.openSans(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 26,
-                                          color: tDarkColor))),
+                                padding: const EdgeInsets.only(
+                                    left: 10, right: 8, top: 10),
+                                child: Text(
+                                  mObj2[pagesindex]['title'],
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 26,
+                                      color: tDarkColor),
+                                ),
+                              ),
                               Expanded(
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 8.0),
@@ -207,14 +210,19 @@ class _EarningPageState extends State<EarningPage> {
                                       ),
                                       IconButton(
                                         onPressed: () {
-                                          setState(() {
-                                            // Here we changing the icon.
-                                            toggle = !toggle;
-                                          });
+                                          setState(
+                                            () {
+                                              // Here we changing the icon.
+                                              toggle = !toggle;
+                                            },
+                                          );
                                         },
                                         icon: toggle
-                                            ? const Icon(Icons.favorite_border,
-                                                size: 26)
+                                            ? const Icon(
+                                                Icons.favorite_border,
+                                                size: 26,
+                                                color: tPrimaryColor,
+                                              )
                                             : const Icon(
                                                 Icons.favorite,
                                                 size: 26,
@@ -256,7 +264,7 @@ class _EarningPageState extends State<EarningPage> {
                             alignment: Alignment.centerLeft,
                             child: Padding(
                               padding: const EdgeInsets.all(10),
-                              child: Container(
+                              child: SizedBox(
                                 height: 30,
                                 child: ListView.builder(
                                   shrinkWrap: true,
@@ -265,7 +273,7 @@ class _EarningPageState extends State<EarningPage> {
                                       (mObj2[pagesindex]['posttags']).length,
                                   itemBuilder: (context, index) {
                                     return Padding(
-                                      padding: EdgeInsets.only(right: 6),
+                                      padding: const EdgeInsets.only(right: 6),
                                       child: OutlinedButton(
                                         onPressed: () =>
                                             print('direct'), //! direct to
@@ -400,13 +408,6 @@ class _EarningPageState extends State<EarningPage> {
                                   ),
                                 ),
                                 TextButton(
-                                  child: Text(
-                                    '加入',
-                                    style: GoogleFonts.openSans(
-                                      fontSize: 12,
-                                      color: tDarkColor,
-                                    ),
-                                  ),
                                   onPressed: () {
                                     String newTag =
                                         _typeTagAheadController.text;
@@ -414,9 +415,11 @@ class _EarningPageState extends State<EarningPage> {
                                         newTag.length < 20 &&
                                         !mObj2[pagesindex]['tags']
                                             .contains(newTag)) {
-                                      setState(() {
-                                        mObj2[pagesindex]['tags'].add(newTag);
-                                      });
+                                      setState(
+                                        () {
+                                          mObj2[pagesindex]['tags'].add(newTag);
+                                        },
+                                      );
                                     }
                                     callback(
                                         current_tags,
@@ -441,24 +444,30 @@ class _EarningPageState extends State<EarningPage> {
                                       ),
                                     ),
                                   ),
+                                  child: Text(
+                                    '加入',
+                                    style: GoogleFonts.openSans(
+                                      fontSize: 12,
+                                      color: tDarkColor,
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
                           ),
-                          Container(
-                            child: IntrinsicHeight(
-                              child: ConstrainedBox(
-                                constraints: const BoxConstraints(
-                                  minWidth: 150,
-                                  maxHeight: 150,
-                                ),
-                                child: SingleChildScrollView(
-                                  child: Wrap(
-                                    spacing: 5,
-                                    crossAxisAlignment:
-                                        WrapCrossAlignment.start,
-                                    children: List<Widget>.generate(
-                                        current_tags.length, (int index) {
+                          IntrinsicHeight(
+                            child: ConstrainedBox(
+                              constraints: const BoxConstraints(
+                                minWidth: 150,
+                                maxHeight: 150,
+                              ),
+                              child: SingleChildScrollView(
+                                child: Wrap(
+                                  spacing: 5,
+                                  crossAxisAlignment: WrapCrossAlignment.start,
+                                  children: List<Widget>.generate(
+                                    current_tags.length,
+                                    (int index) {
                                       return Chip(
                                         label: Text(
                                           current_tags[index],
@@ -473,7 +482,7 @@ class _EarningPageState extends State<EarningPage> {
                                         },
                                         deleteIcon: const Icon(Icons.close),
                                       );
-                                    }),
+                                    },
                                   ),
                                 ),
                               ),
@@ -483,7 +492,7 @@ class _EarningPageState extends State<EarningPage> {
                             alignment: Alignment.centerLeft,
                             child: Padding(
                               padding: const EdgeInsets.all(10),
-                              child: Container(
+                              child: SizedBox(
                                 height: 30,
                                 child: ListView.builder(
                                   shrinkWrap: true,
@@ -548,8 +557,7 @@ class _EarningPageState extends State<EarningPage> {
                                       decoration: const InputDecoration(
                                           hintText: '使用者屬性',
                                           border: InputBorder.none),
-                                      controller:
-                                          this._typeTargetAheadController,
+                                      controller: _typeTargetAheadController,
                                     ),
                                     suggestionsCallback: (pattern) {
                                       return TargetsQuery.getSuggestions(
@@ -627,13 +635,6 @@ class _EarningPageState extends State<EarningPage> {
                                   ),
                                 ),
                                 TextButton(
-                                  child: Text(
-                                    '加入',
-                                    style: GoogleFonts.openSans(
-                                      fontSize: 12,
-                                      color: tDarkColor,
-                                    ),
-                                  ),
                                   onPressed: () {
                                     String newTarget =
                                         _typeTargetAheadController.text;
@@ -669,40 +670,44 @@ class _EarningPageState extends State<EarningPage> {
                                       ),
                                     ),
                                   ),
+                                  child: Text(
+                                    '加入',
+                                    style: GoogleFonts.openSans(
+                                      fontSize: 12,
+                                      color: tDarkColor,
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
                           ),
-                          Container(
-                            child: IntrinsicHeight(
-                              child: ConstrainedBox(
-                                constraints: const BoxConstraints(
-                                  minWidth: 150,
-                                  maxHeight: 150,
-                                ),
-                                child: SingleChildScrollView(
-                                  child: Wrap(
-                                    spacing: 5,
-                                    crossAxisAlignment:
-                                        WrapCrossAlignment.start,
-                                    children: List<Widget>.generate(
-                                        current_targets.length, (int index) {
-                                      return Chip(
-                                        label: Text(
-                                          current_targets[index],
-                                          style: GoogleFonts.openSans(),
-                                        ),
-                                        onDeleted: () {
-                                          setState(
-                                            () {
-                                              current_targets.removeAt(index);
-                                            },
-                                          );
-                                        },
-                                        deleteIcon: const Icon(Icons.close),
-                                      );
-                                    }),
-                                  ),
+                          IntrinsicHeight(
+                            child: ConstrainedBox(
+                              constraints: const BoxConstraints(
+                                minWidth: 150,
+                                maxHeight: 150,
+                              ),
+                              child: SingleChildScrollView(
+                                child: Wrap(
+                                  spacing: 5,
+                                  crossAxisAlignment: WrapCrossAlignment.start,
+                                  children: List<Widget>.generate(
+                                      current_targets.length, (int index) {
+                                    return Chip(
+                                      label: Text(
+                                        current_targets[index],
+                                        style: GoogleFonts.openSans(),
+                                      ),
+                                      onDeleted: () {
+                                        setState(
+                                          () {
+                                            current_targets.removeAt(index);
+                                          },
+                                        );
+                                      },
+                                      deleteIcon: const Icon(Icons.close),
+                                    );
+                                  }),
                                 ),
                               ),
                             ),
@@ -711,7 +716,7 @@ class _EarningPageState extends State<EarningPage> {
                             alignment: Alignment.centerLeft,
                             child: Padding(
                               padding: const EdgeInsets.all(10),
-                              child: Container(
+                              child: SizedBox(
                                 height: 30,
                                 child: ListView.builder(
                                   shrinkWrap: true,
@@ -773,8 +778,7 @@ class _EarningPageState extends State<EarningPage> {
                                       decoration: const InputDecoration(
                                           hintText: '等價連結',
                                           border: InputBorder.none),
-                                      controller:
-                                          this._typeEquQAAheadController,
+                                      controller: _typeEquQAAheadController,
                                     ),
                                     suggestionsCallback: (pattern) {
                                       return EquQAsQuery.getSuggestions(
@@ -853,13 +857,6 @@ class _EarningPageState extends State<EarningPage> {
                                   ),
                                 ),
                                 TextButton(
-                                  child: Text(
-                                    '加入',
-                                    style: GoogleFonts.openSans(
-                                      fontSize: 12,
-                                      color: tDarkColor,
-                                    ),
-                                  ),
                                   onPressed: () {
                                     String newEquQA =
                                         _typeEquQAAheadController.text;
@@ -893,6 +890,13 @@ class _EarningPageState extends State<EarningPage> {
                                         borderRadius:
                                             BorderRadius.circular(18.0),
                                       ),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    '加入',
+                                    style: GoogleFonts.openSans(
+                                      fontSize: 12,
+                                      color: tDarkColor,
                                     ),
                                   ),
                                 ),
@@ -948,25 +952,33 @@ class _EarningPageState extends State<EarningPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      if (pagesindex > 0)
-                        Align(
-                          alignment: Alignment.bottomLeft,
-                          child: FloatingActionButton(
-                            onPressed: () {
-                              if (pagesindex > 0) {
-                                setState(() {
-                                  pagesindex -= 1;
-                                });
-                              }
-                            },
-                            heroTag: 'btn1',
-                            backgroundColor: tSecondColor,
-                            child: const Icon(Icons.navigate_before_outlined),
+                      Visibility(
+                        visible: (pagesindex > 0),
+                        child: Positioned(
+                          bottom: 20,
+                          left: 20,
+                          child: Align(
+                            alignment: Alignment.bottomLeft,
+                            child: FloatingActionButton(
+                              onPressed: () {
+                                if (pagesindex > 0) {
+                                  setState(() {
+                                    pagesindex -= 1;
+                                  });
+                                }
+                              },
+                              heroTag: 'btn1',
+                              backgroundColor: tSecondColor,
+                              child: const Icon(Icons.navigate_before_outlined),
+                            ),
                           ),
                         ),
-                      if (pagesindex < mObj2.length - 1)
-                        Align(
-                          alignment: Alignment.bottomRight,
+                      ),
+                      Visibility(
+                        visible: (pagesindex < mObj2.length - 1),
+                        child: Positioned(
+                          bottom: 20,
+                          right: 20,
                           child: FloatingActionButton(
                             onPressed: () {
                               if (pagesindex < mObj2.length - 1) {
@@ -980,6 +992,7 @@ class _EarningPageState extends State<EarningPage> {
                             child: const Icon(Icons.navigate_next_outlined),
                           ),
                         ),
+                      ),
                     ],
                   ),
                   Container(
@@ -1048,7 +1061,7 @@ class EquQAsQuery {
     "古城還要等多久",
     "古城麻辣燙前面排了多少人？",
     "古城麻辣燙排隊的人潮如何？",
-    "在古城麻辣燙排隊等候的人數很多嗎？"
+    "在古城麻辣燙排隊等候的人數很多嗎？",
   ];
 
   static List<String> getSuggestions(String query) {
