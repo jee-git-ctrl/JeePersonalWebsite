@@ -54,9 +54,6 @@ class _EarningPageState extends State<EarningPage> {
       'equQAs': [
         '古城麻辣燙候位人數',
         '古城還要等多久',
-        "古城麻辣燙前面排了多少人？",
-        "古城麻辣燙排隊的人潮如何？",
-        "在古城麻辣燙排隊等候的人數很多嗎？"
       ],
     },
     {
@@ -68,9 +65,6 @@ class _EarningPageState extends State<EarningPage> {
       'equQAs': [
         '古城麻辣燙候位人數',
         '古城還要等多久',
-        "古城麻辣燙前面排了多少人？",
-        "古城麻辣燙排隊的人潮如何？",
-        "在古城麻辣燙排隊等候的人數很多嗎？"
       ],
     },
     {
@@ -82,9 +76,6 @@ class _EarningPageState extends State<EarningPage> {
       'equQAs': [
         '古城麻辣燙候位人數',
         '古城還要等多久',
-        "古城麻辣燙前面排了多少人？",
-        "古城麻辣燙排隊的人潮如何？",
-        "在古城麻辣燙排隊等候的人數很多嗎？"
       ],
     },
   ];
