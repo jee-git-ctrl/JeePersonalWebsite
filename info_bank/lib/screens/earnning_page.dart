@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:info_bank/screens/reportpage.dart';
 import 'package:info_bank/src/constants/colors.dart';
 import 'package:onboarding/onboarding.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,7 +9,6 @@ import 'package:info_bank/screens/QApage.dart';
 import 'package:info_bank/screens/search.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-
 import '../tabs/tabspage.dart';
 
 class EarningPage extends StatefulWidget {
@@ -37,17 +37,18 @@ class _EarningPageState extends State<EarningPage> {
     "high quality",
     "difficult"
   ];
-  final TextEditingController _typeAheadController = TextEditingController();
   SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
   final _formKey = GlobalKey<FormState>();
   double dropdownbuttonWidth = 60;
   var maxLength = 100;
   var textLength = 0;
+  bool toggle = false;
 
   List<Map<String, dynamic>> mObj2 = [
     {
       'title': '古城麻辣燙排隊人數',
       'note': '古城麻辣燙排隊人數古城麻辣燙',
+      'posttags': ['美食', '麻辣燙'],
       'tags': ['美食', '麻辣燙'],
       'targets': ['中正大學生', '大吃街覓食'],
       'equQAs': ['古城麻辣燙候位人數', '古城還要等多久'],
@@ -55,6 +56,7 @@ class _EarningPageState extends State<EarningPage> {
     {
       'title': '古城麻辣燙排隊人數1',
       'note': '古城麻辣燙排隊人數古城麻辣燙',
+      'posttags': ['美食', '麻辣燙'],
       'tags': ['美食', '麻辣燙'],
       'targets': ['中正大學生', '大吃街覓食'],
       'equQAs': ['古城麻辣燙候位人數', '古城還要等多久'],
@@ -62,12 +64,15 @@ class _EarningPageState extends State<EarningPage> {
     {
       'title': '古城麻辣燙排隊人數2',
       'note': '古城麻辣燙排隊人數古城麻辣燙',
+      'posttags': ['美食', '麻辣燙'],
       'tags': ['美食', '麻辣燙'],
       'targets': ['中正大學生', '大吃街覓食'],
       'equQAs': ['古城麻辣燙候位人數', '古城還要等多久'],
     },
   ];
   int pagesindex = 0;
+
+  // var index;
   callback(changedtag, changedtarget, changedequQA,
       changeddropdownbuttonWidthWidth, changedindex) {
     setState(() {
@@ -77,6 +82,29 @@ class _EarningPageState extends State<EarningPage> {
       dropdownbuttonWidth = changeddropdownbuttonWidthWidth;
       pagesindex = changedindex;
     });
+  }
+
+  TextEditingController _typeTagAheadController = TextEditingController();
+  TextEditingController _typeTargetAheadController = TextEditingController();
+  TextEditingController _typeEquQAAheadController = TextEditingController();
+  FocusNode _focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _typeTagAheadController = TextEditingController();
+    _typeTargetAheadController = TextEditingController();
+    _typeEquQAAheadController = TextEditingController();
+    _focusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _typeTagAheadController.dispose();
+    _typeTargetAheadController.dispose();
+    _typeEquQAAheadController.dispose();
+    _focusNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -143,14 +171,40 @@ class _EarningPageState extends State<EarningPage> {
                                         fontWeight: FontWeight.bold,
                                         fontSize: 26,
                                         color: tDarkColor))),
-                            const Expanded(
+                            Expanded(
                               child: Padding(
-                                padding: EdgeInsets.only(right: 8.0),
-                                child: Align(
-                                    alignment: Alignment.topRight,
-                                    child: Icon(Icons.info, size: 26)),
+                                padding: const EdgeInsets.only(right: 8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        showReportDialog(context);
+                                      },
+                                      icon: const Icon(
+                                          Icons.warning_amber_sharp,
+                                          size: 26),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          // Here we changing the icon.
+                                          toggle = !toggle;
+                                        });
+                                      },
+                                      icon: toggle
+                                          ? const Icon(Icons.favorite_border,
+                                              size: 26)
+                                          : const Icon(
+                                              Icons.favorite,
+                                              size: 26,
+                                              color: tPrimaryColor,
+                                            ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
+                            )
                           ],
                         ),
                         Padding(
@@ -181,39 +235,40 @@ class _EarningPageState extends State<EarningPage> {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
-                            padding: EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             child: Container(
-                              height: 40,
+                              height: 30,
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
-                                itemCount: (mObj2[pagesindex]['tags']).length,
+                                itemCount:
+                                    (mObj2[pagesindex]['posttags']).length,
                                 itemBuilder: (context, index) {
                                   return Padding(
                                     padding: EdgeInsets.only(right: 6),
                                     child: OutlinedButton(
                                       onPressed: () =>
                                           print('direct'), //! direct to
-                                      child: Text(
-                                        mObj2[pagesindex]['tags']
-                                            [index], //! access QA name
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            // fontWeight:
-                                            //     FontWeight.bold,
-                                            color: tWhiteColor),
-                                      ),
+
                                       style: OutlinedButton.styleFrom(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 8, vertical: 5),
-                                        backgroundColor:
-                                            Color.fromARGB(255, 36, 122, 39),
-                                        side: const BorderSide(width: 0),
+                                        backgroundColor: tFifthColor,
+                                        side: BorderSide.none,
                                         shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                             Radius.circular(15),
                                           ),
                                         ),
+                                      ),
+                                      child: Text(
+                                        mObj2[pagesindex]['tags']
+                                            [index], //! access QA name
+                                        style: const TextStyle(
+                                            fontSize: 14,
+                                            // fontWeight:
+                                            //     FontWeight.bold,
+                                            color: tDarkColor),
                                       ),
                                     ),
                                   );
@@ -236,99 +291,136 @@ class _EarningPageState extends State<EarningPage> {
                     ),
                     child: Column(
                       children: [
-                        Container(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8, right: 8),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: TypeAheadFormField(
-                                    textFieldConfiguration:
-                                        TextFieldConfiguration(
-                                      decoration: const InputDecoration(
-                                          hintText: '標籤',
-                                          border: InputBorder.none),
-                                      controller: this._typeAheadController,
-                                    ),
-                                    suggestionsCallback: (pattern) {
-                                      return TagsQuery.getSuggestions(pattern);
-                                    },
-                                    itemBuilder: (context, String suggestion) {
-                                      return ListTile(
-                                        title: Text(suggestion),
-                                      );
-                                    },
-                                    transitionBuilder:
-                                        (context, suggestionsBox, controller) {
-                                      return suggestionsBox;
-                                    },
-                                    onSuggestionSelected: (String suggestion) {
-                                      this._typeAheadController.text = "";
-                                      if (!current_tags.contains(suggestion)) {
-                                        current_tags.add(suggestion);
-                                      }
-                                      callback(
-                                          current_tags,
-                                          current_targets,
-                                          current_equQAs,
-                                          dropdownbuttonWidth,
-                                          pagesindex);
-                                      print(suggestion);
-                                      print(current_tags);
-                                    },
-                                    onSaved: (suggestion) {
-                                      if (!(mObj2[pagesindex]['tags']).contains(
-                                              _typeAheadController.text) &&
-                                          suggestion!.isNotEmpty &&
-                                          suggestion.length < 20) {
-                                        mObj2[pagesindex]['tags']
-                                            .add(_typeAheadController.text);
-                                        print("suggestion = " + suggestion);
-                                        print(_typeAheadController.text);
-                                      }
-                                      callback(
-                                          current_tags,
-                                          current_targets,
-                                          current_equQAs,
-                                          dropdownbuttonWidth,
-                                          pagesindex);
-                                      this._typeAheadController.text = "";
-                                    },
-                                    suggestionsBoxController:
-                                        suggestionBoxController,
-                                    hideKeyboardOnDrag: true,
-                                    hideSuggestionsOnKeyboardHide: false,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8, right: 8),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: TypeAheadFormField(
+                                  textFieldConfiguration:
+                                      TextFieldConfiguration(
+                                    decoration: const InputDecoration(
+                                        hintText: '標籤',
+                                        border: InputBorder.none),
+                                    controller: _typeTagAheadController,
                                   ),
-                                ),
-                                TextButton(
-                                  child: Text(
-                                    '加入',
-                                    style: GoogleFonts.openSans(
-                                      fontSize: 12,
-                                      color: tDarkColor,
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    _formKey.currentState!.save();
+                                  suggestionsCallback: (pattern) {
+                                    return TagsQuery.getSuggestions(pattern);
                                   },
-                                  style: ButtonStyle(
-                                    foregroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            tFifthColor),
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            tFifthColor),
-                                    shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(18.0),
+                                  itemBuilder: (
+                                    context,
+                                    String suggestion,
+                                  ) {
+                                    return ListTile(
+                                      trailing: Container(
+                                        decoration: const BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(15),
+                                          ),
+                                          color: tFifthColor,
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                              ((suggestion.length) *
+                                                          (suggestion.length +
+                                                              1) %
+                                                          5 +
+                                                      1)
+                                                  .toString(),
+                                              style: const TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold)),
+                                        ),
                                       ),
+                                      title: Text(suggestion),
+                                    );
+                                  },
+                                  transitionBuilder:
+                                      (context, suggestionsBox, controller) {
+                                    return suggestionsBox;
+                                  },
+                                  onSuggestionSelected: (String suggestion) {
+                                    _typeTagAheadController.text = "";
+                                    if (!(mObj2[pagesindex]['tags']).contains(
+                                            _typeTagAheadController.text) &&
+                                        suggestion.isNotEmpty &&
+                                        suggestion.length < 20) {
+                                      mObj2[pagesindex]['tags'].add(suggestion);
+                                    }
+                                    callback(
+                                        current_tags,
+                                        current_targets,
+                                        current_equQAs,
+                                        dropdownbuttonWidth,
+                                        pagesindex);
+                                    _focusNode.unfocus();
+                                  },
+                                  onSaved: (suggestion) {
+                                    if (!(mObj2[pagesindex]['tags']).contains(
+                                            _typeTagAheadController.text) &&
+                                        suggestion!.isNotEmpty &&
+                                        suggestion.length < 20) {
+                                      mObj2[pagesindex]['tags']
+                                          .add(_typeTagAheadController.text);
+                                    }
+                                    callback(
+                                        current_tags,
+                                        current_targets,
+                                        current_equQAs,
+                                        dropdownbuttonWidth,
+                                        pagesindex);
+                                    _typeTagAheadController.text = "";
+                                  },
+                                  suggestionsBoxController:
+                                      suggestionBoxController,
+                                  hideKeyboardOnDrag: true,
+                                  hideSuggestionsOnKeyboardHide: false,
+                                  hideOnEmpty: true,
+                                ),
+                              ),
+                              TextButton(
+                                child: Text(
+                                  '加入',
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 12,
+                                    color: tDarkColor,
+                                  ),
+                                ),
+                                onPressed: () {
+                                  String newTag = _typeTagAheadController.text;
+                                  if (newTag.isNotEmpty &&
+                                      newTag.length < 20 &&
+                                      !mObj2[pagesindex]['tags']
+                                          .contains(newTag)) {
+                                    setState(() {
+                                      mObj2[pagesindex]['tags'].add(newTag);
+                                    });
+                                  }
+                                  callback(
+                                      current_tags,
+                                      current_targets,
+                                      current_equQAs,
+                                      dropdownbuttonWidth,
+                                      pagesindex);
+                                  _typeTagAheadController.text = "";
+                                },
+                                style: ButtonStyle(
+                                  foregroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          tFifthColor),
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          tFifthColor),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                         Container(
@@ -369,7 +461,7 @@ class _EarningPageState extends State<EarningPage> {
                           child: Padding(
                             padding: const EdgeInsets.all(10),
                             child: Container(
-                              height: 40,
+                              height: 30,
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
@@ -380,26 +472,26 @@ class _EarningPageState extends State<EarningPage> {
                                     child: OutlinedButton(
                                       onPressed: () =>
                                           print('direct'), //! direct to
-                                      child: Text(
-                                        mObj2[pagesindex]['tags']
-                                            [index], //! access QA name
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            // fontWeight:
-                                            //     FontWeight.bold,
-                                            color: Colors.white),
-                                      ),
+
                                       style: OutlinedButton.styleFrom(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 8, vertical: 5),
-                                        backgroundColor:
-                                            Color.fromARGB(255, 36, 122, 39),
-                                        side: const BorderSide(width: 0),
+                                        backgroundColor: tFifthColor,
+                                        side: BorderSide.none,
                                         shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                             Radius.circular(15),
                                           ),
                                         ),
+                                      ),
+                                      child: Text(
+                                        mObj2[pagesindex]['tags']
+                                            [index], //! access QA name
+                                        style: const TextStyle(
+                                            fontSize: 14,
+                                            // fontWeight:
+                                            //     FontWeight.bold,
+                                            color: tDarkColor),
                                       ),
                                     ),
                                   );
@@ -422,101 +514,137 @@ class _EarningPageState extends State<EarningPage> {
                     ),
                     child: Column(
                       children: [
-                        Container(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8, right: 8),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: TypeAheadFormField(
-                                    textFieldConfiguration:
-                                        TextFieldConfiguration(
-                                      decoration: const InputDecoration(
-                                          hintText: '使用者屬性',
-                                          border: InputBorder.none),
-                                      controller: this._typeAheadController,
-                                    ),
-                                    suggestionsCallback: (pattern) {
-                                      return TargetsQuery.getSuggestions(
-                                          pattern);
-                                    },
-                                    itemBuilder: (context, String suggestion) {
-                                      return ListTile(
-                                        title: Text(suggestion),
-                                      );
-                                    },
-                                    transitionBuilder:
-                                        (context, suggestionsBox, controller) {
-                                      return suggestionsBox;
-                                    },
-                                    onSuggestionSelected: (String suggestion) {
-                                      this._typeAheadController.text = "";
-                                      if (!current_targets
-                                          .contains(suggestion)) {
-                                        current_targets.add(suggestion);
-                                      }
-                                      callback(
-                                          current_tags,
-                                          current_targets,
-                                          current_equQAs,
-                                          dropdownbuttonWidth,
-                                          pagesindex);
-                                      print(suggestion);
-                                      print(current_targets);
-                                    },
-                                    onSaved: (suggestion) {
-                                      if (!current_targets.contains(
-                                              _typeAheadController.text) &&
-                                          suggestion!.isNotEmpty &&
-                                          suggestion.length < 20) {
-                                        current_targets
-                                            .add(_typeAheadController.text);
-                                        print("suggestion = " + suggestion);
-                                        print(_typeAheadController.text);
-                                      }
-                                      callback(
-                                          current_tags,
-                                          current_targets,
-                                          current_equQAs,
-                                          dropdownbuttonWidth,
-                                          pagesindex);
-                                      this._typeAheadController.text = "";
-                                    },
-                                    suggestionsBoxController:
-                                        suggestionBoxController,
-                                    hideKeyboardOnDrag: true,
-                                    hideSuggestionsOnKeyboardHide: false,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8, right: 8),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: TypeAheadFormField(
+                                  textFieldConfiguration:
+                                      TextFieldConfiguration(
+                                    decoration: const InputDecoration(
+                                        hintText: '使用者屬性',
+                                        border: InputBorder.none),
+                                    controller: this._typeTargetAheadController,
                                   ),
-                                ),
-                                TextButton(
-                                  child: Text(
-                                    '加入',
-                                    style: GoogleFonts.openSans(
-                                      fontSize: 12,
-                                      color: tDarkColor,
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    _formKey.currentState!.save();
+                                  suggestionsCallback: (pattern) {
+                                    return TargetsQuery.getSuggestions(pattern);
                                   },
-                                  style: ButtonStyle(
-                                    foregroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            tFifthColor),
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            tFifthColor),
-                                    shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(18.0),
+                                  itemBuilder: (context, String suggestion) {
+                                    return ListTile(
+                                      trailing: Container(
+                                        decoration: const BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(15),
+                                          ),
+                                          color: tFifthColor,
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                              ((suggestion.length) *
+                                                          (suggestion.length +
+                                                              1) %
+                                                          5 +
+                                                      1)
+                                                  .toString(),
+                                              style: const TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold)),
+                                        ),
                                       ),
+                                      title: Text(suggestion),
+                                    );
+                                  },
+                                  transitionBuilder:
+                                      (context, suggestionsBox, controller) {
+                                    return suggestionsBox;
+                                  },
+                                  onSuggestionSelected: (String suggestion) {
+                                    _typeTargetAheadController.text = "";
+                                    if (!(mObj2[pagesindex]['targets'])
+                                            .contains(
+                                                _typeTagAheadController.text) &&
+                                        suggestion.isNotEmpty &&
+                                        suggestion.length < 20) {
+                                      mObj2[pagesindex]['targets']
+                                          .add(suggestion);
+                                    }
+                                    callback(
+                                        current_tags,
+                                        current_targets,
+                                        current_equQAs,
+                                        dropdownbuttonWidth,
+                                        pagesindex);
+                                    _focusNode.unfocus();
+                                  },
+                                  onSaved: (suggestion) {
+                                    if (!(mObj2[pagesindex]['targets'])
+                                            .contains(_typeTargetAheadController
+                                                .text) &&
+                                        suggestion!.isNotEmpty &&
+                                        suggestion.length < 20) {
+                                      mObj2[pagesindex]['targets']
+                                          .add(_typeTargetAheadController.text);
+                                    }
+                                    callback(
+                                        current_tags,
+                                        current_targets,
+                                        current_equQAs,
+                                        dropdownbuttonWidth,
+                                        pagesindex);
+                                    _typeTargetAheadController.text = "";
+                                  },
+                                  suggestionsBoxController:
+                                      suggestionBoxController,
+                                  hideKeyboardOnDrag: true,
+                                  hideSuggestionsOnKeyboardHide: false,
+                                ),
+                              ),
+                              TextButton(
+                                child: Text(
+                                  '加入',
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 12,
+                                    color: tDarkColor,
+                                  ),
+                                ),
+                                onPressed: () {
+                                  String newTarget =
+                                      _typeTargetAheadController.text;
+                                  if (newTarget.isNotEmpty &&
+                                      newTarget.length < 20 &&
+                                      !mObj2[pagesindex]['targets']
+                                          .contains(newTarget)) {
+                                    setState(() {
+                                      mObj2[pagesindex]['targets']
+                                          .add(newTarget);
+                                    });
+                                  }
+                                  callback(
+                                      current_tags,
+                                      current_targets,
+                                      current_equQAs,
+                                      dropdownbuttonWidth,
+                                      pagesindex);
+                                  _typeTargetAheadController.text = "";
+                                },
+                                style: ButtonStyle(
+                                  foregroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          tFifthColor),
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          tFifthColor),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                         Container(
@@ -557,7 +685,7 @@ class _EarningPageState extends State<EarningPage> {
                           child: Padding(
                             padding: const EdgeInsets.all(10),
                             child: Container(
-                              height: 40,
+                              height: 30,
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
@@ -569,25 +697,22 @@ class _EarningPageState extends State<EarningPage> {
                                     child: OutlinedButton(
                                       onPressed: () =>
                                           print('direct'), //! direct to
-                                      child: Text(
-                                        mObj2[pagesindex]['targets']
-                                            [index], //! access QA name
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            // fontWeight:
-                                            //     FontWeight.bold,
-                                            color: Colors.white),
-                                      ),
                                       style: OutlinedButton.styleFrom(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 8, vertical: 5),
                                         backgroundColor: tPrimaryColor,
-                                        side: const BorderSide(width: 0),
+                                        side: BorderSide.none,
                                         shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                             Radius.circular(15),
                                           ),
                                         ),
+                                      ),
+                                      child: Text(
+                                        mObj2[pagesindex]['targets']
+                                            [index], //! access QA name
+                                        style: const TextStyle(
+                                            fontSize: 14, color: tDarkColor),
                                       ),
                                     ),
                                   );
@@ -610,101 +735,134 @@ class _EarningPageState extends State<EarningPage> {
                     ),
                     child: Column(
                       children: [
-                        Container(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8, right: 8),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: TypeAheadFormField(
-                                    textFieldConfiguration:
-                                        TextFieldConfiguration(
-                                      decoration: const InputDecoration(
-                                          hintText: '等價連結',
-                                          border: InputBorder.none),
-                                      controller: this._typeAheadController,
-                                    ),
-                                    suggestionsCallback: (pattern) {
-                                      return EquQAsQuery.getSuggestions(
-                                          pattern);
-                                    },
-                                    itemBuilder: (context, String suggestion) {
-                                      return ListTile(
-                                        title: Text(suggestion),
-                                      );
-                                    },
-                                    transitionBuilder:
-                                        (context, suggestionsBox, controller) {
-                                      return suggestionsBox;
-                                    },
-                                    onSuggestionSelected: (String suggestion) {
-                                      this._typeAheadController.text = "";
-                                      if (!current_equQAs
-                                          .contains(suggestion)) {
-                                        current_equQAs.add(suggestion);
-                                      }
-                                      callback(
-                                          current_tags,
-                                          current_targets,
-                                          current_equQAs,
-                                          dropdownbuttonWidth,
-                                          pagesindex);
-                                      print(suggestion);
-                                      print(current_equQAs);
-                                    },
-                                    onSaved: (suggestion) {
-                                      if (!current_equQAs.contains(
-                                              _typeAheadController.text) &&
-                                          suggestion!.isNotEmpty &&
-                                          suggestion.length < 20) {
-                                        current_equQAs
-                                            .add(_typeAheadController.text);
-                                        print("suggestion = " + suggestion);
-                                        print(_typeAheadController.text);
-                                      }
-                                      callback(
-                                          current_tags,
-                                          current_targets,
-                                          current_equQAs,
-                                          dropdownbuttonWidth,
-                                          pagesindex);
-                                      this._typeAheadController.text = "";
-                                    },
-                                    suggestionsBoxController:
-                                        suggestionBoxController,
-                                    hideKeyboardOnDrag: true,
-                                    hideSuggestionsOnKeyboardHide: false,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8, right: 8),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: TypeAheadFormField(
+                                  textFieldConfiguration:
+                                      TextFieldConfiguration(
+                                    decoration: const InputDecoration(
+                                        hintText: '等價連結',
+                                        border: InputBorder.none),
+                                    controller: this._typeEquQAAheadController,
                                   ),
-                                ),
-                                TextButton(
-                                  child: Text(
-                                    '加入',
-                                    style: GoogleFonts.openSans(
-                                      fontSize: 12,
-                                      color: tDarkColor,
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    _formKey.currentState!.save();
+                                  suggestionsCallback: (pattern) {
+                                    return EquQAsQuery.getSuggestions(pattern);
                                   },
-                                  style: ButtonStyle(
-                                    foregroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            tFifthColor),
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            tFifthColor),
-                                    shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(18.0),
+                                  itemBuilder: (context, String suggestion) {
+                                    return ListTile(
+                                      trailing: Container(
+                                        decoration: const BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(15),
+                                          ),
+                                          color: tFifthColor,
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                              ((suggestion.length) *
+                                                          (suggestion.length +
+                                                              1) %
+                                                          5 +
+                                                      1)
+                                                  .toString(),
+                                              style: const TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold)),
+                                        ),
                                       ),
+                                      title: Text(suggestion),
+                                    );
+                                  },
+                                  transitionBuilder:
+                                      (context, suggestionsBox, controller) {
+                                    return suggestionsBox;
+                                  },
+                                  onSuggestionSelected: (String suggestion) {
+                                    _typeEquQAAheadController.text = "";
+                                    if (!(mObj2[pagesindex]['equQAs']).contains(
+                                            _typeEquQAAheadController.text) &&
+                                        suggestion.isNotEmpty &&
+                                        suggestion.length < 20) {
+                                      mObj2[pagesindex]['equQAs']
+                                          .add(suggestion);
+                                    }
+                                    callback(
+                                        current_tags,
+                                        current_targets,
+                                        current_equQAs,
+                                        dropdownbuttonWidth,
+                                        pagesindex);
+                                    _focusNode.unfocus();
+                                  },
+                                  onSaved: (suggestion) {
+                                    if (!(mObj2[pagesindex]['equQAs']).contains(
+                                            _typeEquQAAheadController.text) &&
+                                        suggestion!.isNotEmpty &&
+                                        suggestion.length < 20) {
+                                      mObj2[pagesindex]['equQAs']
+                                          .add(_typeEquQAAheadController.text);
+                                    }
+                                    callback(
+                                        current_tags,
+                                        current_targets,
+                                        current_equQAs,
+                                        dropdownbuttonWidth,
+                                        pagesindex);
+                                    _typeEquQAAheadController.text = "";
+                                  },
+                                  suggestionsBoxController:
+                                      suggestionBoxController,
+                                  hideKeyboardOnDrag: true,
+                                  hideSuggestionsOnKeyboardHide: false,
+                                ),
+                              ),
+                              TextButton(
+                                child: Text(
+                                  '加入',
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 12,
+                                    color: tDarkColor,
+                                  ),
+                                ),
+                                onPressed: () {
+                                  String newEquQA =
+                                      _typeEquQAAheadController.text;
+                                  if (newEquQA.isNotEmpty &&
+                                      newEquQA.length < 20 &&
+                                      !mObj2[pagesindex]['equQAs']
+                                          .contains(newEquQA)) {
+                                    setState(() {
+                                      mObj2[pagesindex]['equQAs'].add(newEquQA);
+                                    });
+                                  }
+                                  callback(
+                                      current_tags,
+                                      current_targets,
+                                      current_equQAs,
+                                      dropdownbuttonWidth,
+                                      pagesindex);
+                                  _typeEquQAAheadController.text = "";
+                                },
+                                style: ButtonStyle(
+                                  foregroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          tFifthColor),
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          tFifthColor),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                         Align(
@@ -721,24 +879,24 @@ class _EarningPageState extends State<EarningPage> {
                                 itemCount: (mObj2[pagesindex]['equQAs']).length,
                                 itemBuilder: (context, index) {
                                   return Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 5, right: 5),
+                                    padding: const EdgeInsets.only(right: 6),
                                     child: OutlinedButton(
                                       onPressed: () =>
                                           print('direct'), //! direct to
-                                      child: Text(
-                                        mObj2[pagesindex]['equQAs']
-                                            [index], //! access QA name
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold),
-                                      ),
+
                                       style: OutlinedButton.styleFrom(
                                         side: const BorderSide(width: 1),
                                         shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
-                                              Radius.circular(8)),
+                                              Radius.circular(15)),
+                                        ),
+                                      ),
+                                      child: Text(
+                                        mObj2[pagesindex]['equQAs']
+                                            [index], //! access QA name
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                          color: tDarkColor,
                                         ),
                                       ),
                                     ),
@@ -767,6 +925,7 @@ class _EarningPageState extends State<EarningPage> {
                             }
                           },
                           heroTag: 'btn1',
+                          backgroundColor: tSecondColor,
                           child: const Icon(Icons.navigate_before_outlined),
                         ),
                       ),
@@ -782,6 +941,7 @@ class _EarningPageState extends State<EarningPage> {
                             }
                           },
                           heroTag: 'btn2',
+                          backgroundColor: tSecondColor,
                           child: const Icon(Icons.navigate_next_outlined),
                         ),
                       ),
@@ -845,9 +1005,8 @@ class TargetsQuery {
 
 class EquQAsQuery {
   static final List<String> allequQAs = [
-    "abc",
-    "def",
-    "ghi",
+    "古城麻辣燙候位人數",
+    "古城還要等多久",
   ];
 
   static List<String> getSuggestions(String query) {

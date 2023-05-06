@@ -387,7 +387,7 @@ class _QApageState extends State<QApage> {
                   ),
                   Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text("現有點數：15pt"),
+                    child: Text("現有點數: 15pt"),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -452,8 +452,8 @@ class _QApageState extends State<QApage> {
                     children: <Widget>[
                       Row(
                         children: [
-                          Padding(padding: EdgeInsets.all(3)),
-                          CircleAvatar(
+                          const Padding(padding: EdgeInsets.all(3)),
+                          const CircleAvatar(
                             radius: 12,
                             backgroundImage: AssetImage(tAvatarImage1),
                           ),
@@ -601,7 +601,7 @@ class _QApageState extends State<QApage> {
                                             color: Colors.black))),
                                 Expanded(
                                   child: Padding(
-                                    padding: EdgeInsets.only(right: 8.0),
+                                    padding: const EdgeInsets.only(right: 8.0),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
@@ -609,7 +609,8 @@ class _QApageState extends State<QApage> {
                                           onPressed: () {
                                             showReportDialog(context);
                                           },
-                                          icon: Icon(Icons.warning_amber_sharp,
+                                          icon: const Icon(
+                                              Icons.warning_amber_sharp,
                                               size: 26),
                                         ),
                                         IconButton(
@@ -636,14 +637,15 @@ class _QApageState extends State<QApage> {
                               ],
                             ),
                             Padding(
-                              padding: EdgeInsets.only(top: 12),
+                              padding: const EdgeInsets.only(top: 12),
                               child: Align(
                                 alignment: Alignment.topLeft,
                                 child: SizedBox(
                                     height: 60,
                                     child: Row(
                                       children: [
-                                        Padding(padding: EdgeInsets.all(7)),
+                                        const Padding(
+                                            padding: EdgeInsets.all(7)),
                                         Flexible(
                                           child: Align(
                                             alignment: Alignment.topLeft,
@@ -672,7 +674,8 @@ class _QApageState extends State<QApage> {
                                     itemCount: 3,
                                     itemBuilder: (context, index) {
                                       return Padding(
-                                        padding: EdgeInsets.only(right: 6),
+                                        padding:
+                                            const EdgeInsets.only(right: 6),
                                         child: OutlinedButton(
                                           onPressed: () =>
                                               print('direct'), //! direct to
@@ -889,7 +892,7 @@ class _ButtonRowState extends State<ButtonRow> {
                 }
                 _QApageState qaPageState = _QApageState();
                 return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 2),
+                  padding: const EdgeInsets.symmetric(horizontal: 2),
                   child: GestureDetector(
                     onTap: () => _selectButton(index),
                     child: SizedBox(
@@ -938,7 +941,7 @@ class _ButtonRowState extends State<ButtonRow> {
                 );
               }),
             ),
-            Icon(Icons.filter_list_rounded)
+            const Icon(Icons.filter_list_rounded)
           ],
         ),
       ),

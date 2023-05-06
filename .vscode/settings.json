@@ -1,4 +1,5 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
-    "cmake.sourceDirectory": "C:/Users/suwen/Documents/GitHub/infoBank/info_bank/linux/flutter"
+    "cmake.sourceDirectory": "C:/Users/suwen/Documents/GitHub/infoBank/info_bank/linux/flutter",
+    "editor.wordWrap": "on"
 }
