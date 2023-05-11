@@ -71,8 +71,8 @@ class MyPost extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
-                    padding: EdgeInsets.only(left: 8, top: 8),
-                    child: Container(
+                    padding: const EdgeInsets.only(left: 8, top: 8),
+                    child: SizedBox(
                       height: 50,
                       child: Text(
                         //title
@@ -86,7 +86,7 @@ class MyPost extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: Row(
                     children: [
@@ -134,12 +134,12 @@ class MyPost extends StatelessWidget {
                           },
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         child: Column(
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(right: 10),
-                              child: Container(
+                              child: SizedBox(
                                 width: 120,
                                 child: Align(
                                   alignment: Alignment.centerRight,
@@ -155,7 +155,7 @@ class MyPost extends StatelessWidget {
                             Padding(
                               padding:
                                   const EdgeInsets.only(right: 10, bottom: 8),
-                              child: Container(
+                              child: SizedBox(
                                 width: 120,
                                 child: Align(
                                   alignment: Alignment.centerRight,
@@ -219,7 +219,7 @@ class SamePost extends StatelessWidget {
                   alignment: Alignment.topLeft,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 8, top: 8, right: 8),
-                    child: Container(
+                    child: SizedBox(
                       height: 20,
                       child: Text(
                         //title

@@ -43,7 +43,7 @@ class _ViewState extends State<View> {
           ),
         ],
       ),
-      body: Center(
+      body: const Center(
         child: Text('View Page'),
       ),
     );

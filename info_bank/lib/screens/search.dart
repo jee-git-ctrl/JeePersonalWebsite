@@ -145,12 +145,12 @@ class _SearchState extends State<Search> with SingleTickerProviderStateMixin {
                                   scrollDirection: Axis.horizontal,
                                   itemBuilder: (context, sameindex) {
                                     if (sameindex == 0) {
-                                      return Container(
+                                      return const SizedBox(
                                         height: 100,
-                                        child: const Align(
+                                        child: Align(
                                           alignment: Alignment.topCenter,
                                           child: Padding(
-                                            padding: const EdgeInsets.only(
+                                            padding: EdgeInsets.only(
                                                 top: 10.0, left: 10),
                                             child: Icon(
                                               Icons.subdirectory_arrow_right,

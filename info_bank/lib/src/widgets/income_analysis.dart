@@ -44,7 +44,7 @@ class _IncomeAnalysis extends State<IncomeAnalysis> {
                   height: (MediaQuery.of(context).size.width) - 150,
                   child: MyPieChart(),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 const Text(

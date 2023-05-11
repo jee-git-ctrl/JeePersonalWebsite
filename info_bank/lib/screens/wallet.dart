@@ -51,7 +51,7 @@ class _Wallet extends State<Wallet> {
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
-                          Text(
+                          const Text(
                             "35,000tmp",
                             style: TextStyle(
                                 fontSize: 40, fontWeight: FontWeight.bold),
@@ -65,21 +65,21 @@ class _Wallet extends State<Wallet> {
                         GestureDetector(
                           child: Row(
                             children: [
-                              Text(
+                              const Text(
                                 "更多分析",
                                 style: TextStyle(fontSize: 18),
                               ),
-                              Icon(Icons.bar_chart_rounded),
-                              SizedBox(
+                              const Icon(Icons.bar_chart_rounded),
+                              const SizedBox(
                                 width: 10,
-                              )
+                              ),
                             ],
                           ),
                           onTap: () => {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => IncomeAnalysis()),
+                                  builder: (context) => const IncomeAnalysis()),
                             ),
                           },
                         ),
