@@ -47,36 +47,35 @@ class _EarningPageState extends State<EarningPage> {
   List<Map<String, dynamic>> mObj2 = [
     {
       'title': '古城麻辣燙排隊人數',
-      'note': '古城麻辣燙排隊人數古城麻辣燙',
-      'posttags': ['美食', '麻辣燙'],
-      'tags': ['美食', '麻辣燙'],
-      'targets': ['中正大學生', '大吃街覓食'],
-      'equQAs': [
-        '古城麻辣燙候位人數',
-        '古城還要等多久',
-      ],
+      'note': '中正大吃',
+      'posttags': [],
+      'tags': [],
+      'targets': [],
+      'equQAs': [],
     },
     {
-      'title': '古城麻辣燙排隊人數1',
-      'note': '古城麻辣燙排隊人數古城麻辣燙',
-      'posttags': ['美食', '麻辣燙'],
-      'tags': ['美食', '麻辣燙'],
-      'targets': ['中正大學生', '大吃街覓食'],
-      'equQAs': [
-        '古城麻辣燙候位人數',
-        '古城還要等多久',
-      ],
+      'title': '男宿A棟洗衣間滿了嗎',
+      'note': '中正大學',
+      'posttags': [],
+      'tags': [],
+      'targets': [],
+      'equQAs': [],
     },
     {
-      'title': '古城麻辣燙排隊人數2',
-      'note': '古城麻辣燙排隊人數古城麻辣燙',
-      'posttags': ['美食', '麻辣燙'],
-      'tags': ['美食', '麻辣燙'],
-      'targets': ['中正大學生', '大吃街覓食'],
-      'equQAs': [
-        '古城麻辣燙候位人數',
-        '古城還要等多久',
-      ],
+      'title': '古城麻辣燙排隊人數',
+      'note': '中正大吃',
+      'posttags': [],
+      'tags': [],
+      'targets': [],
+      'equQAs': [],
+    },
+    {
+      'title': '古城麻辣燙排隊人數',
+      'note': '中正大吃',
+      'posttags': [],
+      'tags': [],
+      'targets': [],
+      'equQAs': [],
     },
   ];
   int pagesindex = 0;
@@ -97,6 +96,62 @@ class _EarningPageState extends State<EarningPage> {
   TextEditingController _typeTargetAheadController = TextEditingController();
   TextEditingController _typeEquQAAheadController = TextEditingController();
   FocusNode _focusNode = FocusNode();
+  update() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: tThirdColor,
+            content: Container(
+              color: tThirdColor,
+              width: 400,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text("確定支付0.5 pt來新增2個建議嗎")),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text("現有點數: 14pt"),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          style: const ButtonStyle(
+                              backgroundColor:
+                                  MaterialStatePropertyAll(tSecondColor)),
+                          child: const Text("確定"),
+                          onPressed: () {
+                            setState(() {
+                              Navigator.of(context).pop();
+                            });
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          style: const ButtonStyle(
+                              backgroundColor:
+                                  MaterialStatePropertyAll(tSecondColor)),
+                          child: const Text("取消"),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          );
+        });
+  }
 
   @override
   void initState() {
@@ -142,10 +197,7 @@ class _EarningPageState extends State<EarningPage> {
                 color: tDarkColor,
                 icon: const Icon(Icons.send),
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-                    //create add here
-                  }
+                  update();
                 },
               ),
             ],
@@ -184,7 +236,7 @@ class _EarningPageState extends State<EarningPage> {
                                           color: tDarkColor))),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.only(right: 8.0),
+                                  padding: const EdgeInsets.only(right: 4.0),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
@@ -936,6 +988,7 @@ class _EarningPageState extends State<EarningPage> {
                       ),
                     ),
                   ),
+                  // Padding(padding: EdgeInsets.all(60)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[

@@ -115,18 +115,18 @@ class _SideMenuState extends State<SideMenu> {
             const SizedBox(
               height: 69,
             ),
-            SizedBox(
-              width: 120,
-              child: Column(
-                children: [
-                  ElevatedButton(
-                      onPressed: () {
-                        showReportDialog(context);
-                      },
-                      child: const Text('Debug Report')),
-                ],
-              ),
-            ),
+            // SizedBox(
+            //   width: 120,
+            //   child: Column(
+            //     children: [
+            //       ElevatedButton(
+            //           onPressed: () {
+            //             showReportDialog(context);
+            //           },
+            //           child: const Text('Debug Report')),
+            //     ],
+            //   ),
+            // ),
             // SizedBox(
             //   width: 120,
             //   child: Column(
