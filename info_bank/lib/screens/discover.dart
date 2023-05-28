@@ -14,21 +14,23 @@ class Discover extends StatefulWidget {
 class _DiscoverState extends State<Discover>
     with SingleTickerProviderStateMixin {
   List<Post> _currentposts = allPost;
-  List<Post> BountyPost = [
-    Post(title: '古城麻辣燙排隊人數', tag: ['Follow'], Best: 89.1, unlocked: 3000),
-    Post(title: 'Post 3', tag: ['Follow'], Best: 67.4, unlocked: 5678),
-    Post(title: 'Post 4', tag: ['Recommend'], Best: 82.2, unlocked: 9876),
-    Post(title: 'Post 6', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
-    Post(title: 'Post 7', tag: ['Follow'], Best: 23.3, unlocked: 2351),
-    Post(title: 'Post 9', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
-    Post(title: 'Post 10', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
+  List<Post> bountyPost = [
+    const Post(title: '古城麻辣燙排隊人數', tag: ['Follow'], Best: 89.1, unlocked: 3000),
+    const Post(title: 'Post 3', tag: ['Follow'], Best: 67.4, unlocked: 5678),
+    const Post(title: 'Post 4', tag: ['Recommend'], Best: 82.2, unlocked: 9876),
+    const Post(title: 'Post 6', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
+    const Post(title: 'Post 7', tag: ['Follow'], Best: 23.3, unlocked: 2351),
+    const Post(title: 'Post 9', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
+    const Post(
+        title: 'Post 10', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
   ];
-  List<Post> NeedPost = [
-    Post(title: '古城麻辣燙排隊人數', tag: ['Follow'], Best: 89.1, unlocked: 3000),
-    Post(title: 'Post 2', tag: ['Follow'], Best: 71.1, unlocked: 1234),
-    Post(title: 'Post 3', tag: ['Follow'], Best: 67.4, unlocked: 5678),
-    Post(title: 'Post 9', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
-    Post(title: 'Post 10', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
+  List<Post> needPost = [
+    const Post(title: '古城麻辣燙排隊人數', tag: ['Follow'], Best: 89.1, unlocked: 3000),
+    const Post(title: 'Post 2', tag: ['Follow'], Best: 71.1, unlocked: 1234),
+    const Post(title: 'Post 3', tag: ['Follow'], Best: 67.4, unlocked: 5678),
+    const Post(title: 'Post 9', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
+    const Post(
+        title: 'Post 10', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
   ];
   late TabController _tabController;
   @override
@@ -52,87 +54,93 @@ class _DiscoverState extends State<Discover>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: SideMenu(),
-        appBar: AppBar(
-          leading: Builder(
-            builder: (BuildContext context) {
-              return SizedBox(
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.list,
-                    color: Colors.black,
-                  ),
-                  onPressed: () => Scaffold.of(context).openDrawer(),
-                ),
-              );
-            },
-          ),
-          //backgroundColor: Color(0xffd9d9d9),
-          elevation: 0.0,
-          title: Text("探索",
-              style: TextStyle(
-                color: Colors.black,
-              )),
-          centerTitle: true,
-          actions: [
-            Container(
-              padding: const EdgeInsets.only(right: 13),
+      drawer: SideMenu(),
+      appBar: AppBar(
+        leading: Builder(
+          builder: (BuildContext context) {
+            return SizedBox(
               child: IconButton(
+                icon: const Icon(
+                  Icons.list,
                   color: Colors.black,
-                  icon: const Icon(Icons.search),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => Search()));
-                    //Navigator.pushNamed(context, '/search');
-                  }),
-            )
-          ],
+                ),
+                onPressed: () => Scaffold.of(context).openDrawer(),
+              ),
+            );
+          },
         ),
-        body: SafeArea(
-          minimum: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    height: 50,
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "熱門標籤",
-                        style: GoogleFonts.openSans(
-                          fontSize: 32,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
+        //backgroundColor: Color(0xffd9d9d9),
+        elevation: 0.0,
+        title: const Text(
+          "探索",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        centerTitle: true,
+        actions: [
+          Container(
+            padding: const EdgeInsets.only(right: 13),
+            child: IconButton(
+              color: Colors.black,
+              icon: const Icon(Icons.search),
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const Search()));
+                //Navigator.pushNamed(context, '/search');
+              },
+            ),
+          )
+        ],
+      ),
+      body: SafeArea(
+        minimum: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                const SizedBox(
+                  width: 10,
+                ),
+                SizedBox(
+                  height: 50,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "熱門標籤",
+                      style: GoogleFonts.openSans(
+                        fontSize: 32,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                ],
-              ),
-              ConstrainedBox(
-                constraints: new BoxConstraints(
-                  minHeight: 35.0,
-                  maxHeight: 102.0,
                 ),
-                child: ListView(scrollDirection: Axis.horizontal, children: [
+              ],
+            ),
+            ConstrainedBox(
+              constraints: const BoxConstraints(
+                minHeight: 35.0,
+                maxHeight: 102.0,
+              ),
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: getCards(),
                   )
-                ]),
+                ],
               ),
-              const Divider(
-                height: 20,
-                thickness: 1,
-                indent: 5,
-                endIndent: 5,
-                color: tThirdColor,
-              ),
-              /*Row(
+            ),
+            const Divider(
+              height: 20,
+              thickness: 1,
+              indent: 5,
+              endIndent: 5,
+              color: tThirdColor,
+            ),
+            /*Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
@@ -200,68 +208,78 @@ class _DiscoverState extends State<Discover>
                   ),
                 ],
               ),*/
-              TabBar(
-                indicatorColor:
-                    Colors.black, // Set the color of the tab indicator
-                labelStyle: GoogleFonts.openSans(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ), //For Selected tab
-                unselectedLabelStyle: GoogleFonts.openSans(
-                  fontSize: 18,
-                ), //For Un-selected Tabs
+            TabBar(
+              indicatorColor:
+                  Colors.black, // Set the color of the tab indicator
+              labelStyle: GoogleFonts.openSans(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ), //For Selected tab
+              unselectedLabelStyle: GoogleFonts.openSans(
+                fontSize: 18,
+              ), //For Un-selected Tabs
 
-                tabs: [
-                  Tab(
-                    child: Text("熱門問答",
-                        style: TextStyle(
-                          color: Colors.black,
-                        )),
+              tabs: [
+                Tab(
+                  child: Text(
+                    "熱門問答",
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
                   ),
-                  Tab(
-                    child: Text("需要答案",
-                        style: TextStyle(
-                          color: Colors.black,
-                        )),
+                ),
+                Tab(
+                  child: Text(
+                    "需要答案",
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
                   ),
-                  Tab(
-                    child: Text("懸賞問答",
-                        style: TextStyle(
-                          color: Colors.black,
-                        )),
+                ),
+                Tab(
+                  child: Text(
+                    "懸賞問答",
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ],
+              controller: _tabController,
+              indicatorSize: TabBarIndicatorSize.tab,
+            ),
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: _currentposts.length,
+                    itemBuilder: (context, index) {
+                      return MyPost(currentpost: _currentposts[index]);
+                    },
+                  ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: needPost.length,
+                    itemBuilder: (context, index) {
+                      return MyPost(currentpost: needPost[index]);
+                    },
+                  ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: bountyPost.length,
+                    itemBuilder: (context, index) {
+                      return MyPost(currentpost: bountyPost[index]);
+                    },
                   ),
                 ],
-                controller: _tabController,
-                indicatorSize: TabBarIndicatorSize.tab,
               ),
-              Expanded(
-                child: TabBarView(
-                  controller: _tabController,
-                  children: [
-                    ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: _currentposts.length,
-                        itemBuilder: (context, index) {
-                          return MyPost(currentpost: _currentposts[index]);
-                        }),
-                    ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: NeedPost.length,
-                        itemBuilder: (context, index) {
-                          return MyPost(currentpost: NeedPost[index]);
-                        }),
-                    ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: BountyPost.length,
-                        itemBuilder: (context, index) {
-                          return MyPost(currentpost: BountyPost[index]);
-                        }),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ));
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -281,44 +299,54 @@ List<Widget> getCards() {
     "tag 6334",
   ];
   List<Widget> res = [];
-  res.add(Row(
-      children: taglist.sublist(0, taglist.length ~/ 2 + 1).map((item) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30.0),
-      ),
-      elevation: 0,
-      color: tFifthColor,
-      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-        child: Text(
-          item,
-          style: TextStyle(color: Colors.black, fontSize: 18),
-        ),
-      ),
-    );
-  }).toList()));
-  res.add(Row(
-      children: taglist.sublist(taglist.length ~/ 2 + 1).map((item) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30.0),
-      ),
-      elevation: 0,
-      color: tFifthColor,
-      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-        child: Text(
-          item,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-          ),
-        ),
-      ),
-    );
-  }).toList()));
+  res.add(
+    Row(
+      children: taglist.sublist(0, taglist.length ~/ 2 + 1).map(
+        (item) {
+          return Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+            elevation: 0,
+            color: tFifthColor,
+            margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              child: Text(
+                item,
+                style: const TextStyle(color: Colors.black, fontSize: 18),
+              ),
+            ),
+          );
+        },
+      ).toList(),
+    ),
+  );
+  res.add(
+    Row(
+      children: taglist.sublist(taglist.length ~/ 2 + 1).map(
+        (item) {
+          return Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+            elevation: 0,
+            color: tFifthColor,
+            margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              child: Text(
+                item,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          );
+        },
+      ).toList(),
+    ),
+  );
   return res;
 }

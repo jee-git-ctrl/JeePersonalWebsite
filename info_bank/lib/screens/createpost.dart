@@ -154,7 +154,7 @@ class _CreatePostState extends State<CreatePost> {
                               minLines: 1,
                               maxLines: 5,
                               controller: _descriptionController,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 hintText: '補充說明（選填）',
                                 border: InputBorder.none,
                               ),
@@ -182,7 +182,7 @@ class _CreatePostState extends State<CreatePost> {
                                         textFieldConfiguration:
                                             TextFieldConfiguration(
                                           focusNode: FocusNode1,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                               hintText: '標籤（選填）',
                                               border: InputBorder.none),
                                           controller: this._typeAheadController,
@@ -233,6 +233,24 @@ class _CreatePostState extends State<CreatePost> {
                                       ),
                                     ),
                                     TextButton(
+                                      onPressed: () {
+                                        _formKey.currentState!.save();
+                                      },
+                                      style: ButtonStyle(
+                                        foregroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                tFifthColor),
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                tFifthColor),
+                                        shape: MaterialStateProperty.all<
+                                            RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(18.0),
+                                          ),
+                                        ),
+                                      ),
                                       child: Text(
                                         '加入',
                                         style: GoogleFonts.openSans(
@@ -240,55 +258,37 @@ class _CreatePostState extends State<CreatePost> {
                                           color: tDarkColor,
                                         ),
                                       ),
-                                      onPressed: () {
-                                        _formKey.currentState!.save();
-                                      },
-                                      style: ButtonStyle(
-                                          foregroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                                  tFifthColor),
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                                  tFifthColor),
-                                          shape: MaterialStateProperty.all<
-                                                  RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(18.0),
-                                          ))),
                                     )
                                   ],
                                 ),
                               ),
                             ),
-                            Container(
-                              child: IntrinsicHeight(
-                                child: ConstrainedBox(
-                                  constraints: BoxConstraints(
-                                    minWidth: 150,
-                                    maxHeight: 150,
-                                  ),
-                                  child: SingleChildScrollView(
-                                    child: Wrap(
-                                      spacing: 5,
-                                      crossAxisAlignment:
-                                          WrapCrossAlignment.start,
-                                      children: List<Widget>.generate(
-                                          current_tags.length, (int index) {
-                                        return Chip(
-                                          label: Text(
-                                            current_tags[index],
-                                            style: GoogleFonts.openSans(),
-                                          ),
-                                          onDeleted: () {
-                                            setState(() {
-                                              current_tags.removeAt(index);
-                                            });
-                                          },
-                                          deleteIcon: Icon(Icons.close),
-                                        );
-                                      }),
-                                    ),
+                            IntrinsicHeight(
+                              child: ConstrainedBox(
+                                constraints: const BoxConstraints(
+                                  minWidth: 150,
+                                  maxHeight: 150,
+                                ),
+                                child: SingleChildScrollView(
+                                  child: Wrap(
+                                    spacing: 5,
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.start,
+                                    children: List<Widget>.generate(
+                                        current_tags.length, (int index) {
+                                      return Chip(
+                                        label: Text(
+                                          current_tags[index],
+                                          style: GoogleFonts.openSans(),
+                                        ),
+                                        onDeleted: () {
+                                          setState(() {
+                                            current_tags.removeAt(index);
+                                          });
+                                        },
+                                        deleteIcon: const Icon(Icons.close),
+                                      );
+                                    }),
                                   ),
                                 ),
                               ),
@@ -310,11 +310,11 @@ class _CreatePostState extends State<CreatePost> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Text('食物標籤群組'),
-                                      SizedBox(
+                                      const Text('食物標籤群組'),
+                                      const SizedBox(
                                         width: 5,
                                       ),
-                                      Icon(
+                                      const Icon(
                                         Icons.add_circle,
                                         size: 24.0,
                                       ),
@@ -341,11 +341,11 @@ class _CreatePostState extends State<CreatePost> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Text('讀書標籤群組'),
-                                      SizedBox(
+                                      const Text('讀書標籤群組'),
+                                      const SizedBox(
                                         width: 5,
                                       ),
-                                      Icon(
+                                      const Icon(
                                         Icons.add_circle,
                                         size: 24.0,
                                       ),
@@ -389,7 +389,7 @@ class _CreatePostState extends State<CreatePost> {
                                 minLines: 1,
                                 maxLines: 5,
                                 controller: _answerController,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   hintText: '回答（選填）',
                                   border: InputBorder.none,
                                 ),
@@ -398,7 +398,7 @@ class _CreatePostState extends State<CreatePost> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Container(child: Text("解鎖點數")),
+                                const Text("解鎖點數"),
                                 Price(
                                   callback: callback,
                                   current_tags: current_tags,

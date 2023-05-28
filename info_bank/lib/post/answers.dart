@@ -86,7 +86,7 @@ class AnsLocked extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 6),
-                    child: Container(
+                    child: SizedBox(
                       child: Text(
                         lans[index]["time"],
                         style: GoogleFonts.openSans(),

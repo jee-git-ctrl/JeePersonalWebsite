@@ -71,8 +71,8 @@ class MyPost extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
-                    padding: EdgeInsets.only(left: 8, top: 8),
-                    child: Container(
+                    padding: const EdgeInsets.only(left: 8, top: 8),
+                    child: SizedBox(
                       height: 50,
                       child: Text(
                         //title
@@ -86,7 +86,7 @@ class MyPost extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: Row(
                     children: [
@@ -134,17 +134,17 @@ class MyPost extends StatelessWidget {
                           },
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         child: Column(
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(right: 10),
-                              child: Container(
+                              child: SizedBox(
                                 width: 120,
                                 child: Align(
                                   alignment: Alignment.centerRight,
                                   child: Text(
-                                    "最佳回答：" + currentpost.Best.toString() + "%",
+                                    "最佳回答：${currentpost.Best}%",
                                     style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -155,15 +155,12 @@ class MyPost extends StatelessWidget {
                             Padding(
                               padding:
                                   const EdgeInsets.only(right: 10, bottom: 8),
-                              child: Container(
+                              child: SizedBox(
                                 width: 120,
                                 child: Align(
                                   alignment: Alignment.centerRight,
                                   child: Text(
-                                    "解鎖次數：" +
-                                        (currentpost.unlocked / 1000)
-                                            .toStringAsFixed(1) +
-                                        "k",
+                                    "解鎖次數：${(currentpost.unlocked / 1000).toStringAsFixed(1)}k",
                                     style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -206,7 +203,7 @@ class SamePost extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => QApage()));
+            .push(MaterialPageRoute(builder: (context) => const QApage()));
       },
       child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
@@ -222,7 +219,7 @@ class SamePost extends StatelessWidget {
                   alignment: Alignment.topLeft,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 8, top: 8, right: 8),
-                    child: Container(
+                    child: SizedBox(
                       height: 20,
                       child: Text(
                         //title

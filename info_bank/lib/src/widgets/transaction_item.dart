@@ -24,7 +24,7 @@ class TransactionItem extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.blueGrey),
-              child: SizedBox(
+              child: const SizedBox(
                   width: 30,
                   height: 30,
                   child: Icon(Icons.attach_money) //depend on transaction type

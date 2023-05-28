@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:info_bank/screens/home.dart';
 import 'package:info_bank/screens/notificationpage.dart';
-import 'package:info_bank/screens/profile.dart';
+import 'package:info_bank/screens/profile_2.dart';
 import 'package:info_bank/screens/discover.dart';
 import 'package:info_bank/screens/createpost.dart';
-
-import '../screens/profile_2.dart';
 
 class TabNavigationItem {
   final Widget page;
@@ -17,12 +15,12 @@ class TabNavigationItem {
 
   static List<TabNavigationItem> get items => [
         TabNavigationItem(
-          page: Home(),
+          page: const Home(),
           icon: const Icon(Icons.home),
           title: const Text("主頁"),
         ),
         TabNavigationItem(
-          page: Discover(),
+          page: const Discover(),
           icon: const Icon(Icons.language),
           title: const Text("探索"),
         ),
@@ -32,7 +30,7 @@ class TabNavigationItem {
           title: const Text("創建貼文"),
         ),
         TabNavigationItem(
-          page: NotificationPage(),
+          page: const NotificationPage(),
           icon: const Icon(Icons.notifications),
           title: const Text("通知"),
         ),

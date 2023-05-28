@@ -20,7 +20,7 @@ class _SideMenuState extends State<SideMenu> {
   Widget build(BuildContext context) {
     return Drawer(
       width: 200,
-      child: Container(
+      child: SizedBox(
         child: ListView(
           padding: const EdgeInsets.only(left: 5),
           children: [

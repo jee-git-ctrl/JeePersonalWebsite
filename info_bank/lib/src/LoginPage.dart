@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(color: tThirdColor),
+        decoration: const BoxDecoration(color: tThirdColor),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -68,13 +68,13 @@ class _LoginPageState extends State<LoginPage> {
               // SizedBox(
               //   height: 100,
               // ),
-              Container(
+              SizedBox(
                 width: 100,
                 child: ElevatedButton(
                   style: const ButtonStyle(
                       elevation: MaterialStatePropertyAll(0),
                       backgroundColor: MaterialStatePropertyAll(tThirdColor)),
-                  child: Center(child: Text("")),
+                  child: const Center(child: Text("")),
                   onPressed: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => TabsPage(selectedIndex: 0),
