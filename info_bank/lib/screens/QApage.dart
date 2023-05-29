@@ -19,6 +19,7 @@ class QApage extends StatefulWidget {
 }
 
 class _QApageState extends State<QApage> {
+  final TextEditingController _ansController = TextEditingController();
   Map<String, dynamic> mObj = {
     'title': '古城麻辣燙排隊人數',
     'note': '古城麻辣燙排隊人數古城麻辣燙',
@@ -393,7 +394,8 @@ class _QApageState extends State<QApage> {
           'content': '目前在等待第10號',
           'time': '5小時前更新'
         }
-      ]
+      ],
+      [10, 10, 10, 10] //init ansnum
     ],
     'sorted_ans': [
       [
@@ -1139,7 +1141,7 @@ class _QApageState extends State<QApage> {
     ],
   };
   List<bool> isUnlocked = [true, false, false, false];
-  int AnsNum = 10;
+  //int AnsNum = 10;
   int selectedSec = 0;
   bool toggle = false;
 
@@ -1301,7 +1303,9 @@ class _QApageState extends State<QApage> {
         });
   }
 
+  //創建回答
   showAns() {
+    Map<String, Object> newAns = Map();
     if (!isUnlocked[selectedSec]) {
       return;
     }
@@ -1351,6 +1355,7 @@ class _QApageState extends State<QApage> {
                         padding: const EdgeInsets.all(8.0),
                         child: TextFormField(
                           decoration: const InputDecoration(hintText: '請輸入回答'),
+                          controller: _ansController,
                         ),
                       ),
                       Stack(
@@ -1384,7 +1389,22 @@ class _QApageState extends State<QApage> {
                                         MaterialStatePropertyAll(tSecondColor)),
                                 child: const Text("回答"),
                                 onPressed: () {
-                                  Navigator.of(context).pop();
+                                  //送出回答
+                                  //
+                                  if ((_formKey.currentState as FormState)
+                                      .validate()) {
+                                    newAns = <String, Object>{
+                                      'userID': '37',
+                                      'userName': 'Alan',
+                                      'reputation': 0,
+                                      'score': 0,
+                                      'nFeedback': '3.6k',
+                                      'content': _ansController.text,
+                                      'time': '剛剛'
+                                    };
+                                    print(addtoAnsList(newAns));
+                                    Navigator.of(context).pop();
+                                  }
                                 },
                               ),
                             ),
@@ -1398,6 +1418,22 @@ class _QApageState extends State<QApage> {
             ),
           );
         });
+  }
+
+  String addtoAnsList(newAns) {
+    setState(() {
+      var list1 =
+          List<Map<String, Object>>.from(mObj['ans'][selectedSec] as List);
+      list1.add(newAns);
+      //print(list1);
+      mObj['ans'][selectedSec] = list1;
+      currentmobj['ans'][selectedSec] = list1;
+      mObj['ans'][4][selectedSec] = list1.length;
+
+      print(mObj['ans'][4][selectedSec]);
+    });
+    //mObj['sorted_ans'][selectedSec].add(newAns);
+    return "successfully add to answerlist";
   }
 
   // void showAns() {
@@ -1629,7 +1665,7 @@ class _QApageState extends State<QApage> {
                       const divider0(),
                       ButtonRow(call: switchSec, call2: sortchange),
                       answerSec(
-                        AnsNum: AnsNum,
+                        AnsNum: mObj['ans'][4][selectedSec], //length
                         isUnlocked: isUnlocked[selectedSec],
                         secNum: selectedSec,
                         ansObj: currentmobj['ans'],
@@ -1660,7 +1696,8 @@ class _QApageState extends State<QApage> {
               right: 20.0,
               child: FloatingActionButton(
                 onPressed: () {
-                  showAns();
+                  //應該要改成解鎖
+                  //showAns();
                 },
                 heroTag: 'btn1',
                 backgroundColor: tSecondColor,
@@ -1707,14 +1744,14 @@ class divider0 extends StatelessWidget {
 }
 
 class answerSec extends StatelessWidget {
-  const answerSec(
+  answerSec(
       {super.key,
       required this.AnsNum,
       required this.secNum,
       required this.isUnlocked,
       required this.ansObj});
 
-  final int AnsNum;
+  int AnsNum;
   final int secNum;
   final bool isUnlocked;
   final dynamic ansObj;
