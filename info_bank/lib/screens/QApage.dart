@@ -1141,7 +1141,7 @@ class _QApageState extends State<QApage> {
     ],
   };
   List<bool> isUnlocked = [true, false, false, false];
-  //int AnsNum = 10;
+  // int AnsNum = 10;
   int selectedSec = 0;
   bool toggle = false;
 
@@ -1398,7 +1398,7 @@ class _QApageState extends State<QApage> {
                                       'userName': 'Alan',
                                       'reputation': 0,
                                       'score': 0,
-                                      'nFeedback': '3.6k',
+                                      'nFeedback': '0',
                                       'content': _ansController.text,
                                       'time': '剛剛'
                                     };

@@ -6,7 +6,7 @@ import 'package:info_bank/post/examplepost5.dart' as e;
 import 'package:info_bank/post/examplepost6.dart' as f;
 import 'package:info_bank/post/examplepost7.dart' as g;
 
-Map<String, dynamic> allQAObjs = {
+Map<String, dynamic> allQA = {
   'QA': [
     a.mObj,
     b.mObj,
