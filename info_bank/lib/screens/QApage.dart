@@ -1428,6 +1428,7 @@ class _QApageState extends State<QApage> {
       //print(list1);
       mObj['ans'][selectedSec] = list1;
       currentmobj['ans'][selectedSec] = list1;
+      mObj['sorted_ans'][selectedSec] = list1;
       mObj['ans'][4][selectedSec] = list1.length;
 
       print(mObj['ans'][4][selectedSec]);
@@ -1665,7 +1666,7 @@ class _QApageState extends State<QApage> {
                       const divider0(),
                       ButtonRow(call: switchSec, call2: sortchange),
                       answerSec(
-                        AnsNum: mObj['ans'][4][selectedSec], //length
+                        ansNum: 10, //length
                         isUnlocked: isUnlocked[selectedSec],
                         secNum: selectedSec,
                         ansObj: currentmobj['ans'],
@@ -1746,15 +1747,15 @@ class divider0 extends StatelessWidget {
 class answerSec extends StatelessWidget {
   answerSec(
       {super.key,
-      required this.AnsNum,
+      required this.ansNum,
       required this.secNum,
       required this.isUnlocked,
       required this.ansObj});
 
-  int AnsNum;
+  int ansNum;
   final int secNum;
   final bool isUnlocked;
-  final dynamic ansObj;
+  dynamic ansObj;
 
   @override
   Widget build(BuildContext context) {
@@ -1766,7 +1767,7 @@ class answerSec extends StatelessWidget {
           ListView.builder(
               padding: const EdgeInsets.only(bottom: 50.0),
               shrinkWrap: true,
-              itemCount: AnsNum,
+              itemCount: ansNum,
               itemBuilder: (context, index) {
                 // print(ansObj);
                 if (!isUnlocked) {

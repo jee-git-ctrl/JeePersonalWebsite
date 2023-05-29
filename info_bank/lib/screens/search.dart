@@ -20,6 +20,7 @@ class _SearchState extends State<Search> with SingleTickerProviderStateMixin {
   List<Post> _currentposts = allPost;
 
   late TabController _tabController;
+  late TextEditingController _searchController = TextEditingController();
   @override
   void initState() {
     _tabController = TabController(length: 3, vsync: this);
@@ -79,6 +80,7 @@ class _SearchState extends State<Search> with SingleTickerProviderStateMixin {
         ),
         //backgroundColor: Color(0xffd9d9d9),
         title: TextField(
+          controller: _searchController,
           onChanged: updateQuery,
           // Call the callback function when the query changes
           decoration: const InputDecoration(
@@ -191,7 +193,8 @@ class _SearchState extends State<Search> with SingleTickerProviderStateMixin {
               child: FloatingActionButton(
                 onPressed: () => {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => CreatePostForSearch()))
+                      builder: (context) =>
+                          CreatePostForSearch(title: _searchController.text)))
                 },
                 heroTag: 'btn1',
                 backgroundColor: tSecondColor,

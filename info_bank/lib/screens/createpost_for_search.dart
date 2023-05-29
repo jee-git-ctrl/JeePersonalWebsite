@@ -5,13 +5,19 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:info_bank/src/constants/colors.dart';
 import 'package:info_bank/screens/QApage2.dart';
+import 'package:info_bank/post/post.dart';
+import 'package:info_bank/tabs/tabspage.dart';
 
 class CreatePostForSearch extends StatefulWidget {
+  final String title;
+  CreatePostForSearch({Key? key, required this.title}) : super(key: key);
+
   @override
   _CreatePostForSearchState createState() => _CreatePostForSearchState();
 }
 
 class _CreatePostForSearchState extends State<CreatePostForSearch> {
+  late Post newPost;
   List<String> current_tags = [];
   List<String> suggestions = [
     "recommend",
@@ -30,8 +36,10 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
   ];
   List<String> FoodTagGroup = ["food", "hotpot", "high quality"];
   List<String> StudyTagGroup = ["study", "exam", "difficult"];
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _answerController = TextEditingController();
   final TextEditingController _typeAheadController = TextEditingController();
-  final TextEditingController textcontroller = TextEditingController();
   SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
   final _formKey = GlobalKey<FormState>();
   double dropdownbuttonWidth = 60;
@@ -41,7 +49,7 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
   @override
   void initState() {
     super.initState();
-    textcontroller.text = '今天有小米甜甜圈嗎';
+    _titleController.text = widget.title;
   }
 
   callback(changedtag, changedprice, changeddropdownbuttonWidthWidth) {
@@ -76,10 +84,20 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
                     icon: const Icon(Icons.send),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => QApage2()));
-                        //create add here
+                        newPost = Post(
+                            title: _titleController.text,
+                            tag: current_tags,
+                            Best: 0,
+                            unlocked: 0,
+                            isfollowed: false);
+                        print(addtoList(newPost));
+                        // _formKey.currentState!.save();
+                        if (context.mounted) {
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
+                            builder: (context) => TabsPage(selectedIndex: 0),
+                          ));
+                        }
                       }
                     }),
               ],
@@ -104,7 +122,7 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 8),
                         child: TextFormField(
-                          controller: textcontroller,
+                          controller: _titleController,
                           maxLength: maxLength,
                           obscureText: false,
                           decoration: InputDecoration(
