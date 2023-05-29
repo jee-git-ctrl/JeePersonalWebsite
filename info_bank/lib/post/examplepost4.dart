@@ -1,3 +1,6 @@
+import 'package:info_bank/post/post.dart';
+import 'package:info_bank/screens/QApage.dart';
+
 Map<String, dynamic> mObj = {
   'title': '共教錢包遺失',
   'note': '今天只在共教202上課，撿到一個錢包',

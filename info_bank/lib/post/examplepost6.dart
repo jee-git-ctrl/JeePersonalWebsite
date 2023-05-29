@@ -1,3 +1,6 @@
+import 'package:info_bank/post/post.dart';
+import 'package:info_bank/screens/QApage.dart';
+
 Map<String, dynamic> mObj = {
   'title': '大士爺攤販評價',
   'note': '',
