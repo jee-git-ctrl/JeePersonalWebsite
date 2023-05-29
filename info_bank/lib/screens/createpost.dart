@@ -88,7 +88,6 @@ class _CreatePostState extends State<CreatePost> {
             Row(
               children: <Widget>[
                 IconButton(
-                  color: Colors.black,
                     color: Colors.black,
                     icon: const Icon(Icons.send),
                     /*

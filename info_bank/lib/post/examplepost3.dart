@@ -1,3 +1,6 @@
+import 'package:info_bank/post/post.dart';
+import 'package:info_bank/screens/QApage.dart';
+
 Map<String, dynamic> mObj = {
   'title': '今天有丹丹蔥油餅嗎',
   'note': '',
