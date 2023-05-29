@@ -19,7 +19,12 @@ class Post {
   });
 }
 
-const allPost = [
+String addtoList(Post newPost) {
+  allPost.add(newPost);
+  return "successfully add to allPost";
+}
+
+var allPost = [
   Post(
       title: '古城麻辣燙排隊人數',
       tag: ['食', 'CCU', '大吃'],

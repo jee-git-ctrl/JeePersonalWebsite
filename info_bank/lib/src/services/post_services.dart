@@ -9,6 +9,7 @@ class PostServices {
   final _auth = FirebaseAuth.instance;
 
   //get current user uid
+  //確定可以用
   Future<String> getCurrentUser() async {
     try {
       final uid = _auth.currentUser!.uid;
@@ -20,10 +21,11 @@ class PostServices {
   }
 
   //create new post
-  Future<String> newQuestion(questionJSON) async {
+  Future<String> newQuestion(dynamic questionJSON) async {
     try {
       var id = '';
       final docRef = _db.collection('Questions').doc();
+      print("set docREF");
       await _db.runTransaction((transaction) async {
         transaction.set(docRef, questionJSON);
         id = docRef.id;
@@ -39,17 +41,19 @@ class PostServices {
   }
 
 //create new answer
-  Future<String> newAnswer(answerJSON, QuestionID) async {
+  Future<String> newAnswer(dynamic answerJSON, String questionID) async {
     try {
+      print("adding new answer..");
       var id = '';
       final docRef = _db
           .collection('Questions')
-          .doc(QuestionID)
+          .doc(questionID)
           .collection('Answers')
           .doc();
       await _db.runTransaction((transaction) async {
         transaction.set(docRef, answerJSON);
         id = docRef.id;
+        print(id);
       });
 
       return id;

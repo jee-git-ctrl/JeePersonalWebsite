@@ -1653,7 +1653,8 @@ class _QApageState extends State<QApage> {
             ),
           ),
           Visibility(
-            visible: isUnlocked[selectedSec],
+            visible:
+                (selectedSec != 0 && isUnlocked[selectedSec]) ? true : false,
             child: Positioned(
               bottom: 20.0,
               right: 20.0,
@@ -1663,7 +1664,7 @@ class _QApageState extends State<QApage> {
                 },
                 heroTag: 'btn1',
                 backgroundColor: tSecondColor,
-                child: const Icon(Icons.question_answer_outlined),
+                child: const Icon(Icons.lock_open_outlined),
               ),
             ),
           ),
