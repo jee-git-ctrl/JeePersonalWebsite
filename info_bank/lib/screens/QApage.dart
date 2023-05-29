@@ -496,7 +496,7 @@ class _QApageState extends State<QApage> {
           'score': 2.2,
           'nFeedback': '1.2k',
           'content': '等待第2號',
-          'time': '4小時前更新'
+          'time': '2分鐘前更新'
         },
         {
           'userID': '2',
@@ -504,8 +504,8 @@ class _QApageState extends State<QApage> {
           'reputation': 3.1,
           'score': 1.9,
           'nFeedback': '2.5k',
-          'content': '目前等待第1號',
-          'time': '5小時前更新'
+          'content': '目前等1號',
+          'time': '6分鐘前更新'
         },
         {
           'userID': '10',
@@ -1638,6 +1638,18 @@ class _QApageState extends State<QApage> {
                   ),
                 ),
               ],
+            ),
+          ),
+          Positioned(
+            bottom: 20.0,
+            left: 20.0,
+            child: FloatingActionButton(
+              onPressed: () {
+                showAns();
+              },
+              heroTag: 'btn3',
+              backgroundColor: tSecondColor,
+              child: const Icon(Icons.question_answer_outlined),
             ),
           ),
           Visibility(

@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:info_bank/sidemenu/side_menu.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:info_bank/src/constants/colors.dart';
+import 'package:info_bank/src/services/post_services.dart';
+import 'package:info_bank/tabs/tabspage.dart';
 
 class CreatePost extends StatefulWidget {
   @override
@@ -29,6 +32,7 @@ class _CreatePostState extends State<CreatePost> {
   ];
   List<String> FoodTagGroup = ["food", "hotpot", "high quality"];
   List<String> StudyTagGroup = ["study", "exam", "difficult"];
+  static final PostServices _postServices = PostServices();
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _answerController = TextEditingController();
@@ -41,6 +45,8 @@ class _CreatePostState extends State<CreatePost> {
   String _currentprice = "免費";
   var maxLength = 100;
   var textLength = 0;
+  var questionJSON;
+  var answerJSON;
   FocusNode FocusNode1 = FocusNode();
   @override
   callback(changedtag, changedprice, changeddropdownbuttonWidthWidth) {
@@ -53,7 +59,6 @@ class _CreatePostState extends State<CreatePost> {
 
   @override
   Widget build(BuildContext context) {
-    List selectedtag = [];
     return Scaffold(
         drawer: SideMenu(),
         appBar: AppBar(
@@ -81,14 +86,56 @@ class _CreatePostState extends State<CreatePost> {
             Row(
               children: <Widget>[
                 IconButton(
-                    color: Colors.black,
-                    icon: const Icon(Icons.send),
+                  color: Colors.black,
+                  icon: const Icon(Icons.send),
+                  /*
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
                         //create add here
+
                       }
-                    }),
+                    } */
+                  onPressed: () async {
+                    if ((_formKey.currentState as FormState).validate()) {
+                      //json
+
+                      questionJSON = {
+                        "Author": _postServices.getCurrentUser(),
+                        "Title": _titleController,
+                        "Description": _descriptionController,
+                        "Tags": current_tags,
+                        "CreateTime": Timestamp.now()
+                      };
+                      final resPostID =
+                          await _postServices.newQuestion(questionJSON);
+
+                      if (resPostID.isNotEmpty) {
+                        //確定會get到ID
+                        //如果有回答的話，接著將回答新增到該問題下面
+                        //then
+                        //navigate to post view page
+
+                        if (_answerController.text.isNotEmpty) {
+                          answerJSON = {
+                            "QuestionID": resPostID, //belong to which question
+                            "Author": _postServices.getCurrentUser(),
+                            "AnsDescription": _answerController,
+                            "Price": _currentprice,
+                            "Createtime": Timestamp.now()
+                          };
+                          await _postServices.newAnswer(answerJSON, resPostID);
+                        }
+                        if (context.mounted) {
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
+                            builder: (context) => TabsPage(selectedIndex: 0),
+                          ));
+                        }
+                      }
+                    }
+                  },
+                ),
               ],
             ),
           ],
@@ -631,7 +678,7 @@ class _ExpandableTextState extends State<ExpandableText>
                               left: 85,
                               child: Icon(Icons.format_italic),
                             ),*/
-                  /* Texteditor using Htmleditor 
+/* Texteditor using Htmleditor 
 
                         HtmlEditor(
                           controller: HtmlEditorcontroller, //required
@@ -660,7 +707,7 @@ class _ExpandableTextState extends State<ExpandableText>
                         ),
                         */
 
-                  /* Original layout for tag
+/* Original layout for tag
                   Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 10.0),

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:info_bank/src/constants/colors.dart';
+import 'package:info_bank/screens/QApage2.dart';
 
 class CreatePostForSearch extends StatefulWidget {
   @override
@@ -30,12 +31,18 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
   List<String> FoodTagGroup = ["food", "hotpot", "high quality"];
   List<String> StudyTagGroup = ["study", "exam", "difficult"];
   final TextEditingController _typeAheadController = TextEditingController();
+  final TextEditingController textcontroller = TextEditingController();
   SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
   final _formKey = GlobalKey<FormState>();
   double dropdownbuttonWidth = 60;
   String _currentprice = "免費";
   var maxLength = 100;
   var textLength = 0;
+  @override
+  void initState() {
+    super.initState();
+    textcontroller.text = '今天有小米甜甜圈嗎';
+  }
 
   callback(changedtag, changedprice, changeddropdownbuttonWidthWidth) {
     setState(() {
@@ -70,6 +77,8 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => QApage2()));
                         //create add here
                       }
                     }),
@@ -95,6 +104,7 @@ class _CreatePostForSearchState extends State<CreatePostForSearch> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 8),
                         child: TextFormField(
+                          controller: textcontroller,
                           maxLength: maxLength,
                           obscureText: false,
                           decoration: InputDecoration(
