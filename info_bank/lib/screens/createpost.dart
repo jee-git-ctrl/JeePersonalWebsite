@@ -7,6 +7,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:info_bank/src/constants/colors.dart';
 import 'package:info_bank/src/services/post_services.dart';
 import 'package:info_bank/tabs/tabspage.dart';
+import 'package:info_bank/post/post.dart';
 
 class CreatePost extends StatefulWidget {
   @override
@@ -14,6 +15,7 @@ class CreatePost extends StatefulWidget {
 }
 
 class _CreatePostState extends State<CreatePost> {
+  late Post newPost; // from post.dart
   List<String> current_tags = [];
   List<String> suggestions = [
     "recommend",
@@ -87,8 +89,9 @@ class _CreatePostState extends State<CreatePost> {
               children: <Widget>[
                 IconButton(
                   color: Colors.black,
-                  icon: const Icon(Icons.send),
-                  /*
+                    color: Colors.black,
+                    icon: const Icon(Icons.send),
+                    /*
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
@@ -96,36 +99,49 @@ class _CreatePostState extends State<CreatePost> {
 
                       }
                     } */
-                  onPressed: () async {
-                    if ((_formKey.currentState as FormState).validate()) {
-                      //json
+                    onPressed: () async {
+                      if ((_formKey.currentState as FormState).validate()) {
+                        //Post -> post.dart
+                        newPost = Post(
+                            title: _titleController.text,
+                            tag: current_tags,
+                            Best: 0,
+                            unlocked: 0,
+                            isfollowed: false);
+                        print(addtoList(newPost));
 
-                      questionJSON = {
-                        "Author": _postServices.getCurrentUser(),
-                        "Title": _titleController,
-                        "Description": _descriptionController,
-                        "Tags": current_tags,
-                        "CreateTime": Timestamp.now()
-                      };
-                      final resPostID =
-                          await _postServices.newQuestion(questionJSON);
+                        // -> QApage.dart
 
-                      if (resPostID.isNotEmpty) {
-                        //確定會get到ID
-                        //如果有回答的話，接著將回答新增到該問題下面
-                        //then
-                        //navigate to post view page
+                        //json -> firestore
+                        // questionJSON = {
+                        //   "Author": _postServices.getCurrentUser(),
+                        //   "Title": _titleController.text,
+                        //   "Description": _descriptionController.text,
+                        //   "Tags": current_tags,
+                        //   "CreateTime": Timestamp.now()
+                        // };
+                        // final resPostID =
+                        //     await _postServices.newQuestion(questionJSON);
 
-                        if (_answerController.text.isNotEmpty) {
-                          answerJSON = {
-                            "QuestionID": resPostID, //belong to which question
-                            "Author": _postServices.getCurrentUser(),
-                            "AnsDescription": _answerController,
-                            "Price": _currentprice,
-                            "Createtime": Timestamp.now()
-                          };
-                          await _postServices.newAnswer(answerJSON, resPostID);
-                        }
+                        // if (resPostID.isNotEmpty) {
+                        //   //確定會get到ID
+                        //   //如果有回答的話，接著將回答新增到該問題下面
+                        //   //then
+                        //   //navigate to post view page
+
+                        //   if (_answerController.text.isNotEmpty) {
+                        //     print("answer is not empty");
+                        //     answerJSON = {
+                        //       "QuestionID": resPostID, //belong to which question
+                        //       // "Author": _postServices.getCurrentUser(),
+                        //       "AnsDescription": _answerController.text,
+                        //       "Price": _currentprice,
+                        //       "Createtime": Timestamp.now()
+                        //     };
+                        //     final answerID = await _postServices.newAnswer(
+                        //         answerJSON, resPostID);
+                        //   }
+
                         if (context.mounted) {
                           Navigator.of(context)
                               .pushReplacement(MaterialPageRoute(
@@ -133,9 +149,7 @@ class _CreatePostState extends State<CreatePost> {
                           ));
                         }
                       }
-                    }
-                  },
-                ),
+                    }),
               ],
             ),
           ],
