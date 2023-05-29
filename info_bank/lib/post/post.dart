@@ -34,13 +34,13 @@ const allPost = [
       isfollowed: false),
   Post(
       title: '今天有丹丹蔥油餅嗎',
-      tag: ['食', 'CCU', '大吃'],
+      tag: ['美食', 'CCU', '大吃'],
       Best: 67.4,
       unlocked: 5678,
       isfollowed: true),
   Post(
       title: '共教錢包遺失',
-      tag: ['CCU', '遺失', '協尋'],
+      tag: ['CCU', '遺失', '失物協尋'],
       Best: 82.2,
       unlocked: 9876,
       isfollowed: false),
