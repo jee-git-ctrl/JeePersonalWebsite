@@ -9,39 +9,80 @@ class Post {
   final List<String> tag;
   final double Best;
   final double unlocked;
+  final bool isfollowed;
   const Post({
     required this.title,
     required this.tag,
     required this.Best,
     required this.unlocked,
+    required this.isfollowed,
   });
 }
 
 const allPost = [
-  Post(title: '古城麻辣燙排隊人數', tag: ['Follow'], Best: 89.1, unlocked: 3000),
-  Post(title: 'Post 2', tag: ['Follow'], Best: 71.1, unlocked: 1234),
   Post(
-      title: 'Post 3',
-      tag: ['Follow', 'Fooooooooooooooooooooooooooooooooood'],
+      title: '古城麻辣燙排隊人數',
+      tag: ['食', 'CCU', '大吃'],
+      Best: 89.1,
+      unlocked: 3000,
+      isfollowed: true),
+  Post(
+      title: '大吃還有機車停車位嗎',
+      tag: ['停車位', 'CCU', '大吃'],
+      Best: 71.1,
+      unlocked: 1234,
+      isfollowed: false),
+  Post(
+      title: '今天有丹丹蔥油餅嗎',
+      tag: ['食', 'CCU', '大吃'],
       Best: 67.4,
-      unlocked: 5678),
+      unlocked: 5678,
+      isfollowed: true),
   Post(
-      title: 'Post 4',
-      tag: ['Recommend', 'afkjno'],
+      title: '共教錢包遺失',
+      tag: ['CCU', '遺失', '協尋'],
       Best: 82.2,
-      unlocked: 9876),
-  Post(title: 'Post 5', tag: ['Follow'], Best: 23.3, unlocked: 2351),
-  Post(title: 'Post 6', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
-  Post(title: 'Post 7', tag: ['Follow'], Best: 23.3, unlocked: 2351),
-  Post(title: 'Post 8', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
-  Post(title: 'Post 9', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
-  Post(title: 'Post 10', tag: ['Recommend'], Best: 23.3, unlocked: 2351),
+      unlocked: 9876,
+      isfollowed: false),
+  Post(
+      title: '中正大學重要時程',
+      tag: ['CCU', '行事曆'],
+      Best: 23.3,
+      unlocked: 2351,
+      isfollowed: true),
+  Post(
+      title: '大士爺攤販評價',
+      tag: ['大士爺'],
+      Best: 54.8,
+      unlocked: 3000,
+      isfollowed: false),
+  Post(
+      title: '民雄區車況',
+      tag: ['交通'],
+      Best: 31.5,
+      unlocked: 2881,
+      isfollowed: false),
 ];
 
 const samePost = [
-  Post(title: '古城排隊人數', tag: ['Follow'], Best: 89.1, unlocked: 3000),
-  Post(title: '古城麻辣燙候位人數', tag: ['Follow'], Best: 71.1, unlocked: 1234),
-  Post(title: '古城還要多久', tag: ['Follow'], Best: 67.4, unlocked: 5678),
+  Post(
+      title: '古城排隊人數',
+      tag: ['Follow'],
+      Best: 89.1,
+      unlocked: 3000,
+      isfollowed: true),
+  Post(
+      title: '古城麻辣燙候位人數',
+      tag: ['Follow'],
+      Best: 71.1,
+      unlocked: 1234,
+      isfollowed: true),
+  Post(
+      title: '古城還要多久',
+      tag: ['Follow'],
+      Best: 67.4,
+      unlocked: 5678,
+      isfollowed: true),
 ];
 
 class MyPost extends StatelessWidget {
