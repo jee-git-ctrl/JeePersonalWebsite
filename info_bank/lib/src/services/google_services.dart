@@ -13,8 +13,6 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 final FServices _firebaseServices = FServices();
 
 class Services {
-  //
-
   //function
   Future<void> googleSignIn(context) async {
     final GoogleSignInAccount? googleSignInAccount =

@@ -19,7 +19,12 @@ class Post {
   });
 }
 
-const allPost = [
+String addtoList(Post newPost) {
+  allPost.add(newPost);
+  return "successfully add to allPost";
+}
+
+var allPost = [
   Post(
       title: '古城麻辣燙排隊人數',
       tag: ['食', 'CCU', '大吃'],
@@ -34,13 +39,13 @@ const allPost = [
       isfollowed: false),
   Post(
       title: '今天有丹丹蔥油餅嗎',
-      tag: ['食', 'CCU', '大吃'],
+      tag: ['美食', 'CCU', '大吃'],
       Best: 67.4,
       unlocked: 5678,
       isfollowed: true),
   Post(
       title: '共教錢包遺失',
-      tag: ['CCU', '遺失', '協尋'],
+      tag: ['CCU', '遺失', '失物協尋'],
       Best: 82.2,
       unlocked: 9876,
       isfollowed: false),
